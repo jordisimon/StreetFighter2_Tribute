@@ -124,18 +124,22 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Module.h" />
-    <ClInclude Include="ModuleConfig.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="SimpleIni.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
-    <ClCompile Include="ModuleConfig.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,5 @@
 #pragma once
+#include "Config.h"
 
 class Module
 {
@@ -19,7 +20,7 @@ public:
 
 	virtual ~Module() {}
 
-	bool IsEnabled() { return m_active; }
+	bool IsEnabled() const { return m_active; }
 	bool Enable()
 	{
 		if (!m_active)
@@ -36,7 +37,7 @@ public:
 		return true;
 	}
 
-	virtual bool Init() { return true; }
+	virtual bool Init(const Config& config) { return true; }
 	virtual bool CleanUp() { return true; }
 
 	virtual bool Start() { return true; }
