@@ -127,10 +127,16 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="ModuleAudio.h" />
+    <ClInclude Include="ModuleCommandManager.h" />
+    <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleRender.h" />
+    <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="SimpleIni.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageHonda.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -139,8 +145,14 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="ModuleAudio.cpp" />
+    <ClCompile Include="ModuleCommandManager.cpp" />
+    <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
+    <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StageHonda.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

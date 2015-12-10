@@ -1,17 +1,9 @@
 #include "ModuleRender.h"
 #include "Defines.h"
+#include "Config.h"
 #include "SDL\include\SDL.h"
 
 #define CONFIG_SECTION "Render"
-
-ModuleRender::ModuleRender()
-{
-}
-
-
-ModuleRender::~ModuleRender()
-{
-}
 
 bool ModuleRender::Init(const Config& config)
 {
@@ -20,12 +12,11 @@ bool ModuleRender::Init(const Config& config)
 	screenRatio = config.LoadIntValue(CONFIG_SECTION, "screenRatio", "2");
 	fullScreen = config.LoadBoolValue(CONFIG_SECTION, "fullScreen", "0");
 	vSync = config.LoadBoolValue(CONFIG_SECTION, "vSync", "384");
-	debugCameraSpeed = config.LoadIntValue(CONFIG_SECTION, "debugCameraSpeed", "3");
 
 	LOG("Init SDL window & surface");
 	bool ret = true;
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0)
 	{
 		LOG("SDL_VIDEO could not initialize! SDL_Error: %s\n", SDL_GetError());
 		return false;
@@ -96,7 +87,6 @@ bool ModuleRender::CleanUp()
 
 	//Quit SDL subsystems
 	SDL_QuitSubSystem(SDL_INIT_VIDEO);
-	SDL_Quit();
 	return true;
 }
 
@@ -118,7 +108,7 @@ Module::Update_result ModuleRender::PostUpdate()
 	return Update_result::UPDATE_OK;
 }
 
-bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, SDL_Rect * section, float speed)
+bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect * section, float speed)
 {
 	SDL_Rect rect;
 	rect.x = (int)(camera.x * speed) + x * screenRatio;
@@ -145,4 +135,10 @@ bool ModuleRender::Blit(SDL_Texture * texture, int x, int y, SDL_Rect * section,
 	}
 
 	return true;
+}
+
+void ModuleRender::MoveCamera(iPoint offset)
+{
+	camera.x += offset.x;
+	camera.y += offset.y;
 }

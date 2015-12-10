@@ -16,6 +16,7 @@ public:
 
 	bool Init();
 
+	const char* LoadCharValue(const char * sectionName, const char * keyName, const char* defaultValue) const;
 	int LoadIntValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 	float LoadFloatValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 	bool LoadBoolValue(const char* sectionName, const char* keyName, const char* defaultValue) const;

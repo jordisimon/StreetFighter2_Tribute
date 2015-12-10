@@ -20,6 +20,11 @@ bool Config::Init()
 	return ini.LoadFile("config.ini") == SI_OK;
 }
 
+const char* Config::LoadCharValue(const char * sectionName, const char * keyName, const char* defaultValue) const
+{
+	return ini.GetValue(sectionName, keyName, defaultValue);
+}
+
 int Config::LoadIntValue(const char * sectionName, const char * keyName, const char* defaultValue) const
 {
 	return atoi(ini.GetValue(sectionName, keyName, defaultValue));
@@ -101,7 +106,9 @@ bool Config::LoadAnimation(Animation & animation, const char * sectionName, cons
 		result = (frameX != -1 && frameY != -1 && frameW != -1 && frameH != -1);
 
 		if (result)
-			animation.frames.push_back({ { frameX, frameY, frameW, frameH }, { frameOffsetX, frameOffsetY } });
+		{
+			animation.frames.push_back({ { frameX, frameY, frameW, frameH },{ frameOffsetX, frameOffsetY } });
+		}
 
 		frameNum++;
 	} while (result);

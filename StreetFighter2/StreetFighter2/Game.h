@@ -3,7 +3,13 @@
 #include "Config.h"
 #include "Module.h"
 
+class ModuleInput;
 class ModuleRender;
+class ModuleTextures;
+class ModuleAudio;
+class ModuleCommandManager;
+
+class StageHonda;
 
 class Game
 {
@@ -12,7 +18,15 @@ private:
 
 public:
 	Config config;
+	ModuleInput* input;
 	ModuleRender* render;
+	ModuleTextures* textures;
+	ModuleAudio* audio;
+	ModuleCommandManager* commandManager;
+
+
+	//Testing
+	StageHonda* sHonda;
 
 	Game();
 	~Game();
@@ -21,4 +35,6 @@ public:
 	Module::Update_result Update();
 	bool CleanUp();
 };
+
+extern Game* game;
 

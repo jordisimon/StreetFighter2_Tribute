@@ -1,5 +1,6 @@
 #pragma once
-#include "Config.h"
+
+class Config;
 
 class Module
 {

@@ -7,7 +7,6 @@ class Sprite
 public:
 	Sprite();
 	Sprite(const SDL_Rect& r, const iPoint& o);
-	Sprite(const SDL_Rect&& r, const iPoint&& o);
 	virtual ~Sprite();
 
 	SDL_Rect rect;

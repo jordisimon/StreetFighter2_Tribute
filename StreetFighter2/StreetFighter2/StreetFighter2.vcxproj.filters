@@ -1,93 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Main">
-      <UniqueIdentifier>{3badeecb-b78b-4d27-a6cb-02b2feca6a1b}</UniqueIdentifier>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Header Files\Utils">
-      <UniqueIdentifier>{6116b62b-a833-496a-88e0-664732f68851}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Modules">
-      <UniqueIdentifier>{f60c74b7-87b1-4077-b6de-c11bb9fff2bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Modules">
-      <UniqueIdentifier>{2ddb25c3-9bb6-4777-811a-d7f3dd59d218}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{f6d452b5-d8bc-4acf-b777-3dba4fc81769}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Kernel">
+    <Filter Include="Sources\Kernel">
       <UniqueIdentifier>{e6d21491-b30c-4c5a-b26b-005dca8b10e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Kernel">
-      <UniqueIdentifier>{0e216241-9aa9-469c-a538-79db8bd2e5a1}</UniqueIdentifier>
+    <Filter Include="Sources\Kernel\Stages">
+      <UniqueIdentifier>{483be998-35ca-40bf-967c-e2ae47725c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Kernel\Characters">
+      <UniqueIdentifier>{f0d1ef4f-ab34-4874-b3b9-18a50b231a10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Modules">
+      <UniqueIdentifier>{f60c74b7-87b1-4077-b6de-c11bb9fff2bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Main">
+      <UniqueIdentifier>{3badeecb-b78b-4d27-a6cb-02b2feca6a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Utils">
+      <UniqueIdentifier>{6116b62b-a833-496a-88e0-664732f68851}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleIni.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Sources\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Module.h">
-      <Filter>Header Files\Modules</Filter>
+      <Filter>Sources\Modules</Filter>
     </ClInclude>
     <ClInclude Include="Defines.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Sources\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Sources\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Header Files\Kernel</Filter>
+      <Filter>Sources\Kernel</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Header Files\Kernel</Filter>
+      <Filter>Sources\Kernel</Filter>
     </ClInclude>
     <ClInclude Include="ModuleRender.h">
-      <Filter>Header Files\Modules</Filter>
+      <Filter>Sources\Modules</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Sources\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Header Files\Kernel</Filter>
+      <Filter>Sources\Kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Sources\Kernel\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="StageHonda.h">
+      <Filter>Sources\Kernel\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCommandManager.h">
+      <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\Kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files\Kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Sources\Main</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Sources\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Sources\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Sources\Kernel</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Kernel</Filter>
+      <Filter>Sources\Kernel</Filter>
     </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Sources\Kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Sources\Kernel\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="StageHonda.cpp">
+      <Filter>Sources\Kernel\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCommandManager.cpp" />
   </ItemGroup>
 </Project>
