@@ -48,7 +48,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	}
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(game->render->renderer, surface);
+		texture = SDL_CreateTextureFromSurface(game->sRender->renderer, surface);
 
 		if (texture == nullptr)
 		{

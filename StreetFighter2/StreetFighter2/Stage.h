@@ -1,23 +1,29 @@
 #pragma once
-#include "Module.h"
+#include "Entity.h"
+#include "Point.h"
 
 struct SDL_Texture;
 
-class Stage : public Module
+class Stage : public Entity
 {
+protected:
+	const char* configSection;
+
 public:
-	SDL_Texture* graphics = nullptr;
-	const char* spriteSheetName;
+	SDL_Texture* texture = nullptr;
 	const char* musicName;
 
-	int camMinX;
-	int camMinY;
-	int camMaxX;
-	int camMaxY;
+	iPoint camMin;
+	iPoint camMax;
+	iPoint camStart;
 	int groundLevel;
+	iPoint p1StartPoint;
+	iPoint p2StartPoint;
 
 	Stage() {};
 	~Stage() {};
+
+	bool Init(const Config& config);
 
 	bool Start();
 	bool Stop();

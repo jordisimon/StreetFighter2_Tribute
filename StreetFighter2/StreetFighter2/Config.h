@@ -7,6 +7,7 @@ class Config
 {
 private:
 	char* auxKey;
+	char* result;
 	CSimpleIniA ini;
 
 public:
@@ -22,7 +23,7 @@ public:
 	bool LoadBoolValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 
 	bool LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const;
-	bool LoadPosition(iPoint& point, const char * sectionName, const char * keyName) const;
+	bool LoadPoint(iPoint& point, const char * sectionName, const char * keyName) const;
 	bool LoadAnimation(Animation& animation, const char* sectionName, const char* keyName) const;
 };
 

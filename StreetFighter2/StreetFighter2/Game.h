@@ -1,40 +1,55 @@
 #pragma once
+#include "Entity.h"
 #include <list>
 #include "Config.h"
-#include "Module.h"
+#include "Service.h"
 
-class ModuleInput;
-class ModuleRender;
-class ModuleTextures;
-class ModuleAudio;
-class ModuleCommandManager;
+class ServiceAudio;
+class ServiceInput;
+class ServiceParticles;
+class ServiceRender;
+class ServiceTextures;
+class ServiceCollition;
 
-class StageHonda;
+//TODO treure d'aqui
+class ServiceCommandManager;
 
-class Game
+class Game: public Entity
 {
 private:
-	std::list<Module*> modules;
+	std::list<Service*> services;
 
 public:
 	Config config;
-	ModuleInput* input;
-	ModuleRender* render;
-	ModuleTextures* textures;
-	ModuleAudio* audio;
-	ModuleCommandManager* commandManager;
+	bool debug;
 
+	//Services
+	ServiceAudio* sAudio;
+	ServiceInput* sInput;
+	ServiceRender* sRender;
+	ServiceParticles* sParticles;
+	ServiceCollition* sCollitions;
+	ServiceTextures* sTextures;
 
-	//Testing
-	StageHonda* sHonda;
+	//TODO treure d'aqui
+	ServiceCommandManager* sCommands;
 
 	Game();
 	~Game();
 
-	bool Init();
-	Module::Update_result Update();
+	virtual bool Init();
 	bool CleanUp();
+
+	Entity::Result ProcessInput();
+	Entity::Result UpdateState();
+	Entity::Result PreDraw();
+	Entity::Result Draw();
+	Entity::Result PostDraw();
+
+	Entity::Result Update();
 };
+
+Game* CreateGame();
 
 extern Game* game;
 

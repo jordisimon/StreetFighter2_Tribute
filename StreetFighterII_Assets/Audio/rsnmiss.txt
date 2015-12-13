@@ -1,0 +1,1520 @@
+Name													CRC32		Size
+--------------------------------------------------------------------------------------------------------------------------------
+3x3 Eyes - Juuma Houkan [33ejh].rsn									1A41C2CC	188325
+3x3 Eyes - Seima Kourinden [33esk].rsn									04D87E76	60174
+3 Ninjas Kick Back [3nkb].rsn										89557544	163109
+4 Nin Shogi [4ns].rsn											7297A255	82749
+7th Saga [7sg].rsn											19F27FBA	75682
+U.N. Squadron [a88].rsn											C45ED38F	56879
+Andre Agassi Tennis [aat].rsn										17BDEE46	52839
+American Battle Dome [abd].rsn										F8CF8F9B	96338
+Adventures of Batman and Robin, The [abr].rsn								62EE4AB2	150627
+Akazukin Cha Cha [acc].rsn										736B5A3F	70104
+Accelebrid [accb].rsn											55E1849A	113652
+Christmas Demo [acd].rsn										B0B991FF	52036
+Ace o Nerae! [ace].rsn											04DA01D0	94982
+ACME Animation Factory [acme].rsn									34919F68	103699
+Acrobat Mission [acrm].rsn										2C50D850	44813
+Action Pachio [actp].rsn										C3A67DB6	131019
+Actraiser [actr].rsn											50DA2821	81619
+Actraiser 2 [actr2].rsn											CAC4EFF6	171639
+Addams Family, The [adf].rsn										B9663740	63253
+Aoki Densetsu Shoot! [ads].rsn										4AF45EA2	103397
+Aero the Acro-Bat [aero].rsn										EF125058	91747
+Aero the Acro-Bat 2 [aero2].rsn										E44AC1F1	136733
+Addams Family, The - Pugsley's Scavenger Hunt [afam2].rsn						ECA14923	116143
+Addams Family Values [afv].rsn										C3E50C33	222307
+American Gladiators [ag].rsn										6DF14F1B	28030
+Aging Cassette [aging].rsn										48188CBC	6684
+Uchuu Race Astro Go Go [agogo].rsn									AC6AAA98	47568
+Astrohawk - May 2003 Version [ahawk].rsn								0CF943F3	32829
+Air Cavalry [airc].rsn											4F9E4FD6	64645
+Air Management - Ozora ni Kakeru (Aerobiz) [airm].rsn							0D5B392B	48720
+Air Management 2 - Koukuu Ou wo Mezase (Aerobiz Supersonic) [airm2].rsn					FE6E5FEF	59303
+Alien 3 [al3].rsn											36660ACB	137567
+Aladdin [ala].rsn											23195BEA	93995
+Alcahest [alca].rsn											144194E4	79668
+Alfred Chicken [alch].rsn										194A61A9	60274
+Ardy Lightfoot [alft].rsn										A8290255	137877
+Alice's Paint Adventure [alice].rsn									09310796	116335
+Albert Odyssey [alod].rsn										4A0D6C0D	104190
+Albert Odyssey 2 [alod2].rsn										981D0234	138420
+Archer MacLean's Dropzone [amdz].rsn									03FEB91A	86969
+ABC Monday Night Football [amnf].rsn									775BA02B	158134
+Arabian Nights [an].rsn											65FC4780	183485
+Animaniacs [ani].rsn											EC03135C	125933
+Animaniacs (Super Gameboy) [anigb].rsn									975C0D7B	61407
+Apocalypse II [apii].rsn										22EBDFB3	55982
+Armor Police Metal Jack [apmj].rsn									6F794F74	84073
+Appleseed - Prometheus no Shintaku [apple].rsn								08A7A5E9	84005
+Super Aquatic Games (James Pond's Crazy Sports) [aqua].rsn						C1F98C54	46802
+Araiguma Rascal [ar].rsn										9BB474C6	207801
+Adventures of Rocky and Bullwinkle and Friends, The [arbf].rsn						C26C84CE	53584
+Arcus Spirits [arc].rsn											1DF460B5	88198
+Aretha [are].rsn											3F1ADB3C	88220
+Aretha 2 [are2].rsn											E38C26A9	145990
+A Ressha de Ikou 3 Super Version [ari3].rsn								D2757F53	59815
+AAAHH!!! Real Monsters [arm].rsn									ADC8E699	172065
+Aryol [aryol].rsn											8FA3B6BB	64954
+Aguri Suzuki F-1 Super Driving [asf1].rsn								B52E291E	50939
+A.S.P. Air Strike Patrol [asp].rsn									A34F69A4	116914
+Asahi Shinbun Rensai [asr].rsn										E3034492	56918
+Asterix [ast].rsn											2F691C9B	93037
+Asterix & Obelix [ast2].rsn										A28BC77B	101741
+Ashita no Joe [astj].rsn										3FCE02FB	218292
+An American Tail - Fievel Goes West [atfgw].rsn								C60DBB29	71974
+Al Unser Jr's Road to the Top [aurt].rsn								C5088214	73276
+Alien vs. Predator [avsp].rsn										9A6DE04D	65704
+Axelay [axe].rsn											76D1E7DA	99392
+Ballz 3D [ballz].rsn											5B8C20E0	112434
+Bass Master Classic [basc].rsn										D500613D	130993
+Bass Master Classic Pro Edition [bascp].rsn								F736867D	138918
+Bastard!! [bast].rsn											B98B7840	95045
+Beauty and the Beast [batb].rsn										E0EFF29B	117264
+Bazooka Blitzkrieg [bazb].rsn										E122E055	57623
+Bing Bing! Bingo [bbb].rsn										C9516240	44398
+Bomberman B-Daman [bbd].rsn										9788A1BC	116509
+Ball Bullet Gun [bbg].rsn										8C6EA0F5	113581
+Beavis and Butt-Head [bbh].rsn										19109C0E	146106
+Bebe's Kids [bbk].rsn											BF3C5165	133165
+Bugs Bunny - Rabbit Rampage [bbr].rsn									17E3D07C	154414
+Bubsy in Claws Encounters of the Furred Kind [bbs].rsn							E0F6A865	190039
+Bubsy 2 [bbs2].rsn											A6C7376B	344694
+Bouncing Ball Trainer [bbt].rsn										0C28D099	43110
+Battle Clash [bc].rsn											9DB1ADB4	97734
+Battle Cars [bcar].rsn											C27A68EA	60744
+Battle Cross [bcr].rsn											9EE6AF8A	64912
+BS Bdash [bdash].rsn											B3D84014	48995
+Battle Dodgeball 2 [bdb2].rsn										A7B7F6CC	66239
+Brandish [bdh].rsn											A65BF115	220146
+Brandish 2 [bdh2].rsn											938386D6	359441
+Battle Dodgeball [bdodg].rsn										785BB270	46359
+Bishin Densetsu Zoku [bdz].rsn										A2CBF470	170192
+Beach Volleyball (Super Gameboy) [bevb].rsn								9914B9DF	77295
+Batman Forever [bf].rsn											9948077C	112227
+Itoi Shigesato no Bass Tsuri No.1 (Shigesato Itoi's Bass Fishing No.1) [bfn1].rsn			90AC3AA7	144273
+Benkei Gaiden [bg].rsn											0750008C	160182
+Brett Hull Hockey [bhh].rsn										A80EFF8E	62692
+Brett Hull Hockey '95 [bhh95].rsn									34CAA373	46149
+Bio Metal [bio].rsn											CE9EFCBF	47467
+Bioworm [biow].rsn											E072E38B	36937
+Battle Jockey [bj].rsn											2F5925FE	73028
+Bakutou Dodgers [bkdc].rsn										73FCA875	113397
+Block Kuzushi [bkz].rsn											72522058	76293
+Bahamut Lagoon [bl].rsn											46905720	178959
+Bill Laimbeer's Combat Basketball [blcb].rsn								34F9F69A	105597
+Blues Brothers, The [blues].rsn										D2416719	73102
+Blazeon [blzn].rsn											23B576CF	22752
+Battle Master [bm].rsn											23CD29E5	74624
+Biker Mice From Mars [bmfm].rsn										A5A74F0A	100078
+Bokujou Monogatari (Harvest Moon) [bmg].rsn								0558852C	105259
+Bazoe! Mahou Sekai (Ancient Magic) [bms].rsn								8DCFB084	185492
+Bonkers [bnkr].rsn											0EA3A70D	78602
+Bounty Sword [bnts].rsn											5C750ECB	172876
+B.O.B. [bob].rsn											211C679B	100388
+Bobby's World [bobby].rsn										CB81EB3A	61948
+Breath of Fire [bof].rsn										8717CFE2	118387
+Breath of Fire 2 [bof2].rsn										ADB72207	177867
+Super Bonk [bonk].rsn											3CE40EBD	78646
+Boogerman [boog].rsn											0A9002DF	72027
+Best of the Best - Championship Karate [botb].rsn							98E1841E	50402
+Batman Returns [br].rsn											A62C7F3E	107353
+Battle Racers [brace].rsn										0FF8CD75	77539
+Brainies [brain].rsn											31F00D18	131612
+Brawl Brothers [brawl].rsn										A00EDCA4	74238
+Barbarossa [brbr].rsn											9B529EA6	50308
+BreakThru! [breakt].rsn											3D698FCF	70512
+Batman - Revenge of the Joker [brj].rsn									A7C141D2	37880
+Brain Lord [brld].rsn											64A49D8F	123650
+Brass Numbers [brnr].rsn										C51F90D0	119987
+Bronkie [bronk].rsn											F8A3DADD	94566
+Brutal - Paws of Fury [brtl].rsn									3E9AEDEC	66170
+Bram Stoker's Dracula [bsd].rsn										1D79F327	137103
+BS Dragon Quest [bsdq].rsn										8DE6595C	29530
+Beethoven's 2nd [bsec].rsn										0800D33C	53938
+Bushi Seiryuden [bshs].rsn										C9D7EA07	134250
+Super Baseball Simulator 1.000 [bsim].rsn								93A7E274	29053
+Barkley - Shut Up and Jam! [bsj].rsn									98F3A115	109211
+Barbie Super Model [bsm].rsn										7D8F8A86	39119
+Bishoujo Senshi Sailormoon R [bsmr].rsn									AD312882	321784
+BS Nichibutsu Mahjong [bsnm].rsn									D77CCB71	91094
+Bishoujo Senshi Sailormoon [bssm].rsn									651D5A9F	232137
+BS Saterawalker 2 [bssw2].rsn										04E7DEBB	45970
+Big Sky Trooper [bst].rsn										31F90328	109796
+Battle Submarine [bsub].rsn										21FB8284	126029
+Satellaview BS-X [bsx].rsn										A55B8628	53266
+BS Zelda [bsz].rsn											134B3135	48695
+Battletoads in Battlemania [btbm].rsn									C948B8A2	59013
+Battle Blaze [btbz].rsn											04D9D7C0	90193
+Battletoads & Double Dragon [btdd].rsn									D5CDD8E9	70326
+Battle Tycoon - Flash Hiders SFX [btfh].rsn								C5650F77	113058
+Battle Grand Prix [btgp].rsn										BA218F0F	50189
+Gekitotsu Dangan Jidousha Kessen - Battle Mobile [btmb].rsn						ADFF8A73	46965
+Battle Pinball [btpb].rsn										12C67587	125460
+Baby T-Rex [btrex].rsn											25187AFB	89645
+Battle Soccer - Field no Hasha [btsc].rsn								0282D2B6	65322
+Battle Soccer 2 [btsc2].rsn										3D4A34E0	107183
+A Bug's Life (Super Gameboy) [bug].rsn									243DDF9A	48652
+Burai - Hachigyoku no Yuushi Densetsu [burai].rsn							9FC3C508	119394
+SNES Burn-in Test Cart [burn].rsn									B68821EA	40391
+BS Buster's Digital Magazine [bust].rsn									6E1ABD47	47258
+Barbie Vacation Adventure [bva].rsn									B88424AB	62704
+Bulls vs. Blazers [bvb].rsn										E891DFB7	104110
+Bill Walsh College Football [bwcf].rsn									E71B4F1C	78178
+Bishoujo Wrestlinger's History [bwh].rsn								2FA61A47	231571
+Brunswick World Tournament of Champions [bwtc].rsn							B9B44874	46367
+Battle Zeque Den [bzd].rsn										0401697F	117495
+Carrier Aces [cace].rsn											D6E650F4	115041
+Cute Angela - Great Journey [cagj].rsn									B73C74B2	53620
+Cacoma Knight [cakn].rsn										FCB623A6	61803
+Captain Novolin [cano].rsn										B26CB4B0	49251
+Captain America and the Avengers [capam].rsn								96E6C24A	102263
+Captain Commando [captc].rsn										460C0264	83487
+Gekisou Sentai Car Rangers [car].rsn									45B4274C	81248
+Cardmaster (Arcana) [card].rsn										3C931A1E	82720
+Casper (Japanese Version) [cas].rsn									5B72FF43	69944
+Casper (American Version) [casp].rsn									D3963978	54744
+Crystal Beans - From Dungeon Explorer [cb].rsn								71320744	144995
+Cyborg 009 [cb9].rsn											4EC11009	63354
+CB Chara Wars [cbcw].rsn										6D25D5F4	79220
+Combatribes [cbtr].rsn											D5048DCC	74246
+Chester Cheetah - Too Cool to Fool [cctcf].rsn								83AE9F2C	57914
+Cannondale Cup [ccup].rsn										5EB852F3	103837
+Chester Cheetah Wild Wild Quest [ccwwq].rsn								6DC0ABAB	55356
+Kidou Senshi Gundam - Cross Dimension 0079 [cd79].rsn							55047F33	82311
+Cannon Fodder [cf].rsn											4995EDA9	64524
+College Football USA '97 [cfu97].rsn									4F609C89	94629
+Cosmo Gang the Puzzle [cgp].rsn										18BFA5C5	49648
+Cosmo Gang the Video [cgv].rsn										D40D75E9	197225
+BS Cheap de Gorgeous [cheap].rsn									7BE1391D	49181
+Chinhai [chinh].rsn											99D71CD0	87185
+Chou Aniki - Bakuretsu Rantou Hen [cho].rsn								E996DD5D	180929
+Kyle Petty's No Fear Racing (Circuit USA) [circ].rsn							3E94B472	182198
+Civilization [civ].rsn											FDB328AE	56647
+Cyber Knight [ck].rsn											4BF8E757	112584
+Cyber Knight 2 [ck2].rsn										C1745EE0	135212
+Choplifter 3 [cl3].rsn											0706FC7B	92218
+Clay Fighter [clay].rsn											941CB7F7	164686
+Cliffhanger [cliff].rsn											D42F5549	65260
+Clue [clue].rsn												6BECF65E	64086
+Capcom's MVP Football [cmf].rsn										7C842D1A	104165
+Cameltry (On the Ball) [cml].rsn									EDDB4A9D	42878
+Cybernator [cn].rsn											A8242FEC	103622
+Congo's Caper [cngc].rsn										667C25BD	56336
+Computer Nouryoku Kaiseki Ultra Baken [cnkub].rsn							30557D51	35002
+Contra 3 [cntr3].rsn											159E72E5	101609
+Columns [col].rsn											D58BBF00	49873
+BS Columbus no Tamagoyaki [colu].rsn									8E4D4BB6	47179
+Cool World [coolw].rsn											AC07F5EB	92900
+Cu-On-Pa [cop].rsn											287B5BE0	141820
+Coron Land [corl].rsn											B44DFA7E	117999
+Corn Buster [cornb].rsn											D30A5B0B	214947
+Championship Pool [cp].rsn										E989A7E1	96994
+Cosmo Police Galivan 2 [cpg2].rsn									DE671AA1	26027
+Cal Ripken Jr. Baseball [crjb].rsn									760D4D2C	72746
+Chuck Rock [crock].rsn											987CFF6C	83767
+Crayon Shin-chan - Arashi wo yobu Enji [crs].rsn							166BA2DA	214960
+Crayon Shin-chan 2 [crs2].rsn										6F2B4C03	72809
+Crayon Shin-chan - Nagagutsu Dobon!! [crsnd].rsn							FED7D8F0	105923
+Chaos Seed [cs].rsn											8E983C46	179433
+College Slam Basketball [csb].rsn									5C327FF5	72201
+Caravan Shooting Collection [csc].rsn									436F4B6E	110630
+Cool Spot [cspot].rsn											38D1D2E4	72216
+Congo the Movie - The Secret of Zinj [csz].rsn								B145C7EF	84822
+Chrono Trigger [ct].rsn											4BE8E7C4	325148
+Captain Tsubasa 3 [ct3].rsn										041D0B73	75725
+Captain Tsubasa 4 [ct4].rsn										561D613D	106551
+Captain Tsubasa 5 [ct5].rsn										2C771FAC	178238
+Controller Test Cartridge [ctc].rsn									E295ACFF	5271
+Cutthroat Island [cti].rsn										1B067672	114997
+Captain Tsubasa J [ctj].rsn										D06BFCA8	59676
+Clock Tower [ctow].rsn											B86201FB	97535
+Chrono Trigger Pre-Release [ctp].rsn									8B02BFFB	286527
+Marchen Adventure Cotton 100% [cttn].rsn								EBD0743D	204065
+Clock Works [cw].rsn											71184ED0	49709
+Champions World Class Soccer [cwcs].rsn									E3D74139	75983
+Dark Half [daha].rsn											1CB73AED	201761
+Dark Law - Meaning of Death [dala].rsn									AF996B40	70508
+Dolucky's A-League Soccer [dals].rsn									C460F57F	131192
+Tuff E Nuff [dance].rsn											43A73247	118543
+Super Dany [dany].rsn											54D896F0	175526
+Dark Kingdom [dark].rsn											F53A5872	111692
+Death and Return of Superman, The [dars].rsn								D10263AE	64858
+Daze Before Christmas [dbc].rsn										D50FD463	71236
+Dragon Ball Z - Hyper Dimension [dbhd].rsn								005A4CCD	84088
+Dragon - The Bruce Lee Story [dbls].rsn									B27E521F	146068
+Dear Boys [dboys].rsn											E0342903	72137
+Death Brade [dbra].rsn											02AAA147	53821
+Dragon Ball Z Super Gokuden - Totsugeki-Hen [dbth].rsn							5FF7C529	184571
+Dragon Ball Z - Super Butouden [dbzb].rsn								2330BF83	204348
+Dragon Ball Z - Super Butouden 2 [dbzb2].rsn								36BC1284	101628
+Dragon Ball Z - Super Butouden 3 [dbzb3].rsn								0DA7027D	134298
+Dragon Ball Z RPG - Legend of the Super Saiya-jin [dbzr].rsn						8134C840	54278
+Demon's Crest [dc].rsn											CE88136B	144421
+David Crane's Amazing Tennis [dcat].rsn									A9CA98E4	48931
+Double Dragon 5 [dd5].rsn										80ABDA4A	196654
+Donald Duck - Mahou no Boushi [ddmb].rsn								355051EB	165551
+Dino Dini's Soccer [dds].rsn										B426660B	72736
+Daisenryaku Expert [de].rsn										4AD280C4	70828
+Daisenryaku Expert WWII [de2].rsn									B515CA75	209809
+Demolition Man [deman].rsn										02227F20	115943
+Kaite Tukutte Asoberu Dezaemon [dezae].rsn								4C75508F	72582
+Darius Force (Super Nova) [df].rsn									EBD90303	113786
+Dossun! Ganseki Battle [dgb].rsn									1A37CED2	62400
+Dharma Doujou [dhdo].rsn										35E90131	164969
+Dino City [dici].rsn											8B8F0481	77606
+Dimension Force [difo].rsn										B651C3BD	35613
+Dirt Racer [dirt].rsn											C9A3A610	65515
+Kinnikuman - Dirty Challenger [dirty].rsn								618DD318	47440
+Derby Jockey [dj].rsn											5390D5EE	67357
+Derby Jockey 2 [dj2].rsn										86892ABF	61563
+Donkey Kong (Super Gameboy) [dk].rsn									44BBE5E8	51104
+Dragon Knight 4 [dk4].rsn										B5A90FBA	134027
+Donkey Kong Country [dkc].rsn										9A2A3B81	120544
+Donkey Kong Country 3 [dkdt].rsn									E3D1217E	315880
+Dai Kaiju Monogatari [dkm].rsn										86040D0E	269960
+Donkey Kong Country 2 [dkq].rsn										B9025D7B	354282
+Doukyuusei 2 [dks2].rsn											9646F7BE	84490
+Date Kimiko no Virtual Tennis [dkvt].rsn								75028123	83963
+Dolucky's Kusa Yakyu [dky].rsn										3B1B5A08	91504
+Der Langrisser [dl].rsn											1FE555FB	198930
+Demon of Laplace [dlp].rsn										68EE2EED	63554
+Dolucky no Puzzle Tour '94 [dlpt].rsn									EC604027	114992
+Dungeon Master [dm].rsn											9AFDA05D	151963
+Dream Maze - Kigurumi Daibouken [dmkd].rsn								26E5DB2B	33183
+Downtown Nekketsu Baseball Monogatari [dnbm].rsn							A0C62FF9	124494
+Dual Orb [do].rsn											98CA8239	125653
+Dual Orb 2 [do2].rsn											8931424F	145202
+Arkanoid - Doh it Again [doh].rsn									24287C95	49989
+Dokapon 321 [doka].rsn											C8E13A41	161695
+Doom [doom].rsn												45392CEF	155165
+Doraemon [dor].rsn											90A73690	52472
+Doraemon 2 [dor2].rsn											64B78534	90562
+Doraemon 3 [dor3].rsn											7899F628	188061
+Doraemon 4 [dor4].rsn											F0BFF0B1	108234
+Dragon Quest 1 & 2 [dq12].rsn										3863669D	124867
+Dragon Quest 3 [dq3].rsn										A89FF571	196160
+Dragon Quest 5 [dq5].rsn										FCA27FD4	136250
+Dragon Quest 6 [dq6].rsn										E0C34F6F	181608
+Dorque and Imp [dqai].rsn										7B7B8FAA	137485
+Dragon's Earth [drea].rsn										47BD5254	95713
+Adventures of Dr. Franken [drf].rsn									72B3D365	137530
+Drakkhen [drk].rsn											2F2D9168	91186
+Dragon's Lair [drla].rsn										66E24023	103523
+BS Do-Re-Mi [drm].rsn											73DC35B3	47170
+Do-Re-Mi Fantasy - Milon no DokiDoki Daibouken [drmf].rsn						19930509	270490
+Star Trek Deep Space Nine - The Crossroads of Time [ds9].rsn						CB5042BD	58530
+Dragon Slayer - The Legend of Heroes [dslh].rsn								5D63869F	42599
+Desert Strike - Return to the Gulf [dsrg].rsn								4E832451	73474
+DynamiTracer [dt].rsn											6E34CC77	191065
+Deae Tonosama Appare Ichiban [dtai].rsn									4F0D35B1	239978
+Dirt Trax FX [dtfx].rsn											1274A914	48285
+Dynamaite - The LasVegas [dtlv].rsn									6810FD58	55885
+Dennis the Menace [dtm].rsn										D96C8D5A	122094
+Doom Troopers [dtr].rsn											BC9A00CF	177956
+Dream TV [dtv].rsn											13579FE7	26230
+Down the World [dtw].rsn										96780B13	228308
+Darius Twin [dtwin].rsn											77BB25B7	94510
+Dun Quest [dunq].rsn											4ABADADE	84979
+Dragon View (Drakkhen 2) [dv].rsn									B22A0072	95173
+Road Runner's Death Valley Rally [dvr].rsn								F99BAB7A	83747
+Dracula X (Castlevania V - Vampire's Kiss) [dx].rsn							54DEC76C	244705
+Earth Light [earl].rsn											58032850	96250
+Energy Breaker [eb].rsn											F6D0860F	166646
+ESPN Baseball Tonight [ebt].rsn										75AB2892	87489
+Estpolis Denki (Lufia and the Fortress of Doom) [ed].rsn						EED99300	92973
+Lufia 2 - Rise of the Sinistrals [ed2].rsn								5BD6C533	135370
+Super E.D.F. - Earth Defense Force [edf].rsn								A47169BF	83611
+Edo no Kiba [edk].rsn											BFD77734	50184
+Exhaust Heat [eh].rsn											29BFD840	131400
+Exhaust Heat 2 [eh2].rsn										304D83C0	68803
+ESPN National Hockey Night [ehn].rsn									319E3A9A	104995
+Sangokushi Eiketsu Den [eikt].rsn									7B6A0FB9	187478
+Elfaria [elf].rsn											87ACCDB8	84400
+Elfaria 2 [elf2].rsn											58EA99CA	86105
+Emerald Dragon [emd].rsn										47197B8B	222800
+Eien no Filena [enf].rsn										0703C059	87231
+Eye of the Beholder [eotb].rsn										774C0E44	53199
+Equinox (Solstice II) [eq].rsn										809BB79A	73101
+Elite Soccer [esc].rsn											7F36C483	158045
+Emmitt Smith Football [esf].rsn										EB36C765	120308
+ESPN Sunday Night NFL [espns].rsn									FB018E4A	91399
+Esparks - Ijikuu kara no Raihousha [esprk].rsn								E92A0F85	107962
+ESPN Speedworld [espw].rsn										BA8FCBF2	244726
+Estpolis Denki 2 (Lufia 2) Prototype [est2p].rsn							82E8BDB9	118939
+EEK! The Cat [etc].rsn											722EBD29	162429
+Eurit [eurit].rsn											D4AC9D93	133058
+E.V.O. - Search for Eden [evo].rsn									15AC385E	194315
+Earthworm Jim [ewj].rsn											5DAA7763	213512
+Earthworm Jim 2 [ewj2].rsn										F552FC3E	207665
+F-1 Grand Prix [f1gp].rsn										0B9C7B25	61620
+F-1 Grand Prix Part II [f1gp2].rsn									AFD2F04C	53732
+F-1 Grand Prix Part III [f1gp3].rsn									6B34BD89	89831
+F1 World Championship Edition [f1wc].rsn								ADE0095E	71515
+Gundam F-91 [f91].rsn											D29AD1AA	75703
+FIFA Soccer '97 (Super Gameboy) [f97gb].rsn								255C79FC	48513
+FIFA Soccer '98 (Super Gameboy) [f98gb].rsn								99081441	51136
+Family Dog [famd].rsn											766E477D	59794
+Faceball 2000 [fb].rsn											7D689B46	68098
+Ren & Stimpy Show - Fire Dogs [fdogs].rsn								206C7743	53253
+Fight da Pon! [fdp].rsn											6445307C	98635
+Fire Emblem - Mystery of the Emblem [fe3].rsn								8D3AEF42	267558
+Fire Emblem - Genealogy of Holy-War [fe4].rsn								6CAC67C6	554919
+Tengai Makyo Zero (Far East of Eden Zero) [feoez].rsn							635BCB30	566506
+Fire Emblem Thracia 776 [fet].rsn									265FAAE3	328616
+Family Feud [feud].rsn											B21B1607	62345
+Final Fantasy 4 [ff4].rsn										FA40B322	146264
+Final Fantasy V [ff5].rsn										662045DB	206459
+Final Fantasy 6 [ff6].rsn										4BF31F34	296465
+Final Fight [ffi].rsn											9D7BAFA4	70651
+Final Fight 2 [ffi2].rsn										2F621B2D	82033
+Final Fight 3 [ffi3].rsn										17FC3B48	125304
+Frantic Flea [fflea].rsn										662269EB	116897
+Final Fantasy USA - Mystic Quest [ffmq].rsn								4DE71E16	86205
+Foreman For Real [ffr].rsn										F0DE9D4E	70469
+Fatal Fury [ffu].rsn											34699881	59435
+Fatal Fury 2 [ffu2].rsn											DC0C41BC	192248
+Fatal Fury Special [ffus].rsn										06F675C1	391124
+Future GPX - Cyber Formula [fgpx].rsn									B44D9263	99773
+Fighter's History [fh].rsn										5976449F	214341
+Fighter's History 2 [fh2].rsn										10E3F3DB	212837
+Flying Hero - Bugyuru no Daibouken [fhbd].rsn								ACB59198	181283
+Firemen, The [fir].rsn											7DA786E6	74425
+Firearm [firea].rsn											8BA326DB	18939
+Flintstones [flint].rsn											FF4A63CE	318692
+Flashback [fls].rsn											51090840	59333
+Front Mission [fm].rsn											7FA53A68	267037
+Onita Atsushi FMW [fmw].rsn										F7DE4962	182807
+Fun 'N Games [fng].rsn											41057367	166931
+Football Fury [footf].rsn										DD32CBFF	114771
+Super Fire Pro Wrestling X [fpwx].rsn									F03D79FE	98694
+First Queen [fq].rsn											ECD60B64	189239
+Frogger [frgr].rsn											515AAD2F	51986
+FrogNES [frog].rsn											CA28F92B	76361
+First Samurai [frsa].rsn										7CA566DF	59951
+Farland Story [fs].rsn											5B077EEA	126953
+Farland Story 2 [fs2].rsn										FF0985F1	163366
+FIFA Soccer '96 [fs96].rsn										5B49A71E	212747
+FIFA 97 - Gold Edition [fs97].rsn									3F6D72C9	65200
+Fire Striker [fsr].rsn											9C779954	132776
+Finalset Tennis [fst].rsn										3B2C502E	73945
+Final Stretch [fstr].rsn										D3EA7A77	68585
+Masaki Shimono no Fishing To Bassing [ftb].rsn								80193990	88186
+Famicom Tantei Club 2 [ftc2].rsn									0AB69618	458310
+Fireteam Rogue [ftm].rsn										130B1DEE	239289
+Full Throttle Racing [ftr].rsn										CB81EBEE	61240
+From TV Animation Slam Dunk [ftsd].rsn									FBD5F83D	67288
+From TV Animation Slam Dunk 2 [ftsd2].rsn								494E1409	66244
+From TV Animation Slam Dunk - SD Heat Up! [ftsdh].rsn							2626D551	68632
+Flintstones - Treasure of Sierra Madrock [ftsm].rsn							43BF677C	71224
+BS Furoito no Chousenjou [furo].rsn									C83A9DC4	47526
+F-Zero [fz].rsn												9278B20E	67656
+Inspector Gadget [gadg].rsn										5FCEBB04	70403
+Game Genie [gage].rsn											B8748CE3	5885
+Gamars Copier [gam].rsn											DCFBC784	41157
+Gamble Hourouki [gambh].rsn										0D3E1D17	67681
+Great Battle 3 [gb3].rsn										6F1ADF1A	100402
+Great Battle IV, The [gb4].rsn										CDCC12C8	120477
+Great Battle 5 [gb5].rsn										7105DE20	101788
+Great Battle Gaiden 2 [gbg2].rsn									8E03B9B3	145993
+Kuusou Kagaku Sekai Gulliver Boy [gboy].rsn								AACB71F6	139731
+Gokinjo Bouken Tai [gbt].rsn										22EF9865	192941
+Ghost Chaser Densei [gcd].rsn										1D037842	120155
+Gradius 3 [gd3].rsn											00649FE0	86234
+GD Leen [gdl].rsn											26C8FB20	61603
+Ganbare Daiku no Gensan [gdng].rsn									E377F693	81777
+Ginga Eiyuu Densetsu [ged].rsn										0EC86BB6	84933
+BS Gekkan Coin Toss Deck [gek].rsn									A8BA894C	48040
+Genocide 2 [gen2].rsn											A6766DD5	60642
+Genjuu Ryodan [genjr].rsn										BA36E1F6	281960
+George Foreman's KO Boxing [gfko].rsn									CC99B545	286643
+Ganbare Goemon (Legend of the Mystical Ninja) [gg].rsn							539C6221	132064
+Ganbare Goemon 2 - Kiteretsu Shogun Magginesu! [gg2].rsn						E539F934	252872
+Ganbare Goemon 3 - Shishi Juroku Hyoe no Karakuri Manji Katame! [gg3].rsn				0360FC55	270188
+Ganbare Goemon 4 - Kirakira Douchuu [gg4].rsn								4B7F1BF5	379491
+Go Go Ackman [gga].rsn											3CD2424C	154895
+Go Go Ackman 2 [gga2].rsn										5A228241	69742
+Go Go Ackman 3 [gga3].rsn										6F6FFF78	109776
+Go! Go! Dodge League [ggdl].rsn										AB60007E	47460
+Gan Gan Ganchan [ggg].rsn										3B2F35D4	57498
+Gamera - Gyaosu Gekimetsu Sakusen [gggs].rsn								CD575AC3	59044
+Front Mission - Gun Hazard [gh].rsn									30F40953	306041
+Granhistoria [ghis].rsn											D14C81BA	69509
+Ghoul Patrol [ghoul].rsn										03F0894A	79793
+Gionbana [gion].rsn											14F9E280	71211
+Gambler Jiko Chuushinha 2 - Dorapon Quest [gjc2].rsn							B2478E77	140146
+Super Aoki Ookami to Shiroki Mejika - Genchou Hishi (Genghis Khan 2 - Clan of the Grey Wolf) [gk2].rsn	D0FE6BBB	66873
+Godzilla - Kaijuu Daikessen [gkd].rsn									32A4E045	220657
+Gakko de atta Kowai Hanashi [gkh].rsn									29D387A6	193855
+Getsumen no Anubis [gna].rsn										760EC7F7	333758
+Gegege no Kitaro [gnk].rsn										77E42176	128762
+Gunple - Gunman's Proof [gnpl].rsn									DD28261C	251530
+G.O.D. - Mezameyo to Yobu Koe ha Kikoe [god].rsn							68465F0E	293597
+Gods [gods].rsn												845C262D	55732
+Gokujyo Parodius (Parodius 2) [gp].rsn									AE27EF55	207867
+Gp-1 [gp1].rsn												F570F260	92054
+GP-1 Part II [gp1p2].rsn										EEFC83EB	121419
+BS Goods Press 7 [gpgg7].rsn										C47FE007	45454
+BS Goods Press 3 [gpggs].rsn										D92DF5EE	52945
+Ganso Pachinko Ou [gpo].rsn										3F8E23EC	84778
+Galaxy Robo [grobo].rsn											309D9067	46779
+Shinzui Taikyoku Igo Go Sennin [gs].rsn									B8A48772	40904
+Gourmet Sentai Bara Yarou [gsby].rsn									163B97CD	213855
+Ginga Sengoku Gunyuuden Rai [gsgr].rsn									A02A7272	116051
+Ghost Sweeper Mikami - Gokuraku Daisakusen [gsm].rsn							BFB5C942	85044
+Goof Troop [gt].rsn											F509422C	42055
+GT Racing [gtr].rsn											ACC04B9E	110156
+Gun Force [gunf].rsn											F4D1EBC7	38051
+Nickelodeon GUTS [guts].rsn										EE81D646	158653
+Galaxy Wars [gw].rsn											67997653	55049
+Gundam Wing - Endless Duel [gwed].rsn									843C5B6B	111137
+Hisshou 777 Fighter [h7f].rsn										B3FE7820	78569
+Hisshou 777 Fighter II [h7f2].rsn									A74BE1B2	67974
+Hisshou 777 Fighter III [h7f3].rsn									003D1DA0	48889
+Home Alone [ha].rsn											461416F5	43877
+Home Alone 2 [ha2].rsn											A3307F64	34323
+Hagane [hag].rsn											65299BEA	226612
+Hanjuku Hero [hahe].rsn											0FD4F111	122977
+Hajimari no Mori (The Forest of Beginnings) [haji].rsn							FCE37988	241086
+Harapeko Bakka [hb].rsn											03588B78	144142
+Hardball 3 [hb3].rsn											FDDC093E	76296
+Hanna Barbera's Turbo Toons [hbtt].rsn									CBE88104	99084
+Hiouden - Mamono Tachi Tono Chikai [hdn].rsn								3FA57117	189288
+Heracles no Eikou III [he3].rsn										F0E3F083	106575
+Heracles no Eikou IV - Kamigami kara no Okurimono [he4].rsn						627B53EF	173217
+Hercules (Super Gameboy) [herc].rsn									4775D839	57905
+Hanafuda [hf].rsn											B3230425	57217
+Hanafuda Ou [hfo].rsn											5687C254	100817
+Hourai Gakuen no Bouken [hgb].rsn									860B29CD	166032
+Human Grand Prix [hgp].rsn										28080242	101326
+Human Grand Prix 2 [hgp2].rsn										8E2C42D0	104056
+Human Grand Prix 3 [hgp3].rsn										EF094EFC	126314
+Human Grand Prix 4 [hgp4].rsn										40062A53	94314
+Heisei Gunjin Shougi [hgs].rsn										8888C921	61130
+Harley's Humongous Adventure [hha].rsn									CE9E7E8B	60001
+Heian Huunden [hhu].rsn											8DCF1D70	58372
+Honkakuha Igo - Gosei [higo].rsn									950408C5	31723
+Home Improvement [himp].rsn										6B7668BF	112667
+Hokuto no Ken 5 [hk5].rsn										9C140D60	70243
+Hokuto no Ken 6 [hk6].rsn										651585FA	88876
+Hokuto no Ken 7 [hk7].rsn										23A83877	55614
+Hong Kong 97 [hk97].rsn											E0D9944A	25156
+Hiryu no Ken S - Golden Fighter [hkgf].rsn								74BE74B5	64614
+Honkaku Mahjong Tetsuman [hmat].rsn									AFC25711	50942
+Habu Meijin no Omoshiro Shougi [hmos].rsn								20FB062E	65758
+Haisei Mahjong Ryouga [hmr].rsn										C06A7311	98574
+Hunchback of Notre Dame (Super Gameboy) [hnd].rsn							0BC1C91F	51762
+Honoo no Toukyuuji - Dodge Danpei [hndd].rsn								4278532E	45050
+Hayazashi Nidan - Morita Shogi [hnms].rsn								EA40A2CC	19432
+Hebereke no Popun [hnp].rsn										292471F0	287426
+Hook [hook].rsn												5D18DC39	71692
+Hebereke no Oishii Puzzle wa Irimasekna [hopi].rsn							B4A0B67E	64621
+Head-On Soccer [hos].rsn										7081CE04	152169
+Hakunetsu Pro Yakyuu '93 - Ganba League [hp93].rsn							FD2ADFE1	188077
+Hakunetsu Pro Yakyuu '94 - Ganba League 3 [hp94].rsn							1768D592	108839
+Hakunetsu Pro Yakyuu - Ganba League [hpgl].rsn								22461FB7	227362
+Hunt for Red October [hro].rsn										275E91D9	28939
+Hero Senki [hs].rsn											CC49B453	124271
+Honkaku Shougi Fuuunji Ryuuou [hsfr].rsn								94223B0B	84739
+Hashire Hebereke [hsh].rsn										4627AF62	174435
+Hurricanes Trainer [ht].rsn										66C64021	7380
+Hat Trick Hero 2 [hth2].rsn										DBD45046	126544
+Hit the Ice [hti].rsn											34218065	68555
+Holy Umbrella [hu].rsn											7E42772D	143854
+Incredible Hulk, The [hulk].rsn										E1D4A17E	137639
+Humans [human].rsn											2442EDE1	52045
+Hurricanes [hurr].rsn											E134CE76	84735
+Hyper V-Ball (Super Volley II) [hvbsv].rsn								624321F1	112340
+Hyper Iria [hyir].rsn											D639DB84	58730
+Hysteria [hyst].rsn											1162C505	35050
+Hansei Zarujirou Kun no Daibouken (Spanky's Quest) [hzkd].rsn						E0B12E40	54264
+Hyper Zone [hzone].rsn											1A1F6635	56504
+Iron Commando [icom].rsn										95A39634	53661
+Idea no Hi [idea].rsn											FEA4A8DF	59663
+Ignition Factor [igf].rsn										E24C2153	88914
+Igo Club [igoc].rsn											0C464C83	37639
+Itou Hatasu Rokudan no Shougi Dojo [ihrsd].rsn								1500CF34	38761
+Indiana Jones' Greatest Adventures [ijga].rsn								F17FA110	163097
+Ihatovo Monogatari [im].rsn										ADB70263	113347
+Imperium [imp].rsn											09FCDF52	84485
+Incantation [inca].rsn											C88C7AA2	59457
+Inindo - Way of the Ninja (Super Inindo - Datou Nobunaga) [ini].rsn					CCC96F85	59373
+Illvanian no Shiro [ins].rsn										879BBE59	103269
+Illusion of Gaia [iog].rsn										C86F4075	185724
+Ippatsu Gyakuten - Keiba Keirin Kyotei [ipgt].rsn							B0FCF42C	100556
+Itadaki Street 2 [is2].rsn										0371B95E	168624
+Inazuma Serve da!! [isbv].rsn										65FB765D	94892
+Itchy and Scratchy Game [isg].rsn									BAAEF3E4	117449
+International Superstar Soccer [iss].rsn								E919DCCB	101826
+International Superstar Soccer Deluxe [issdx].rsn							F450DFF3	75075
+International Tennis Tour [itt].rsn									18CB2D3B	98629
+Izzy's Quest for the Olympic Rings [izzy].rsn								00785C74	111250
+Jammit [jamit].rsn											DC270018	147198
+Jungle Book, The [jbook].rsn										40BC84E1	115642
+Jelly Boy [jboy].rsn											E293397F	149609
+Jelly Boy 2 [jboy2].rsn											777831AF	101446
+Jaleco Rally Big Run - The Supreme 4WD Challenge [jbrr].rsn						AB329D28	46667
+Jaki Crush [jc].rsn											56C4BE4A	60829
+Jimmy Connors Pro Tennis Tour [jcptt].rsn								E52B451B	45635
+Judge Dredd [jd].rsn											294CC30B	126611
+Jeopardy! [jeop].rsn											E68866EB	68478
+Jerry Boy (Smartball) [jerry].rsn									385F92E9	59639
+Jetsons - Invasion of the Planet Pirates [jets].rsn							98915A20	56249
+Janyuuki Gokuu Randa [jgk].rsn										0EFE1B9D	48457
+Jissen Kyotei [jkyo].rsn										EB43437F	147001
+J League Excite Stage '94 [jle94].rsn									F0BB06F6	95329
+J-League Excite Stage '95 [jle95].rsn									C00F7235	84548
+J-League Soccer Prime Goal [jlpg].rsn									9C64755A	93853
+J-League Soccer Prime Goal 2 [jlpg2].rsn								87C1EE62	170869
+J-League Soccer Prime Goal 3 [jlpg3].rsn								238B9195	206643
+J-League Super Soccer '95 [jls95].rsn									61EDEBE4	73973
+J-League Super Soccer (Virtual Soccer) [jlss].rsn							26B4741F	152061
+Jim Lee's Wild C.A.T.S. [jlwc].rsn									5E6DC1B0	143935
+Joe and Mac [jm].rsn											E114305C	128855
+Joe and Mac 2 [jm2].rsn											1C9315F4	92707
+Jissen! Mahjong Shinan [jmahs].rsn									D66158FC	58787
+John Madden Football [jmf].rsn										6C94175A	79043
+Jim Power [jmpwr].rsn											29BF5DD8	82593
+Jammes [jms].rsn											7E6BC161	27234
+Jack Nicklaus Golf [jng].rsn										91C23E3F	39784
+HAL's Hole in One Golf [joho].rsn									90C21287	79250
+Jojo no Kimyou na Bouken [jojo].rsn									E92399A7	126962
+Jikkyou Oshaberi Parodius (Parodius 3) [jop].rsn							559EB837	373951
+Jungle no Ojya Tachan [jot].rsn										5CDFF150	64884
+Jurassic Park [jp].rsn											81269962	295846
+Jurassic Park 2 [jp2].rsn										804DACCB	255587
+Jissen Pachinko Hisshouhou! 2 [jph2].rsn								A1A4D925	85929
+Jikkyou Powerful Pro Yakyuu 3 [jppy3].rsn								4427835B	133447
+Jutei Senki [js].rsn											C14342D3	55656
+Jungle Strike [jst].rsn											0C17E530	140692
+Justice League Task Force [jstcl].rsn									D6C661CF	119232
+Jumpin' Derby [jumpd].rsn										B00403EC	79734
+Jungle Wars 2 [jw2].rsn											E5693B4D	131745
+Kirby's Avalanche [ka].rsn										3B6406BD	244199
+King Arthur and the Knights of Justice [kakj].rsn							082E1B79	135484
+BS Gal Kan Bazooka Dai-5-Kan [kan].rsn									D4A23FDC	47141
+Kabuki Rocks [karo].rsn											DBED591B	96089
+King Arthur's World [kaw].rsn										CFB449BB	51817
+Kidou Butoden G-Gundam [kbgg].rsn									CF9CEBE0	153922
+Kablooey [kbly].rsn											89291F62	90564
+Kawasaki Caribbean Challenge [kcc].rsn									04B65AA6	88526
+Kingyo Chuihou! Tobidase Game Gakuen [kctgg].rsn							B4CBDB11	220165
+Kunio-Kun no Dodgeball [kdb].rsn									A5B8F762	114374
+Kirby's Dream Course [kdc].rsn										21D2FFFD	88017
+Kirby's Dream Land 3 [kdl3].rsn										22F0E0EA	137036
+Kenyu Densetsu Yaiba [kdy].rsn										3C521B5A	98580
+Kishin Douji Zenki [kdz].rsn										0C9265F7	232938
+Kishin Douji Zenki - Denei Raibu [kdz2].rsn								C97E0CC8	167928
+Kishin Douji Zenki 3 [kdz3].rsn										1EFE9E3B	249783
+Keeper [keep].rsn											7A12F3D8	96003
+Keiba Eight Special 2 [kesp2].rsn									2F305445	113630
+Ken Griffey Jr. Presents - Major League Baseball [kgjb].rsn						10CE4B5F	72269
+Koi ha Balance - Battle of Lovers [khb].rsn								5D616EFA	102489
+Katou Hifumi Kudan Shougi Club [khksc].rsn								1F16448E	12323
+Killer Instinct [ki].rsn										A6015502	306681
+Kiki Kaikai (Pocky & Rocky) [kiki].rsn									00C3A1D3	63039
+Kiki Kaikai 3 (Pocky & Rocky 2) [kiki3].rsn								30E03982	135803
+Kerokero Keroppi no Bouken Nikki [kkbn].rsn								C65EE7B1	24398
+Kirby's Kira Kira Kids [kkk].rsn									D7CE042C	76770
+Kishin Korinden Oni [kko].rsn										2EB46E16	151153
+Kidou Keisatsu Patlabor [kkp].rsn									66BEAE27	99231
+Kevin Keegan's Player Manager [kkpm].rsn								B9E3BF3D	24876
+Kid Klown in Crazy Chase [klown].rsn									32D2BFE4	70229
+King of the Monsters [km].rsn										1ADE1894	47013
+King of the Monsters 2 [km2].rsn									080735EE	162357
+Kikuni Masahiko no Jantoushi Dora Ou [kmjdo].rsn							4BCE5314	117150
+Kindai Mahjong Special [kmsp].rsn									F847A5D4	57099
+Kyuuyaku Megami Tensei [kmt].rsn									E92EDEBD	64193
+Kouryu no Mimi [knm].rsn										22A96E02	90558
+Kunio no Oden [kno].rsn											785F11C3	74420
+BS Kirby no Omocha Hako - Baseball [knoh].rsn								B675E1F8	39471
+Kirby no Omochabako - Hoshi Kuzushi [knok].rsn								7C0FABF9	46456
+Kawa no Nushi Tsuri 2 [knt2].rsn									714D5397	123100
+Kamaitachi no Yoru [kny].rsn										181DF768	196437
+Kick Off [ko].rsn											90FB29C1	44260
+Kick Off 3 [ko3].rsn											249E9B87	80319
+King of Dragons, The [kod].rsn										A88833D5	127739
+Konae-Chan no DokiDoki Pengin Kazoku [konae].rsn							B1AB9E01	79645
+King of Rally, The [kor].rsn										C244111C	62018
+Knights of the Round [kotr].rsn										0097ED79	66110
+Kamen Rider [kr].rsn											3F2829B7	143302
+Kabuki-chou Reach Mahjong Tonpuu Sen [krmt].rsn								E2799D55	49558
+Kamen Rider SD - Shutsugeki!! Rider Machine [krsd].rsn							26457874	47228
+Kouryuuki [kryk].rsn											30E26505	172067
+Kawasaki Superbike Challenge [ksc].rsn									448E8DF8	36518
+Krusty's Super Funhouse [ksfh].rsn									D9D96215	60694
+Kakinoki Shougi [ksh].rsn										721F33C2	24245
+Koushien 2 [ksn2].rsn											15A966F4	84185
+Koushien 3 [ksn3].rsn											338EE491	238366
+Kirby Super Star [kss].rsn										E36E7251	175192
+Shigetaka Kashiwagi's Top Water Bassing [kstwb].rsn							B1A7A8BB	40251
+Kidou Senshi V Gundam [ksvg].rsn									A17D3482	70538
+Shin Nekketsu Kouha - Kunio Tachi no Bannka [ktb].rsn							6372BABB	130789
+Kaizou Tyoujin Shubibinman Zero [ktsz].rsn								E32E293E	125956
+Keiba Yosou - Baken Renkinjutsu [kybr].rsn								99344417	32808
+Lagoon [lag].rsn											937E36FA	72014
+Last Action Hero [lah].rsn										5DD0EC16	52080
+Live A Live [lal].rsn											A25DE08D	244599
+Lamborghini American Challenge [lambo].rsn								30AC7AAA	77203
+La Wares [lawa].rsn											0DD06879	65914
+Last Bible 3 [lb3].rsn											C0D50050	281471
+Lady Stalker [ldst].rsn											EFFBC96F	90106
+Legend [leg].rsn											3D0B0005	43746
+Lemmings [lem].rsn											1341753E	133473
+Lemmings 2 [lem2].rsn											60FF2132	159939
+Lethal Enforcers [len].rsn										33A0140C	138683
+Lethal Weapon [lethw].rsn										CBE9746C	114526
+Last Fighter Twin [lft].rsn										2F53C9EE	44616
+Libble Rabble [libl].rsn										422BFDE2	34140
+Light Fantasy [lifa].rsn										847D2418	89893
+Lion King, The [lion].rsn										D30D389F	455434
+Lucky Luke [ll].rsn											454D2F8C	116275
+Lord Monarch [lm].rsn											53AEA115	46128
+Little Magic [lmag].rsn											15D8E785	68397
+Little Master [lmas].rsn										2A5FC863	122068
+Lawnmower Man, The [lmm].rsn										A0F05027	80703
+Paladin's Quest (Lennus) [ln].rsn									E6A45C92	87654
+Lennus 2 [ln2].rsn											0E56B88F	180307
+Liberty or Death [lod].rsn										718D8844	62268
+Logos Panic [lopa].rsn											ADA4601A	113004
+Legend of Zelda - A Link to the Past, The [loz3].rsn							F2AFC8E6	77695
+Lode Runner Twin [lrt].rsn										9176FB89	123758
+Looney Tunes Basketball [ltbb].rsn									695962D2	108088
+Lester the Unlikely [ltul].rsn										71A6E3E4	125080
+Out to Lunch [lunch].rsn										07149D71	73460
+Lupin the 3rd [lupin].rsn										CD840313	155078
+Love Quest [lvqst].rsn											9E1F86BE	174742
+Madden NFL '94 [m94].rsn										C3EDE050	122891
+Madden NFL '95 [m95].rsn										3C23E1E8	126034
+Madden NFL '96 [m96].rsn										139C09E5	112494
+Madden NFL '97 [m97].rsn										2FE33984	132880
+Madden '97 (Super Gameboy) [m97gb].rsn									CF0A87F7	48822
+Madden NFL '98 [m98].rsn										64B416F9	113366
+M.A.C.S. Basic Rifle Simulator [macs].rsn								88F8454A	48994
+Magna Braban [magna].rsn										6369357D	96936
+Mahjong Club [mahcl].rsn										9189F743	32573
+Majyuuou [maj].rsn											E93481E8	160874
+Mahjong Touhaiden, The [majt].rsn									D0FC0D93	75169
+Madou Monogatari [mam].rsn										AC8869D6	115889
+Makeruna Makendou (Kendo Rage) [mama].rsn								0DEA4B1B	128989
+Makeruna Makendou 2 [mama2].rsn										07B4CE4B	251606
+7th Saga 2 - Mystic Ark [mark].rsn									67108766	216179
+Daffy Duck - The Marvin Missions [marv].rsn								72F97099	73806
+Mask, The [mask].rsn											12CA8F18	130629
+Math Blaster - Episode One [mathb].rsn									7D4AC2C2	93435
+Maui Mallard in Cold Shadow [maui].rsn									2B499C9E	165780
+Mario & Wario [mawa].rsn										61C21FCB	122956
+Mazinger Z [mazz].rsn											EAE330C8	190284
+Magicboy [mboy].rsn											723D727D	99181
+Metal Combat - Falcon's Revenge [mc].rsn								D82FC5A7	202123
+Magical Drop [mcdp].rsn											46283929	88185
+Magical Drop 2 [mcdp2].rsn										5549EAF1	48562
+Miracle Casino Paradise [mcp].rsn									2BDC856C	99679
+Magic Sword [mcsd].rsn											FE6B2547	78080
+Mechwarrior [mcwr].rsn											81AD16D0	90028
+Mechwarrior 3050 [mcwr3].rsn										1011AA07	65170
+Momotarou Dentetsu Happy [mdh].rsn									EA7D95CF	215665
+Madara 2 [mdr2].rsn											D481063C	201571
+Youchien Senki Madara Saga [mdrs].rsn									F8554D42	64824
+Metal Marines [mema].rsn										E9E5D066	97338
+Metal Morph [memo].rsn											8773EE03	156966
+Miracle Girls [mg].rsn											26AC6568	100308
+Magical Pop'n [mgp].rsn											432DE7AB	104049
+Mahjong Gokuu Tenjiku [mgt].rsn										E8A0AEC5	89427
+Mohawk and Headphone Jack [mhj].rsn									55AD4CA2	138475
+Mahjong Hishouden - Naki no Ryuu [mhnr].rsn								E876E425	33747
+Milandra [mil].rsn											D5613D62	79865
+BS Dan Dan Belt Conveyor Milk no Maki [milk].rsn							14A819BA	49507
+Mario is Missing [mim].rsn										485CA0FF	60661
+Micro Machines [mima].rsn										0B800F9D	37900
+Micro Machines 2 [mima2].rsn										15374588	87428
+Michael Jordan - Chaos in the Windy City [mjcwc].rsn							3131B568	90720
+Magic Johnson's Super Slam Dunk [mjssd].rsn								24DAA153	35096
+Mortal Kombat [mk].rsn											22CFCC03	109361
+Mortal Kombat 2 [mk2].rsn										18D69FB3	110099
+Mortal Kombat 3 (Ultimate Mortal Kombat) [mk3].rsn							4849E02B	89732
+Matsumura Kunihiro Den [mkh].rsn									87770BB7	142137
+Maka Maka [mkmk].rsn											C1ED6A5A	69155
+Mahou Kishi Reiasu (Magic Knight Rayearth) [mkr].rsn							146B6C23	153375
+Mega-Lo-Mania [mlm].rsn											9E8D616F	64159
+Mickey Mania - The Timeless Adventures of Mickey Mouse [mm].rsn						4BF1E736	47995
+Might and Magic 2 (European Version) [mm2].rsn								C0D64573	55756
+Might and Magic 2 (Japanese Version) [mm2j].rsn								00655349	89076
+Might and Magic 3 [mm3].rsn										62BA2E67	92283
+Mega Man 7 [mm7].rsn											0A119563	138908
+Mighty Max [mmax].rsn											F75CFD3E	69453
+Metal Max 2 [mmax2].rsn											C7E7EA36	126621
+Metal Max Returns [mmaxr].rsn										4764C45D	182202
+Marko's Magic Football [mmf].rsn									7699587B	61863
+Mick & Mack as the Global Gladiators [mmgg].rsn								D02221C5	129568
+Megaman Soccer [mms].rsn										F731B242	86500
+Mega Man X [mmx].rsn											FB24E1BE	89403
+Mega Man X2 [mmx2].rsn											0BA81ED4	103255
+Mega Man X3 [mmx3].rsn											AFE9CD18	82800
+Earthbound (Mother 2) [mo2].rsn										35E1F5E1	916208
+Modular Escape [mode].rsn										27FE8123	794554
+Monstania [mon].rsn											71A052B1	185126
+Monopoly (Western version) [mono].rsn									7BD90A95	72960
+Monopoly 2 [mp2].rsn											29A162AF	122713
+Monopoly (Japanese Version) [mpjp].rsn									03E048B0	61537
+Ms. Pac-Man [mpm].rsn											0F0D517F	28005
+Mario Paint [mpnt].rsn											7DA042B9	205876
+Mahou Poi Poi Poitto! [mppp].rsn									6772AB49	52320
+Magical Quest starring Mickey Mouse, The [mq].rsn							04245CCD	60217
+Magical Quest 2 - The Great Circus Mystery, The [mq2].rsn						A0D28AF2	87927
+Magical Quest 3, The [mq3].rsn										C33195EA	97529
+Mr. Do [mrdo].rsn											64502E22	40640
+Melfand Stories [ms].rsn										1558C24A	135981
+Mary Shelley's Frankenstein [msfr].rsn									E411124A	73991
+Metal Slader Glory - Director's Cut [msg].rsn								87F9C9EA	254787
+Mario's Super Picross [msp].rsn										23BC4529	156669
+Majin Tensei [mt].rsn											B5F4D8F4	119864
+Majin Tensei 2 [mt2].rsn										BD15A85D	431463
+Maten Densetsu [mtd].rsn										2B86CBD1	87786
+Mario's Time Machine [mtm].rsn										828BF496	62940
+Magical Taruruto Kun [mtma].rsn										38E75D6D	46123
+Multi-Play Volleyball [mtpvb].rsn									3295347F	49767
+Mickey's Ultimate Challenge [muc].rsn									BA945041	38421
+Manchester United Championship Soccer [mucs].rsn							FFDF4933	24835
+Mulan (Super Gameboy) [mulan].rsn									0B1A3145	48233
+Gousou Jinrai Densetsu Musya (Musya - Imoto's Saga) [musya].rsn						3B478CEC	61659
+Marvelous [mvls].rsn											587F86F5	127149
+Metal Warriors [mw].rsn											E67A4358	65331
+Motoko-chan no Wonder Kitchen [mwk].rsn									B6E54C2B	113805
+Mystery Circle [myc].rsn										FEC50E3B	42448
+Mini Yonku Shining Scorpion [myss].rsn									8E1DD3CF	41574
+BS Nintendo HP 5-17 [n517].rsn										BAA4C1CA	35242
+BS Nintendo HP 5-31 [n531].rsn										A0D8E338	36047
+Nichibutsu Arcade Classics [nac].rsn									B8E0C2C3	106371
+Nichibutsu Arcade Classics 2 [nac2].rsn									1C6E66FF	97744
+NBA All-Star Challenge [nasc].rsn									38FE3F34	125811
+Naruhodo The World [nawo].rsn										97F461AC	104127
+NBA Live '97 [nba97].rsn										29BEA302	185797
+NBA Live '98 [nba98].rsn										8B7E6C13	243284
+NBA Give 'N Go (NBA Jikkyou Basket Winning Dunk) [nbagg].rsn						AD3E086A	138045
+NBA Hang Time [nbah].rsn										67C34D0F	120525
+NBA Jam [nbaj].rsn											D400F06C	72057
+Nobunaga no Yabou Busyo Fuunroku [nbb].rsn								AD1689E0	60997
+Nobunaga no Yabou Haouden [nbh].rsn									1BD18F5C	161863
+Nobunaga no Yabou Tenshouki [nbt].rsn									6852C3DB	168841
+Nobunaga no Yabou Zenkokuban (Nobunaga's Ambition) [nbz].rsn						57840785	47401
+NCAA Football [ncaaf].rsn										394BF7C0	112863
+NCAA Basketball [ncab].rsn										F649B2FD	87421
+Natsuki Crisis Battle [ncb].rsn										6CCB4F7B	233077
+No Escape [ne].rsn											DB986BBF	74044
+Neugier [neu].rsn											443EEEA5	118194
+Nosferatu [nf].rsn											D562D282	147456
+NFL Football [nfb].rsn											423E5732	73854
+NCAA Final Four Basketball [nffb].rsn									E32F9804	50070
+Ninja Gaiden Triology [ngt].rsn										69A16AEB	173470
+Newman-Haas Indy Car Racing [nhic].rsn									89A6CD62	86954
+NHL Stanley Cup [nhlsc].rsn										56B7523A	90494
+Nightmare Busters (Beta) [nibus].rsn									9B70759E	67225
+Nigel Mansell's World Championship Racing [nigel].rsn							0AD10830	53844
+Nontan to Issyo Kuru Kuru Puzzle [nikk].rsn								8192EAB4	104019
+NBA Jam Tournament Edition [njte].rsn									56A821B6	94737
+Nage Libre [nl].rsn											2B06E449	43129
+Asameshimae Nyanko [nnk].rsn										2FB25813	210497
+Nintendo Power Menu Program [npmp].rsn									54F6055A	11667
+NFL Quarterback Club [nqc].rsn										972994FD	63911
+NFL Quarterback Club '96 [nqc96].rsn									39AC182D	102366
+Network Q Rally [nqr].rsn										C0DA98B0	41805
+Nolan Ryan's Baseball [nrbb].rsn									0509E02C	39398
+Nangoku Syonen Papuwa Kun [nspk].rsn									041EAD9D	160821
+Nekketsu Tairiku Burning Heroes [ntbh].rsn								FA31064A	108692
+Numbers Paradise [nump].rsn										E9B6F935	41257
+Mr. Nutz [nutz].rsn											56BB5121	108234
+N-Warp Daisakusen [nwd].rsn										BF2D0DC0	126360
+New Yatterman [ny].rsn											D283AF42	151052
+Okamoto Ayako to Match Play Golf [oampg].rsn								E206F037	51093
+Ohmono Black Bass Fishing - Jinzouko Hen (Mark Davis' The Fishing Master) [obbf].rsn			68CCBD24	98282
+Out of Bounds Golf [obg].rsn										B268C59E	161441
+Obitus [obi].rsn											01F1C60C	53953
+Oda Nobunaga - Haou no Gundan [odanb].rsn								568E67F7	46467
+Oekaki Logic [oelo].rsn											AA6DFC1F	42074
+Operation Europe - Path to Victory [oeptv].rsn								6925A1B3	46885
+Super Off Road [off].rsn										09DEBC94	50153
+Ogre Battle [ogre].rsn											D69E4C9C	93611
+Otogirisou [ogs].rsn											B1921BEB	236318
+Super Okuman Tyoja Game [okutg].rsn									37A572DA	102767
+Operation Logic Bomb [olb].rsn										6A15E22B	59534
+Olivia no Mystery [olim].rsn										5F85A2BF	74334
+Otoboke Ninja Colosseum [onc].rsn									2CD9AFE3	90191
+O-chan no Oekaki Logic [ool].rsn									7579B0C0	109160
+Ozumou Tamashii [oozta].rsn										ADA0F12F	57461
+Oraga Land Shusai [osbs].rsn										45D72AFE	55120
+Oscar [oscar].rsn											86FD8AFE	63225
+Olympic Summer Games [osg].rsn										CCDBA8FE	53953
+Olympic Summer Games (Super Gameboy) [osggb].rsn							0194C3B6	50286
+Operation Thunderbolt [othnd].rsn									7945D582	65846
+Othello World [othw].rsn										9F313B53	41844
+Ongaku Tukuoolu Kanadeeru [otk].rsn									62E45B02	55101
+Outlander [otld].rsn											E0168321	41647
+Pac-Attack [paca].rsn											0B614062	43840
+Pac-Man 2 - The New Adventures [pacm2].rsn								0299676E	166507
+Pagemaster [page].rsn											C4530712	108630
+Packy and Marlon [pam].rsn										73C7BDEB	92295
+Pebble Beach Golf Links [pbgl].rsn									7664E6B1	112735
+Parodius Da! [pd].rsn											F10944EF	121683
+Pirates of Dark Water [pdw].rsn										2DAFFA75	116521
+Popeye - Ijiwaru Majo Sea Hag No Maki [peye].rsn							73D992B5	112005
+Pitfall - The Mayan Adventure [pfma].rsn								A4267842	231322
+PGA Tour '96 [pga96].rsn										E96AF0CC	65643
+PGA European Tour [pgae].rsn										D4B38EF6	72717
+PGA Tour Golf [pgat].rsn										49E11437	73777
+Phalanx [phlnx].rsn											63B3CE1B	64638
+Power Instinct [pi].rsn											621013CD	190036
+Pieces (Jigsaw Party) [piece].rsn									372013F9	95187
+Power Piggs of the Dark Ages [piggs].rsn								32C2CF7C	80931
+Pikiinya! [piki].rsn											B4A0630B	229299
+Pink Goes to Hollywood [pink].rsn									5B8EE13A	78342
+Pinocchio [pino].rsn											5471D834	214674
+Pipe Dream [pipe].rsn											257521C3	64856
+Poko-Nyan! [pkn].rsn											CDEAF44C	130885
+Plok! [plok].rsn											F2CECFFC	79939
+Power Lode Runner [plr].rsn										A50BFF4C	72236
+Prehistorik Man [pman].rsn										640231B4	100136
+Pachinko Maruhi Hisshouhou [pmh].rsn									BCC95500	90383
+Pro Mahjong Kiwame [pmk].rsn										E5EC2266	48295
+Pro Mahjong Kiwame 2 [pmk2].rsn										DCF5F642	47933
+Pro Mahjong Kiwame 3 [pmk3].rsn										F74612C9	74642
+Pro Mahjong Kiwame GB (Super Gameboy) [pmkgb].rsn							009A866C	47219
+Parlor! Mini series (BGM Compilation) [pms].rsn								F448529E	135779
+Power Moves [pmv].rsn											77F3F793	58897
+Pop'n Smash!! [pns].rsn											19A4684A	80497
+Pac-in-Time [pnt].rsn											553CDD48	78294
+Pop 'n' Twinbee [pntb].rsn										3C03C925	148068
+Poko-Nyan! Yume no Daibouken (Super Gameboy) [pnyd].rsn							1677747E	58567
+Panic in Nakayoshi World [pnyw].rsn									2DA76EE0	86465
+Pocahontas (Super Gameboy) [poca].rsn									4FCAAFD2	47232
+BS Pokekame Magajin [poke].rsn										0AB53238	43340
+Prince of Persia [pop].rsn										A858DEA8	69714
+Prince of Persia 2 [pop2].rsn										B85E366E	57645
+Popful Mail [popfm].rsn											F74D5077	78114
+Power of the Hired [poth].rsn										CDCDCA7B	128631
+Jikkyou Powerful Pro Yakyuu '94 [pow94].rsn								357CB992	136501
+Power Drive [powdr].rsn											5847AF52	186350
+Kyouraku Sanyou Toyomaru Parlor Parlor! [pp].rsn							956E7884	68949
+Kyouraku Sanyou Toyomaru Daiichi Maruhon Parlor Parlor! 2 [pp2].rsn					2FE8D139	60334
+Kyouraku Sanyou Toyomaru Okumura Taiyou Parlor Parlor! 3 [pp3].rsn					B887A24C	61562
+Kyouraku Sanyou Toyomaru Okumura Daiichi Maruhon Parlor Parlor! 4 CR [pp4].rsn				4C19784B	62814
+Kyouraku Sanyou Maruhon Parlor Parlor! 5 [pp5].rsn							14EA3CA4	59824
+Popoitto Hebereke [pph].rsn										AC64B41E	53138
+Porky Pig's Haunted Holiday [pphh].rsn									886FBFBA	252289
+Populous [ppl].rsn											5F53AE16	75805
+Poi Poi Ninja World [ppnw].rsn										5CC7BB6A	41976
+Power Rangers [pr].rsn											75151960	94472
+Primal Rage [prage].rsn											2532A78E	128594
+Power Rangers - The Fighting Edition [prfe].rsn								56DA68ED	58568
+Prime [prime].rsn											F9BC9AF6	49627
+Princess Minerva [prmn].rsn										A139A769	134578
+Mighty Morphin' Power Rangers - The Movie [prmv].rsn							2C152D22	88175
+Pro Quarterback [proq].rsn										3EDCBFB9	81920
+Pachinko Renchan Tengoku - Super CR Special [prt].rsn							156710E1	60540
+Power Rangers Zeo - Battle Racers [prz].rsn								C2B9EAE7	70204
+Power Slide FX [psfx].rsn										E82DC744	42165
+Pro Sport Hockey [psh].rsn										A1DC8DC2	50397
+Putty Squad [psq].rsn											D9896DFD	96395
+Psycho Dream [psycho].rsn										CA52217C	79601
+Pachinko Tetsujin - Shichiban Shoubu [ptss].rsn								72B001FB	93933
+Pilotwings [ptws].rsn											CAE20411	40056
+Puzzle Bobble (Bust-A-Move) [pubo].rsn									DA224BD4	51214
+Pushover [push].rsn											20AA9D64	49668
+Powermonger [pwrmg].rsn											B0C1BE82	55709
+Pro Yakyuu Nettou Puzzle Stadium [pynps].rsn								D86E939C	85680
+Q-bert 3 [qb3].rsn											2870EEC7	82394
+Rendering Ranger [r2].rsn										8DA852CF	153023
+Race Drivin' [raced].rsn										3F7EB928	49405
+Rampart [ramp].rsn											8B4368E0	78525
+Rap Basketball [rapbb].rsn										AA64ED91	49831
+Ruin Arm [rarm].rsn											DD6FD9B5	185916
+Riddick Bowe Boxing [rbb].rsn										3B9FEC8D	89147
+Super RBI Baseball [rbi].rsn										AEBE0DFC	133247
+Rushing Beat Syura (Peace Keepers) [rbs].rsn								B48F2572	213468
+Rockfall [rckf].rsn											4F16F9D7	11314
+Roger Clemens' MVP Baseball [rcmb].rsn									9B62B1F3	46148
+Robocop 3 [rcop3].rsn											57258207	83664
+Radical Dreamers [rd].rsn										9820634B	172387
+Raiden Densetsu [rdn].rsn										E6973C26	42000
+Realm [realm].rsn											D998D27B	59355
+Revolution X [revx].rsn											3B5C5D8E	710782
+Rockman and Forte (Megaman and Bass) [rf].rsn								F21D21D7	172373
+Ryukiheidan Danzarubu [rhdz].rsn									DDC97E06	68947
+RHI Roller Hockey '95 [rhi95].rsn									560B5CC8	61451
+Boxing Legends of the Ring [ring].rsn									B221BFAD	48378
+Rival Turf [rival].rsn											BEAFB678	70496
+Rap Jam [rj].rsn											D2F9D652	496280
+Rejoice - Aretha Oukoku no Kanata [rjc].rsn								79EDF2DB	210968
+Riverse Kids [rk].rsn											FFE2D3AE	48277
+Rokudenashi Blues [rkdb].rsn										B32474CD	54307
+Ranma 1-2 - Akaneko-dan Teki Hihou [rmath].rsn								63C1BFEE	116090
+Ranma 1-2 - Bakuretsu Rantouhen [rmbr].rsn								A6F7797D	89145
+Ranma Nibunnoichi - Chonai Gekitou Hen [rmcg].rsn							FD569758	173707
+RPG Maker [rmk].rsn											D7987F06	81310
+RPG Maker 2 [rmk2].rsn											7F02F89C	85714
+Rocko's Modern Life - Spunky's Dangerous Day [rml].rsn							6F1920BC	108555
+Ranma Nibunnoichi - Ougi Jaanken [rmoj].rsn								EBAB2858	104552
+Rudra no Hihou [rnh].rsn										26A11598	277017
+Art of Fighting [rnk].rsn										F6654829	289098
+Ryuuko no Ken 2 (Art of Fighting 2) [rnk2].rsn								BDD8ADF3	323663
+Ren & Stimpy - Buckeroo$ [rnsb].rsn									9F5F0FB5	59750
+Return of Double Dragon [rodd].rsn									2BFDEFEE	116320
+Rise of the Robots [rotr].rsn										3558AE7F	136243
+RPM Racing [rpmr].rsn											E84A957C	38313
+Road Riot 4WD [rr4w].rsn										FF469C1B	108661
+Rex Ronan [rres].rsn											7F1FB2C9	37973
+Radical Rex [rrex].rsn											30B0BDCC	138870
+Rocky Rodent [rrod].rsn											FC2A76ED	95074
+Rock 'n' Roll Racing [rrr].rsn										CA57EB71	59967
+Romancing SaGa [rs].rsn											CD011E62	143688
+Romancing SaGa 2 [rs2].rsn										8C59B128	190523
+Romancing SaGa 3 [rs3].rsn										FA738B42	346004
+Ren and Stimpy - Time Warp [rstw].rsn									F4195A74	146415
+Rocketeer [rt].rsn											3D8C086E	91215
+R-Type 3 [rt3].rsn											51AE83ED	121769
+Super Romance of the Three Kingdoms 2 (Super Sangokushi 2) [rtk2].rsn					5645A1C8	48881
+Sangokushi 3 (Romance of the Three Kingdoms 3) [rtk3].rsn						F5DF0AA8	46641
+Sangokushi 4 (Romance of the Three Kingdoms 4) [rtk4].rsn						055B4511	157223
+Robotrek [rtrek].rsn											E8B26463	167192
+Run Saber [run].rsn											9172CD9A	60189
+Robocop vs. the Terminator [rvt].rsn									5D0635C1	57804
+Suzuka 8 Hours [s8h].rsn										4B14FD38	75441
+Super Aleste (Space Megaforce) [sa].rsn									0CA5652F	61741
+Space Ace [sace].rsn											8BF80BD1	173431
+Super Air Diver [sad].rsn										0408BF96	72157
+Super Air Diver 2 [sad2].rsn										C07E17CE	63267
+Skipp and Friends [saf].rsn										8FB29A1E	297686
+Super Adventure Island [sai].rsn									C3E24062	137296
+Super Adventure Island 2 [sai2].rsn									C3D3FAEE	181086
+Same Game [same].rsn											7EEE9250	226167
+Samurai Shodown [samu].rsn										6BF8EF47	287393
+Sansara Naga 2 [sana2].rsn										0FAFC534	124776
+Sanrio Shanghai [sans].rsn										AA400A76	55972
+BS SatesupuDX 4 [sate].rsn										57862D91	57463
+Spiderman and the X-Men - Arcade's Revenge [saxar].rsn							5EC850B5	73298
+Soul Blazer [sb].rsn											9D6071BF	78562
+Super Big 2 [sb2].rsn											EBBAA42F	47139
+Super Baseball 2020 [sb20].rsn										64971BC8	109478
+Super Buster Bros. [sbb].rsn										2EB169EA	64948
+Super Black Bass [sbb1].rsn										67C2FF3E	63479
+Super Black Bass 2 (Bassin's Black Bass) [sbb2].rsn							D0756240	60171
+Shien - The Blade Chaser (Shien's Revenge) [sbc].rsn							DA32DAA0	124361
+Super Back to the Future 2 [sbf2].rsn									6531645A	208628
+Super Bikkuriman [sbk].rsn										86283459	71420
+Super Bases Loaded [sbl].rsn										AFA8E368	80289
+Super Bases Loaded 2 [sbl2].rsn										94A28C15	79923
+Super Bases Loaded 3 [sbl3].rsn										F0E58E29	88493
+Sonic Blastman [sblm].rsn										D83D3538	48317
+Sonic Blastman 2 [sblm2].rsn										80E6FEF8	91977
+Super Bomberman [sbm].rsn										926EEDE4	81396
+Super Bomberman 2 [sbm2].rsn										0A757C8A	95571
+Super Bomberman 3 [sbm3].rsn										B029757C	259804
+Super Bomberman 4 [sbm4].rsn										3A5ADC4F	284493
+Super Bomberman 5 [sbm5].rsn										8BC326D3	362222
+Simpsons - Bart's Nightmare, The [sbn].rsn								CDEBB340	151981
+Super Bombliss [sbom].rsn										D0F67915	69026
+Super Bowling [sbowl].rsn										AF3B00E5	27761
+Syutoko Battle Racing 2 [sbr2].rsn									7A0178F2	221180
+Super Battleship [sbs].rsn										447322DB	42617
+Super Battletank [sbtk].rsn										94ABB93B	48031
+Super Battletank 2 [sbtk2].rsn										57279B0D	55352
+Super Batter Up [sbup].rsn										8F48A5D3	77930
+Sim City [sc].rsn											0CA7EE92	54736
+Super Casino 2 [scas2].rsn										717BFF77	97263
+Scooby Doo Mysteries [scd].rsn										3474B766	91320
+Super Chase H.Q. [schq].rsn										391E35C9	101258
+Shin Chou Kouki [sck].rsn										2FD6F042	108842
+Super Conflict - The Mideast [scme].rsn									E604AC13	132361
+Super Caesar's Palace [scp].rsn										166EA5E7	49005
+Super Castlevania 4 [scv4].rsn										3F05F8E0	93025
+Secret of Mana [sd2].rsn										BCE7FE3F	186725
+Seiken Densetsu 3 [sd3].rsn										E9620DCA	295329
+Super Double Dragon [sdd].rsn										3073C8E3	109433
+SD F-1 Grand Prix [sdf1g].rsn										8B13E19A	74410
+SD Gundam 2 [sdg2].rsn											7A4E186C	74630
+SD Great Battle [sdgb].rsn										8379B930	52777
+SD Gundam Gaiden - Knight Gundam Monogatari Ooinaru Isan [sdgg].rsn					7DF6C67A	66059
+SD Gundam Gaiden 2 - Entaku no Kishi [sdgg2].rsn							364BA9CE	65162
+SD Gundam G-Next [sdggn].rsn										29042EC1	69557
+SD Gundam GX [sdggx].rsn										A3C194F6	120220
+SD Gundam Power Formation Puzzle [sdgpf].rsn								A0BEEE75	106446
+SD Kidou Senshi Gundam V [sdgv].rsn									F608DE69	66568
+SD Gundam X - Super Gachapon World [sdgx].rsn								2FB215CE	85989
+SD Hiryu no Ken [sdhk].rsn										7A869F7E	165752
+Sword Maniac [sdmc].rsn											6C2BE54A	116593
+Super Drift Out [sdo].rsn										878D3771	123585
+Seifuku Densetsu - Pretty Fighter [sdpf].rsn								8676D1F6	171404
+SD Ultra Battle [sdub].rsn										487DBDD6	58468
+Super Dunk Star [sduns].rsn										A83E3552	89393
+Sim Earth [se].rsn											9DC980B9	70860
+Sensible Soccer [sens].rsn										70424CB5	65718
+Super Star Wars - The Empire Strikes Back [sesb].rsn							DBE714C2	120868
+Star Fox [sf].rsn											25960A17	227899
+Super F1 Circus [sf1c].rsn										B0D563CF	51682
+Super F1 Hero [sf1h].rsn										E7B6BC1A	116927
+Street Fighter 2 [sf2].rsn										F27D6B09	111778
+Street Fighter 2 Turbo [sf2t].rsn									3E526B3C	104897
+Street Fighter Alpha 2 [sfa2].rsn									39C32BAD	375870
+Space Football [sfb].rsn										7C551D03	52979
+Super Family Circuit [sfc].rsn										636A5307	51427
+Super Famicom Box BIOS [sfcb].rsn									05A086DD	23703
+Super Famicom Wars [sfcw].rsn										F69B3DDB	233585
+Sankyou Fever Fever! [sff].rsn										20CE90BD	69857
+Super Family Gerende [sfg].rsn										DE00124B	102898
+Super Final Match Tennis [sfmt].rsn									5E327322	139372
+Super Fire Pro Wrestling [sfpw].rsn									6FDCF782	84107
+Super Formation Soccer (Super Soccer) [sfs].rsn								E14B1965	82022
+Super Formation Soccer 2 [sfs2].rsn									D5D54249	90188
+Super Formation Soccer '94 [sfs94].rsn									0464C32D	161582
+Super Formation Soccer '95 [sfs95].rsn									ECD5A70A	158039
+Super Formation Soccer '96 [sfs96].rsn									9607ED32	83014
+Super Family Tennis [sft].rsn										8FA92DF7	114344
+Starfield Trainer [sftr].rsn										4AB89984	3385
+Star Fox 2 (never released to public) [sfx2].rsn							B9880589	189421
+St. Giga 10gatsu Gou [sg10g].rsn									1BD17F90	35147
+Shinri Game 3, The [sg3].rsn										925BF022	69805
+Stargate [sgate].rsn											9EF86631	117071
+Super Gameboy [sgb].rsn											938C9ED3	46172
+Super Gameboy 2 [sgb2].rsn										8730661F	46827
+Sengoku Denshou [sgd].rsn										5E924C82	91228
+Speedy Gonzalez in Los Gatos Banditos [sggb].rsn							9E538921	124626
+Sugoi Hebereke [sgh].rsn										71FF880B	137529
+Super Genjin 2 [sgj2].rsn										9832DFCC	79034
+Same Game Mario [sgm].rsn										0C736ADD	76106
+Super Gomoku Narabe Renju [sgn].rsn									CB3316B1	37966
+Super Ghouls 'n' Ghosts [sgng].rsn									C8A25F9F	69240
+Super Gussun Oyoyo [sgo].rsn										8A69B3C7	141077
+Super Gussun Oyoyo 2 [sgo2].rsn										708A3A4D	155727
+Super Goal! [sgoal].rsn											5B91EFAE	73092
+Super Godzilla [sgod].rsn										DF317A3A	83972
+Super Hockey '94 [sh94].rsn										38259228	55141
+Street Hockey '95 [sh95].rsn										52B55945	154195
+Shadow, The [shad].rsn											45070136	224834
+Shaq Fu [shaq].rsn											5D2C0CC0	89757
+Shonen Ashibe [shas].rsn										10DB6268	40819
+Shiki Eiyuu Den - Jinryuu Densetsu [shed].rsn								64802EDE	162651
+Shanghai - Banri no Tyojyo ~ The Great Wall [shg].rsn							E04E58E8	68702
+Shanghai 2 - Dragon's Eye [shg2].rsn									A9F17EB2	111700
+Shougi Club [shgc].rsn											0EA7A1F4	8163
+Shougi Fuurinkazan [shgfk].rsn										3659A4A1	86926
+Super High Impact [shi].rsn										29D0C363	157049
+Shinseiki Odysselya [shod].rsn										162929DB	84185
+Shinseiki Odysselya 2 [shod2].rsn									3EC70BA3	110448
+Shadowrun [shr].rsn											D2F693BB	97254
+Shougi Saikyou [shsa].rsn										85C30AE5	63064
+Sailor Moon Super S - Zenin Sanka!! Shuyaku Soudatsusen [shuso].rsn					3D695646	152399
+Space Invaders [si].rsn											62B558C2	51312
+Super International Cricket [sic].rsn									ED3D0627	85894
+Sports Illustrated Championship Football and Baseball [sicfb].rsn					C91833AD	104125
+Side Pocket [sidep].rsn											16C54BB3	93456
+SimAnt [sima].rsn											8D32A21C	106712
+Super Indy Champ [sindc].rsn										8FE02327	112817
+Shin Ikkaku Senkin [sis].rsn										F67A4E10	99620
+Space Invaders (Super Game Boy) [sisgb].rsn								1022C75B	53051
+Super James Pond [sjp].rsn										75AE0BB4	23954
+Super James Pond 2 [sjp2].rsn										077AF55D	33560
+Super James Pond 3 [sjp3].rsn										090AC8BB	92786
+SWAT Kats [sk].rsn											60599C10	134856
+Sougou Kakutougi Astral Bout [skab].rsn									43FA462E	84452
+Sougou Kakutougi Astral Bout 2 - The Total Fighters [skab2].rsn						17E17C4E	138274
+Astral Bout 3 [skab3].rsn										0C916192	80681
+Skyblazer [skb].rsn											8A696E48	124648
+Sengo Kuno Hasha - Tenka Fubu heno Michi [skh].rsn							BBB4915C	132056
+Super Kyuukyoku Harikiri Stadium [skhs].rsn								0164267A	108755
+Skuljagger [skjg].rsn											F68054CC	42740
+Super Koukou Yakyuu - Ikkyuu Nyuukon [skyin].rsn							F56519F8	105094
+Super Slapshot [slap].rsn										0BE66100	54981
+Slayers [slay].rsn											0E547121	139188
+Super Loopz [sloop].rsn											A800BF23	58781
+Super Metroid [sm].rsn											75EF6FF6	304592
+Super Mad Champ [smadc].rsn										97EF69E7	82576
+Super Mario All-Stars [smas].rsn									860D624C	137206
+Seijuu Maden - Beasts & Blades [smbb].rsn								625EED1E	97195
+Shin Momotarou Densetsu [smd].rsn									EED78156	150102
+Super Momotarou Dentetsu DX [smdd].rsn									85C1DA60	163396
+Super Mario Excitebike [smeb].rsn									1CD31693	122170
+Sailor Moon Super S - Fuwa Fuwa Panic [smffp].rsn							80304932	88514
+Super Mario Kart [smk].rsn										C755ED3F	77495
+Spiderman - Lethal Foes [smlf].rsn									9CD55494	92598
+Sailor Moon - Another Story [smoon].rsn									3E8CB169	192577
+Super Morph [smph].rsn											AF1E44F4	78465
+Super Mario RPG [smr].rsn										14504562	383083
+Shodan Morita Shougi [smsh].rsn										DADA1944	81868
+Bishoujo Senshi Sailormoon S - Jougai Rantou [smsjr].rsn						53C334B0	196887
+Sailor Moon S - Kurukkurin [smsk].rsn									72516914	60133
+Small Soldiers (Super Gameboy) [smso].rsn								6304779F	49805
+Bishoujo Senshi Sailormoon S - Kondoha Puzzle de Oshiokiyo! [smspo].rsn					54AE1A76	116070
+Shooting Macross - Scrambled Valkyrie [smsv].rsn							8E9FF106	148587
+Shin Megami Tensei [smt].rsn										38726B0E	63784
+Shin Megami Tensei 2 [smt2].rsn										FBDFF13F	79045
+Shin Megami Tensei - If... [smti].rsn									E9DE8883	115274
+Smurfs, The [smurf].rsn											FE725924	117340
+Smurfs 2, The [smurf2].rsn										CC022484	104289
+Super Mario World [smw].rsn										4CBAC066	113303
+Super Ninja Boy [snb].rsn										5B3FE70F	67853
+Sporting News Baseball [snbb].rsn									14EA3563	96605
+Mecarobot Golf [snbt].rsn										F4ECF989	101228
+Snoopy Concert [snc].rsn										3150B99C	320259
+Super Sangokushi (Super Romance of the Three Kingdoms) [sngks].rsn					AC2C271E	114549
+Super Ninja Kun [snk].rsn										F4E02E52	72826
+Shodai Nekketsu Kouha Kunio-Kun [snkk].rsn								9E4F3CDE	53152
+Super Naxat Open [sno].rsn										640B6C19	67521
+Shin Nippon Pro Wrestling - Chou Senshi in Tokyo Dome [snpw].rsn					8B0FF83A	59967
+Shonen Ninja Sasuke [sns].rsn										A93F7CAF	97089
+Saturday Night Slam Masters [snsm].rsn									5BA0155D	226088
+Shodankurai Nintei Shodan Pro Mahjong [snspm].rsn							819EF1F8	114218
+Sound Novel Tsukuru [snt].rsn										270783A9	106775
+Shin Nihon Pro Wrestling '94 [snw94].rsn								C214E62D	133985
+Super Nazo Puyo - Rulue no Roux [snz].rsn								F56C252F	103945
+Super Nazo Puyo 2 - Rulue no Tetsuwan Hanjyou Ki [snz2].rsn						2D6AEF57	81690
+Star Ocean [so].rsn											4C0A91F9	203367
+Secret of Evermore [soe].rsn										D2762891	303916
+Soldiers of Fortune [sof].rsn										4B466A64	198371
+Soccer Kid [sokid].rsn											2AA1DF0D	76079
+Solid Runner [solid].rsn										8494AE42	214733
+Heisei Shin Onigashima [son].rsn									81A58BF7	104655
+Super Oozumou Netsusen Daiichiban [sond].rsn								E5AE9075	68613
+Song Master [song].rsn											C20CCEE4	79642
+Super Off Road - The Baja [sortb].rsn									20630D5D	88364
+S.O.S. [sos].rsn											0EC54757	87024
+Sink or Swim [sosw].rsn											1A551CAE	53205
+Shadow of the Beast [sotb].rsn										8A6BD28C	77443
+Tecmo Secret of the Stars [sots].rsn									B5BD1AF9	95265
+Soul Blade (Pirate) [soulb].rsn										60042AFA	46631
+Bishoujo Janshi Suuchiipai [sp].rsn									2DCA7353	84220
+Super Puyo Puyo 2 [sp2].rsn										480393A0	75482
+Super Puyo Puyo 2 Remix [sp2r].rsn									7197F56D	61519
+Super Pachinko [spach].rsn										2C5CC0A5	111918
+Super Play Action Football [spaf].rsn									F4C19171	80746
+Sparkster [spark].rsn											AB1B8580	122391
+Super Pachinko Taisen [spata].rsn									7A8D1209	46795
+Super Professional Baseball 2 [spb2].rsn								D937DFC0	67040
+Super Pinball - Behind the Mask [spbtm].rsn								B9FE1433	51179
+Super Bomberman - Panic Bomber W [spbw].rsn								D5865B1A	134607
+Spellcraft [spc].rsn											97A513B4	100893
+Spindizzy Worlds [spdz].rsn										7194F28C	75755
+Spectre [spec].rsn											E627EFC1	86998
+Speed Racer [speed].rsn											29FA4D03	110020
+Spirou [spir].rsn											91F06AA8	183673
+Super Power League [spl].rsn										4EC6964A	117782
+Super Power League 2 [spl2].rsn										DE0A85C5	122771
+Super Power League 3 [spl3].rsn										060A6DFC	102890
+Super Power League 4 [spl4].rsn										D33564C1	64044
+Spider-Man [spm].rsn											596CE888	255072
+Supapoon [spn].rsn											9EC86AAF	95014
+Supapoon DX [spndx].rsn											D443D0C6	118620
+Super Punch-Out!! [spo].rsn										1DD114E8	147405
+Super Puyo Puyo [spp].rsn										2A23D777	106362
+Spriggan Powered [sprp].rsn										FBD94C4F	139890
+Super Putty [spt].rsn											7B7DA85F	242227
+Spark World [spw].rsn											6D38FC33	72655
+Spawn [spwn].rsn											83261107	201811
+SeaQuest DSV [sqdsv].rsn										5D870056	74091
+Street Racer [srace].rsn										9D94BB51	75364
+Super Royal Blood (Gemfire) [srb].rsn									3800C69B	52147
+Saibara Rieko no Mahjong Hourouki [srmh].rsn								A778DF9F	60042
+Super R-Type [srt].rsn											03AE67A8	59414
+Super Robot Taisen 3 [srt3].rsn										30175740	194677
+Super Robot Taisen 4 [srt4].rsn										7B0EC2A8	177516
+Super Robot Taisen EX [srte].rsn									73037FDE	140735
+Super Robot Taisen Gaiden - Masoukishin - The Lord of Elemental [srtg].rsn				DF225DF4	210544
+Super Star Wars - Return of the Jedi [srtj].rsn								EDD0A1F4	127995
+Shiroi Ring he - Twinkle Little Star [srtls].rsn							C0B671CF	136203
+Silva Saga 2 [ss2].rsn											E9B256B3	146474
+Super Scope 6 [ss6].rsn											29732DAD	115540
+Super Soccer Champ [ssc].rsn										59DA7A48	62135
+Shin SD Sengokuden - Daishougun Retsuden [ssds].rsn							75C8FF2F	101796
+Super Strike Eagle [sse].rsn										583B5B4E	63509
+Sterling Sharpe - End 2 End [sse2e].rsn									20C710FF	56195
+Super Street Fighter 2 [ssf2].rsn									6C3B3D6B	492522
+Super Shougi [sshg].rsn											9C018E26	60001
+Super Shougi 2 [sshg2].rsn										25ECEB0B	81608
+Super Shougi 3 [sshg3].rsn										EF05D5FF	105771
+Shin Shougi Club [sshgc].rsn										4C9EAD4B	23656
+Steven Seagal is the Final Option [ssitfo].rsn								64AB0A42	55908
+Shijou Saikyou League Serie A - Ace Striker [sslsa].rsn							884AC874	117143
+Shijou Saikyou no Quiz Ou Kettei Sen Super [ssnqs].rsn							668FC8A1	20922
+Super Soukoban [ssou].rsn										8F8BA11B	56294
+Sunset Riders [ssrd].rsn										B54BC5AC	142707
+Saikousoku Shikou Shougi Mahjong [sssm].rsn								25C8FF56	56771
+Super Stadium [ssta].rsn										DC63C3B7	65269
+Tenbu Spirits [sstbs].rsn										2D20B051	95729
+Super Star Wars [ssw].rsn										E530DC09	92739
+BS Sousa Sentai Wappers [sswap].rsn									E952297D	43291
+Super Tetris 2 + Bombliss [st2].rsn									71A1C74D	65220
+Super Tetris 2 + Bombliss Limited Edition [st2l].rsn							F9B139CF	75167
+Super Tetris 3 [st3].rsn										FC345408	135836
+Super Trump Collection [stc].rsn									CF09C910	75157
+Super Tennis [sten].rsn											DC8990F1	59234
+Super Tekkyu Fight! [stf].rsn										3E464ECD	63273
+Strike Gunner STG [stg].rsn										B271BB6B	26710
+Sutte Hakkun [sth].rsn											E96AF657	88790
+Super Troll Islands [sti].rsn										1D38498C	42837
+Stealth [stl].rsn											AAD7D1B8	150559
+Star Trek - The Next Generation [stn].rsn								16AEE420	183026
+Stone Protectors [stone].rsn										2B064B11	229717
+Street Combat [strc].rsn										E6C9F0C1	54423
+Striker [strkr].rsn											603E10D7	45720
+Special Tee Shot [sts].rsn										443BDDF5	116182
+Star Trek - Starfleet Academy - Ship Bridge Simulator [stsfa].rsn					5C8C5E39	65954
+Super Tsume Shougi 1000 [stsh].rsn									5FDC8AE6	66082
+Super Smash TV [stv].rsn										EDD7928F	55886
+Super Ultra Baseball 2 [sub2].rsn									163E5094	31677
+Super Copa [suco].rsn											1915DBD9	71842
+Super Double Yakuman [sudy].rsn										29E7B178	34677
+Super Double Yakuman 2 [sudy2].rsn									C385D034	40334
+Super Famista [sufa].rsn										7743C8E5	70660
+Super Famista 2 [sufa2].rsn										72C82D37	107449
+Sufami Turbo BIOS [suftu].rsn										0FC64EAB	26287
+Super Hanafuda [suha].rsn										DC25234F	94891
+Super Mahjong [sumj].rsn										82F29724	46019
+Super Mahjong 2 [sumj2].rsn										6D75D330	98073
+Super Mahjong 3 [sumj3].rsn										47F0A9D4	153050
+Super Mahjong Taikai [sumt].rsn										AB3672F2	90433
+Super Uno [suno].rsn											36DBE5C1	51331
+Super Solitaire [suso].rsn										03A9F1D9	64979
+Super Valis 4 [sv4].rsn											C63E86B9	98856
+Onizuka Katsuya Super Virtual Boxing [svb].rsn								356D8F1F	118931
+Super Variable Geo [svg].rsn										37FDB666	124120
+Syvalion [svln].rsn											C98AFB1C	159666
+Spider-Man and Venom - Maximum Carnage [svmc].rsn							EE3EE937	79861
+Spider-Man & Venom - Separation Anxiety [svsa].rsn							78CC40E2	102167
+Sonic Wings [sw].rsn											60028314	67931
+Super Wild Card [swc].rsn										147BB733	71325
+Super Widget [swdg].rsn											A88D5F68	63465
+Snow White - Happily Ever After [swhea].rsn								2CD8B72E	68069
+Super Swiv [swiv].rsn											2B6F244E	45487
+Sword World SFC [sws].rsn										2F0C3927	147392
+Sword World SFC 2 [sws2].rsn										BD393F6F	136371
+Sanrio World Smash Ball [swsb].rsn									9DABB3A5	43176
+Sutobasu Yarou Show - 3 on 3 Basketball [syaro].rsn							CF71FEBD	43805
+Shoot Your Load [syl].rsn										EC5EDC91	67088
+Syndicate [syn].rsn											A6F14A43	59109
+Super Syobo Syobo CG Collection [syobo].rsn								9F5889BF	8247
+Shounin yo, Taishi o Idake!! [syti].rsn									1629D1E1	214716
+Super Zugan [sz].rsn											04C84B42	123693
+Super Zugan 2 [sz2].rsn											5C2B6F07	115888
+Terminator 2 - Judgment Day [t2jd].rsn									3C89AD77	50370
+T2 - The Arcade Game [t2tag].rsn									A6518640	77439
+Tetris Attack (Panel de Pon) [ta].rsn									F88AD7B2	172961
+Waratte Iitomo! Tamorinpic [tamo].rsn									E1ED1224	61069
+Troy Aikman NFL Football [tanf].rsn									5C996EDC	162916
+Tarot Mystery [tarm].rsn										95E44A61	35686
+Tactical Soccer [taso].rsn										2E062DF6	116372
+Taz-Mania [taz].rsn											9578C51C	150241
+Thoroughbred Breeder 2 [tb2].rsn									D5DE04CE	100404
+Thoroughbred Breeder 3 [tb3].rsn									94872858	121570
+Tetris Battle Gaiden [tbat].rsn										394B1CB7	210344
+Table Game Daishuugou! [tbgmd].rsn									F30C731A	67563
+Turn and Burn - No Fly Zone [tbnfz].rsn									C692D7FB	64820
+Total Carnage [tcar].rsn										A74DF0DC	152295
+Treasure Conflix [tcx].rsn										20C6CEAC	108798
+Mickey no Tokyo Disneyland Daibouken [tdl].rsn								0CBCEC88	78055
+Tetris and Dr. Mario [tdm].rsn										F02D8601	52494
+Thunder Spirits [tdsp].rsn										A989875A	93916
+Tenchi Muyo [temu].rsn											486647A6	130664
+SNES Test Program [test].rsn										510C21D0	38942
+Tetris 2 [tet2].rsn											BE385961	72009
+Top Gear [tg].rsn											6AEFFDE6	44483
+Top Gear 2 [tg2].rsn											697D2CE6	99451
+Top Gear 3000 [tg3].rsn											3A24BEEA	90910
+Thunderbirds [thbi].rsn											C0069FA3	86921
+Tinhead [thead].rsn											5BC5D05A	68486
+Treasure Hunter G [thg].rsn										42D54087	235414
+Tick, The [tick].rsn											9DF30C7C	104683
+Taikyoku Igo Idaten [tii].rsn										BC59CA21	73989
+Time Cop [timec].rsn											C85BFEC2	225418
+Teenage Mutant Ninja Turtles IV - Turtles in Time [tit].rsn						41F564D9	144316
+Tom and Jerry [tj].rsn											C9BCA12A	35591
+Taekwon-Do [tkd].rsn											2CA522A7	112085
+Tekichuu Keiba Juku [tkj].rsn										E9AB9272	31489
+Tokimeki Memorial [tkmm].rsn										5F6BACFA	255858
+TKO Super Championship Boxing [tko].rsn									C36AA239	39829
+Tokoro's Mahjong [tkrm].rsn										297F4255	42901
+Taikou Rissiden [tkrsd].rsn										9A979B48	53975
+True Lies [tl].rsn											32D98F38	195546
+Last Battle, The [tlb].rsn										BEC038C5	98925
+Tottemo! Lucky Man [tlm].rsn										A3A861A2	127523
+Top Management 2 [tm2].rsn										C1CAC690	141705
+Takemiya Masaki Kudan no Igo Taishou [tmkit].rsn							67FC5DDF	88252
+Teenage Mutant Ninja Turtles - Tournament Fighters [tmnt5].rsn						83BEA2D7	145312
+Tony Meola's Sidekicks Soccer [tmss].rsn								C59CF15F	90770
+Torneco no Daibouken - Fushigi no Dungeon [tnd].rsn							EF0091EA	115386
+Teitoku no Ketsudan [tnk].rsn										69B71D10	49727
+Teitoku no Ketsudan 2 [tnk2].rsn									B7CEA2B7	196702
+Tenshi no Uta - Shiroki Tsubasa no Inori [tnu].rsn							EB43AAC8	162611
+Ninja Warriors, The [tnw].rsn										96FEEE40	105164
+Tactics Ogre [to].rsn											C2BAD995	201367
+Tales of Phantasia [top].rsn										CA251807	283562
+Tsuppari Oozumo Rissin Shusse Hen [torsh].rsn								FB370467	119226
+Total Football [totf].rsn										31C21E9A	110361
+Toys [toys].rsn												570A89F9	50599
+Theme Park [tp].rsn											7976C25C	54806
+Timon and Pumbaa's Jungle Games [tpjg].rsn								D19E2294	150064
+Twinbee - Rainbow Bell Adventure [trba].rsn								AD87905A	142249
+Trinea [trin].rsn											09D05ABC	145648
+Troddlers [trod].rsn											E93BBF5F	61630
+Terranigma [ts].rsn											4003888C	166353
+Tecmo Super Baseball [tsb].rsn										9393985F	69040
+Tecmo Super Bowl [tsbw].rsn										BDDDA9A9	149834
+Shinri Game, The [tsg].rsn										2BDEAC3A	40754
+Shinri Game 2 - Magical Trip, The [tsg2].rsn								E01360C3	95512
+Time Slip [tslip].rsn											039895C0	52144
+Tecmo Super NBA Basketball [tsnb].rsn									CED4A8E1	60487
+Traverse - Starlight and Prairie [tsp].rsn								90A76B94	380187
+Toy Story [tst].rsn											1C8A84F2	209272
+Tin Star [tstar].rsn											07902D01	105629
+Toy Story (Super Gameboy) [tstgb].rsn									EDDF7431	49117
+Tsuyoshi Shikkarishinasai Taisen Puzzle-Dama [tstp].rsn							8F8E9AAA	130309
+Tsuri Taro [tsuta].rsn											47621FC3	79503
+Tiny Toon Adventures - Buster Busts Loose [tta].rsn							6940A927	144946
+TinTin au Tibet [ttat].rsn										E4A2BBAE	145519
+Tiny Toon Adventures - Wacky Sports Challenge [ttawsc].rsn						25428EDF	137021
+Thomas the Tank Engine & Friends [ttef].rsn								BC0EA52E	64292
+Twisted Tales of Spike McFang, The [ttsmf].rsn								3E56BC31	128846
+TinTin, Les Aventures de - Le Temple du Solei [ttts].rsn						ED21CCFD	143176
+Time Trax [ttx].rsn											BFC61BC5	78090
+Mr. Tuff [tuff].rsn											79761027	129569
+Super Turrican [turr].rsn										ECF44C25	91250
+Super Turrican 2 [turr2].rsn										0D39AEE4	233176
+Tetsuwan Atom [twa].rsn											B4FDB158	54756
+Tadaima Yusya Bosyutyu Okawari [tybo].rsn								3F059D2F	132024
+Ultra Seven [u7].rsn											B126D2D6	59133
+Ultra Baseball Jitsumeiban [ubj].rsn									41701DED	31680
+Ultra Baseball Jitsumeiban 2 [ubj2].rsn									53163353	58410
+Ultra Baseball Jitsumeiban 3 [ubj3].rsn									34106E86	57368
+Undercover Cops [ucc].rsn										5CA21D4D	119608
+Ultima - Dinosaur Empire [ukt].rsn									83FBAD20	53368
+Utyu no Kishi Tekkaman Blade [uktb].rsn									FD6AAD01	36137
+Ultra League [ulmst].rsn										F6670BC4	106587
+Ultima 6 [ult6].rsn											7CD85CA2	76393
+Ultima 7 [ult7].rsn											4A1C9F50	56758
+Ultraman [ultm].rsn											F0D3A0B9	100513
+Ultraman - Towards the Future [um].rsn									D2FB1669	48247
+Umihara Kawase [umi].rsn										DD331033	52185
+Umizuri Meijin [umizm].rsn										AAA08E33	88460
+Untitled NFL Football Game [unfl].rsn									F1C994C1	31259
+Uniracers [unir].rsn											40711CCD	94215
+Untouchables, The [unt].rsn										BE1239F8	118741
+Ultima - Runes of Virtue 2 [urov2].rsn									705A8E0F	81715
+Urban Strike [us].rsn											173DEADB	93786
+Universal Soldier [usol].rsn										ED646A2D	42592
+Ushio and Tora [ut].rsn											3FC2CCF1	128184
+Utopia [uto].rsn											2934D03F	53259
+Super Dai Koukai Jidai (Super Unchartered Water) [uw].rsn						2D341358	39811
+Dai Koukai Jidai 2 (Uncharted Waters - New Horizons) [uw2].rsn						2DC57DCE	142958
+Virtual Bart [vbart].rsn										9BEF28D2	142404
+Volleyball Twin [vbt].rsn										FEC0FA5A	59281
+Vegas Stakes [vegas].rsn										FB138367	77359
+Verne World [vewo].rsn											D9BFFA4D	163766
+Kouryuu Densetsu Villgust [vill].rsn									96AD6C1D	126338
+Violinist of Hameln [voh].rsn										FD7614BA	191435
+Vortex [vor].rsn											107DC7ED	55678
+Vs. Collection [vsc].rsn										96A3C03C	72070
+Soukoukihei Votoms - The Battling Road [vt].rsn								1284C09D	97179
+War 2410 [w2410].rsn											FD52F532	72412
+Wings 2 Aces High [w2ah].rsn										E2424198	63823
+War 3010 [w3010].rsn											08A333F3	61592
+Waialae Country Club [waia].rsn										0DB94E67	53486
+Wally wo Sagase [wally].rsn										208EDB58	103229
+BS Wapaaz Souryu Hen [wapa].rsn										F9FF49CD	47572
+Warlock [warl].rsn											0E4890F2	106096
+WarpSpeed [warp].rsn											41F9ADC2	73717
+Waterworld [wawo].rsn											49B88EE8	266686
+Wing Commander [wc].rsn											F3BC80C7	104054
+Wrecking Crew '98 [wc98].rsn										229827D7	134100
+World Class Rugby [wcr].rsn										0F3FF601	37118
+World Cup USA '94 [wcu94].rsn										5ECA1CA0	114607
+World Cup '98 (Super Gameboy) [wcup].rsn								B9A43326	49472
+WCW SuperBrawl Wrestling [wcwsb].rsn									ABCFD802	76203
+Wedding Peach [wedp].rsn										EE04C6FA	67321
+Winter Extreme - Skiing and Snowboarding [wesas].rsn							16840A73	64879
+Wheel of Fortune - Deluxe Edition [wfdx].rsn								25761DC9	107585
+Winter Gold FX [wgfx].rsn										70A31C38	110664
+Super Wagan Land [wgl].rsn										05E76105	45403
+Wayne Gretzky and the NHLPA All-Stars [wgnhl].rsn							0C8468D1	195403
+Wagyan Paradise [wgp].rsn										E1B58C8E	126807
+Wild Guns [wguns].rsn											C7984A27	73838
+World Heroes [wh].rsn											2D40DDF4	121033
+World Heroes 2 [wh2].rsn										6DA36695	186429
+Whizz [whizz].rsn											8C527D8E	54342
+Whirlo [whrl].rsn											7C6E7414	48628
+Wizardry 1-2-3 [wiz123].rsn										B738F912	171998
+Wizardry 5 - Heart of the Maelstrom [wiz5].rsn								5E876EB9	73078
+Wizardry VI [wiz6].rsn											86ECEF1F	199015
+Wizardry Gaiden IV [wizg4].rsn										4A88381A	276254
+WeaponLord [wl].rsn											74A96977	120378
+World League Soccer [wls].rsn										0858E084	64083
+World Masters Golf [wmg].rsn										4AA46097	87614
+Ken Griffey Jr. Winning Run [wnrn].rsn									03D47447	167479
+Wolverine - Adamantium Rage [woar].rsn									CEB06C0C	116156
+Winter Olympic Games [wog].rsn										9BC4316F	109600
+Wolf Child [wolf].rsn											ECEB9669	103854
+World of Manga II [wom].rsn										CBA7B979	103526
+Wondrous Magic [wonm].rsn										CF150C56	78962
+Wordtris [word].rsn											FFABE671	96373
+Worms [worms].rsn											26D0DA4F	51048
+War of the Gems [wotg].rsn										2E9657B7	132897
+Wizard of Oz [woz].rsn											948F31B4	73404
+Chou Mahou Tairiku Wozz [wozz].rsn									523016F9	290740
+Wonder Project J [wpj].rsn										0DB8E638	335475
+WildSnake [wsnk].rsn											723A3DFA	77466
+Stunt Race FX [wt].rsn											98F915B6	109317
+Wakataka Oozumou [wtoz].rsn										BA4BDB52	100658
+WWF Wrestlemania - The Arcade Game [wwfa].rsn								E75BC9E3	75431
+WWF Raw [wwfr].rsn											C59C369B	144125
+WWF Royal Rumble [wwfrr].rsn										52B031DB	91848
+WWF Super Wrestlemania [wwfsw].rsn									C5E72949	52608
+Waku Waku Ski Wonder Shoot [wws].rsn									ECC1DC13	81125
+Xak - The Art of Visual Stage [xak].rsn									2F2CE948	106779
+XBand Modem [xband].rsn											A5FA4EBF	120783
+X-Kaliber 2097 [xkb].rsn										03684BFD	92031
+X-Men - Mutant Apocalypse [xma].rsn									B52BA237	115126
+Christmas Craze [xmas].rsn										987D2C27	24646
+X-Men vs. Street Fighter (Pirate) [xmvsf].rsn								00B6D24D	47261
+Xardion [xrdn].rsn											20706CA9	73909
+X-Zone [xz].rsn												8E619930	48207
+UFO Kamen Yakisoban [yaki].rsn										CC75D3EF	72056
+Yoshi's Cookie [yc].rsn											FEDAF69F	82180
+Super Mario World 2 - Yoshi's Island [yi].rsn								BF4FC0E8	150401
+Yuujin Janjuu Gakuen [yjjg].rsn										097C2614	60169
+Youkai Buster - Ruka no Daibouken [ykb].rsn								020D3180	82473
+Yakouchuu [ykc].rsn											6D8B9D2C	135735
+Young Merlin [ym].rsn											C66C5E1A	211171
+Yume Maboroshi no Gotoku [ymng].rsn									0DE58E4A	62863
+Yuujin no Furi Furi Girls [ynffg].rsn									C948B537	176442
+Yoshi no Kuruppon [ynk].rsn										2E2C32BD	53516
+Yogi Bear [yogi].rsn											FB720335	115230
+Yuuyu no Quiz de Go! Go! [yqgg].rsn									8D86BFFE	153116
+Ys 3 - Wanderers From Ys [ys3].rsn									D6A92C8F	84055
+Ys IV - Mask of the Sun [ys4].rsn									651BE51B	189462
+Ys 5 [ys5].rsn												A17AD1D2	186717
+Yoshi's Safari [ysfr].rsn										39F6EE06	60681
+Yamato Takeru [ytak].rsn										74F6512E	305983
+Yadamon Wonderland Dreams [ywd].rsn									AC35FB48	157507
+Yuu Yuu Hakusho [yyh].rsn										5C40C7A3	74559
+Yuu Yuu Hakusho 2 [yyh2].rsn										C7169071	66823
+Yuu Yuu Hakusho - Tokubetsu-hen [yyht].rsn								2E69E47B	88297
+Zero 4 Champ RR [z4cr].rsn										B6AD85F5	86628
+Zombies Ate My Neighbors [zamn].rsn									76074C5A	88648
+Zan 2 Spirits [zan2].rsn										83C5500B	98598
+Zan 3 Spirits [zan3].rsn										48932B66	146065
+Z-Gundam - Away to the Newtype [zgd].rsn								6832E9BE	112104
+Zen Nihon GT Sensyuken [zgts].rsn									18298A9A	51841
+Zico Soccer [zico].rsn											2A3D613E	130741
+Zenkoku Juudan Ultra Shinri Game [zjsg].rsn								5235E951	74290
+Zero the Kamikaze Squirrel [zks].rsn									6E6DFAA5	98210
+'96 Zenkoku Koukou Soccer Senshuken [zkss].rsn								6CAAA963	119482
+Zenkoku Koukou Soccer Senshuken 2 [zkss2].rsn								0482FA8F	147164
+Zenkoku Koukou Soccer Senshuken [zkssh].rsn								59A094F8	101492
+Zakuro no Aji [zna].rsn											136F7B74	236253
+Zennihon Pro Wrestling [znpw].rsn									52DF7F2F	138527
+Zennihon Pro Wrestling 2 - 3.4 Budoukan [znpw2].rsn							71A06456	189887
+Zennihon Pro Wrestling Dash - Sekai Saikyou Tag (Natsume Championship Wrestling) [znpwd].rsn		1204E5AF	164052
+Zone [zone].rsn												E56BD0FA	26718
+Zool [zool].rsn												4892C45B	181663
+Zoop [zoop].rsn												119A02AC	149872
+Zootto Mahjong! [zoot].rsn										9E55FE31	66663
+Zig Zag Cat [zzc].rsn											B2C2D752	201769
+
+You are missing ( 1516 out of 1516) .RSN files

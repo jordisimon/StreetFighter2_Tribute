@@ -1,8 +1,18 @@
 #include <stdlib.h>
 #include "Defines.h"
 #include "Game.h"
-#include "Module.h"
+#include "Entity.h"
 
+/**
+WARNING!!!
+Para poder compilar este proyecto en VS 2015, ha sido necesario recompilar el proyecto SDL2main.lib con esta misma version de Visual Studio.
+En la carpeta SDL/libx86/ se puede encontrar ahora mismo los archivos:
+SDL2main_VC2013.lib y
+SDL2main_VC2015.lib
+Hay que copiar y renombrar a SDL2main.lib la que corresponda segun la versión de Visual Studio que queramos usar.
+*/
+
+#include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2_image.lib" )
@@ -31,7 +41,7 @@ int main(int argc, char ** argv)
 		case MAIN_CREATION:
 
 			LOG("Game Creation --------------");
-			game = new Game();
+			game = CreateGame();
 			state = MAIN_START;
 			break;
 
@@ -53,15 +63,15 @@ int main(int argc, char ** argv)
 
 		case MAIN_UPDATE:
 		{
-			Module::Update_result update_return = game->Update();
+			Entity::Result update_return = game->Update();
 
-			if (update_return == Module::Update_result::UPDATE_ERROR)
+			if (update_return == Entity::Result::R_ERROR)
 			{
 				LOG("Game Update exits with error -----");
 				state = MAIN_EXIT;
 			}
 
-			if (update_return == Module::Update_result::UPDATE_EXIT)
+			if (update_return == Entity::Result::R_EXIT)
 				state = MAIN_FINISH;
 		}
 		break;

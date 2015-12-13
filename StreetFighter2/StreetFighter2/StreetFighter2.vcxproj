@@ -78,6 +78,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -89,6 +90,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -104,6 +106,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -119,40 +122,79 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Module.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="Direction.h" />
+    <ClInclude Include="ICollitionListener.h" />
+    <ClInclude Include="IParticleFactory.h" />
+    <ClInclude Include="Ken.h" />
+    <ClInclude Include="Match.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="ModuleAudio.h" />
-    <ClInclude Include="ModuleCommandManager.h" />
-    <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModuleRender.h" />
-    <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleFactory.h" />
+    <ClInclude Include="ParticleHaDoKen.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerState.h" />
+    <ClInclude Include="PlayerStateFWalk.h" />
+    <ClInclude Include="PlayerStateIdle.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Ryu.h" />
+    <ClInclude Include="Service.h" />
+    <ClInclude Include="ServiceAudio.h" />
+    <ClInclude Include="ServiceCollition.h" />
+    <ClInclude Include="ServiceCommandManager.h" />
+    <ClInclude Include="ServiceInput.h" />
+    <ClInclude Include="ServiceParticles.h" />
+    <ClInclude Include="ServiceRender.h" />
+    <ClInclude Include="ServiceTextures.h" />
+    <ClInclude Include="SF2Game.h" />
     <ClInclude Include="SimpleIni.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageHonda.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Ken.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Module.cpp" />
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="ModuleAudio.cpp" />
-    <ClCompile Include="ModuleCommandManager.cpp" />
-    <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModuleRender.cpp" />
-    <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="Match.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleFactory.cpp" />
+    <ClCompile Include="ParticleHaDoKen.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
+    <ClCompile Include="PlayerStateFWalk.cpp" />
+    <ClCompile Include="PlayerStateIdle.cpp" />
+    <ClCompile Include="Ryu.cpp" />
+    <ClCompile Include="ServiceAudio.cpp" />
+    <ClCompile Include="ServiceCollition.cpp" />
+    <ClCompile Include="ServiceCommandManager.cpp" />
+    <ClCompile Include="ServiceInput.cpp" />
+    <ClCompile Include="ServiceParticles.cpp" />
+    <ClCompile Include="ServiceRender.cpp" />
+    <ClCompile Include="ServiceTextures.cpp" />
+    <ClCompile Include="SF2Game.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageHonda.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

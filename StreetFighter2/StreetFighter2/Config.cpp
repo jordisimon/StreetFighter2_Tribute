@@ -5,10 +5,12 @@
 Config::Config()
 {
 	auxKey = new char[100]; //should be enough for all keys in config file
+	result = new char[100];
 }
 
 Config::~Config()
 {
+	RELEASE_ARRAY(result);
 	RELEASE_ARRAY(auxKey);
 }
 
@@ -42,34 +44,28 @@ bool Config::LoadBoolValue(const char * sectionName, const char * keyName, const
 
 bool Config::LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const
 {
-	strcpy(auxKey, keyName); strcat(auxKey, "X");
-	sprite.rect.x = atoi(ini.GetValue(sectionName, auxKey, "0"));
+	strcpy(result, ini.GetValue(sectionName, keyName, "0,0,0,0"));
 
-	strcpy(auxKey, keyName); strcat(auxKey, "Y");
-	sprite.rect.y = atoi(ini.GetValue(sectionName, auxKey, "0"));
+	sprite.rect.x = atoi(strtok(result, ","));
+	sprite.rect.y = atoi(strtok(NULL, ","));
+	sprite.rect.w = atoi(strtok(NULL, ","));
+	sprite.rect.h = atoi(strtok(NULL, ","));
 
-	strcpy(auxKey, keyName); strcat(auxKey, "W");
-	sprite.rect.w = atoi(ini.GetValue(sectionName, auxKey, "0"));
+	strcpy(auxKey, keyName); strcat(auxKey, "Offset");
+	strcpy(result, ini.GetValue(sectionName, auxKey, "0,0"));
 
-	strcpy(auxKey, keyName); strcat(auxKey, "H");
-	sprite.rect.h = atoi(ini.GetValue(sectionName, auxKey, "0"));
-
-	strcpy(auxKey, keyName); strcat(auxKey, "OffsetX");
-	sprite.offset.x = atoi(ini.GetValue(sectionName, auxKey, "0"));
-
-	strcpy(auxKey, keyName); strcat(auxKey, "OffsetY");
-	sprite.offset.y = atoi(ini.GetValue(sectionName, auxKey, "0"));
+	sprite.offset.x = atoi(strtok(result, ","));
+	sprite.offset.y = atoi(strtok(NULL, ","));
 
 	return true; //useless right now, but ready for some kind of error control in the future
 }
 
-bool Config::LoadPosition(iPoint & point, const char * sectionName, const char * keyName) const
+bool Config::LoadPoint(iPoint & point, const char * sectionName, const char * keyName) const
 {
-	strcpy(auxKey, keyName); strcat(auxKey, "PosX");
-	point.x = atoi(ini.GetValue(sectionName, auxKey, "0"));
+	strcpy(result, ini.GetValue(sectionName, keyName, "0,0"));
 
-	strcpy(auxKey, keyName); strcat(auxKey, "PosY");
-	point.y = atoi(ini.GetValue(sectionName, auxKey, "0"));
+	point.x = atoi(strtok(result, ","));
+	point.y = atoi(strtok(NULL, ","));
 
 	return true;
 }
@@ -80,38 +76,34 @@ bool Config::LoadAnimation(Animation & animation, const char * sectionName, cons
 	char* frameNumChar = new char[3];
 	int frameX, frameY, frameW, frameH, frameOffsetX, frameOffsetY;
 
-	bool result;
+	bool frameFound;
 	do
 	{
 		sprintf(frameNumChar, "%d", frameNum);
 
-		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar); strcat(auxKey, "X");
-		frameX = atoi(ini.GetValue(sectionName, auxKey, "-1"));
+		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar);
+		strcpy(result, ini.GetValue(sectionName, auxKey, "-1,-1,-1,-1"));
 
-		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar); strcat(auxKey, "Y");
-		frameY = atoi(ini.GetValue(sectionName, auxKey, "-1"));
+		frameX = atoi(strtok(result, ","));
+		frameY = atoi(strtok(NULL, ","));
+		frameW = atoi(strtok(NULL, ","));
+		frameH = atoi(strtok(NULL, ","));
+		
+		frameFound = (frameX != -1 && frameY != -1 && frameW != -1 && frameH != -1);
 
-		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar); strcat(auxKey, "W");
-		frameW = atoi(ini.GetValue(sectionName, auxKey, "-1"));
-
-		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar); strcat(auxKey, "H");
-		frameH = atoi(ini.GetValue(sectionName, auxKey, "-1"));
-
-		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar); strcat(auxKey, "OffsetX");
-		frameOffsetX = atoi(ini.GetValue(sectionName, auxKey, "0"));
-
-		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar); strcat(auxKey, "OffsetY");
-		frameOffsetY = atoi(ini.GetValue(sectionName, auxKey, "0"));
-
-		result = (frameX != -1 && frameY != -1 && frameW != -1 && frameH != -1);
-
-		if (result)
+		if (frameFound)
 		{
+			strcat(auxKey, "Offset");
+			strcpy(result, ini.GetValue(sectionName, auxKey, "0,0"));
+
+			frameOffsetX = atoi(strtok(result, ","));
+			frameOffsetY = atoi(strtok(NULL, ","));
+		
 			animation.frames.push_back({ { frameX, frameY, frameW, frameH },{ frameOffsetX, frameOffsetY } });
 		}
 
 		frameNum++;
-	} while (result);
+	} while (frameFound);
 
 
 	strcpy(auxKey, keyName); strcat(auxKey, "Speed");

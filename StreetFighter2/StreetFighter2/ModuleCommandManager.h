@@ -6,6 +6,7 @@ class Config;
 class ModuleCommandManager : public Module
 {
 private:
+	bool debugEnabled;
 	int debugCameraSpeed;
 
 public:

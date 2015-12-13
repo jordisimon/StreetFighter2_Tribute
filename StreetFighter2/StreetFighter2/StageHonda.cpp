@@ -1,11 +1,10 @@
 #include "StageHonda.h"
 #include "Game.h"
-#include "ModuleRender.h"
-
-#define CONFIG_SECTION "Scene_Honda"
+#include "ServiceRender.h"
 
 StageHonda::StageHonda()
 {
+	configSection = "Scene_Honda";
 }
 
 
@@ -15,47 +14,55 @@ StageHonda::~StageHonda()
 
 bool StageHonda::Init(const Config & config)
 {
-	spriteSheetName = config.LoadCharValue(CONFIG_SECTION, "spriteSheetName", "honda_stage.png");
-	musicName = config.LoadCharValue(CONFIG_SECTION, "music", "honda.ogg");
+	bool res = Stage::Init(config);
 
-	// ground
-	config.LoadSprite(ground, CONFIG_SECTION, "ground");
-	config.LoadPosition(groundPos, CONFIG_SECTION, "ground");
+	if (res)
+	{
+		// ground
+		config.LoadSprite(ground, configSection, "ground");
+		config.LoadPoint(groundPos, configSection, "groundPos");
 
-	//background
-	config.LoadSprite(background, CONFIG_SECTION, "background");
-	config.LoadPosition(backgroundPos, CONFIG_SECTION, "background");
+		//background
+		config.LoadSprite(background, configSection, "background");
+		config.LoadPoint(backgroundPos, configSection, "backgroundPos");
 
-	//ceiling
-	config.LoadSprite(ceiling, CONFIG_SECTION, "ceiling");
-	config.LoadPosition(ceilingPos, CONFIG_SECTION, "ceiling");
+		//ceiling
+		config.LoadSprite(ceiling, configSection, "ceiling");
+		config.LoadPoint(ceilingPos, configSection, "ceilingPos");
 
-	//pool
-	config.LoadSprite(pool, CONFIG_SECTION, "pool");
-	config.LoadPosition(poolPos, CONFIG_SECTION, "pool");
+		//pool
+		config.LoadSprite(pool, configSection, "pool");
+		config.LoadPoint(poolPos, configSection, "poolPos");
 
-	//lamp
-	config.LoadSprite(lamp, CONFIG_SECTION, "lamp");
-	config.LoadPosition(lamp1Pos, CONFIG_SECTION, "lamp1");
-	config.LoadPosition(lamp2Pos, CONFIG_SECTION, "lamp2");
+		//lamp
+		config.LoadSprite(lamp, configSection, "lamp");
+		config.LoadPoint(lamp1Pos, configSection, "lamp1Pos");
+		config.LoadPoint(lamp2Pos, configSection, "lamp2Pos");
 
-	// water animation
-	config.LoadAnimation(water, CONFIG_SECTION, "water");
-	config.LoadPosition(waterPos, CONFIG_SECTION, "water");
+		// water animation
+		config.LoadAnimation(water, configSection, "water");
+		config.LoadPoint(waterPos, configSection, "waterPos");
+	}
 
-	return true;
+	return res;
 }
 
-Module::Update_result StageHonda::Update()
+Entity::Result StageHonda::UpdateState()
+{
+	water.UpdateCurrentFrame();
+	return Entity::Result::R_OK;
+}
+
+Entity::Result StageHonda::Draw()
 {
 	// Draw everything --------------------------------------
-	game->render->Blit(graphics, groundPos.x, groundPos.y, &ground.rect); // floor
-	game->render->Blit(graphics, backgroundPos.x, backgroundPos.y, &background.rect, 0.75f); //background
-	game->render->Blit(graphics, ceilingPos.x, ceilingPos.y, &ceiling.rect, 0.75f); //ceiling
-	game->render->Blit(graphics, poolPos.x, poolPos.y, &pool.rect); //pool
-	game->render->Blit(graphics, waterPos.x, waterPos.y, &water.GetCurrentFrame().rect); // pool animation
-	game->render->Blit(graphics, lamp1Pos.x, lamp1Pos.y, &lamp.rect); //lamp1
-	game->render->Blit(graphics, lamp2Pos.x, lamp2Pos.y, &lamp.rect); //lamp2
+	game->sRender->Blit(texture, groundPos, &ground.rect); // floor
+	game->sRender->Blit(texture, backgroundPos, &background.rect, 0.75f); //background
+	game->sRender->Blit(texture, ceilingPos, &ceiling.rect, 0.75f); //ceiling
+	game->sRender->Blit(texture, poolPos, &pool.rect); //pool
+	game->sRender->Blit(texture, waterPos, &water.GetFrame().rect); // pool animation
+	game->sRender->Blit(texture, lamp1Pos, &lamp.rect); //lamp1
+	game->sRender->Blit(texture, lamp2Pos, &lamp.rect); //lamp2
 
-	return Module::Update_result::UPDATE_OK;
+	return Entity::Result::R_OK;
 }

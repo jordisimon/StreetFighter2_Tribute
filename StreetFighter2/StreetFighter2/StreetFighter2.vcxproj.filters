@@ -6,115 +6,263 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Sources">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <UniqueIdentifier>{21cf43ca-1243-4509-9921-cc3c598271d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Kernel">
-      <UniqueIdentifier>{e6d21491-b30c-4c5a-b26b-005dca8b10e1}</UniqueIdentifier>
+    <Filter Include="Sources\Engine">
+      <UniqueIdentifier>{acfa0713-0cec-41a5-a212-eefcf22c4cf6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Kernel\Stages">
-      <UniqueIdentifier>{483be998-35ca-40bf-967c-e2ae47725c16}</UniqueIdentifier>
+    <Filter Include="Sources\Engine\Audio">
+      <UniqueIdentifier>{8d7606a9-9f3a-4085-9a59-64a1a1946c59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Kernel\Characters">
-      <UniqueIdentifier>{f0d1ef4f-ab34-4874-b3b9-18a50b231a10}</UniqueIdentifier>
+    <Filter Include="Sources\Engine\Input">
+      <UniqueIdentifier>{926617e8-c1ae-4b94-bbab-ccebd02b3857}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Modules">
-      <UniqueIdentifier>{f60c74b7-87b1-4077-b6de-c11bb9fff2bf}</UniqueIdentifier>
+    <Filter Include="Sources\Engine\Particles">
+      <UniqueIdentifier>{daca4891-ff06-4fe9-8f41-d26533e30deb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Main">
+    <Filter Include="Sources\Engine\Graphics">
+      <UniqueIdentifier>{be9de2e1-4488-4964-99b5-8467e1cb0ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Config">
+      <UniqueIdentifier>{99ed01d6-c79f-4aa4-b08f-30105eb137c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Main">
       <UniqueIdentifier>{3badeecb-b78b-4d27-a6cb-02b2feca6a1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Utils">
+    <Filter Include="Sources\Engine\Utils">
       <UniqueIdentifier>{6116b62b-a833-496a-88e0-664732f68851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter">
+      <UniqueIdentifier>{e6d21491-b30c-4c5a-b26b-005dca8b10e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Stages">
+      <UniqueIdentifier>{483be998-35ca-40bf-967c-e2ae47725c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Characters">
+      <UniqueIdentifier>{f0d1ef4f-ab34-4874-b3b9-18a50b231a10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\FSM">
+      <UniqueIdentifier>{43b65930-1dba-4dca-841c-4d50003cc906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\FSM\GameStates">
+      <UniqueIdentifier>{1d75e250-cc90-41b6-b308-7c458e4d50fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\FSM\MatchStates">
+      <UniqueIdentifier>{364a492b-32d2-49b8-babb-9d41914cd6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\FSM\PlayerStates">
+      <UniqueIdentifier>{75a623ad-6bab-431c-9d52-c6838564f80c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Particles">
+      <UniqueIdentifier>{a8b70bab-304f-45ec-a670-005ba79e5143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Colliders">
+      <UniqueIdentifier>{5a756098-6ddf-4d27-92b5-793cc25751cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleIni.h">
-      <Filter>Sources\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Defines.h">
-      <Filter>Sources\Utils</Filter>
+      <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
-      <Filter>Sources\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Sources\Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Sources\Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleRender.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Sources\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Sources\Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleTextures.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInput.h">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
-      <Filter>Sources\Kernel\Stages</Filter>
+      <Filter>Sources\StreetFighter\Stages</Filter>
     </ClInclude>
     <ClInclude Include="StageHonda.h">
-      <Filter>Sources\Kernel\Stages</Filter>
+      <Filter>Sources\StreetFighter\Stages</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleCommandManager.h">
-      <Filter>Sources</Filter>
+    <ClInclude Include="Service.h">
+      <Filter>Sources\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleFactory.h">
+      <Filter>Sources\StreetFighter\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleHaDoKen.h">
+      <Filter>Sources\StreetFighter\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Sources\StreetFighter\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Sources\StreetFighter\FSM\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Match.h">
+      <Filter>Sources\StreetFighter</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Ryu.h">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateIdle.h">
+      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Ken.h">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Sources\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceAudio.h">
+      <Filter>Sources\Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceInput.h">
+      <Filter>Sources\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceParticles.h">
+      <Filter>Sources\Engine\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceTextures.h">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceRender.h">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="IParticleFactory.h">
+      <Filter>Sources\Engine\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Sources\Engine\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateFWalk.h">
+      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceCommandManager.h">
+      <Filter>Sources\StreetFighter</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Sources\Engine\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Sources\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Sources\Engine\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SF2Game.h">
+      <Filter>Sources\StreetFighter</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Sources\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollitionListener.h">
+      <Filter>Sources\Engine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Sources\Engine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceCollition.h">
+      <Filter>Sources\Engine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Sources\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.cpp">
-      <Filter>Sources\Utils</Filter>
+      <Filter>Sources\Engine\Main</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">
-      <Filter>Sources\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Sources\Kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Sources\Kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Sources\Kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>Sources\Kernel\Stages</Filter>
+      <Filter>Sources\StreetFighter\Stages</Filter>
     </ClCompile>
     <ClCompile Include="StageHonda.cpp">
-      <Filter>Sources\Kernel\Stages</Filter>
+      <Filter>Sources\StreetFighter\Stages</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleCommandManager.cpp" />
+    <ClCompile Include="ParticleHaDoKen.cpp">
+      <Filter>Sources\StreetFighter\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Sources\StreetFighter\FSM\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Match.cpp">
+      <Filter>Sources\StreetFighter</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Ryu.cpp">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateIdle.cpp">
+      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Ken.cpp">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceAudio.cpp">
+      <Filter>Sources\Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceInput.cpp">
+      <Filter>Sources\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceParticles.cpp">
+      <Filter>Sources\Engine\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceRender.cpp">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceTextures.cpp">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Sources\Engine\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateFWalk.cpp">
+      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceCommandManager.cpp">
+      <Filter>Sources\StreetFighter</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Sources\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Sources\Engine\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Sources\Engine\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SF2Game.cpp">
+      <Filter>Sources\StreetFighter</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Sources\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Sources\Engine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceCollition.cpp">
+      <Filter>Sources\Engine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Sources\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleFactory.cpp">
+      <Filter>Sources\StreetFighter\Particles</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 #pragma once
 
+#define DEBUG_SECTION "Debug"
+
 // Deletes a pointer
 #define RELEASE( x ) \
     {\

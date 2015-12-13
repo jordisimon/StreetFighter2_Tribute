@@ -32,6 +32,7 @@ public:
 
 	bool Init(const Config& config);
 
-	Module::Update_result Update();
+	Entity::Result UpdateState();
+	Entity::Result Draw();
 };
 
