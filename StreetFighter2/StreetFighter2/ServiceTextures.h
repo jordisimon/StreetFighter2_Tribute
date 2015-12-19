@@ -14,11 +14,11 @@ public:
 	ServiceTextures() {};
 	~ServiceTextures() {};
 
-	bool Init(const Config& config);
+	bool Init();
 	bool CleanUp();
 
-	SDL_Texture* const Load(const char* configSection);
-	SDL_Texture* const Load(const char* path, int id);
+	SDL_Texture* Load(const char* configSection);
+	SDL_Texture* Load(const char* path, int id);
 	void Unload(const SDL_Texture* texture);
 	void Unload(int id);
 };

@@ -42,24 +42,6 @@ bool Config::LoadBoolValue(const char * sectionName, const char * keyName, const
 	return atoi(ini.GetValue(sectionName, keyName, defaultValue)) != 0;
 }
 
-bool Config::LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const
-{
-	strcpy(result, ini.GetValue(sectionName, keyName, "0,0,0,0"));
-
-	sprite.rect.x = atoi(strtok(result, ","));
-	sprite.rect.y = atoi(strtok(NULL, ","));
-	sprite.rect.w = atoi(strtok(NULL, ","));
-	sprite.rect.h = atoi(strtok(NULL, ","));
-
-	strcpy(auxKey, keyName); strcat(auxKey, "Offset");
-	strcpy(result, ini.GetValue(sectionName, auxKey, "0,0"));
-
-	sprite.offset.x = atoi(strtok(result, ","));
-	sprite.offset.y = atoi(strtok(NULL, ","));
-
-	return true; //useless right now, but ready for some kind of error control in the future
-}
-
 bool Config::LoadPoint(iPoint & point, const char * sectionName, const char * keyName) const
 {
 	strcpy(result, ini.GetValue(sectionName, keyName, "0,0"));
@@ -68,6 +50,32 @@ bool Config::LoadPoint(iPoint & point, const char * sectionName, const char * ke
 	point.y = atoi(strtok(NULL, ","));
 
 	return true;
+}
+
+bool Config::LoadSDLRect(SDL_Rect & rect, const char * sectionName, const char * keyName) const
+{
+	strcpy(result, ini.GetValue(sectionName, keyName, "0,0,0,0"));
+
+	rect.x = atoi(strtok(result, ","));
+	rect.y = atoi(strtok(NULL, ","));
+	rect.w = atoi(strtok(NULL, ","));
+	rect.h = atoi(strtok(NULL, ","));
+
+	return true;
+}
+
+bool Config::LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const
+{
+	strcpy(result, ini.GetValue(sectionName, keyName, "0,0,0,0,0,0"));
+
+	sprite.rect.x = atoi(strtok(result, ","));
+	sprite.rect.y = atoi(strtok(NULL, ","));
+	sprite.rect.w = atoi(strtok(NULL, ","));
+	sprite.rect.h = atoi(strtok(NULL, ","));
+	sprite.offset.x = atoi(strtok(NULL, ","));
+	sprite.offset.y = atoi(strtok(NULL, ","));
+
+	return true; //useless right now, but ready for some kind of error control in the future
 }
 
 bool Config::LoadAnimation(Animation & animation, const char * sectionName, const char * keyName) const
@@ -82,23 +90,19 @@ bool Config::LoadAnimation(Animation & animation, const char * sectionName, cons
 		sprintf(frameNumChar, "%d", frameNum);
 
 		strcpy(auxKey, keyName); strcat(auxKey, frameNumChar);
-		strcpy(result, ini.GetValue(sectionName, auxKey, "-1,-1,-1,-1"));
+		strcpy(result, ini.GetValue(sectionName, auxKey, "-1,-1,-1,-1,-1,-1"));
 
 		frameX = atoi(strtok(result, ","));
 		frameY = atoi(strtok(NULL, ","));
 		frameW = atoi(strtok(NULL, ","));
 		frameH = atoi(strtok(NULL, ","));
+		frameOffsetX = atoi(strtok(NULL, ","));
+		frameOffsetY = atoi(strtok(NULL, ","));
 		
 		frameFound = (frameX != -1 && frameY != -1 && frameW != -1 && frameH != -1);
 
 		if (frameFound)
 		{
-			strcat(auxKey, "Offset");
-			strcpy(result, ini.GetValue(sectionName, auxKey, "0,0"));
-
-			frameOffsetX = atoi(strtok(result, ","));
-			frameOffsetY = atoi(strtok(NULL, ","));
-		
 			animation.frames.push_back({ { frameX, frameY, frameW, frameH },{ frameOffsetX, frameOffsetY } });
 		}
 

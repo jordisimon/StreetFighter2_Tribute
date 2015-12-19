@@ -1,12 +1,12 @@
 #include "ServiceTextures.h"
 #include "Defines.h"
-#include "Game.h"
 #include "Config.h"
+#include "ServicesManager.h"
 #include "ServiceRender.h"
 
 using namespace std;
 
-bool ServiceTextures::Init(const Config& config)
+bool ServiceTextures::Init()
 {
 	LOG("Init Textures Service");
 
@@ -37,23 +37,23 @@ bool ServiceTextures::CleanUp()
 	return true;
 }
 
-SDL_Texture* const ServiceTextures::Load(const char * configSection)
+SDL_Texture* ServiceTextures::Load(const char * configSection)
 {
 	//Find texture id
-	int textureId = game->config.LoadIntValue(configSection, "spriteSheetId", "-1");
+	int textureId = config->LoadIntValue(configSection, "spriteSheetId", "-1");
 
 	if (textureId == -1)
 		return nullptr;
 
 	//If texture already loaded, return it
-	map<int, SDL_Texture*>::const_iterator tex = textures.find(textureId);
-	if (tex != textures.cend())
+	map<int, SDL_Texture*>::const_iterator it = textures.find(textureId);
+	if (it != textures.cend())
 	{
-		return tex->second;
+		return it->second;
 	}
 
 	//Find texture path
-	const char* path = game->config.LoadCharValue(configSection, "spriteSheetName", "");
+	const char* path = config->LoadCharValue(configSection, "spriteSheetName", "");
 
 	//Load texture and insert into map
 	SDL_Texture* texture = nullptr;
@@ -65,7 +65,7 @@ SDL_Texture* const ServiceTextures::Load(const char * configSection)
 	}
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(game->sRender->renderer, surface);
+		texture = SDL_CreateTextureFromSurface(servicesManager->render->renderer, surface);
 
 		if (texture == nullptr)
 		{
@@ -83,12 +83,12 @@ SDL_Texture* const ServiceTextures::Load(const char * configSection)
 }
 
 // Load new texture from file path
-SDL_Texture* const ServiceTextures::Load(const char* path, int id)
+SDL_Texture* ServiceTextures::Load(const char* path, int id)
 {
-	map<int, SDL_Texture*>::const_iterator tex = textures.find(id);
-	if (tex != textures.cend())
+	map<int, SDL_Texture*>::const_iterator it = textures.find(id);
+	if (it != textures.cend())
 	{
-		return tex->second;
+		return it->second;
 	}
 
 	SDL_Texture* texture = nullptr;
@@ -100,7 +100,7 @@ SDL_Texture* const ServiceTextures::Load(const char* path, int id)
 	}
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(game->sRender->renderer, surface);
+		texture = SDL_CreateTextureFromSurface(servicesManager->render->renderer, surface);
 
 		if (texture == nullptr)
 		{
@@ -133,11 +133,11 @@ void ServiceTextures::Unload(const SDL_Texture* texture)
 
 void ServiceTextures::Unload(int id)
 {
-	map<int, SDL_Texture*>::const_iterator tex = textures.find(id);
-	if (tex != textures.cend())
+	map<int, SDL_Texture*>::const_iterator it = textures.find(id);
+	if (it != textures.cend())
 	{
-		SDL_DestroyTexture(tex->second);
-		textures.erase(tex);
+		SDL_DestroyTexture(it->second);
+		textures.erase(it);
 	}
 }
 

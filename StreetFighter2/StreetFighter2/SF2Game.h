@@ -1,16 +1,26 @@
 #pragma once
 #include "Game.h"
 
+class CommandContext;
+class Scene;
+
 //Testing
 class ServiceCommandManager;
-class Match;
+class SceneMatch;
 
 class SF2Game :	public Game
 {
 private:
+	//Debug
+	bool debug;
+	int debugCameraSpeed;
+	CommandContext* debugCommandContext;
+
+	Scene* currentScene;
+
 	//Testing 
-	Match* match;
-	ServiceCommandManager* sCommands;
+	//SceneMatch* match = nullptr;
+	//ServiceCommandManager* sCommands = nullptr;
 
 public:
 	SF2Game();
@@ -19,7 +29,8 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	Entity::Result ProcessInput();
+	bool UpdateInput();
+	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
 	Entity::Result Draw();
 };

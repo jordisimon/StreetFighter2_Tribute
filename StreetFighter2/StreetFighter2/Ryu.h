@@ -1,11 +1,11 @@
 #pragma once
-#include "Player.h"
-class Ryu :	public Player
+#include "Character.h"
+class Ryu :	public Character
 {
 public:
 	Ryu();
 	~Ryu();
 
-	bool Init(const Config& config);
+	bool Init();
 };
 

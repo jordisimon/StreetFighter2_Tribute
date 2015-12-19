@@ -1,6 +1,6 @@
 #pragma once
 
-class Config;
+struct CommandData;
 
 class Entity
 {
@@ -15,13 +15,13 @@ public:
 	Entity() {};
 	virtual ~Entity() {};
 
-	virtual bool Init(const Config& config) { return true; }
+	virtual bool Init() { return true; }
 	virtual bool CleanUp() { return true; }
 
 	virtual bool Start() { return true; }
 	virtual bool Stop() { return true; }
 
-	virtual Result ProcessInput() { return Result::R_OK; };
+	virtual bool ProcessInput(CommandData* commandData) { return true; };
 	virtual Result UpdateState() { return Result::R_OK; };
 	virtual Result Draw() { return Result::R_OK; };
 };

@@ -7,8 +7,7 @@ class Collider;
 class ParticleHaDoKen :	public Particle, ICollitionListener
 {
 private:
-	unsigned int timeout;
-	Collider* collider;
+	Collider* collider = nullptr;
 
 public:
 	enum class Type
@@ -27,7 +26,7 @@ public:
 
 	bool UpdateState();
 
-	void OnCollitionEnter(Collider* colA, Collider* colB) {};
-	void OnCollitionExit(Collider* colA, Collider* colB) {};
+	void OnCollitionEnter(Collider* colA, Collider* colB);
+	void OnCollitionExit(Collider* colA, Collider* colB);
 };
 

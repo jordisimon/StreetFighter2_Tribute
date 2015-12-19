@@ -30,7 +30,7 @@ public:
 	StageHonda();
 	~StageHonda();
 
-	bool Init(const Config& config);
+	bool Init();
 
 	Entity::Result UpdateState();
 	Entity::Result Draw();

@@ -6,8 +6,8 @@
 class Config
 {
 private:
-	char* auxKey;
-	char* result;
+	char* auxKey = nullptr;
+	char* result = nullptr;
 	CSimpleIniA ini;
 
 public:
@@ -22,8 +22,11 @@ public:
 	float LoadFloatValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 	bool LoadBoolValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 
-	bool LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const;
 	bool LoadPoint(iPoint& point, const char * sectionName, const char * keyName) const;
+	bool LoadSDLRect(SDL_Rect& rect, const char* sectionName, const char* keyName) const;
+	bool LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const;
 	bool LoadAnimation(Animation& animation, const char* sectionName, const char* keyName) const;
 };
+
+extern Config* config;
 

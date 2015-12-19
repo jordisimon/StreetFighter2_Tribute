@@ -10,9 +10,9 @@ Ryu::~Ryu()
 {
 }
 
-bool Ryu::Init(const Config & config)
+bool Ryu::Init()
 {
-	bool res = Player::Init(config);
+	bool res = Character::Init();
 
 	if (res)
 	{

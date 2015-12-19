@@ -8,7 +8,7 @@ public:
 	Service() {};
 	virtual ~Service() {};
 
-	virtual bool Init(const Config& config) { return true; }
+	virtual bool Init() { return true; }
 	virtual bool CleanUp() { return true; }
 
 	virtual bool Start() { return true; }

@@ -18,11 +18,14 @@ public:
 	ServiceAudio() {};
 	~ServiceAudio() {};
 
-	bool Init(const Config& config);
+	bool Init();
 	bool CleanUp();
 
 	bool PlayMusic(const char* path);
 	bool PlayMusic(const char* path, float pFade_time);
+	bool PauseMusic();
+	bool ResumeMusic();
+	bool StopMusic();
 
 	int LoadFx(const char* path);
 	bool PlayFx(unsigned int fx, int repeat = 0) const;

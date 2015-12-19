@@ -8,8 +8,8 @@ struct SDL_Texture;
 class Particle
 {
 protected:
-	SDL_Texture* texture;
-	Animation* animation;
+	SDL_Texture* texture = nullptr;
+	Animation* animation = nullptr;
 	iPoint position;
 	Direction direction;
 

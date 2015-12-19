@@ -11,18 +11,6 @@
     <Filter Include="Sources\Engine">
       <UniqueIdentifier>{acfa0713-0cec-41a5-a212-eefcf22c4cf6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Engine\Audio">
-      <UniqueIdentifier>{8d7606a9-9f3a-4085-9a59-64a1a1946c59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Engine\Input">
-      <UniqueIdentifier>{926617e8-c1ae-4b94-bbab-ccebd02b3857}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Engine\Particles">
-      <UniqueIdentifier>{daca4891-ff06-4fe9-8f41-d26533e30deb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Engine\Graphics">
-      <UniqueIdentifier>{be9de2e1-4488-4964-99b5-8467e1cb0ba7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Engine\Config">
       <UniqueIdentifier>{99ed01d6-c79f-4aa4-b08f-30105eb137c7}</UniqueIdentifier>
     </Filter>
@@ -47,17 +35,44 @@
     <Filter Include="Sources\StreetFighter\FSM\GameStates">
       <UniqueIdentifier>{1d75e250-cc90-41b6-b308-7c458e4d50fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\StreetFighter\FSM\MatchStates">
-      <UniqueIdentifier>{364a492b-32d2-49b8-babb-9d41914cd6ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\StreetFighter\FSM\PlayerStates">
-      <UniqueIdentifier>{75a623ad-6bab-431c-9d52-c6838564f80c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\StreetFighter\Particles">
       <UniqueIdentifier>{a8b70bab-304f-45ec-a670-005ba79e5143}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Engine\Colliders">
+    <Filter Include="Sources\StreetFighter\Colliders">
+      <UniqueIdentifier>{c9e62ca9-7da1-4eeb-ba63-bf8bc875c191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Input">
+      <UniqueIdentifier>{eb980d90-ae14-4949-bca0-d878e86f6b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services">
+      <UniqueIdentifier>{febb3638-e2b6-439a-a369-395661b1ae23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Particles">
+      <UniqueIdentifier>{daca4891-ff06-4fe9-8f41-d26533e30deb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Input">
+      <UniqueIdentifier>{926617e8-c1ae-4b94-bbab-ccebd02b3857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Graphics">
+      <UniqueIdentifier>{be9de2e1-4488-4964-99b5-8467e1cb0ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Colliders">
       <UniqueIdentifier>{5a756098-6ddf-4d27-92b5-793cc25751cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Audio">
+      <UniqueIdentifier>{8d7606a9-9f3a-4085-9a59-64a1a1946c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Command">
+      <UniqueIdentifier>{dec57514-ee6b-439f-b14a-674c9902c4d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Scenes">
+      <UniqueIdentifier>{49b31ca9-b9a5-448d-ac79-c5af357d8863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Characters\CharacterStates">
+      <UniqueIdentifier>{75a623ad-6bab-431c-9d52-c6838564f80c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Scenes\MatchStates">
+      <UniqueIdentifier>{364a492b-32d2-49b8-babb-9d41914cd6ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,9 +91,6 @@
     <ClInclude Include="StageHonda.h">
       <Filter>Sources\StreetFighter\Stages</Filter>
     </ClInclude>
-    <ClInclude Include="Service.h">
-      <Filter>Sources\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleFactory.h">
       <Filter>Sources\StreetFighter\Particles</Filter>
     </ClInclude>
@@ -91,20 +103,8 @@
     <ClInclude Include="GameState.h">
       <Filter>Sources\StreetFighter\FSM\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="Match.h">
-      <Filter>Sources\StreetFighter</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Sources\StreetFighter\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerState.h">
-      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
-    </ClInclude>
     <ClInclude Include="Ryu.h">
       <Filter>Sources\StreetFighter\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStateIdle.h">
-      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
     </ClInclude>
     <ClInclude Include="Ken.h">
       <Filter>Sources\StreetFighter\Characters</Filter>
@@ -113,43 +113,34 @@
       <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="ServiceAudio.h">
-      <Filter>Sources\Engine\Audio</Filter>
+      <Filter>Sources\Engine\Services\Audio</Filter>
     </ClInclude>
     <ClInclude Include="ServiceInput.h">
-      <Filter>Sources\Engine\Input</Filter>
+      <Filter>Sources\Engine\Services\Input</Filter>
     </ClInclude>
     <ClInclude Include="ServiceParticles.h">
-      <Filter>Sources\Engine\Particles</Filter>
+      <Filter>Sources\Engine\Services\Particles</Filter>
     </ClInclude>
     <ClInclude Include="ServiceTextures.h">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ServiceRender.h">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="IParticleFactory.h">
-      <Filter>Sources\Engine\Particles</Filter>
+      <Filter>Sources\Engine\Services\Particles</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>Sources\Engine\Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStateFWalk.h">
-      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="ServiceCommandManager.h">
-      <Filter>Sources\StreetFighter</Filter>
+      <Filter>Sources\Engine\Services\Particles</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Sources\Engine\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Sources\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Sources\Engine\Main</Filter>
@@ -161,17 +152,99 @@
       <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="ICollitionListener.h">
-      <Filter>Sources\Engine\Colliders</Filter>
+      <Filter>Sources\Engine\Services\Colliders</Filter>
     </ClInclude>
     <ClInclude Include="Collider.h">
-      <Filter>Sources\Engine\Colliders</Filter>
+      <Filter>Sources\Engine\Services\Colliders</Filter>
     </ClInclude>
     <ClInclude Include="ServiceCollition.h">
-      <Filter>Sources\Engine\Colliders</Filter>
+      <Filter>Sources\Engine\Services\Colliders</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Collition.h">
+      <Filter>Sources\Engine\Services\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderType.h">
+      <Filter>Sources\StreetFighter\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandAction.h">
+      <Filter>Sources\StreetFighter\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandState.h">
+      <Filter>Sources\StreetFighter\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandContext.h">
+      <Filter>Sources\Engine\Services\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandData.h">
+      <Filter>Sources\Engine\Services\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceCommandManager.h">
+      <Filter>Sources\Engine\Services\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Service.h">
+      <Filter>Sources\Engine\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="ServicesManager.h">
+      <Filter>Sources\Engine\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Sources\Engine\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="StageType.h">
+      <Filter>Sources\StreetFighter\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterType.h">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Sources\StreetFighter\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMatch.h">
+      <Filter>Sources\StreetFighter\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStateIdle.h">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStateFWalk.h">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterState.h">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStateJump.h">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterFactory.h">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchState.h">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchStateFight.h">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchStateFinish.h">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchStateIntro.h">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchStatePause.h">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMatchInfo.h">
+      <Filter>Sources\StreetFighter\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="StageFactory.h">
+      <Filter>Sources\StreetFighter\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMatchGUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -192,53 +265,35 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Sources\StreetFighter\FSM\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="Match.cpp">
-      <Filter>Sources\StreetFighter</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Sources\StreetFighter\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerState.cpp">
-      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
-    </ClCompile>
     <ClCompile Include="Ryu.cpp">
       <Filter>Sources\StreetFighter\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStateIdle.cpp">
-      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
     </ClCompile>
     <ClCompile Include="Ken.cpp">
       <Filter>Sources\StreetFighter\Characters</Filter>
     </ClCompile>
     <ClCompile Include="ServiceAudio.cpp">
-      <Filter>Sources\Engine\Audio</Filter>
+      <Filter>Sources\Engine\Services\Audio</Filter>
     </ClCompile>
     <ClCompile Include="ServiceInput.cpp">
-      <Filter>Sources\Engine\Input</Filter>
+      <Filter>Sources\Engine\Services\Input</Filter>
     </ClCompile>
     <ClCompile Include="ServiceParticles.cpp">
-      <Filter>Sources\Engine\Particles</Filter>
+      <Filter>Sources\Engine\Services\Particles</Filter>
     </ClCompile>
     <ClCompile Include="ServiceRender.cpp">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="ServiceTextures.cpp">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>Sources\Engine\Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStateFWalk.cpp">
-      <Filter>Sources\StreetFighter\FSM\PlayerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="ServiceCommandManager.cpp">
-      <Filter>Sources\StreetFighter</Filter>
+      <Filter>Sources\Engine\Services\Particles</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Sources\Engine\Graphics</Filter>
+      <Filter>Sources\Engine\Services\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>Sources\Engine\Config</Filter>
@@ -253,10 +308,10 @@
       <Filter>Sources\Engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
-      <Filter>Sources\Engine\Colliders</Filter>
+      <Filter>Sources\Engine\Services\Colliders</Filter>
     </ClCompile>
     <ClCompile Include="ServiceCollition.cpp">
-      <Filter>Sources\Engine\Colliders</Filter>
+      <Filter>Sources\Engine\Services\Colliders</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>Sources\Engine\Utils</Filter>
@@ -264,5 +319,60 @@
     <ClCompile Include="ParticleFactory.cpp">
       <Filter>Sources\StreetFighter\Particles</Filter>
     </ClCompile>
+    <ClCompile Include="Collition.cpp">
+      <Filter>Sources\Engine\Services\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandContext.cpp">
+      <Filter>Sources\Engine\Services\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceCommandManager.cpp">
+      <Filter>Sources\Engine\Services\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ServicesManager.cpp">
+      <Filter>Sources\Engine\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Sources\StreetFighter\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMatch.cpp">
+      <Filter>Sources\StreetFighter\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterStateIdle.cpp">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterStateFWalk.cpp">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterState.cpp">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterStateJump.cpp">
+      <Filter>Sources\StreetFighter\Characters\CharacterStates</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterFactory.cpp">
+      <Filter>Sources\StreetFighter\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchState.cpp">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchStateFight.cpp">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchStateFinish.cpp">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchStateIntro.cpp">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchStatePause.cpp">
+      <Filter>Sources\StreetFighter\Scenes\MatchStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StageFactory.cpp">
+      <Filter>Sources\StreetFighter\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMatchGUI.cpp" />
   </ItemGroup>
 </Project>

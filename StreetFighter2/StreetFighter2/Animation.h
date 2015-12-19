@@ -4,16 +4,15 @@
 
 class Animation
 {
+private:
+	float current_frame;
+
 public:
 	float speed;
 	bool loop;
 	Sprite emptySprite;
 	std::vector<Sprite> frames;
 
-private:
-	float current_frame;
-
-public:
 	Animation();
 	~Animation();
 	

@@ -9,13 +9,13 @@
 
 using namespace std;
 
-bool ServiceAudio::Init(const Config& config)
+bool ServiceAudio::Init()
 {
 	LOG("Init Audio Service");
 
 	LOG("Loading Audio Mixer");
 
-	fadeTime = config.LoadFloatValue(CONFIG_SECTION, "fadeTime", "2.0f");
+	fadeTime = config->LoadFloatValue(CONFIG_SECTION, "fadeTime", "2.0f");
 
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
@@ -117,6 +117,28 @@ bool ServiceAudio::PlayMusic(const char * path, float pFade_time)
 
 	LOG("Successfully playing %s", path);
 	return ret;
+}
+
+bool ServiceAudio::PauseMusic()
+{
+	if (!Mix_PausedMusic())
+		Mix_PauseMusic();
+
+	return true;
+}
+
+bool ServiceAudio::ResumeMusic()
+{
+	if (Mix_PausedMusic())
+		Mix_ResumeMusic();
+
+	return true;
+}
+
+bool ServiceAudio::StopMusic()
+{
+	Mix_HaltMusic();
+	return true;
 }
 
 int ServiceAudio::LoadFx(const char* path)

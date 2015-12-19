@@ -8,18 +8,51 @@ ServiceInput::ServiceInput()
 {
 	memset(keyboard, (int)KeyState::KEY_IDLE, sizeof(KeyState) * MAX_KEYBOARD_KEYS);
 	memset(mouse_buttons, (int)KeyState::KEY_IDLE, sizeof(KeyState) * NUM_MOUSE_BUTTONS);
+	memset(gameController1, (int)KeyState::KEY_IDLE, sizeof(KeyState) * SDL_CONTROLLER_BUTTON_MAX);
+	memset(gameController2, (int)KeyState::KEY_IDLE, sizeof(KeyState) * SDL_CONTROLLER_BUTTON_MAX);
 }
 
-bool ServiceInput::Init(const Config & config)
+bool ServiceInput::Init()
 {
 	LOG("Init Input Service");
 
-	screenSize = config.LoadIntValue("Render", "screenRatio", "2");
+	screenSize = config->LoadIntValue("Render", "screenRatio", "2");
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		return false;
+	}
+
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("SDL_GAME_CONTROLLER could not initialize! SDL_Error: %s\n", SDL_GetError());
+		return false;
+	}
+
+	if (SDL_InitSubSystem(SDL_INIT_HAPTIC) < 0)
+	{
+		LOG("SDL_HAPTIC could not initialize! SDL_Error: %s\n", SDL_GetError());
+		return false;
+	}
+
+	int numJoySticks = SDL_NumJoysticks();
+	if (numJoySticks > 0)
+	{
+		if (SDL_IsGameController(0))
+		{
+			controller1 = SDL_GameControllerOpen(0);
+			haptic1 = SDL_HapticOpenFromJoystick(SDL_GameControllerGetJoystick(controller1));
+		}
+	}
+
+	if (numJoySticks > 1)
+	{
+		if (SDL_IsGameController(1))
+		{
+			controller2 = SDL_GameControllerOpen(1);
+			haptic2 = SDL_HapticOpenFromJoystick(SDL_GameControllerGetJoystick(controller2));
+		}
 	}
 
 	return true;
@@ -28,6 +61,13 @@ bool ServiceInput::Init(const Config & config)
 bool ServiceInput::CleanUp()
 {
 	LOG("CleanUp Input Service");
+	SDL_HapticClose(haptic2);
+	SDL_GameControllerClose(controller2);
+	SDL_HapticClose(haptic1);
+	SDL_GameControllerClose(controller1);
+	
+	SDL_QuitSubSystem(SDL_INIT_HAPTIC);
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
 }
@@ -113,5 +153,30 @@ bool ServiceInput::UpdateInput()
 		}
 	}
 
+	UpdateGameControllerState(controller1, gameController1);
+	UpdateGameControllerState(controller2, gameController2);
+
 	return true;
+}
+
+
+void ServiceInput::UpdateGameControllerState(SDL_GameController* controller, KeyState* controllerState)
+{
+	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
+	{
+		if (SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)i))
+		{
+			if (controllerState[i] == KeyState::KEY_IDLE)
+				controllerState[i] = KeyState::KEY_DOWN;
+			else
+				controllerState[i] = KeyState::KEY_REPEAT;
+		}
+		else
+		{
+			if (controllerState[i] == KeyState::KEY_REPEAT || controllerState[i] == KeyState::KEY_DOWN)
+				controllerState[i] = KeyState::KEY_UP;
+			else
+				controllerState[i] = KeyState::KEY_IDLE;
+		}
+	}
 }

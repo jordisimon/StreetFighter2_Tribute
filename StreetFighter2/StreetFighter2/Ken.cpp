@@ -10,9 +10,9 @@ Ken::~Ken()
 {
 }
 
-bool Ken::Init(const Config & config)
+bool Ken::Init()
 {
-	bool res = Player::Init(config);
+	bool res = Character::Init();
 
 	if (res)
 	{

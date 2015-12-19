@@ -1,5 +1,7 @@
 #pragma once
 
+struct CommandData;
+
 class State
 {
 public:
@@ -9,7 +11,7 @@ public:
 	virtual void OnEnter() {};
 	virtual void OnExit() {};
 
-	virtual State* ProcessInput() { return nullptr; };
+	virtual State* ProcessInput(CommandData* commandData) { return nullptr; };
 	virtual State* UpdateState() { return nullptr; };
 };
 

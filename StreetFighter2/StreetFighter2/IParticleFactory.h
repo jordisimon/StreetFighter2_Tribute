@@ -1,7 +1,7 @@
 #pragma once
 
 class Particle;
-struct ParticleInfo;
+struct ParticleInfo; //To be defined in Game specific implementation
 
 class IParticleFactory
 {

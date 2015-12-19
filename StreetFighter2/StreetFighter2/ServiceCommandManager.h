@@ -1,28 +1,34 @@
 #pragma once
 #include "Service.h"
+#include <map>
+
+class CommandContext;
+
 class ServiceCommandManager : public Service
 {
 private:
+	std::map<int, CommandContext*> commandContexts;
+	CommandContext* currentCommandContext = nullptr;
+
 	int debugCameraSpeed;
 
 public:
 	ServiceCommandManager() {};
 	~ServiceCommandManager() {};
 
-	bool Init(const Config& config);
-	bool Update();
+	bool Init();
+	bool CleanUp();
 
+	CommandContext* Load(const char* configSection);
+	void Unload(const CommandContext* commandContext);
+	void Unload(int id);
+	
+	void SetCurrentContext(CommandContext* context);
+	bool UpdateInput();
+	bool ProcessInput();
+	bool ProcessInput(CommandContext* commandContext);
+
+	//Special command
 	bool CommandExit();
-
-	bool P1Left();
-	bool P1Right();
-	bool P1Up();
-	bool P1Down();
-	bool P1UpLeft();
-	bool P1UpRight();
-	bool P1DownLeft();
-	bool P1DownRight();
-
-	bool P1LPunch();
 };
 

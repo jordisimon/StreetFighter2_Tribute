@@ -32,12 +32,13 @@ public:
 	ServiceRender() {};
 	~ServiceRender() {};
 
-	bool Init(const Config& config);
+	bool Init();
 	bool CleanUp();
 
 	bool Blit(SDL_Texture* texture, const iPoint& position, const SDL_Rect* section, float speed = 1.0f, Direction direction = Direction::RIGHT) const;
 	void SetDrawColor(const Color& color) const;
 	void DrawRect(const SDL_Rect* rect) const;
+	bool HasIntersection(const SDL_Rect* rectA, const SDL_Rect* rectB);
 	void SetCameraPostion(const iPoint& position);
 	void MoveCamera(const iPoint& offset);
 

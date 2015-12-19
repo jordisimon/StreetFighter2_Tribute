@@ -1,88 +1,149 @@
 #include "SF2Game.h"
 #include "Defines.h"
+#include "ServicesManager.h"
+#include "ServiceCommandManager.h"
+#include "ServiceRender.h"
 #include "ServiceParticles.h"
+#include "ServiceCollition.h"
 #include "ParticleFactory.h"
+#include "CommandContext.h"
+#include "CommandData.h"
+#include "CommandAction.h"
+#include "CommandState.h"
 
 //Testing
+#include "SceneMatch.h"
+#include "SceneMatchInfo.h"
 #include "ServiceCommandManager.h"
-#include "Match.h"
+
 
 SF2Game::SF2Game()
 {
-	//testing
-	match = new Match();
 }
 
 
 SF2Game::~SF2Game()
 {
-	//testing
-	RELEASE(match);
 }
 
 bool SF2Game::Init()
 {
 	bool res = Game::Init();
 
-	sParticles->SetParticleFactory(new ParticleFactory());
+	//testing
+	SceneMatchInfo info;
+	info.player1Type = CharacterType::RYU;
+	info.player2Type = CharacterType::KEN;
+	info.stageType = StageType::HONDA;
+	info.timeLimit = true;
+	currentScene = new SceneMatch(info);
+	//end testing
 
-	//TODO: Load state
-	res &= match->Init(config);
-	res &= match->Start();
+	servicesManager->particles->SetParticleFactory(new ParticleFactory());
+
+	//Debug
+	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
+	debugCameraSpeed = config->LoadIntValue(DEBUG_SECTION, "debugCameraSpeed", "3");
+	debugCommandContext = servicesManager->commands->Load("Debug_Command_Context");
+	debugCommandContext->AddCommandListener(this);
+
+	//testing
+	CommandContext* commandContext = new CommandContext("Match_Input_Mapping");
+	commandContext->Init();
+	commandContext->AddCommandListener(currentScene);
+	servicesManager->commands->SetCurrentContext(commandContext);
+	
+	res &= currentScene->Init();
+	res &= currentScene->Start();
 
 	return res;
 }
 
 bool SF2Game::CleanUp()
 {
-	match->Stop();
-	match->CleanUp();
+	currentScene->Stop();
+	currentScene->CleanUp();
+
+	//testing
+	RELEASE(currentScene);
+	//end testing
 
 	Game::CleanUp();
 
 	return true;
 }
 
-Entity::Result SF2Game::ProcessInput()
+bool SF2Game::UpdateInput()
 {
-	Entity::Result result = Game::ProcessInput();
+	bool result = Game::UpdateInput();
 
-	if (result != Entity::Result::R_OK)
-		return result;
-
-
-	if (sCommands->CommandExit())
-		return Entity::Result::R_EXIT;
-
-	//TODO: Cascade processInput
-
-	//Testing
-	result = match->ProcessInput();
-
+	if (result)
+	{
+		 result = servicesManager->commands->ProcessInput(debugCommandContext);
+	}
 	return result;
 }
 
+bool SF2Game::ProcessInput(CommandData* commandData)
+{
+	if (servicesManager->commands->CommandExit())
+	{
+		exit = true;
+	}
+	else
+	{
+		if (debug)
+		{
+			for (const auto& command : commandData->actions)
+			{
+				switch (command)
+				{
+				case CommandAction::DBG_TOGGLE_VIEW_COLLITION:
+					servicesManager->collitions->drawCollitions = !servicesManager->collitions->drawCollitions;
+					break;
+				}
+			}
+
+			for (const auto& command : commandData->states)
+			{
+				switch (command)
+				{
+				case CommandState::DBG_MOVE_CAM_UP:
+					servicesManager->render->MoveCamera(iPoint(0, debugCameraSpeed));
+					break;
+
+				case CommandState::DBG_MOVE_CAM_DOWN:
+					servicesManager->render->MoveCamera(iPoint(0, -debugCameraSpeed));
+					break;
+
+				case CommandState::DBG_MOVE_CAM_LEFT:
+					servicesManager->render->MoveCamera(iPoint(debugCameraSpeed, 0));
+					break;
+
+				case CommandState::DBG_MOVE_CAM_RIGHT:
+					servicesManager->render->MoveCamera(iPoint(-debugCameraSpeed, 0));
+					break;
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
+
 Entity::Result SF2Game::UpdateState()
 {
-	Entity::Result result = Game::UpdateState();
-
-	if (result != Entity::Result::R_OK)
-		return result;
-
 	//TODO: cascade Update State
 	//Testing
-	result = match->UpdateState();
-
-	sCommands->Update();
-
-	return result;
+	return currentScene->UpdateState();
 }
 
 Entity::Result SF2Game::Draw()
 {
 	//TODO: cascade Draw()
 	//Testing
-	Entity::Result result = match->Draw();
+	Entity::Result result = currentScene->Draw();
 
 	return result;
 }

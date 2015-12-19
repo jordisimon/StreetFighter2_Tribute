@@ -5,15 +5,15 @@
 
 #define CONFIG_SECTION "Render"
 
-bool ServiceRender::Init(const Config & config)
+bool ServiceRender::Init()
 {
 	LOG("Init Render Service");
 
-	screenWidth = config.LoadIntValue(CONFIG_SECTION, "screenWidth", "384");
-	screenHeight = config.LoadIntValue(CONFIG_SECTION, "screenHeight", "224");
-	screenRatio = config.LoadIntValue(CONFIG_SECTION, "screenRatio", "2");
-	fullScreen = config.LoadBoolValue(CONFIG_SECTION, "fullScreen", "0");
-	vSync = config.LoadBoolValue(CONFIG_SECTION, "vSync", "384");
+	screenWidth = config->LoadIntValue(CONFIG_SECTION, "screenWidth", "384");
+	screenHeight = config->LoadIntValue(CONFIG_SECTION, "screenHeight", "224");
+	screenRatio = config->LoadIntValue(CONFIG_SECTION, "screenRatio", "2");
+	fullScreen = config->LoadBoolValue(CONFIG_SECTION, "fullScreen", "0");
+	vSync = config->LoadBoolValue(CONFIG_SECTION, "vSync", "384");
 
 	LOG("Init SDL window & surface");
 	bool ret = true;
@@ -145,6 +145,11 @@ void ServiceRender::DrawRect(const SDL_Rect* rect) const
 	rectAux.h = rect->h * screenRatio;
 
 	SDL_RenderDrawRect(renderer, &rectAux);
+}
+
+bool ServiceRender::HasIntersection(const SDL_Rect* rectA, const SDL_Rect* rectB)
+{
+	return SDL_HasIntersection(rectA, rectB) == SDL_TRUE;
 }
 
 void ServiceRender::SetCameraPostion(const iPoint& position)

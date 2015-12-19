@@ -1,5 +1,5 @@
 #include "ParticleFactory.h"
-#include "Game.h"
+#include "ServicesManager.h"
 #include "ServiceTextures.h"
 #include "Particle.h"
 #include "ParticleHaDoKen.h"
@@ -15,7 +15,7 @@ Particle * ParticleFactory::CreateParticle(const ParticleInfo& info)
 	//Low HaDoKen
 	case ParticleInfo::Type::LOW_HADOKEN:
 		if (hadokenTexture == nullptr)
-			hadokenTexture = game->sTextures->Load(HADOKEN_SECTION);
+			hadokenTexture = servicesManager->textures->Load(HADOKEN_SECTION);
 
 		particle = new ParticleHaDoKen(info.position, info.direction, hadokenTexture, ParticleHaDoKen::Type::LOW);
 		break;
@@ -23,7 +23,7 @@ Particle * ParticleFactory::CreateParticle(const ParticleInfo& info)
 	//Medium HaDoKen
 	case ParticleInfo::Type::MEDIUM_HADOKEN:
 		if (hadokenTexture == nullptr)
-			hadokenTexture = game->sTextures->Load(HADOKEN_SECTION);
+			hadokenTexture = servicesManager->textures->Load(HADOKEN_SECTION);
 
 		particle = new ParticleHaDoKen(info.position, info.direction, hadokenTexture, ParticleHaDoKen::Type::MEDIUM);
 		break;
@@ -31,7 +31,7 @@ Particle * ParticleFactory::CreateParticle(const ParticleInfo& info)
 	//Hard HaDoKen
 	case ParticleInfo::Type::HARD_HADOKEN:
 		if (hadokenTexture == nullptr)
-			hadokenTexture = game->sTextures->Load(HADOKEN_SECTION);
+			hadokenTexture = servicesManager->textures->Load(HADOKEN_SECTION);
 
 		particle = new ParticleHaDoKen(info.position, info.direction, hadokenTexture, ParticleHaDoKen::Type::HARD);
 		break;

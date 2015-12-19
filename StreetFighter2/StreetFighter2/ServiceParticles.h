@@ -4,13 +4,13 @@
 
 class Particle;
 class IParticleFactory;
-struct ParticleInfo;
+struct ParticleInfo; //To be defined in Game specific implementation
 
 class ServiceParticles : public Service
 {
 private:
 	std::list<Particle*> particles;
-	IParticleFactory* factory;
+	IParticleFactory* factory = nullptr;
 
 public:
 	ServiceParticles();
