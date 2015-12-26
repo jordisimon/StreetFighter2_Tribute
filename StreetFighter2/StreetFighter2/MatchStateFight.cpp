@@ -28,6 +28,7 @@ void MatchStateFight::OnEnter()
 	if (scene->timeLimit)
 		scene->timer.Resume();
 	servicesManager->commands->SetCurrentContext(scene->commandContextFight);
+	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::FIGHT);
 }
 
 void MatchStateFight::OnExit()
@@ -36,15 +37,21 @@ void MatchStateFight::OnExit()
 
 State * MatchStateFight::ProcessInput(CommandData * commandData)
 {
-	for (const auto& command : commandData->actions)
+	for (const auto& command : commandData->p1Actions)
 	{
 		switch (command)
 		{
-		case CommandAction::P1_PAUSE:
-			return new MatchStatePause(scene,1);
+		case CommandAction::PAUSE:
+			return new MatchStatePause(scene, 1);
 			break;
+		}
+	}
 
-		case CommandAction::P2_PAUSE:
+	for (const auto& command : commandData->p2Actions)
+	{
+		switch (command)
+		{
+		case CommandAction::PAUSE:
 			return new MatchStatePause(scene,2);
 			break;
 		}

@@ -1,9 +1,9 @@
 #pragma once
 #include "Service.h"
 #include "Point.h"
+#include "Rect.h"
 #include "Color.h"
 #include "Direction.h"
-#include "SDL\include\SDL_rect.h"
 
 struct SDL_Window;
 struct SDL_Surface;
@@ -16,6 +16,8 @@ private:
 	int screenWidth;
 	int screenHeight;
 	int screenRatio;
+	int screenHRatio;
+	int screenVRatio;
 	bool fullScreen;
 	bool vSync;
 
@@ -24,7 +26,11 @@ private:
 
 	//The surface contained by the window
 	SDL_Surface* screen_surface = nullptr;
-	SDL_Rect camera;
+	fRect camera;
+	fPoint screenCenter;
+
+	bool Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f);
+	void DrawRect(const fRect& rect, bool gui, bool fill);
 
 public:
 	SDL_Renderer* renderer = nullptr;
@@ -35,12 +41,17 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	bool Blit(SDL_Texture* texture, const iPoint& position, const SDL_Rect* section, float speed = 1.0f, Direction direction = Direction::RIGHT) const;
+	bool BlitScene(SDL_Texture* texture, const fPoint& position, const fRect& section, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f);
+	bool BlitGUI(SDL_Texture* texture, const fPoint& position, const fRect& section, Direction direction = Direction::RIGHT, float scale = 1.0f);
+
 	void SetDrawColor(const Color& color) const;
-	void DrawRect(const SDL_Rect* rect) const;
-	bool HasIntersection(const SDL_Rect* rectA, const SDL_Rect* rectB);
-	void SetCameraPostion(const iPoint& position);
-	void MoveCamera(const iPoint& offset);
+	void DrawRectLine(const fRect& rect, bool gui = false);
+	void DrawRectFill(const fRect& rect, bool gui = false);
+
+	void SetCameraPostion(const fPoint& position);
+	void MoveCamera(const fPoint& offset);
+	const fRect& GetCamera() const;
+	const fPoint& GetScreenCenter() const;
 
 	bool ClearRender() const;
 	bool PresentRender() const;

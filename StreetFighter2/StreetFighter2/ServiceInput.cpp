@@ -162,7 +162,7 @@ bool ServiceInput::UpdateInput()
 
 void ServiceInput::UpdateGameControllerState(SDL_GameController* controller, KeyState* controllerState)
 {
-	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
+	/*for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
 	{
 		if (SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)i))
 		{
@@ -178,5 +178,62 @@ void ServiceInput::UpdateGameControllerState(SDL_GameController* controller, Key
 			else
 				controllerState[i] = KeyState::KEY_IDLE;
 		}
+	}*/
+
+	//Managing diagonals
+	bool tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_MAX];
+
+	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
+	{
+		tempStates[i] = SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)i) != 0;
 	}
+
+	tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP_LEFT] = false;
+	tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP_RIGHT] = false;
+	tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN_LEFT] = false;
+	tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN_RIGHT] = false;
+
+	if (tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP] && tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_LEFT])
+	{
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP_LEFT] = true;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP] = false;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_LEFT] = false;
+	} 
+	else if (tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP] && tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_RIGHT])
+	{
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP_RIGHT] = true;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP] = false;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_RIGHT] = false;
+	}
+	else if (tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN] && tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_LEFT])
+	{
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN_LEFT] = true;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN] = false;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_LEFT] = false;
+	}
+	else if (tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN] && tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_RIGHT])
+	{
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN_RIGHT] = true;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_DOWN] = false;
+		tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_RIGHT] = false;
+	}
+
+	for (int i = 0; i < (int)GameControllerButton::CONTROLLER_BUTTON_MAX; ++i)
+	{
+		if (tempStates[i])
+		{
+			if (controllerState[i] == KeyState::KEY_IDLE)
+				controllerState[i] = KeyState::KEY_DOWN;
+			else
+				controllerState[i] = KeyState::KEY_REPEAT;
+		}
+		else
+		{
+			if (controllerState[i] == KeyState::KEY_REPEAT || controllerState[i] == KeyState::KEY_DOWN)
+				controllerState[i] = KeyState::KEY_UP;
+			else
+				controllerState[i] = KeyState::KEY_IDLE;
+		}
+	}
+
 }

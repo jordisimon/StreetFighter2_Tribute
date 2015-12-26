@@ -30,7 +30,6 @@ private:
 	unsigned int time;
 	unsigned int roundNumber;
 	bool paused;
-	//Hud* hud;
 
 	//Fx sounds
 	static int pauseFx;

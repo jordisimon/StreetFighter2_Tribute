@@ -58,12 +58,15 @@ bool SceneMatch::Init()
 
 	time = 99;
 	GUI->scene = this;
+	
 	commandContextFight->AddCommandListener(this);
 	commandContextPause->AddCommandListener(this);
 
 	ret = stage->Init();
 	ret = ret && player1->Init();
 	ret = ret && player2->Init();
+	//Init GUI AFTER players (because it needs player id)
+	GUI->Init();
 
 	servicesManager->render->SetCameraPostion(stage->camStart);
 	player1->position = stage->p1StartPoint;
@@ -84,16 +87,18 @@ bool SceneMatch::CleanUp()
 	player2->CleanUp();
 	player1->CleanUp();
 	stage->CleanUp();
-
+	GUI->CleanUp();
 	return true;;
 }
 
 bool SceneMatch::Start()
 {
-	currentState->OnEnter();
+	GUI->Start();
 	stage->Start();
 	player1->Start();
 	player2->Start();
+	currentState->OnEnter();
+	
 	return true;
 }
 
@@ -102,6 +107,7 @@ bool SceneMatch::Stop()
 	player2->Stop();
 	player1->Stop();
 	stage->Stop();
+	GUI->Stop();
 	return true;
 }
 

@@ -27,7 +27,7 @@ bool CommandContext::Init()
 	char* result = new char[100];
 
 	int controllerNumber;
-	SDL_GameControllerButton controllerButton;
+	GameControllerButton controllerButton;
 	SDL_Scancode keyboardCode;
 	CommandAction action;
 	CommandState state;
@@ -47,7 +47,7 @@ bool CommandContext::Init()
 
 		if (commandFound)
 		{
-			controllerButton = (SDL_GameControllerButton)atoi(strtok(NULL, ","));
+			controllerButton = (GameControllerButton)atoi(strtok(NULL, ","));
 			keyboardCode = (SDL_Scancode)atoi(strtok(NULL, ","));
 			action = (CommandAction)atoi(strtok(NULL, ","));;
 
@@ -57,11 +57,11 @@ bool CommandContext::Init()
 				keyGlobalActionMap.insert(pair<SDL_Scancode, CommandAction>(keyboardCode, action));
 				break;
 			case 1:
-				controller1ActionMap.insert(pair<SDL_GameControllerButton, CommandAction>(controllerButton, action));
+				controller1ActionMap.insert(pair<GameControllerButton, CommandAction>(controllerButton, action));
 				key1ActionMap.insert(pair<SDL_Scancode, CommandAction>(keyboardCode, action));
 				break;
 			case 2:
-				controller2ActionMap.insert(pair<SDL_GameControllerButton, CommandAction>(controllerButton, action));
+				controller2ActionMap.insert(pair<GameControllerButton, CommandAction>(controllerButton, action));
 				key2ActionMap.insert(pair<SDL_Scancode, CommandAction>(keyboardCode, action));
 				break;
 			}
@@ -85,7 +85,7 @@ bool CommandContext::Init()
 
 		if (commandFound)
 		{
-			controllerButton = (SDL_GameControllerButton)atoi(strtok(NULL, ","));
+			controllerButton = (GameControllerButton)atoi(strtok(NULL, ","));
 			keyboardCode = (SDL_Scancode)atoi(strtok(NULL, ","));
 			state = (CommandState)atoi(strtok(NULL, ","));;
 
@@ -95,11 +95,11 @@ bool CommandContext::Init()
 				keyGlobalStateMap.insert(pair<SDL_Scancode, CommandState>(keyboardCode, state));
 				break;
 			case 1:
-				controller1StateMap.insert(pair<SDL_GameControllerButton, CommandState>(controllerButton, state));
+				controller1StateMap.insert(pair<GameControllerButton, CommandState>(controllerButton, state));
 				key1StateMap.insert(pair<SDL_Scancode, CommandState>(keyboardCode, state));
 				break;
 			case 2:
-				controller2StateMap.insert(pair<SDL_GameControllerButton, CommandState>(controllerButton, state));
+				controller2StateMap.insert(pair<GameControllerButton, CommandState>(controllerButton, state));
 				key2StateMap.insert(pair<SDL_Scancode, CommandState>(keyboardCode, state));
 				break;
 			}		
@@ -152,7 +152,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 	for (auto const& command : keyGlobalActionMap)
 	{
 		if (servicesManager->input->GetKey(command.first) == KeyState::KEY_DOWN)
-			commandData->actions.push_back(command.second);
+			commandData->globalActions.push_back(command.second);
 	}
 
 	//States
@@ -160,7 +160,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 	{
 		if (servicesManager->input->GetKey(command.first) == KeyState::KEY_DOWN ||
 			servicesManager->input->GetKey(command.first) == KeyState::KEY_REPEAT)
-			commandData->states.push_back(command.second);
+			commandData->globalStates.push_back(command.second);
 	}
 
 	//Player 1
@@ -169,16 +169,16 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 		//Actions
 		for (auto const& command : controller1ActionMap)
 		{
-			if (servicesManager->input->GetControllerButton(1, command.first) == KeyState::KEY_DOWN)
-				commandData->actions.push_back(command.second);
+			if (servicesManager->input->GetControllerButton(1, (int)command.first) == KeyState::KEY_DOWN)
+				commandData->p1Actions.push_back(command.second);
 		}
 
 		//States
 		for (auto const& command : controller1StateMap)
 		{
-			if (servicesManager->input->GetControllerButton(1, command.first) == KeyState::KEY_DOWN ||
-				servicesManager->input->GetControllerButton(1, command.first) == KeyState::KEY_REPEAT)
-				commandData->states.push_back(command.second);
+			if (servicesManager->input->GetControllerButton(1, (int)command.first) == KeyState::KEY_DOWN ||
+				servicesManager->input->GetControllerButton(1, (int)command.first) == KeyState::KEY_REPEAT)
+				commandData->p1States.push_back(command.second);
 		}
 	}
 	else
@@ -187,7 +187,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 		for (auto const& command : key1ActionMap)
 		{
 			if (servicesManager->input->GetKey(command.first) == KeyState::KEY_DOWN)
-				commandData->actions.push_back(command.second);
+				commandData->p1Actions.push_back(command.second);
 		}
 
 		//States
@@ -195,7 +195,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 		{
 			if (servicesManager->input->GetKey(command.first) == KeyState::KEY_DOWN ||
 				servicesManager->input->GetKey(command.first) == KeyState::KEY_REPEAT)
-				commandData->states.push_back(command.second);
+				commandData->p1States.push_back(command.second);
 		}
 	}
 
@@ -205,16 +205,16 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 		//Actions
 		for (auto const& command : controller2ActionMap)
 		{
-			if (servicesManager->input->GetControllerButton(2, command.first) == KeyState::KEY_DOWN)
-				commandData->actions.push_back(command.second);
+			if (servicesManager->input->GetControllerButton(2, (int)command.first) == KeyState::KEY_DOWN)
+				commandData->p2Actions.push_back(command.second);
 		}
 
 		//States
 		for (auto const& command : controller2StateMap)
 		{
-			if (servicesManager->input->GetControllerButton(2, command.first) == KeyState::KEY_DOWN ||
-				servicesManager->input->GetControllerButton(2, command.first) == KeyState::KEY_REPEAT)
-				commandData->states.push_back(command.second);
+			if (servicesManager->input->GetControllerButton(2, (int)command.first) == KeyState::KEY_DOWN ||
+				servicesManager->input->GetControllerButton(2, (int)command.first) == KeyState::KEY_REPEAT)
+				commandData->p2States.push_back(command.second);
 		}
 	}
 	else
@@ -223,7 +223,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 		for (auto const& command : key2ActionMap)
 		{
 			if (servicesManager->input->GetKey(command.first) == KeyState::KEY_DOWN)
-				commandData->actions.push_back(command.second);
+				commandData->p2Actions.push_back(command.second);
 		}
 
 		//States
@@ -231,7 +231,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 		{
 			if (servicesManager->input->GetKey(command.first) == KeyState::KEY_DOWN ||
 				servicesManager->input->GetKey(command.first) == KeyState::KEY_REPEAT)
-				commandData->states.push_back(command.second);
+				commandData->p2States.push_back(command.second);
 		}
 	}
 

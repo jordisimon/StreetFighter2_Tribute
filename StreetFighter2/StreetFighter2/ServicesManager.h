@@ -10,6 +10,7 @@ class ServiceParticles;
 class ServiceRender;
 class ServiceTextures;
 class ServiceCollition;
+class ServiceTime;
 
 class ServicesManager
 {
@@ -27,6 +28,7 @@ public:
 	ServiceParticles* particles = nullptr;
 	ServiceCollition* collitions = nullptr;
 	ServiceTextures* textures = nullptr;
+	ServiceTime* time = nullptr;
 
 	ServicesManager();
 	~ServicesManager();

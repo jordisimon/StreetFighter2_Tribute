@@ -13,7 +13,7 @@ class SF2Game :	public Game
 private:
 	//Debug
 	bool debug;
-	int debugCameraSpeed;
+	float debugCameraSpeed;
 	CommandContext* debugCommandContext;
 
 	Scene* currentScene;
@@ -29,7 +29,7 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	bool UpdateInput();
+	bool UpdateInput() const;
 	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
 	Entity::Result Draw();

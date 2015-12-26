@@ -4,6 +4,7 @@
 #include "ServicesManager.h"
 #include "ServiceCommandManager.h"
 #include "ServiceAudio.h"
+#include "ServiceTime.h"
 #include "CommandContext.h"
 #include "CommandData.h"
 #include "CommandAction.h"
@@ -26,6 +27,7 @@ void MatchStatePause::OnEnter()
 	servicesManager->commands->SetCurrentContext(scene->commandContextPause);
 	servicesManager->audio->PauseMusic();
 	servicesManager->audio->PlayFx(scene->pauseFx);
+	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::PAUSE);
 }
 
 void MatchStatePause::OnExit()
@@ -33,19 +35,27 @@ void MatchStatePause::OnExit()
 	servicesManager->audio->PlayFx(scene->fightFx);
 	servicesManager->audio->ResumeMusic();
 	scene->paused = false;
+	servicesManager->time->Update(); //To avoid counting all paused time as frame time
 }
 
 State* MatchStatePause::ProcessInput(CommandData * commandData)
 {
-	for (const auto& command : commandData->actions)
+	for (const auto& command : commandData->p1Actions)
 	{
 		switch (command)
 		{
-		case CommandAction::P1_PAUSE:
+		case CommandAction::PAUSE:
 			if (playerPaused == 1)
 				return new MatchStateFight(scene);
 			break;
-		case CommandAction::P2_PAUSE:
+		}
+	}
+
+	for (const auto& command : commandData->p2Actions)
+	{
+		switch (command)
+		{
+		case CommandAction::PAUSE:
 			if (playerPaused == 2)
 				return new MatchStateFight(scene);
 			break;

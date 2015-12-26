@@ -13,6 +13,6 @@ CharacterStateFWalk::~CharacterStateFWalk()
 
 void CharacterStateFWalk::OnEnter()
 {
-	character->currentAnimation = &character->fWalk;
-	character->currentAnimation->ResetAnimation();
+	//character->currentAnimation = &character->fWalk;
+	//character->currentAnimation->ResetAnimation();
 }

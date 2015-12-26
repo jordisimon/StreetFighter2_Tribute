@@ -10,13 +10,13 @@ class Particle
 protected:
 	SDL_Texture* texture = nullptr;
 	Animation* animation = nullptr;
-	iPoint position;
+	fPoint position;
 	Direction direction;
 
 public:
 	bool toDelete;
 
-	Particle(const iPoint& pos, Direction dir, SDL_Texture* text);
+	Particle(const fPoint& pos, Direction dir, SDL_Texture* text);
 	virtual ~Particle();
 
 	virtual bool UpdateState() { return true; };

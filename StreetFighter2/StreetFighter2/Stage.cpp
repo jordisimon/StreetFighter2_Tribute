@@ -7,22 +7,20 @@
 #include "Collider.h"
 #include "ColliderType.h"
 #include "Color.h"
-#include "SDL\include\SDL_rect.h"
-
 
 bool Stage::Init()
 {
 	musicName = config->LoadCharValue(configSection, "music", "");
 
-	config->LoadPoint(camMin, configSection, "camMin");
-	config->LoadPoint(camMax, configSection, "camMax");
-	config->LoadPoint(camStart, configSection, "camStart");
-	config->LoadPoint(p1StartPoint, configSection, "p1Start");
-	config->LoadPoint(p2StartPoint, configSection, "p2Start");
+	config->LoadfPoint(camMin, configSection, "camMin");
+	config->LoadfPoint(camMax, configSection, "camMax");
+	config->LoadfPoint(camStart, configSection, "camStart");
+	config->LoadfPoint(p1StartPoint, configSection, "p1Start");
+	config->LoadfPoint(p2StartPoint, configSection, "p2Start");
 	groundLevel = config->LoadIntValue(configSection, "groundLevel", "100");
 
-	SDL_Rect box;
-	config->LoadSDLRect(box, configSection, "colliderBox");
+	fRect box;
+	config->LoadfRect(box, configSection, "colliderBox");
 	boxCollider = servicesManager->collitions->CreateCollider(ColliderType::SCENE_BOX, box, nullptr, Color(Color::Predefined::BLUE));
 
 	return true;

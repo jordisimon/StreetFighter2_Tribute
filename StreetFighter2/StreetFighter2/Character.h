@@ -2,41 +2,35 @@
 #include "Entity.h"
 #include "Point.h"
 #include "Direction.h"
-#include "Animation.h"
+#include "ICollitionListener.h"
 
 class State;
+class Collider;
 struct SDL_Texture;
 
-class Character : public Entity
+class Character : public Entity, public ICollitionListener
 {
-public:
-	State* currentState = nullptr;
-
-	//Common animations all characters
-	Animation idle;
-	Animation fWalk;
-	Animation bWalk;
-	Animation jump;
-	Animation fJump;
-	Animation bJump;
-	Animation crouch;
-	Animation blocking;
-	Animation cBlocking;
-
-	int playerNumber;
-	int speed;
-	int bSpeed;
-	int fJumpDistance;
-	int bJumpDistance;
-
+protected:
 	const char* configSection = nullptr;
 	SDL_Texture* texture = nullptr;
+	State* currentState = nullptr;
 
+public:
+	//Common
+	int playerNumber;
+	fPoint position;
+	Direction direction;
 	unsigned int roundVictories;
 	unsigned int life;
-	iPoint position;
-	Direction direction;
-	Animation* currentAnimation = nullptr;
+	float gravity;
+
+	//Character specific
+	int characterId;
+	int fSpeed;
+	int bSpeed;
+	float jumpSpeed;
+	int fJumpDistance;
+	int bJumpDistance;	
 
 	Character() {};
 	~Character() {};
@@ -49,6 +43,9 @@ public:
 	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
 
-	Entity::Result Draw();
+	//Entity::Result Draw();
+
+	void OnCollitionEnter(Collider* colA, Collider* colB) {};
+	void OnCollitionExit(Collider* colA, Collider* colB) {};
 };
 

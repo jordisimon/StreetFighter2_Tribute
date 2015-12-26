@@ -17,8 +17,8 @@ CharacterStateIdle::~CharacterStateIdle()
 
 void CharacterStateIdle::OnEnter()
 {
-	character->currentAnimation = &character->idle;
-	character->currentAnimation->ResetAnimation();
+	//character->currentAnimation = &character->idle;
+	//character->currentAnimation->ResetAnimation();
 }
 
 State * CharacterStateIdle::ProcessInput(CommandData * commandData)
@@ -29,6 +29,7 @@ State * CharacterStateIdle::ProcessInput(CommandData * commandData)
 		{
 			switch (command)
 			{
+			//case Com
 			case CommandState::P1_JUMP:
 				return new CharacterStateJump(character);
 				break;

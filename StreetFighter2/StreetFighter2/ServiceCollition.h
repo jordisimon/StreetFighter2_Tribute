@@ -2,8 +2,8 @@
 #include "Service.h"
 #include <vector>
 #include <list>
+#include "Rect.h"
 
-struct SDL_Rect;
 class Collider;
 class Collition;
 class ICollitionListener;
@@ -29,7 +29,7 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	Collider* CreateCollider(ColliderType t, const SDL_Rect& r, ICollitionListener* lis, const Color& col);
+	Collider* CreateCollider(ColliderType t, const fRect& r, ICollitionListener* lis, const Color& col, bool act = true);
 	bool UpdateCollidersState();
 	bool DrawColliders() const;
 	bool DeleteInactiveColliders();

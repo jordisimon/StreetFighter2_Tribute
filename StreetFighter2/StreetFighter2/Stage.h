@@ -15,12 +15,12 @@ public:
 	const char* musicName = nullptr;
 	Collider* boxCollider = nullptr;
 
-	iPoint camMin;
-	iPoint camMax;
-	iPoint camStart;
+	fPoint camMin;
+	fPoint camMax;
+	fPoint camStart;
 	int groundLevel;
-	iPoint p1StartPoint;
-	iPoint p2StartPoint;
+	fPoint p1StartPoint;
+	fPoint p2StartPoint;
 
 	Stage() {};
 	~Stage() {};

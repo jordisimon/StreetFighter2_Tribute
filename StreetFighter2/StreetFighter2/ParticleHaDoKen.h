@@ -18,10 +18,10 @@ public:
 	};
 
 	Animation endAnimation;
-	iPoint speed;
+	fPoint speed;
 	int damage;
 
-	ParticleHaDoKen(iPoint pos, Direction dir, SDL_Texture* text, Type type);
+	ParticleHaDoKen(fPoint pos, Direction dir, SDL_Texture* text, Type type);
 	~ParticleHaDoKen();
 
 	bool UpdateState();

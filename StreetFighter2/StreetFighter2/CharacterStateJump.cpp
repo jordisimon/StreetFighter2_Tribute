@@ -16,8 +16,8 @@ CharacterStateJump::~CharacterStateJump()
 
 void CharacterStateJump::OnEnter()
 {
-	character->currentAnimation = &character->jump;
-	character->currentAnimation->ResetAnimation();
+	//character->currentAnimation = &character->jump;
+	//character->currentAnimation->ResetAnimation();
 }
 
 State * CharacterStateJump::ProcessInput(CommandData * commandData)

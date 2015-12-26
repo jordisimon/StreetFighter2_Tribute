@@ -1,7 +1,10 @@
 #pragma once
 #include "SimpleIni.h"
+#include "Point.h"
+#include "Rect.h"
 #include "Sprite.h"
 #include "Animation.h"
+#include "AnimationCollider.h"
 
 class Config
 {
@@ -22,10 +25,14 @@ public:
 	float LoadFloatValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 	bool LoadBoolValue(const char* sectionName, const char* keyName, const char* defaultValue) const;
 
-	bool LoadPoint(iPoint& point, const char * sectionName, const char * keyName) const;
-	bool LoadSDLRect(SDL_Rect& rect, const char* sectionName, const char* keyName) const;
+	bool LoadiPoint(iPoint& point, const char * sectionName, const char * keyName) const;
+	bool LoadfPoint(fPoint& point, const char * sectionName, const char * keyName) const;
+	bool LoadiRect(iRect& rect, const char * sectionName, const char * keyName) const;
+	bool LoadfRect(fRect& rect, const char * sectionName, const char * keyName) const;
+
 	bool LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const;
 	bool LoadAnimation(Animation& animation, const char* sectionName, const char* keyName) const;
+	bool LoadAnimationCollider(AnimationCollider& animation, const char* sectionName, const char* keyName);
 };
 
 extern Config* config;

@@ -38,9 +38,9 @@ bool ServiceCollition::CleanUp()
 	return true;
 }
 
-Collider* ServiceCollition::CreateCollider(ColliderType t, const SDL_Rect& r, ICollitionListener* lis, const Color& col)
+Collider* ServiceCollition::CreateCollider(ColliderType t, const fRect& r, ICollitionListener* lis, const Color& col, bool act)
 {
-	Collider* collider = new Collider(t, r, lis, col);
+	Collider* collider = new Collider(t, r, lis, col, act);
 	colliders.push_back(collider);
 	return collider;
 }
@@ -95,7 +95,11 @@ void ServiceCollition::CheckPair(Collider* colA, Collider* colB)
 	if (!colA->changed && !colB->changed)
 		return;
 
-	if (servicesManager->render->HasIntersection(&colA->colliderRect, &colB->colliderRect))
+	if (!colA->active || !colB->active)
+		return;
+
+	
+	if (colA->colliderRect.Intersects(colB->colliderRect))
 	{
 		ProcessCollitionYes(colA, colB);
 	}
@@ -134,10 +138,10 @@ bool ServiceCollition::DrawColliders() const
 	{
 		for (vector<Collider*>::const_iterator it = colliders.cbegin(); it != colliders.cend(); ++it)
 		{
-			if (!(*it)->toDelete)
+			if ((*it)->active && !(*it)->toDelete)
 			{
 				servicesManager->render->SetDrawColor((*it)->color);
-				servicesManager->render->DrawRect(&(*it)->colliderRect);
+				servicesManager->render->DrawRectLine((*it)->colliderRect);
 			}
 		}
 	}
@@ -148,7 +152,7 @@ bool ServiceCollition::DeleteInactiveColliders()
 {
 	for (list<Collition*>::iterator it = collitions.begin(); it != collitions.end(); /*nothing*/)
 	{
-		if ((*it)->HasInactiveCollider())
+		if ((*it)->HasToDeleteCollider())
 		{
 			RELEASE(*it);
 			it = collitions.erase(it);

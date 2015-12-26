@@ -1,7 +1,7 @@
 #include "CharacterState.h"
 #include "Character.h"
 
-CharacterState::CharacterState(Character* p) : character{ p }
+CharacterState::CharacterState()
 {
 }
 
@@ -10,8 +10,8 @@ CharacterState::~CharacterState()
 {
 }
 
-State * CharacterState::UpdateState()
+State * CharacterState::ProcessInput(CommandData * commandData)
 {
-	character->currentAnimation->UpdateCurrentFrame();
 	return nullptr;
 }
+

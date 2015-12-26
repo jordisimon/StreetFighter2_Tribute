@@ -1,7 +1,6 @@
 #include "CharacterFactory.h"
 #include "Character.h"
-#include "Ryu.h"
-#include "Ken.h"
+#include "RyuKen.h"
 
 
 
@@ -21,7 +20,7 @@ Character * CharacterFactory::CreateCharacter(CharacterType type)
 	switch (type)
 	{
 	case CharacterType::RYU:
-		result = new Ryu();
+		result = new RyuKen(CharacterType::RYU);
 		break;
 	case CharacterType::HONDA:
 		break;
@@ -30,7 +29,7 @@ Character * CharacterFactory::CreateCharacter(CharacterType type)
 	case CharacterType::GUILE:
 		break;
 	case CharacterType::KEN:
-		result = new Ken();
+		result = new RyuKen(CharacterType::KEN);
 		break;
 	case CharacterType::CHUNLI:
 		break;

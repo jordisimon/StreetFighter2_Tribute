@@ -14,7 +14,7 @@ struct ParticleInfo
 		MEDIUM_HADOKEN,
 		HARD_HADOKEN
 	};
-	iPoint position;
+	fPoint position;
 	Direction direction;
 	Type type;
 };

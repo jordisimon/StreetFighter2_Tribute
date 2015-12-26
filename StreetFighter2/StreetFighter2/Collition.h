@@ -14,6 +14,6 @@ public:
 	~Collition();
 
 	bool HasCollider(const Collider* col) const;
-	bool HasInactiveCollider() const;
+	bool HasToDeleteCollider() const;
 };
 

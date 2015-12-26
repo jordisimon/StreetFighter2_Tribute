@@ -12,22 +12,22 @@
 #define CONFIG_SECTION "Particle_HaDoKen"
 
 
-ParticleHaDoKen::ParticleHaDoKen(iPoint pos, Direction dir, SDL_Texture* text, Type type) : Particle(pos, dir, text)
+ParticleHaDoKen::ParticleHaDoKen(fPoint pos, Direction dir, SDL_Texture* text, Type type) : Particle(pos, dir, text)
 {
-	speed.y = 0;
+	speed.y = 0.0f;
 
 	switch (type)
 	{
 	case ParticleHaDoKen::Type::LOW:
-		speed.x = 1;
+		speed.x = 1.0f;
 		damage = 10;
 		break;
 	case ParticleHaDoKen::Type::MEDIUM:
-		speed.x = 2;
+		speed.x = 2.0f;
 		damage = 20;
 		break;
 	case ParticleHaDoKen::Type::HARD:
-		speed.x = 3;
+		speed.x = 3.0f;
 		damage = 30;
 		break;
 	default:
@@ -42,8 +42,8 @@ ParticleHaDoKen::ParticleHaDoKen(iPoint pos, Direction dir, SDL_Texture* text, T
 	config->LoadAnimation(endAnimation, CONFIG_SECTION, "hdkEnd");
 	endAnimation.loop = false;
 
-	collider = servicesManager->collitions->CreateCollider(ColliderType::PARTICLE, animation->GetFrame().rect, this, Color(Color::Predefined::RED));
-	collider->SetPosition(animation->GetFrame().GetBlitPosition(position, direction));
+	//collider = servicesManager->collitions->CreateCollider(ColliderType::PARTICLE, animation->GetFrame().rect, this, Color(Color::Predefined::RED));
+	collider->SetPosition(animation->GetFrame().GetRectPosition(position, direction));
 }
 
 
@@ -55,7 +55,7 @@ bool ParticleHaDoKen::UpdateState()
 {
 	position += speed;
 	animation->UpdateCurrentFrame();
-	collider->SetPosition(animation->GetFrame().GetBlitPosition(position, direction));
+	collider->SetPosition(animation->GetFrame().GetRectPosition(position, direction));
 
 	return true;
 }

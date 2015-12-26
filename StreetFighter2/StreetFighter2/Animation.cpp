@@ -1,6 +1,8 @@
 #include "Animation.h"
+#include "ServicesManager.h"
+#include "ServiceTime.h"
 
-Animation::Animation() : frames{}, speed{ 1.0f }, current_frame{ 0.0f }, loop{ true }, emptySprite({ 0,0,0,0 }, { 0,0 })
+Animation::Animation() : frames{}, speed{ 1.0f }, current_frame{ 0.0f }, loop{ true }, forward{true}, emptySprite({ 0,0,0,0 }, { 0,0 })
 {
 }
 
@@ -8,40 +10,91 @@ Animation::~Animation()
 {
 }
 
-void Animation::ResetAnimation() { current_frame = 0.0f; }
+void Animation::SetFramesSize()
+{
+	framesSize = frames.size();
+}
+
+void Animation::SetSpeed(float sp)
+{
+	speed = sp * frames.size();
+}
+
+void Animation::SetDuration(float dur)
+{
+	speed = (1 / dur) * frames.size();
+}
+
+void Animation::ResetAnimation()
+{ 
+	if (forward)
+		current_frame = 0.0f;
+	else
+		current_frame = (float)framesSize - 1;
+
+	valid_frame = (int)current_frame;
+}
 
 void Animation::UpdateCurrentFrame()
 {
 	if (loop)
 	{
-		current_frame += speed;
-		if (current_frame >= frames.size())
-			current_frame = 0.0f;
+		if (forward)
+		{
+			current_frame += speed * servicesManager->time->frameTimeSeconds;
+			if (current_frame >= framesSize)
+				current_frame = 0.0f;
+		}
+		else
+		{
+			current_frame -= speed * servicesManager->time->frameTimeSeconds;
+			if (current_frame < 0.0f)
+				current_frame = (float)framesSize - 1;
+		}
+		valid_frame = (int)current_frame;
 	}
 	else
 	{
-		if (current_frame <= frames.size())
-			current_frame += speed;
+		if (forward)
+		{
+			if (current_frame <= framesSize)
+				current_frame += speed * servicesManager->time->frameTimeSeconds;
+
+			if (current_frame < framesSize)
+				valid_frame = (int)current_frame;
+			else
+				valid_frame = framesSize - 1;
+		}
+		else
+		{
+			if (current_frame >= 0.0f)
+				current_frame -= speed * servicesManager->time->frameTimeSeconds;
+
+			if (current_frame >= 0)
+				valid_frame = (int)current_frame;
+			else
+				valid_frame = 0;
+		}
 	}
 }
 
 bool Animation::HasFinished() const
 {
-	return (!loop && current_frame >= frames.size());
+	if (forward)
+		return (!loop && current_frame >= framesSize);
+	else
+		return (!loop && current_frame < 0.0f);
 }
 
 const Sprite& Animation::GetFrame() const
 {
-	if (current_frame < frames.size())
-		return frames[(int)current_frame];
-	else
-		return emptySprite;
+	return frames[valid_frame];
 }
 
 void Animation::NextFrame()
 {
 	current_frame += 1.0f;
-	if (current_frame >= frames.size())
+	if (current_frame >= framesSize)
 		current_frame = 0.0f;
 }
 
@@ -49,5 +102,5 @@ void Animation::PriorFrame()
 {
 	current_frame -= 1.0f;
 	if (current_frame < 0.0f)
-		current_frame = frames.size() - 1.0f;
+		current_frame = framesSize - 1.0f;
 }

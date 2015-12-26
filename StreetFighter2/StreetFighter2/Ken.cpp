@@ -1,4 +1,5 @@
 #include "Ken.h"
+#include "Config.h"
 
 Ken::Ken()
 {
@@ -16,7 +17,11 @@ bool Ken::Init()
 
 	if (res)
 	{
-
+		//config->LoadAnimation(idle, configSection, "idle");
+		//config->LoadAnimation(idleBodyCol, configSection, "idleBodyCol");
+		//config->LoadAnimation(fWalk, configSection, "fWalk");
+		//config->LoadAnimation(bWalk, configSection, "bWalk");
+		//config->LoadAnimation(jump, configSection, "jump");
 	}
 
 	return res;

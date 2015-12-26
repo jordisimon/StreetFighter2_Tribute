@@ -5,6 +5,7 @@
 
 #include "ServiceCommandManager.h"
 #include "ServiceRender.h"
+#include "ServiceTime.h"
 
 using namespace std;
 
@@ -38,7 +39,15 @@ bool Game::CleanUp()
 	return servicesManager->CleanUp();
 }
 
-bool Game::UpdateInput()
+
+
+bool Game::UpdateTime() const
+{
+	servicesManager->time->Update();
+	return true;
+}
+
+bool Game::UpdateInput() const
 {
 	bool res = servicesManager->commands->UpdateInput();
 
@@ -48,7 +57,7 @@ bool Game::UpdateInput()
 	return res;
 }
 
-Entity::Result Game::PreDraw()
+Entity::Result Game::PreDraw() const
 {
 	if (servicesManager->render->ClearRender())
 		return Entity::Result::R_OK;
@@ -57,7 +66,7 @@ Entity::Result Game::PreDraw()
 }
 
 
-Entity::Result Game::PostDraw()
+Entity::Result Game::PostDraw() const
 {
 	if (servicesManager->render->PresentRender())
 		return Entity::Result::R_OK;
@@ -67,6 +76,7 @@ Entity::Result Game::PostDraw()
 
 Entity::Result Game::Update()
 {
+	UpdateTime();
 	UpdateInput();
 
 	if (exit)

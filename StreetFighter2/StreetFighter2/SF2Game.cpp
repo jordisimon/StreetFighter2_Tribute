@@ -33,7 +33,7 @@ bool SF2Game::Init()
 	//testing
 	SceneMatchInfo info;
 	info.player1Type = CharacterType::RYU;
-	info.player2Type = CharacterType::KEN;
+	info.player2Type = CharacterType::RYU;
 	info.stageType = StageType::HONDA;
 	info.timeLimit = true;
 	currentScene = new SceneMatch(info);
@@ -43,7 +43,7 @@ bool SF2Game::Init()
 
 	//Debug
 	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
-	debugCameraSpeed = config->LoadIntValue(DEBUG_SECTION, "debugCameraSpeed", "3");
+	debugCameraSpeed = config->LoadFloatValue(DEBUG_SECTION, "debugCameraSpeed", "3");
 	debugCommandContext = servicesManager->commands->Load("Debug_Command_Context");
 	debugCommandContext->AddCommandListener(this);
 
@@ -73,7 +73,7 @@ bool SF2Game::CleanUp()
 	return true;
 }
 
-bool SF2Game::UpdateInput()
+bool SF2Game::UpdateInput() const
 {
 	bool result = Game::UpdateInput();
 
@@ -94,7 +94,7 @@ bool SF2Game::ProcessInput(CommandData* commandData)
 	{
 		if (debug)
 		{
-			for (const auto& command : commandData->actions)
+			for (const auto& command : commandData->globalActions)
 			{
 				switch (command)
 				{
@@ -104,24 +104,24 @@ bool SF2Game::ProcessInput(CommandData* commandData)
 				}
 			}
 
-			for (const auto& command : commandData->states)
+			for (const auto& command : commandData->globalStates)
 			{
 				switch (command)
 				{
 				case CommandState::DBG_MOVE_CAM_UP:
-					servicesManager->render->MoveCamera(iPoint(0, debugCameraSpeed));
+					servicesManager->render->MoveCamera(fPoint(0, debugCameraSpeed));
 					break;
 
 				case CommandState::DBG_MOVE_CAM_DOWN:
-					servicesManager->render->MoveCamera(iPoint(0, -debugCameraSpeed));
+					servicesManager->render->MoveCamera(fPoint(0, -debugCameraSpeed));
 					break;
 
 				case CommandState::DBG_MOVE_CAM_LEFT:
-					servicesManager->render->MoveCamera(iPoint(debugCameraSpeed, 0));
+					servicesManager->render->MoveCamera(fPoint(debugCameraSpeed, 0));
 					break;
 
 				case CommandState::DBG_MOVE_CAM_RIGHT:
-					servicesManager->render->MoveCamera(iPoint(-debugCameraSpeed, 0));
+					servicesManager->render->MoveCamera(fPoint(-debugCameraSpeed, 0));
 					break;
 				}
 			}

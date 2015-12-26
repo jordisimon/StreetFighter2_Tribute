@@ -21,7 +21,7 @@ bool Collition::HasCollider(const Collider * col) const
 	return (col == colA) || (col == colB);
 }
 
-bool Collition::HasInactiveCollider() const
+bool Collition::HasToDeleteCollider() const
 {
 	return (colA->toDelete) || (colB->toDelete);
 }

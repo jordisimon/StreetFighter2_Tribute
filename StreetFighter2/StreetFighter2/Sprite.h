@@ -1,18 +1,19 @@
 #pragma once
 #include "Point.h"
+#include "Rect.h"
 #include "Direction.h"
-#include "SDL\include\SDL_rect.h"
 
 class Sprite
 {
 public:
+	fRect rect;
+	fPoint offset;
+
 	Sprite();
-	Sprite(const SDL_Rect& r, const iPoint& o);
+	Sprite(const fRect& r, const fPoint& o);
 	virtual ~Sprite();
 
-	SDL_Rect rect;
-	iPoint offset;
-
-	const iPoint GetBlitPosition(const iPoint& position, const Direction direction) const;
+	const fPoint GetRectPosition(const fPoint& position, const Direction direction = Direction::RIGHT) const;
+	const fRect GetScreenRect(const fPoint& position, const Direction direction = Direction::RIGHT) const;
 };
 

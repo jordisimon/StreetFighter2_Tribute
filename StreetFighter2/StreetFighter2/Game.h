@@ -12,9 +12,10 @@ public:
 	virtual bool Init();
 	bool CleanUp();
 
-	virtual bool UpdateInput();
-	Entity::Result PreDraw();
-	Entity::Result PostDraw();
+	virtual bool UpdateTime() const;
+	virtual bool UpdateInput() const;
+	Entity::Result PreDraw() const;
+	Entity::Result PostDraw() const;
 
 	Entity::Result Update();
 };

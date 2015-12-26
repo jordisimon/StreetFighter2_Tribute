@@ -8,23 +8,23 @@ class StageHonda : public Stage
 {
 private:
 	Sprite ground;
-	iPoint groundPos;
+	fPoint groundPos;
 
 	Sprite background;
-	iPoint backgroundPos;
+	fPoint backgroundPos;
 
 	Sprite pool;
-	iPoint poolPos;
+	fPoint poolPos;
 
 	Sprite ceiling;
-	iPoint ceilingPos;
+	fPoint ceilingPos;
 
 	Sprite lamp;
-	iPoint lamp1Pos;
-	iPoint lamp2Pos;
+	fPoint lamp1Pos;
+	fPoint lamp2Pos;
 
 	Animation water;
-	iPoint waterPos;
+	fPoint waterPos;
 
 public:
 	StageHonda();

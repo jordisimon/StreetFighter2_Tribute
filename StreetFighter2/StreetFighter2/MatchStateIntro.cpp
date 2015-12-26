@@ -19,6 +19,7 @@ void MatchStateIntro::OnEnter()
 {
 	servicesManager->audio->PlayMusic(scene->stage->musicName, 0.0f);
 	++scene->roundNumber;
+	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::INTRO);
 }
 
 State * MatchStateIntro::UpdateState()

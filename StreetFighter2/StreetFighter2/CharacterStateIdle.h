@@ -11,5 +11,5 @@ public:
 	void OnExit() {};
 
 	State* ProcessInput(CommandData* commandData);
-	//State* UpdateState() { return nullptr; };
+	State* UpdateState() { return nullptr; };
 };

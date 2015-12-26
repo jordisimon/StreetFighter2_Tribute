@@ -8,6 +8,7 @@
 #include "ServiceTextures.h"
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
+#include "ServiceTime.h"
 #include "Config.h"
 
 using namespace std;
@@ -22,6 +23,7 @@ ServicesManager::ServicesManager()
 	services.push_back(collitions = new ServiceCollition());
 	services.push_back(audio = new ServiceAudio());
 	services.push_back(input = new ServiceInput());
+	services.push_back(time = new ServiceTime());
 }
 
 

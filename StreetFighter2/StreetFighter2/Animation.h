@@ -4,23 +4,30 @@
 
 class Animation
 {
-private:
+protected:
 	float current_frame;
+	int valid_frame;
+	int framesSize; //To avoid query vector size each frame 
+	float speed; //times per second executed (or 1/duration in seconds)
 
 public:
-	float speed;
+	
 	bool loop;
+	bool forward;
 	Sprite emptySprite;
 	std::vector<Sprite> frames;
 
 	Animation();
 	~Animation();
 	
-	void ResetAnimation();
-	void UpdateCurrentFrame();
+	void SetFramesSize();
+	void SetSpeed(float sp);
+	void SetDuration(float dur);
+	virtual void ResetAnimation();
+	virtual void UpdateCurrentFrame();
 	bool HasFinished() const;
 	const Sprite& GetFrame() const;
-	void NextFrame();
-	void PriorFrame();
+	virtual void NextFrame();
+	virtual void PriorFrame();
 };
 

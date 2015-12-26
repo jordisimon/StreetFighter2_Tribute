@@ -2,6 +2,8 @@
 #include "Defines.h"
 #include "Config.h"
 #include "SDL\include\SDL.h"
+#include "SDL\include\SDL_rect.h"
+#include "SDL\include\SDL_pixels.h"
 
 #define CONFIG_SECTION "Render"
 
@@ -12,6 +14,8 @@ bool ServiceRender::Init()
 	screenWidth = config->LoadIntValue(CONFIG_SECTION, "screenWidth", "384");
 	screenHeight = config->LoadIntValue(CONFIG_SECTION, "screenHeight", "224");
 	screenRatio = config->LoadIntValue(CONFIG_SECTION, "screenRatio", "2");
+	screenHRatio = config->LoadIntValue(CONFIG_SECTION, "screenHRatio", "2");
+	screenVRatio = config->LoadIntValue(CONFIG_SECTION, "screenVRatio", "2");
 	fullScreen = config->LoadBoolValue(CONFIG_SECTION, "fullScreen", "0");
 	vSync = config->LoadBoolValue(CONFIG_SECTION, "vSync", "384");
 
@@ -25,8 +29,13 @@ bool ServiceRender::Init()
 	}
 
 	//Create window
-	int width = screenWidth * screenRatio;
-	int height = screenHeight * screenRatio;
+	//int width = screenWidth * screenRatio;
+	//int height = screenHeight * screenRatio;
+	int width = screenWidth * screenHRatio;
+	int height = screenHeight * screenVRatio;
+	screenCenter.x = (float)screenWidth / 2;
+	screenCenter.y = (float)screenHeight / 2;
+
 	Uint32 flags = SDL_WINDOW_SHOWN;
 
 	if (fullScreen == true)
@@ -46,9 +55,9 @@ bool ServiceRender::Init()
 	screen_surface = SDL_GetWindowSurface(window);
 
 	//Camera settings
-	camera.x = camera.y = 0;
-	camera.w = width;
-	camera.h = height;
+	camera.x = camera.y = 0.0f;
+	camera.w = (float)width;
+	camera.h = (float)height;
 
 	LOG("Creating Renderer context");
 	flags = 0;
@@ -94,25 +103,28 @@ bool ServiceRender::CleanUp()
 	return true;
 }
 
-bool ServiceRender::Blit(SDL_Texture* texture,const iPoint& position, const SDL_Rect* section, float speed, Direction direction) const
-{
-	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + position.x * screenRatio;
-	//rect.y = (int)(camera.y * speed) + y * screenSize;
-	rect.y = (camera.y) + position.y * screenRatio; //No vertical parallax
 
-	if (section != NULL)
+bool ServiceRender::Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed, Direction direction, float scale)
+{
+	SDL_Rect source {(int)section.x, (int)section.y, (int)section.w, (int)section.h};
+	SDL_Rect dest;
+
+	//GUI
+	if (gui)
 	{
-		rect.w = section->w;
-		rect.h = section->h;
+		dest.x = (int)(position.x * screenHRatio);
+		dest.y = (int)(position.y * screenVRatio);
 	}
+	//Scene
 	else
 	{
-		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
+		dest.x = (int)((camera.x * speed) + position.x * screenHRatio);
+		dest.y = (int)((camera.y) + position.y * screenVRatio); //No vertical parallax
 	}
 
-	rect.w *= screenRatio;
-	rect.h *= screenRatio;
+	dest.w = (int)(section.w * screenHRatio * scale);
+	dest.h = (int)(section.h * screenVRatio * scale);
+
 
 	SDL_RendererFlip flip;
 	if (direction == Direction::RIGHT)
@@ -120,7 +132,7 @@ bool ServiceRender::Blit(SDL_Texture* texture,const iPoint& position, const SDL_
 	else
 		flip = SDL_FLIP_HORIZONTAL;
 
-	if (SDL_RenderCopyEx(renderer, texture, section, &rect, 0.0, NULL, flip) != 0)
+	if (SDL_RenderCopyEx(renderer, texture, &source, &dest, 0.0, NULL, flip) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		return false;
@@ -129,39 +141,83 @@ bool ServiceRender::Blit(SDL_Texture* texture,const iPoint& position, const SDL_
 	return true;
 }
 
+bool ServiceRender::BlitScene(SDL_Texture * texture, const fPoint & position, const fRect & section, float speed, Direction direction, float scale)
+{
+	return Blit(texture, position, section, false, speed, direction, scale);
+}
+
+bool ServiceRender::BlitGUI(SDL_Texture * texture, const fPoint & position, const fRect & section, Direction direction, float scale)
+{
+	return Blit(texture, position, section, true, 1.0f, direction, scale);
+}
+
+
 void ServiceRender::SetDrawColor(const Color& color) const
 {
 	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
 }
 
-void ServiceRender::DrawRect(const SDL_Rect* rect) const
+void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill)
 {
 	SDL_Rect rectAux;
-	rectAux.x = (int)(camera.x) + rect->x * screenRatio;
-	//rect.y = (int)(camera.y * speed) + y * screenSize;
-	rectAux.y = (camera.y) + rect->y * screenRatio; //No vertical parallax
 
-	rectAux.w = rect->w * screenRatio;
-	rectAux.h = rect->h * screenRatio;
+	//Gui
+	if (gui)
+	{
+		rectAux.x = (int)rect.x * screenHRatio;
+		rectAux.y = (int)rect.y * screenVRatio;
+	}
+	//Scene
+	else
+	{
+		rectAux.x = (int)(camera.x + rect.x * screenHRatio);
+		rectAux.y = (int)(camera.y + rect.y * screenVRatio); //No vertical parallax
+	}
 
-	SDL_RenderDrawRect(renderer, &rectAux);
+	rectAux.w = (int)rect.w * screenHRatio;
+	rectAux.h = (int)rect.h * screenVRatio;
+
+	if (fill)
+	{
+		SDL_RenderFillRect(renderer, &rectAux);
+	}
+	else
+	{
+		SDL_RenderDrawRect(renderer, &rectAux);
+	}
 }
 
-bool ServiceRender::HasIntersection(const SDL_Rect* rectA, const SDL_Rect* rectB)
+void ServiceRender::DrawRectLine(const fRect & rect, bool gui)
 {
-	return SDL_HasIntersection(rectA, rectB) == SDL_TRUE;
+	DrawRect(rect, gui, false);
 }
 
-void ServiceRender::SetCameraPostion(const iPoint& position)
+void ServiceRender::DrawRectFill(const fRect & rect, bool gui)
 {
-	camera.x = position.x;
-	camera.y = position.y;
+	DrawRect(rect, gui, true);
 }
 
-void ServiceRender::MoveCamera(const iPoint& offset)
+
+void ServiceRender::SetCameraPostion(const fPoint& position)
 {
-	camera.x += offset.x;
-	camera.y += offset.y;
+	camera.x = position.x * screenHRatio;
+	camera.y = position.y * screenVRatio;
+}
+
+void ServiceRender::MoveCamera(const fPoint& offset)
+{
+	camera.x += offset.x * screenHRatio;
+	camera.y += offset.y * screenVRatio;
+}
+
+const fRect& ServiceRender::GetCamera() const
+{
+	return camera;
+}
+
+const fPoint& ServiceRender::GetScreenCenter() const
+{
+	return screenCenter;
 }
 
 bool ServiceRender::ClearRender() const

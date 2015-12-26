@@ -1,7 +1,7 @@
 #pragma once
 #include "Color.h"
 #include "Point.h"
-#include "SDL\include\SDL_rect.h"
+#include "Rect.h"
 
 class ICollitionListener;
 enum class ColliderType; //To be defined in Game specific implementation
@@ -9,18 +9,18 @@ enum class ColliderType; //To be defined in Game specific implementation
 class Collider
 {
 public:
-	Collider(ColliderType t, const SDL_Rect& r, ICollitionListener* lis, const Color& col);
+	Collider(ColliderType t, const fRect& r, ICollitionListener* lis, const Color& col, bool act = true);
 	virtual ~Collider();
 
 	ColliderType type;
-	SDL_Rect colliderRect;
+	fRect colliderRect;
 	ICollitionListener* listener = nullptr;
 	Color color;
+	bool active;
 	bool changed;	
 	bool toDelete;
 	
-
-	void SetRect(const SDL_Rect& rect);
-	void SetPosition(const iPoint& pos);
+	void SetRect(const fRect& rect);
+	void SetPosition(const fPoint& pos);
 };
 

@@ -8,7 +8,10 @@ public:
 		GREEN, 
 		BLUE,
 		BLACK,
-		WHITE
+		WHITE,
+		YELLOW,
+		CYAN,
+		MAGENTA
 	};
 
 	Color();
