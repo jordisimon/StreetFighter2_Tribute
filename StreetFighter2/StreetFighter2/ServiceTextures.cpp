@@ -25,7 +25,7 @@ bool ServiceTextures::Init()
 
 bool ServiceTextures::CleanUp()
 {
-	LOG("CleanUp Textures Service");
+	LOG("CleanUp Textures Service\n");
 
 	for (map<int, SDL_Texture*>::iterator it = textures.begin(); it != textures.end(); ++it)
 		SDL_DestroyTexture(it->second);

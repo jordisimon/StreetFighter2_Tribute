@@ -13,7 +13,7 @@ bool ServiceAudio::Init()
 {
 	LOG("Init Audio Service");
 
-	LOG("Loading Audio Mixer");
+	LOG("Loading Audio Mixer\n");
 
 	fadeTime = config->LoadFloatValue(CONFIG_SECTION, "fadeTime", "2.0f");
 
@@ -47,7 +47,7 @@ bool ServiceAudio::CleanUp()
 {
 	LOG("CleanUp Audio Service");
 
-	LOG("Freeing sound FX, closing Mixer and Audio subsystem");
+	LOG("Freeing sound FX, closing Mixer and Audio subsystem\n");
 
 	if (music != nullptr)
 	{

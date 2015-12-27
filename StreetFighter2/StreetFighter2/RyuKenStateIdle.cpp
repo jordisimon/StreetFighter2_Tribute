@@ -6,7 +6,8 @@
 #include "RyuKenStateCrouch.h"
 #include "RyuKenStateAttack.h"
 #include "RyuKenStateJump.h"
-
+#include "RyuKenStateFJump.h"
+#include "RyuKenStateBJump.h"
 
 RyuKenStateIdle::RyuKenStateIdle(RyuKen* p) : RyuKenState{ p }
 {
@@ -38,6 +39,14 @@ State * RyuKenStateIdle::ProcessMovement(Direction dir)
 		return new RyuKenStateBWalk(character);
 }
 
+State * RyuKenStateIdle::ProcessJump(Direction dir)
+{
+	if (dir == character->direction)
+		return new RyuKenStateFJump(character);
+	else
+		return new RyuKenStateBJump(character);
+}
+
 State * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
 {
 	for (const auto& command : actions)
@@ -54,13 +63,13 @@ State * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
 			return new RyuKenStateAttack(character, AttackType::H_PUNCH);
 			break;
 		case CommandAction::L_KICK:
-			return new RyuKenStateAttack(character, AttackType::F_L_KICK);
+			return new RyuKenStateAttack(character, AttackType::L_KICK);
 			break;
 		case CommandAction::M_KICK:
-			return new RyuKenStateAttack(character, AttackType::F_M_KICK);
+			return new RyuKenStateAttack(character, AttackType::M_KICK);
 			break;
 		case CommandAction::H_KICK:
-			return new RyuKenStateAttack(character, AttackType::F_H_KICK);
+			return new RyuKenStateAttack(character, AttackType::H_KICK);
 			break;
 		}
 	}
@@ -86,6 +95,14 @@ State* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 
 		case CommandState::MOVE_DOWN:
 			return new RyuKenStateCrouch(character, false);
+			break;
+
+		case CommandState::MOVE_UP_LEFT:
+			return ProcessJump(Direction::LEFT);
+			break;
+
+		case CommandState::MOVE_UP_RIGHT:
+			return ProcessJump(Direction::RIGHT);
 			break;
 
 		case CommandState::MOVE_DOWN_LEFT:

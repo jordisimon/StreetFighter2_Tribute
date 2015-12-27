@@ -27,6 +27,7 @@ private:
 	//The surface contained by the window
 	SDL_Surface* screen_surface = nullptr;
 	fRect camera;
+	fRect cameraRender;
 	fPoint screenCenter;
 
 	bool Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f);

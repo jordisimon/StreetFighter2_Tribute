@@ -149,8 +149,10 @@
     <ClInclude Include="RyuKen.h" />
     <ClInclude Include="RyuKenState.h" />
     <ClInclude Include="RyuKenStateAttack.h" />
+    <ClInclude Include="RyuKenStateBJump.h" />
     <ClInclude Include="RyuKenStateBWalk.h" />
     <ClInclude Include="RyuKenStateCrouch.h" />
+    <ClInclude Include="RyuKenStateFJump.h" />
     <ClInclude Include="RyuKenStateFWalk.h" />
     <ClInclude Include="RyuKenStateIdle.h" />
     <ClInclude Include="RyuKenStateJump.h" />
@@ -212,8 +214,10 @@
     <ClCompile Include="RyuKen.cpp" />
     <ClCompile Include="RyuKenState.cpp" />
     <ClCompile Include="RyuKenStateAttack.cpp" />
+    <ClCompile Include="RyuKenStateBJump.cpp" />
     <ClCompile Include="RyuKenStateBWalk.cpp" />
     <ClCompile Include="RyuKenStateCrouch.cpp" />
+    <ClCompile Include="RyuKenStateFJump.cpp" />
     <ClCompile Include="RyuKenStateFWalk.cpp" />
     <ClCompile Include="RyuKenStateIdle.cpp" />
     <ClCompile Include="RyuKenStateJump.cpp" />

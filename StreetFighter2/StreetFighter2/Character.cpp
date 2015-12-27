@@ -24,10 +24,11 @@ bool Character::Init()
 	characterId = config->LoadIntValue(configSection, "characterId", "-1");
 	fSpeed = config->LoadIntValue(configSection, "fSpeed", "0");
 	bSpeed = config->LoadIntValue(configSection, "bSpeed", "0");
-	jumpSpeed = config->LoadFloatValue(configSection, "jumpSpeed", "0");
-	fJumpDistance = config->LoadIntValue(configSection, "fJumpDistance", "0");
-	bJumpDistance = config->LoadIntValue(configSection, "bJumpDistance", "0");
+	jumpVSpeed = config->LoadFloatValue(configSection, "jumpVSpeed", "0");
+	fJumpHSpeed = config->LoadIntValue(configSection, "fJumpHSpeed", "0");
+	bJumpHSpeed = config->LoadIntValue(configSection, "bJumpHSpeed", "0");
 	gravity = config->LoadFloatValue("Physics", "gravity", "-2");
+	margin = config->LoadFloatValue(configSection, "margin", "0");
 
 	return true;
 }

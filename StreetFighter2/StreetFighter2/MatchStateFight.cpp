@@ -13,7 +13,6 @@
 #include "Character.h"
 #include "Stage.h"
 
-
 MatchStateFight::MatchStateFight(SceneMatch* s) : MatchState{ s }
 {
 }
@@ -89,6 +88,11 @@ State * MatchStateFight::UpdateState()
 	servicesManager->particles->UpdateParticlesState();
 	servicesManager->collitions->UpdateCollidersState();
 	scene->GUI->UpdateState();
+
+	scene->CheckPlayerLimits();
+	scene->SetCamYPosition();
+	scene->SetCamXPosition();
+	scene->SetCamPosition();
 
 	bool matchFinished = (scene->timeLimit && scene->time <= 0) 
 		|| (scene->player1->life <= 0) 

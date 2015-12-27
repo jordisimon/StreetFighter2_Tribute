@@ -277,6 +277,12 @@
     <ClInclude Include="RyuKenStateJump.h">
       <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
     </ClInclude>
+    <ClInclude Include="RyuKenStateBJump.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateFJump.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -421,6 +427,12 @@
       <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
     </ClCompile>
     <ClCompile Include="RyuKenStateJump.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateBJump.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateFJump.cpp">
       <Filter>Sources\StreetFighter\Characters\RyuKen\FSM</Filter>
     </ClCompile>
   </ItemGroup>

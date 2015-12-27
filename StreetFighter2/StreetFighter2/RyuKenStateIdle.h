@@ -6,6 +6,7 @@ class RyuKenStateIdle :	public RyuKenState
 {
 private:
 	State* ProcessMovement(Direction dir);
+	State* ProcessJump(Direction dir);
 
 protected:
 

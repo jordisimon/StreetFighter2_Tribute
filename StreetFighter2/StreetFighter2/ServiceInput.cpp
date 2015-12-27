@@ -14,7 +14,7 @@ ServiceInput::ServiceInput()
 
 bool ServiceInput::Init()
 {
-	LOG("Init Input Service");
+	LOG("Init Input Service\n");
 
 	screenSize = config->LoadIntValue("Render", "screenRatio", "2");
 
@@ -60,7 +60,7 @@ bool ServiceInput::Init()
 
 bool ServiceInput::CleanUp()
 {
-	LOG("CleanUp Input Service");
+	LOG("CleanUp Input Service\n");
 	SDL_HapticClose(haptic2);
 	SDL_GameControllerClose(controller2);
 	SDL_HapticClose(haptic1);
@@ -162,24 +162,6 @@ bool ServiceInput::UpdateInput()
 
 void ServiceInput::UpdateGameControllerState(SDL_GameController* controller, KeyState* controllerState)
 {
-	/*for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
-	{
-		if (SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)i))
-		{
-			if (controllerState[i] == KeyState::KEY_IDLE)
-				controllerState[i] = KeyState::KEY_DOWN;
-			else
-				controllerState[i] = KeyState::KEY_REPEAT;
-		}
-		else
-		{
-			if (controllerState[i] == KeyState::KEY_REPEAT || controllerState[i] == KeyState::KEY_DOWN)
-				controllerState[i] = KeyState::KEY_UP;
-			else
-				controllerState[i] = KeyState::KEY_IDLE;
-		}
-	}*/
-
 	//Managing diagonals
 	bool tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_MAX];
 

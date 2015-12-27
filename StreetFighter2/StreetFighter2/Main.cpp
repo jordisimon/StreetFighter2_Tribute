@@ -56,7 +56,7 @@ int main(int argc, char ** argv)
 			else
 			{
 				state = MAIN_UPDATE;
-				LOG("Game Update --------------");
+				LOG("Game Update --------------\n");
 			}
 
 			break;

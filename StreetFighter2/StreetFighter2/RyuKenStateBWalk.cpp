@@ -3,6 +3,7 @@
 #include "ServicesManager.h"
 #include "ServiceTime.h"
 #include "RyuKenStateIdle.h"
+#include "SceneMatch.h"
 
 RyuKenStateBWalk::RyuKenStateBWalk(RyuKen* p) : RyuKenState{ p }
 {
@@ -67,6 +68,7 @@ State* RyuKenStateBWalk::UpdateState()
 		break;
 	case Direction::RIGHT:
 		character->position.x -= (character->bSpeed) * (servicesManager->time->frameTimeSeconds);
+		break;
 	}
 
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);

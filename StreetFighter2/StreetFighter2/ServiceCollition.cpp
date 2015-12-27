@@ -9,7 +9,7 @@
 
 using namespace std;
 
-ServiceCollition::ServiceCollition() : drawCollitions{ false }
+ServiceCollition::ServiceCollition() : drawColliders{ false }
 {
 }
 
@@ -134,7 +134,7 @@ bool ServiceCollition::UpdateCollidersState()
 
 bool ServiceCollition::DrawColliders() const
 {
-	if (drawCollitions)
+	if (drawColliders)
 	{
 		for (vector<Collider*>::const_iterator it = colliders.cbegin(); it != colliders.cend(); ++it)
 		{

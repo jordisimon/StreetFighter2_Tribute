@@ -99,7 +99,7 @@ bool SF2Game::ProcessInput(CommandData* commandData)
 				switch (command)
 				{
 				case CommandAction::DBG_TOGGLE_VIEW_COLLITION:
-					servicesManager->collitions->drawCollitions = !servicesManager->collitions->drawCollitions;
+					servicesManager->collitions->drawColliders = !servicesManager->collitions->drawColliders;
 					break;
 				}
 			}

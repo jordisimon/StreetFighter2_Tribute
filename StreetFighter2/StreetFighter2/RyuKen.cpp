@@ -141,5 +141,9 @@ Entity::Result RyuKen::Draw()
 {
 	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, direction), (currentAnimation->GetFrame().rect), 1.0f, direction);
 
+	servicesManager->render->SetDrawColor(Color(Color::Predefined::MAGENTA));
+	//fRect rect
+	servicesManager->render->DrawRectFill({ position.x - 1, position.y - 1, 2, 2 });
+
 	return Entity::Result::R_OK;
 }

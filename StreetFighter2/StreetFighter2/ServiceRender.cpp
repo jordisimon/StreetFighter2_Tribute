@@ -56,8 +56,11 @@ bool ServiceRender::Init()
 
 	//Camera settings
 	camera.x = camera.y = 0.0f;
-	camera.w = (float)width;
-	camera.h = (float)height;
+	camera.w = (float)screenWidth;
+	camera.h = (float)screenHeight;
+	cameraRender.x = cameraRender.y = 0.0f;
+	cameraRender.w = (float)width;
+	cameraRender.y = (float)height;
 
 	LOG("Creating Renderer context");
 	flags = 0;
@@ -82,7 +85,7 @@ bool ServiceRender::CleanUp()
 {
 	LOG("CleanUp Render Service");
 
-	LOG("Destroying renderer");
+	LOG("Destroying renderer\n");
 
 	//Destroy window
 	if (renderer != nullptr)
@@ -118,8 +121,8 @@ bool ServiceRender::Blit(SDL_Texture* texture, const fPoint& position, const fRe
 	//Scene
 	else
 	{
-		dest.x = (int)((camera.x * speed) + position.x * screenHRatio);
-		dest.y = (int)((camera.y) + position.y * screenVRatio); //No vertical parallax
+		dest.x = (int)((cameraRender.x * speed) + position.x * screenHRatio);
+		dest.y = (int)((cameraRender.y) + position.y * screenVRatio); //No vertical parallax
 	}
 
 	dest.w = (int)(section.w * screenHRatio * scale);
@@ -170,8 +173,8 @@ void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill)
 	//Scene
 	else
 	{
-		rectAux.x = (int)(camera.x + rect.x * screenHRatio);
-		rectAux.y = (int)(camera.y + rect.y * screenVRatio); //No vertical parallax
+		rectAux.x = (int)(cameraRender.x + rect.x * screenHRatio);
+		rectAux.y = (int)(cameraRender.y + rect.y * screenVRatio); //No vertical parallax
 	}
 
 	rectAux.w = (int)rect.w * screenHRatio;
@@ -200,14 +203,18 @@ void ServiceRender::DrawRectFill(const fRect & rect, bool gui)
 
 void ServiceRender::SetCameraPostion(const fPoint& position)
 {
-	camera.x = position.x * screenHRatio;
-	camera.y = position.y * screenVRatio;
+	camera.x = position.x;
+	camera.y = position.y;
+	cameraRender.x = camera.x * screenHRatio * -1;
+	cameraRender.y = camera.y * screenVRatio * -1;
 }
 
 void ServiceRender::MoveCamera(const fPoint& offset)
 {
-	camera.x += offset.x * screenHRatio;
-	camera.y += offset.y * screenVRatio;
+	camera.x += offset.x;
+	camera.y += offset.y;
+	cameraRender.x = camera.x * screenHRatio * -1;
+	cameraRender.y = camera.y * screenVRatio * -1;
 }
 
 const fRect& ServiceRender::GetCamera() const

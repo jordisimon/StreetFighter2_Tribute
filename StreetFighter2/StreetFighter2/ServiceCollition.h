@@ -21,7 +21,7 @@ private:
 	void CheckPair(Collider* colA, Collider* colB);
 
 public:
-	bool drawCollitions;
+	bool drawColliders;
 
 	ServiceCollition();
 	~ServiceCollition();

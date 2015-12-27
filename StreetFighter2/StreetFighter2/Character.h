@@ -8,6 +8,8 @@ class State;
 class Collider;
 struct SDL_Texture;
 
+class SceneMatch;
+
 class Character : public Entity, public ICollitionListener
 {
 protected:
@@ -17,6 +19,7 @@ protected:
 
 public:
 	//Common
+	SceneMatch* match;
 	int playerNumber;
 	fPoint position;
 	Direction direction;
@@ -28,9 +31,10 @@ public:
 	int characterId;
 	int fSpeed;
 	int bSpeed;
-	float jumpSpeed;
-	int fJumpDistance;
-	int bJumpDistance;	
+	float jumpVSpeed;
+	int fJumpHSpeed;
+	int bJumpHSpeed;
+	float margin;
 
 	Character() {};
 	~Character() {};

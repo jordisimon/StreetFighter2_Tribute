@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "SceneMatchInfo.h"
 #include "Timer.h"
+#include "Point.h"
 
 class State;
 class Stage;
@@ -30,6 +31,10 @@ private:
 	unsigned int time;
 	unsigned int roundNumber;
 	bool paused;
+	fPoint camPosition;
+	float scene25Percent;
+	float scene50Percent;
+	float scene75Percent;
 
 	//Fx sounds
 	static int pauseFx;
@@ -40,7 +45,11 @@ private:
 	static int fourFx;
 	static int fightFx;
 
-	void DrawGUI();
+	void CheckPlayerLimits();
+
+	void SetCamXPosition();
+	void SetCamYPosition();
+	void SetCamPosition();
 
 public:
 	SceneMatch(const SceneMatchInfo& sceneInfo);
@@ -55,5 +64,9 @@ public:
 	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
 	Entity::Result Draw();
+
+	int GetGroundPosition();
+	float GetMinXPosition();
+	float GetMaxXPosition();
 };
 
