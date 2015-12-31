@@ -22,6 +22,8 @@ public:
 	fPoint p1StartPoint;
 	fPoint p2StartPoint;
 
+	bool showFinishAnimations;
+
 	Stage() {};
 	~Stage() {};
 
@@ -29,6 +31,7 @@ public:
 	bool CleanUp();
 
 	bool Start();
-	bool Stop();
+
+	void StartFinishAnimations() { showFinishAnimations = true; };
 };
 

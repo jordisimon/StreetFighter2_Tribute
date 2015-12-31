@@ -14,6 +14,6 @@ public:
 	void OnEnter();
 	void OnExit();
 
-	State* UpdateState();
+	CharacterState* UpdateState();
 };
 

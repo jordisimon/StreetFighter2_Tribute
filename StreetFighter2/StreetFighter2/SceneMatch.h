@@ -4,7 +4,7 @@
 #include "Timer.h"
 #include "Point.h"
 
-class State;
+class MatchState;
 class Stage;
 class Character;
 class CommandContext;
@@ -19,10 +19,12 @@ class SceneMatch: public Scene
 	friend class SceneMatchGUI;
 
 private:
+	MatchState* currentState = nullptr;
+
 	SceneMatchGUI* GUI = nullptr;
 	CommandContext* commandContextFight = nullptr;
 	CommandContext* commandContextPause = nullptr;
-	State* currentState = nullptr;
+	
 	Stage* stage = nullptr;
 	Character* player1 = nullptr;
 	Character* player2 = nullptr;
@@ -36,20 +38,20 @@ private:
 	float scene50Percent;
 	float scene75Percent;
 
-	//Fx sounds
-	static int pauseFx;
-	static int roundFx;
-	static int oneFx;
-	static int twoFx;
-	static int threeFx;
-	static int fourFx;
-	static int fightFx;
+	unsigned int winnerPlayer;
+	unsigned int vitalScore;
+	unsigned int timeScore;
 
-	void CheckPlayerLimits();
+	void CorrectPosition(fPoint& position, float margin);
+	void MovePlayers();
+	void ApplyForceToPlayers(Character* forcedPlayer, Character* otherPlayer);
+	void CheckPlayerDirection();
 
 	void SetCamXPosition();
 	void SetCamYPosition();
-	void SetCamPosition();
+	void SetCamPosition() const;
+
+	void SetNewState(MatchState* state);
 
 public:
 	SceneMatch(const SceneMatchInfo& sceneInfo);
@@ -63,10 +65,6 @@ public:
 
 	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
-	Entity::Result Draw();
-
-	int GetGroundPosition();
-	float GetMinXPosition();
-	float GetMaxXPosition();
+	Entity::Result Draw() const;
 };
 

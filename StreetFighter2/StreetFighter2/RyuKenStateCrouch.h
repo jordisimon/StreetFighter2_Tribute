@@ -6,11 +6,11 @@ class RyuKenStateCrouch : public RyuKenState
 {
 private: 
 	bool defending;
-	State* RyuKenStateCrouch::ProcessMovement(Direction dir);
+	CharacterState* RyuKenStateCrouch::ProcessMovement(Direction dir);
 
 protected:
-	State* ProcessActions(std::vector<CommandAction> actions);
-	State* ProcessStates(std::vector<CommandState> states);
+	CharacterState* ProcessActions(std::vector<CommandAction> actions);
+	CharacterState* ProcessStates(std::vector<CommandState> states);
 
 public:
 	RyuKenStateCrouch(RyuKen* p, bool def);
@@ -19,6 +19,6 @@ public:
 	void OnEnter();
 	void OnExit();
 
-	State* UpdateState();
+	CharacterState* UpdateState();
 };
 

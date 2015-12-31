@@ -1,23 +1,25 @@
 #pragma once
-#include "State.h"
+#include "CharacterState.h"
 #include <vector>
 #include "CommandAction.h"
 #include "CommandState.h"
 
 class RyuKen;
 
-class RyuKenState :	public State
+class RyuKenState :	public CharacterState
 {
 protected:
 	RyuKen* character = nullptr;
 
-	virtual State* ProcessActions(std::vector<CommandAction> actions) { return nullptr; };
-	virtual State* ProcessStates(std::vector<CommandState> states) { return nullptr; };
+	virtual CharacterState* ProcessActions(std::vector<CommandAction> actions) { return nullptr; };
+	virtual CharacterState* ProcessStates(std::vector<CommandState> states) { return nullptr; };
 
 public:
 	RyuKenState(RyuKen* p);
 	~RyuKenState();
 
-	State* ProcessInput(CommandData* commandData);
+	CharacterState* ProcessInput(CommandData* commandData);
+	CharacterState* DealHit(Collider* collider);
+	CharacterState* MatchFinished(int playerWin);
 };
 

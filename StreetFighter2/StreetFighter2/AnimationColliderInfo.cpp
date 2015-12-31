@@ -1,5 +1,5 @@
 #include "AnimationColliderInfo.h"
-
+#include "Defines.h"
 
 
 AnimationColliderInfo::AnimationColliderInfo()

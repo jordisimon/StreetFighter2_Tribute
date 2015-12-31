@@ -1,27 +1,18 @@
 #pragma once
 #include "Particle.h"
-#include "ICollitionListener.h"
 
 class Collider;
 
-class ParticleHaDoKen :	public Particle, ICollitionListener
+class ParticleHaDoKen :	public Particle
 {
 private:
-	Collider* collider = nullptr;
-
-public:
-	enum class Type
-	{
-		LOW,
-		MEDIUM,
-		HARD
-	};
-
-	Animation endAnimation;
+	AnimationCollider runAnimation;
+	AnimationCollider endAnimation;
 	fPoint speed;
 	int damage;
 
-	ParticleHaDoKen(fPoint pos, Direction dir, SDL_Texture* text, Type type);
+public:
+	ParticleHaDoKen(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim);
 	~ParticleHaDoKen();
 
 	bool UpdateState();

@@ -1,12 +1,22 @@
 #pragma once
-#include "State.h"
 
-class CharacterState :	public State
+struct CommandData;
+class Collider;
+
+class CharacterState
 {
 public:
 	CharacterState();
-	~CharacterState();
+	virtual ~CharacterState();
 
-	State* ProcessInput(CommandData* commandData);
+	virtual void OnEnter() {};
+	virtual void OnExit() {};
+
+	virtual CharacterState* ProcessInput(CommandData* commandData) { return nullptr; };
+	virtual CharacterState* UpdateState() { return nullptr; };
+
+	virtual void IfMovingForwardRecalculatePositionWithPressingSpeed() {};
+	virtual CharacterState* DealHit(Collider* collider) { return nullptr; };
+	virtual CharacterState* MatchFinished(int playerWin) { return nullptr; };
 };
 

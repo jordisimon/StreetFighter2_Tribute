@@ -1,7 +1,7 @@
 #pragma once
 #include "Service.h"
-class ServiceTime :
-	public Service
+
+class ServiceTime :	public Service
 {
 private:
 	unsigned int lastTime = 0;
@@ -16,5 +16,7 @@ public:
 
 	bool Start();
 	void Update();
+
+	unsigned int CurrentTime() const { return currentTime; }
 };
 

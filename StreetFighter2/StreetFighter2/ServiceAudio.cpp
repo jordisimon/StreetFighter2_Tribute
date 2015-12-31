@@ -119,7 +119,7 @@ bool ServiceAudio::PlayMusic(const char * path, float pFade_time)
 	return ret;
 }
 
-bool ServiceAudio::PauseMusic()
+bool ServiceAudio::PauseMusic() const
 {
 	if (!Mix_PausedMusic())
 		Mix_PauseMusic();
@@ -127,7 +127,7 @@ bool ServiceAudio::PauseMusic()
 	return true;
 }
 
-bool ServiceAudio::ResumeMusic()
+bool ServiceAudio::ResumeMusic() const
 {
 	if (Mix_PausedMusic())
 		Mix_ResumeMusic();
@@ -135,9 +135,22 @@ bool ServiceAudio::ResumeMusic()
 	return true;
 }
 
-bool ServiceAudio::StopMusic()
+bool ServiceAudio::StopMusic() const
 {
-	Mix_HaltMusic();
+	return StopMusic(fadeTime);
+}
+
+bool ServiceAudio::StopMusic(float pFade_time) const
+{
+	if (pFade_time > 0.0f)
+	{
+		Mix_FadeOutMusic((int)(pFade_time * 1000.0f));
+	}
+	else
+	{
+		Mix_HaltMusic();
+	}
+
 	return true;
 }
 

@@ -30,8 +30,8 @@ private:
 	fRect cameraRender;
 	fPoint screenCenter;
 
-	bool Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f);
-	void DrawRect(const fRect& rect, bool gui, bool fill);
+	bool Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f) const;
+	void DrawRect(const fRect& rect, bool gui, bool fill) const;
 
 public:
 	SDL_Renderer* renderer = nullptr;
@@ -42,12 +42,13 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	bool BlitScene(SDL_Texture* texture, const fPoint& position, const fRect& section, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f);
-	bool BlitGUI(SDL_Texture* texture, const fPoint& position, const fRect& section, Direction direction = Direction::RIGHT, float scale = 1.0f);
+	bool BlitScene(SDL_Texture* texture, const fPoint& position, const fRect& section, float speed = 1.0f, Direction direction = Direction::RIGHT, float scale = 1.0f) const;
+	bool BlitGUI(SDL_Texture* texture, const fPoint& position, const fRect& section, Direction direction = Direction::RIGHT, float scale = 1.0f) const;
 
 	void SetDrawColor(const Color& color) const;
-	void DrawRectLine(const fRect& rect, bool gui = false);
-	void DrawRectFill(const fRect& rect, bool gui = false);
+	void DrawRectLine(const fRect& rect, bool gui = false) const;
+	void DrawRectFill(const fRect& rect, bool gui = false) const;
+	void FillScreen() const;
 
 	void SetCameraPostion(const fPoint& position);
 	void MoveCamera(const fPoint& offset);

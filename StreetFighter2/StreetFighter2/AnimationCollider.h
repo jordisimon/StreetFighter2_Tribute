@@ -1,5 +1,7 @@
 #pragma once
 #include "Animation.h"
+#include "Point.h"
+#include "Direction.h"
 
 class ICollitionListener;
 class AnimationColliderInfo;

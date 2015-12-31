@@ -7,6 +7,7 @@ class Scene;
 //Testing
 class ServiceCommandManager;
 class SceneMatch;
+class ParticleFactory;
 
 class SF2Game :	public Game
 {
@@ -32,6 +33,6 @@ public:
 	bool UpdateInput() const;
 	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
-	Entity::Result Draw();
+	Entity::Result Draw() const;
 };
 

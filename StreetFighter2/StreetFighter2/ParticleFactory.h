@@ -2,32 +2,32 @@
 #include "IParticleFactory.h"
 #include "Point.h"
 #include "Direction.h"
+#include "AnimationCollider.h"
+#include "ParticleInfo.h"
 
 class Particle;
 struct SDL_Texture;
 
-struct ParticleInfo
-{
-	enum class Type
-	{
-		LOW_HADOKEN,
-		MEDIUM_HADOKEN,
-		HARD_HADOKEN
-	};
-	fPoint position;
-	Direction direction;
-	Type type;
-};
-
 class ParticleFactory : public IParticleFactory
 {
 private:
-	SDL_Texture* hadokenTexture = nullptr;
+	SDL_Texture* particlesTexture = nullptr;
+	AnimationCollider hadokenRun;
+	AnimationCollider hadokenEnd;
+	AnimationCollider hitBlocked;
+	AnimationCollider p1lHit;
+	AnimationCollider p1mHit;
+	AnimationCollider p1hHit;
+	AnimationCollider p2lHit;
+	AnimationCollider p2mHit;
+	AnimationCollider p2hHit;
 
 public:
 	ParticleFactory() {};
 	~ParticleFactory() {};
 
+	bool Init();
+	bool CleanUp();
 	Particle* CreateParticle(const ParticleInfo& info);
 };
 

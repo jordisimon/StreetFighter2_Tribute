@@ -26,12 +26,12 @@ void RyuKenStateFWalk::OnExit()
 }
 
 
-State * RyuKenStateFWalk::ProcessActions(std::vector<CommandAction> actions)
+CharacterState * RyuKenStateFWalk::ProcessActions(std::vector<CommandAction> actions)
 {
 	return nullptr;
 }
 
-State * RyuKenStateFWalk::ProcessStates(std::vector<CommandState> states)
+CharacterState * RyuKenStateFWalk::ProcessStates(std::vector<CommandState> states)
 {
 	bool keepWalking = false;
 
@@ -59,17 +59,29 @@ State * RyuKenStateFWalk::ProcessStates(std::vector<CommandState> states)
 }
 
 
-State* RyuKenStateFWalk::UpdateState()
+CharacterState* RyuKenStateFWalk::UpdateState()
 {
 	switch (character->direction)
 	{
 	case Direction::LEFT:
-		character->position.x -= (character->fSpeed) * (servicesManager->time->frameTimeSeconds);
+		character->nextPosition.x = character->position.x - ((character->fSpeed) * (servicesManager->time->frameTimeSeconds));
 		break;
 	case Direction::RIGHT:
-		character->position.x += (character->fSpeed) * (servicesManager->time->frameTimeSeconds);
+		character->nextPosition.x = character->position.x + ((character->fSpeed) * (servicesManager->time->frameTimeSeconds));
 	}
 	
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);	
 	return nullptr;
+}
+
+void RyuKenStateFWalk::IfMovingForwardRecalculatePositionWithPressingSpeed()
+{
+	switch (character->direction)
+	{
+	case Direction::LEFT:
+		character->nextPosition.x = character->position.x - ((character->pSpeed) * (servicesManager->time->frameTimeSeconds));
+		break;
+	case Direction::RIGHT:
+		character->nextPosition.x = character->position.x + ((character->pSpeed) * (servicesManager->time->frameTimeSeconds));
+	}
 }

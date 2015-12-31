@@ -5,7 +5,7 @@
 #include "RyuKenStateBWalk.h"
 #include "RyuKenStateAttack.h"
 
-State* RyuKenStateCrouch::ProcessMovement(Direction dir)
+CharacterState* RyuKenStateCrouch::ProcessMovement(Direction dir)
 {
 	if (dir == character->direction)
 		return new RyuKenStateFWalk(character);
@@ -13,7 +13,7 @@ State* RyuKenStateCrouch::ProcessMovement(Direction dir)
 		return new RyuKenStateBWalk(character);
 }
 
-State * RyuKenStateCrouch::ProcessActions(std::vector<CommandAction> actions)
+CharacterState * RyuKenStateCrouch::ProcessActions(std::vector<CommandAction> actions)
 {
 	for (const auto& command : actions)
 	{
@@ -42,7 +42,7 @@ State * RyuKenStateCrouch::ProcessActions(std::vector<CommandAction> actions)
 	return nullptr;
 }
 
-State * RyuKenStateCrouch::ProcessStates(std::vector<CommandState> states)
+CharacterState * RyuKenStateCrouch::ProcessStates(std::vector<CommandState> states)
 {
 	bool keepCrouching = false;
 
@@ -102,7 +102,7 @@ void RyuKenStateCrouch::OnExit()
 	character->currentAnimation->CleanUpColliders();
 }
 
-State * RyuKenStateCrouch::UpdateState()
+CharacterState * RyuKenStateCrouch::UpdateState()
 {
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;

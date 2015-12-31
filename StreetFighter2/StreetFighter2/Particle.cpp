@@ -3,7 +3,7 @@
 #include "ServiceRender.h"
 #include "Sprite.h"
 
-Particle::Particle(const fPoint& pos, Direction dir, SDL_Texture* text) : toDelete{ false }, position{ pos }, direction{ dir }, texture{ text }
+Particle::Particle(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text) : type{ typ }, toDelete { false }, position{ pos }, direction{ dir }, texture{ text }
 {
 }
 
@@ -12,8 +12,9 @@ Particle::~Particle()
 {
 }
 
-bool Particle::Draw()
+bool Particle::Draw() const
 {
-	servicesManager->render->BlitScene(texture, animation->GetFrame().GetRectPosition(position, direction), (animation->GetFrame().rect), 1.0f, direction);
+	if (currentAnimation != nullptr)
+		servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, direction), (currentAnimation->GetFrame().rect), 1.0f, direction);
 	return true;
 }

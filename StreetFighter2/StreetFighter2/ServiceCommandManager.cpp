@@ -31,7 +31,7 @@ bool ServiceCommandManager::CleanUp()
 	return true;
 }
 
-CommandContext * ServiceCommandManager::Load(const char * configSection)
+CommandContext* ServiceCommandManager::Load(const char* configSection)
 {
 	//Find command context id
 	int commandContextId = config->LoadIntValue(configSection, "commandContextId", "-1");
@@ -39,7 +39,7 @@ CommandContext * ServiceCommandManager::Load(const char * configSection)
 	if (commandContextId == -1)
 		return nullptr;
 
-	//If texture already loaded, return it
+	//If context already loaded, return it
 	map<int, CommandContext*>::const_iterator it = commandContexts.find(commandContextId);
 	if (it != commandContexts.cend())
 	{
@@ -77,12 +77,12 @@ void ServiceCommandManager::Unload(int id)
 }
 
 
-bool ServiceCommandManager::UpdateInput()
+bool ServiceCommandManager::UpdateInput() const
 {
 	return servicesManager->input->UpdateInput();
 }
 
-bool ServiceCommandManager::ProcessInput()
+bool ServiceCommandManager::ProcessInput() const
 {
 	if (currentCommandContext != nullptr)
 		return currentCommandContext->ProcessInput();
@@ -90,7 +90,7 @@ bool ServiceCommandManager::ProcessInput()
 	return true;
 }
 
-bool ServiceCommandManager::ProcessInput(CommandContext * commandContext)
+bool ServiceCommandManager::ProcessInput(const CommandContext * commandContext) const
 {
 	if (commandContext != nullptr)
 		return commandContext->ProcessInput();
@@ -99,12 +99,12 @@ bool ServiceCommandManager::ProcessInput(CommandContext * commandContext)
 }
 
 
-void ServiceCommandManager::SetCurrentContext(CommandContext * context)
+void ServiceCommandManager::SetCurrentContext(const CommandContext * context)
 {
 	currentCommandContext = context;
 }
 
-bool ServiceCommandManager::CommandExit()
+bool ServiceCommandManager::CommandExit() const
 {
 	return (servicesManager->input->GetWindowEvent(EventWindow::WE_QUIT)
 		|| servicesManager->input->GetKey(SDL_SCANCODE_ESCAPE) == KeyState::KEY_DOWN);

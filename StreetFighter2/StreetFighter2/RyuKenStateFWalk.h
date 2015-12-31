@@ -4,8 +4,8 @@
 class RyuKenStateFWalk: public RyuKenState
 {
 protected:
-	State* ProcessActions(std::vector<CommandAction> actions);
-	State* ProcessStates(std::vector<CommandState> states);
+	CharacterState* ProcessActions(std::vector<CommandAction> actions);
+	CharacterState* ProcessStates(std::vector<CommandState> states);
 
 public:
 	RyuKenStateFWalk(RyuKen* p);
@@ -14,6 +14,8 @@ public:
 	void OnEnter();
 	void OnExit();
 
-	State* UpdateState();
+	CharacterState* UpdateState();
+
+	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 };
 

@@ -17,6 +17,9 @@ ServiceParticles::~ServiceParticles()
 bool ServiceParticles::Init()
 {
 	LOG("Init Particles Service");
+	if (factory != nullptr)
+		return factory->Init();
+
 	return true;
 }
 
@@ -26,6 +29,9 @@ bool ServiceParticles::CleanUp()
 
 	for (list<Particle*>::iterator it = particles.begin(); it != particles.end(); ++it)
 		RELEASE(*it);
+
+	if(factory != nullptr)
+		factory->CleanUp();
 
 	return true;
 }

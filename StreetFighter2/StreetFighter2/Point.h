@@ -87,6 +87,16 @@ public:
 
 		return sqrt((fx*fx) + (fy*fy));
 	}
+
+	TYPE DistanceXTo(const Point& v) const
+	{
+		return abs(x - v.x);
+	}
+
+	TYPE DistanceYTo(const Point& v) const
+	{
+		return abs(y - v.y);
+	}
 };
 
 typedef Point<int> iPoint;

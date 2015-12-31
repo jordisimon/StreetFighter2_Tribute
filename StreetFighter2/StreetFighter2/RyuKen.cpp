@@ -4,10 +4,14 @@
 #include "RyuKenStateIdle.h"
 #include "ServicesManager.h"
 #include "ServiceCollition.h"
+#include "ServiceRender.h"
+#include "ServiceAudio.h"
 #include "ColliderType.h"
 #include "Collider.h"
 #include "Color.h"
-#include "ServiceRender.h"
+
+
+int RyuKen::attackSfx = -1;
 
 RyuKen::RyuKen(CharacterType type)
 {
@@ -42,6 +46,9 @@ bool RyuKen::Init()
 		config->LoadAnimationCollider(crouch, configSection, "crouch");
 		config->LoadAnimationCollider(blocking, configSection, "blocking");
 		config->LoadAnimationCollider(cBlocking, configSection, "cBlocking");
+		config->LoadAnimationCollider(hit, configSection, "hit");
+		config->LoadAnimationCollider(faceHit, configSection, "faceHit");
+		config->LoadAnimationCollider(cHit, configSection, "cHit");
 		config->LoadAnimationCollider(lPunch, configSection, "lPunch");
 		config->LoadAnimationCollider(mPunch, configSection, "mPunch");
 		config->LoadAnimationCollider(hPunch, configSection, "hPunch");
@@ -61,6 +68,11 @@ bool RyuKen::Init()
 		config->LoadAnimationCollider(cmKick, configSection, "cmKick");
 		config->LoadAnimationCollider(chKick, configSection, "chKick");
 
+		config->LoadAnimationCollider(KO, configSection, "KO");
+		config->LoadAnimationCollider(victory1, configSection, "victory1");
+		config->LoadAnimationCollider(victory2, configSection, "victory2");
+		config->LoadAnimationCollider(timeover, configSection, "timeover");
+
 		idle.listener = this;
 		fWalk.listener = this;
 		bWalk.listener = this;
@@ -70,6 +82,10 @@ bool RyuKen::Init()
 		crouch.listener = this;
 		blocking.listener = this;
 		cBlocking.listener = this;
+		hit.listener = this;
+		faceHit.listener = this;
+		cHit.listener = this;
+
 		lPunch.listener = this;
 		mPunch.listener = this;
 		hPunch.listener = this;
@@ -89,19 +105,15 @@ bool RyuKen::Init()
 		cmKick.listener = this;
 		chKick.listener = this;
 
-		currentAnimation = &idle;
-
-		currentState = new RyuKenStateIdle(this);
+		if (attackSfx == -1) attackSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Attack.ogg");
 	}
 
-	return true;
+	return res;
 }
 
 bool RyuKen::CleanUp()
 {
 	bool res = Character::CleanUp();
-
-	RELEASE(currentState);
 
 	return res;
 }
@@ -112,8 +124,11 @@ bool RyuKen::Start()
 
 	if (res)
 	{
-		idle.InitColliders(position,direction);
-		//bodyCollider = servicesManager->collitions->CreateCollider(ColliderType::CHARACTER_BODY, currentBodyColliderAnimation->GetFrame().GetScreenRect(position, direction), this, Color(Color::Predefined::GREEN));
+		currentAnimation = &idle;
+		currentAnimation->InitColliders(position,direction);
+
+		RELEASE(currentState);
+		currentState = new RyuKenStateIdle(this);
 	}
 
 	return res;
@@ -123,27 +138,15 @@ bool RyuKen::Stop()
 {
 	bool res = Character::Stop();
 
-	/*if (bodyCollider != nullptr)
-	{
-		bodyCollider->toDelete = true;
-	}
+	RELEASE(currentState);
 
-	if (attackCollider != nullptr)
-	{
-		attackCollider->toDelete = true;
-	}*/
+	if (currentAnimation != nullptr)
+		currentAnimation->CleanUpColliders();
 
-	return false;
+	return res;
 }
 
-
-Entity::Result RyuKen::Draw()
+void RyuKen::PlaySfx(int sfx)
 {
-	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, direction), (currentAnimation->GetFrame().rect), 1.0f, direction);
-
-	servicesManager->render->SetDrawColor(Color(Color::Predefined::MAGENTA));
-	//fRect rect
-	servicesManager->render->DrawRectFill({ position.x - 1, position.y - 1, 2, 2 });
-
-	return Entity::Result::R_OK;
+	servicesManager->audio->PlayFx(sfx);
 }

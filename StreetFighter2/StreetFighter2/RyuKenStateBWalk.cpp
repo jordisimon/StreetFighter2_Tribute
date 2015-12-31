@@ -27,12 +27,12 @@ void RyuKenStateBWalk::OnExit()
 }
 
 
-State * RyuKenStateBWalk::ProcessActions(std::vector<CommandAction> actions)
+CharacterState * RyuKenStateBWalk::ProcessActions(std::vector<CommandAction> actions)
 {
 	return nullptr;
 }
 
-State * RyuKenStateBWalk::ProcessStates(std::vector<CommandState> states)
+CharacterState * RyuKenStateBWalk::ProcessStates(std::vector<CommandState> states)
 {
 	bool keepWalking = false;
 
@@ -59,15 +59,15 @@ State * RyuKenStateBWalk::ProcessStates(std::vector<CommandState> states)
 	return nullptr;
 }
 
-State* RyuKenStateBWalk::UpdateState()
+CharacterState* RyuKenStateBWalk::UpdateState()
 {
 	switch (character->direction)
 	{
 	case Direction::LEFT:
-		character->position.x += (character->bSpeed) * (servicesManager->time->frameTimeSeconds);
+		character->nextPosition.x = character->position.x + ((character->bSpeed) * (servicesManager->time->frameTimeSeconds));
 		break;
 	case Direction::RIGHT:
-		character->position.x -= (character->bSpeed) * (servicesManager->time->frameTimeSeconds);
+		character->nextPosition.x = character->position.x - ((character->bSpeed) * (servicesManager->time->frameTimeSeconds));
 		break;
 	}
 

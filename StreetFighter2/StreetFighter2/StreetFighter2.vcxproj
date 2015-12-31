@@ -130,6 +130,7 @@
     <ClInclude Include="AnimationColliderInfo.h" />
     <ClInclude Include="AnimationCollider.h" />
     <ClInclude Include="CharacterFactory.h" />
+    <ClInclude Include="CharacterState.h" />
     <ClInclude Include="CharacterType.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="ColliderType.h" />
@@ -140,6 +141,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="ParticleHit.h" />
+    <ClInclude Include="ParticleInfo.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="MatchState.h" />
     <ClInclude Include="MatchStateFight.h" />
@@ -147,6 +150,7 @@
     <ClInclude Include="MatchStateIntro.h" />
     <ClInclude Include="MatchStatePause.h" />
     <ClInclude Include="RyuKen.h" />
+    <ClInclude Include="RyuKenFinishState.h" />
     <ClInclude Include="RyuKenState.h" />
     <ClInclude Include="RyuKenStateAttack.h" />
     <ClInclude Include="RyuKenStateBJump.h" />
@@ -154,12 +158,15 @@
     <ClInclude Include="RyuKenStateCrouch.h" />
     <ClInclude Include="RyuKenStateFJump.h" />
     <ClInclude Include="RyuKenStateFWalk.h" />
+    <ClInclude Include="RyuKenStateHit.h" />
     <ClInclude Include="RyuKenStateIdle.h" />
     <ClInclude Include="RyuKenStateJump.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMatchGUI.h" />
     <ClInclude Include="SceneMatchInfo.h" />
+    <ClInclude Include="ServiceFade.h" />
     <ClInclude Include="ServiceTime.h" />
+    <ClInclude Include="SF2Stats.h" />
     <ClInclude Include="StageFactory.h" />
     <ClInclude Include="StageType.h" />
     <ClInclude Include="ICollitionListener.h" />
@@ -197,6 +204,7 @@
     <ClCompile Include="AnimationColliderInfo.cpp" />
     <ClCompile Include="AnimationCollider.cpp" />
     <ClCompile Include="CharacterFactory.cpp" />
+    <ClCompile Include="CharacterState.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Collition.cpp" />
     <ClCompile Include="Color.cpp" />
@@ -206,12 +214,13 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="MatchState.cpp" />
     <ClCompile Include="MatchStateFight.cpp" />
     <ClCompile Include="MatchStateFinish.cpp" />
     <ClCompile Include="MatchStateIntro.cpp" />
     <ClCompile Include="MatchStatePause.cpp" />
+    <ClCompile Include="ParticleHit.cpp" />
     <ClCompile Include="RyuKen.cpp" />
+    <ClCompile Include="RyuKenFinishState.cpp" />
     <ClCompile Include="RyuKenState.cpp" />
     <ClCompile Include="RyuKenStateAttack.cpp" />
     <ClCompile Include="RyuKenStateBJump.cpp" />
@@ -219,6 +228,7 @@
     <ClCompile Include="RyuKenStateCrouch.cpp" />
     <ClCompile Include="RyuKenStateFJump.cpp" />
     <ClCompile Include="RyuKenStateFWalk.cpp" />
+    <ClCompile Include="RyuKenStateHit.cpp" />
     <ClCompile Include="RyuKenStateIdle.cpp" />
     <ClCompile Include="RyuKenStateJump.cpp" />
     <ClCompile Include="SceneMatch.cpp" />
@@ -231,6 +241,7 @@
     <ClCompile Include="ServiceAudio.cpp" />
     <ClCompile Include="ServiceCollition.cpp" />
     <ClCompile Include="ServiceCommandManager.cpp" />
+    <ClCompile Include="ServiceFade.cpp" />
     <ClCompile Include="ServiceInput.cpp" />
     <ClCompile Include="ServiceParticles.cpp" />
     <ClCompile Include="ServiceRender.cpp" />
@@ -238,6 +249,7 @@
     <ClCompile Include="ServiceTextures.cpp" />
     <ClCompile Include="ServiceTime.cpp" />
     <ClCompile Include="SF2Game.cpp" />
+    <ClCompile Include="SF2Stats.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageFactory.cpp" />

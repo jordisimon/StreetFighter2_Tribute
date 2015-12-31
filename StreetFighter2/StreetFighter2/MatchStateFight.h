@@ -5,13 +5,12 @@
 class MatchStateFight :	public MatchState
 {
 public:
-	MatchStateFight(SceneMatch* s);
-	~MatchStateFight();
+	MatchStateFight(SceneMatch* s) : MatchState{ s } {};
+	~MatchStateFight() {};
 
 	void OnEnter();
-	void OnExit();
 
-	State* ProcessInput(CommandData* commandData);
-	State* UpdateState();
+	MatchState* ProcessInput(CommandData* commandData);
+	MatchState* UpdateState();
 };
 

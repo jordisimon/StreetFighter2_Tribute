@@ -1,45 +1,62 @@
 #pragma once
 #include "Entity.h"
 #include "Point.h"
+#include "Sprite.h"
 #include "Direction.h"
 #include "ICollitionListener.h"
 
-class State;
+class AnimationCollider;
+class CharacterState;
 class Collider;
 struct SDL_Texture;
 
-class SceneMatch;
-
 class Character : public Entity, public ICollitionListener
 {
+private:
+	CharacterState* nextState = nullptr; //Needed because processing a collition can change the state, but we have to do in the next UpdateState. It will mess the colliders list otherwise
+	void SetNewState(CharacterState* state);
+
 protected:
 	const char* configSection = nullptr;
 	SDL_Texture* texture = nullptr;
-	State* currentState = nullptr;
+	CharacterState* currentState = nullptr;
+	Sprite shadow;
 
 public:
 	//Common
-	SceneMatch* match;
 	int playerNumber;
 	fPoint position;
+	fPoint nextPosition;
 	Direction direction;
 	unsigned int roundVictories;
-	unsigned int life;
+	int life;
+	float shownLife;
 	float gravity;
+	int groundLevel; //Needed to jump
+	AnimationCollider* currentAnimation = nullptr;
+	int currentAttackDamage;
+	float hitBackwardMovement;
+	float hitBackwardSpeed;
+	bool applyToOtherPlayer;
 
 	//Character specific
 	int characterId;
-	int fSpeed;
-	int bSpeed;
+	int fSpeed; //Forward speed
+	int bSpeed; //Backward speed
+	int pSpeed; //Pressing speed
 	float jumpVSpeed;
 	int fJumpHSpeed;
 	int bJumpHSpeed;
-	float margin;
+	float height;
+	float fMargin; //Front margin
+	float bMargin; //Back margin
+
 
 	Character() {};
 	~Character() {};
 
 	bool Init();
+	bool CleanUp();
 
 	bool Start();
 	bool Stop();
@@ -47,9 +64,12 @@ public:
 	bool ProcessInput(CommandData* commandData);
 	Entity::Result UpdateState();
 
-	//Entity::Result Draw();
+	void DrawShadow(int groundLevel) const;
+	Entity::Result Draw() const;
 
-	void OnCollitionEnter(Collider* colA, Collider* colB) {};
+	void OnCollitionEnter(Collider* colA, Collider* colB);
 	void OnCollitionExit(Collider* colA, Collider* colB) {};
+
+	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 };
 

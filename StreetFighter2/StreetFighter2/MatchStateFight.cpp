@@ -13,15 +13,6 @@
 #include "Character.h"
 #include "Stage.h"
 
-MatchStateFight::MatchStateFight(SceneMatch* s) : MatchState{ s }
-{
-}
-
-
-MatchStateFight::~MatchStateFight()
-{
-}
-
 void MatchStateFight::OnEnter()
 {
 	if (scene->timeLimit)
@@ -30,11 +21,7 @@ void MatchStateFight::OnEnter()
 	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::FIGHT);
 }
 
-void MatchStateFight::OnExit()
-{
-}
-
-State * MatchStateFight::ProcessInput(CommandData * commandData)
+MatchState* MatchStateFight::ProcessInput(CommandData * commandData)
 {
 	for (const auto& command : commandData->p1Actions)
 	{
@@ -62,7 +49,7 @@ State * MatchStateFight::ProcessInput(CommandData * commandData)
 	return nullptr;
 }
 
-State * MatchStateFight::UpdateState()
+MatchState * MatchStateFight::UpdateState()
 {
 	//TODO:
 	/*
@@ -81,7 +68,6 @@ State * MatchStateFight::UpdateState()
 		scene->timer.Reset();
 	}
 	
-
 	scene->stage->UpdateState();
 	scene->player1->UpdateState();
 	scene->player2->UpdateState();
@@ -89,7 +75,11 @@ State * MatchStateFight::UpdateState()
 	servicesManager->collitions->UpdateCollidersState();
 	scene->GUI->UpdateState();
 
-	scene->CheckPlayerLimits();
+
+	scene->MovePlayers();
+	scene->ApplyForceToPlayers(scene->player1, scene->player2);
+	scene->ApplyForceToPlayers(scene->player2, scene->player1);
+	scene->CheckPlayerDirection();
 	scene->SetCamYPosition();
 	scene->SetCamXPosition();
 	scene->SetCamPosition();

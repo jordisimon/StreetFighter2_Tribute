@@ -23,9 +23,10 @@ public:
 
 	bool PlayMusic(const char* path);
 	bool PlayMusic(const char* path, float pFade_time);
-	bool PauseMusic();
-	bool ResumeMusic();
-	bool StopMusic();
+	bool PauseMusic() const;
+	bool ResumeMusic() const;
+	bool StopMusic() const;
+	bool StopMusic(float pFade_time) const;
 
 	int LoadFx(const char* path);
 	bool PlayFx(unsigned int fx, int repeat = 0) const;

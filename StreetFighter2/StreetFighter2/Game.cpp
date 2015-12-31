@@ -1,11 +1,11 @@
 #include "Game.h"
 #include "Config.h"
-#include "ServicesManager.h"
 #include "Defines.h"
-
+#include "ServicesManager.h"
 #include "ServiceCommandManager.h"
 #include "ServiceRender.h"
 #include "ServiceTime.h"
+#include "ServiceFade.h"
 
 using namespace std;
 
@@ -68,6 +68,8 @@ Entity::Result Game::PreDraw() const
 
 Entity::Result Game::PostDraw() const
 {
+	servicesManager->fade->Fade();
+
 	if (servicesManager->render->PresentRender())
 		return Entity::Result::R_OK;
 	else

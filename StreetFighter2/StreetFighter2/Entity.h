@@ -23,6 +23,6 @@ public:
 
 	virtual bool ProcessInput(CommandData* commandData) { return true; };
 	virtual Result UpdateState() { return Result::R_OK; };
-	virtual Result Draw() { return Result::R_OK; };
+	virtual Result Draw() const { return Result::R_OK; };
 };
 

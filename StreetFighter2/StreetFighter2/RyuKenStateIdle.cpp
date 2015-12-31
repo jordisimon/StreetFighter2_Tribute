@@ -31,7 +31,7 @@ void RyuKenStateIdle::OnExit()
 }
 
 
-State * RyuKenStateIdle::ProcessMovement(Direction dir)
+CharacterState * RyuKenStateIdle::ProcessMovement(Direction dir)
 {
 	if (dir == character->direction)
 		return new RyuKenStateFWalk(character);
@@ -39,7 +39,7 @@ State * RyuKenStateIdle::ProcessMovement(Direction dir)
 		return new RyuKenStateBWalk(character);
 }
 
-State * RyuKenStateIdle::ProcessJump(Direction dir)
+CharacterState * RyuKenStateIdle::ProcessJump(Direction dir)
 {
 	if (dir == character->direction)
 		return new RyuKenStateFJump(character);
@@ -47,7 +47,7 @@ State * RyuKenStateIdle::ProcessJump(Direction dir)
 		return new RyuKenStateBJump(character);
 }
 
-State * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
+CharacterState * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
 {
 	for (const auto& command : actions)
 	{
@@ -76,7 +76,7 @@ State * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
 	return nullptr;
 }
 
-State* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
+CharacterState* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 {
 	for (const auto& command : states)
 	{
@@ -119,8 +119,9 @@ State* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 }
 
 
-State* RyuKenStateIdle::UpdateState()
+CharacterState* RyuKenStateIdle::UpdateState()
 {
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
+

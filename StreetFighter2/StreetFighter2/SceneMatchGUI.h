@@ -25,51 +25,117 @@ private:
 	SDL_Texture* texture = nullptr;
 
 	MatchGUIState currentState;
+	bool stateFinished;
+	int stateStep;
+
+	bool showTimeOver;
+	bool showDoubleKO;
+	bool showDrawGame;
+	bool showP1Win;
+	bool showP2Win;
+	bool showPerfect;
+	bool showScores;
+
+	//Fx sounds
+	static int pauseFx;
+	static int roundFx;
+	static int oneFx;
+	static int twoFx;
+	static int threeFx;
+	static int fourFx;
+	static int fightFx;
+	static int perfectFx;
+	static int bonusShortFx;
+	static int bonusFx;
 
 	Sprite lifeBar;
 	fPoint lifeBarPos;
-	fPoint barP1Pos;
-	fPoint barP2Pos;
+	Animation redKO;
+	fPoint redKOPos;
+	iPoint barP1Pos;
+	iPoint barP2Pos;
 
 	Sprite p1Score;
-	Sprite p2Score;
-	Sprite recordScore;
-	Animation pause;
 	fPoint p1ScorePos;
+	Sprite p2Score;
 	fPoint p2ScorePos;
+	Sprite recordScore;	
+	Sprite originalRecordScore;
 	fPoint recordScorePos;
+	Animation pause;
 	fPoint pause1Pos;
 	fPoint pause2Pos;
+	fPoint p1ScoreNumberPos;
+	fPoint p2ScoreNumberPos;
+	fPoint recordScoreNumberPos;
 
-	Sprite* player1Name;
-	Sprite* player2Name;
-
-	Sprite num0;
-	Sprite num1;
-	Sprite num2;
-	Sprite num3;
-	Sprite num4;
-	Sprite num5;
-	Sprite num6;
-	Sprite num7;
-	Sprite num8;
-	Sprite num9;
+	Animation num0;
+	Animation num1;
+	Animation num2;
+	Animation num3;
+	Animation num4;
+	Animation num5;
+	Animation num6;
+	Animation num7;
+	Animation num8;
+	Animation num9;
 	Sprite numInf;
 	fPoint digit1Pos;
 	fPoint digit2Pos;
 
-	Sprite ryuName;
-	Sprite hondaName;
-	Sprite blankaName;
-	Sprite guileName;
-	Sprite kenName;
-	Sprite chunliName;
-	Sprite zanguiefName;
-	Sprite dalshimName;
-	fPoint namePlayer1Pos;
-	fPoint namePlayer2Pos;
-	Sprite victory;
+	Sprite numScoreBig0;
+	Sprite numScoreBig1;
+	Sprite numScoreBig2;
+	Sprite numScoreBig3;
+	Sprite numScoreBig4;
+	Sprite numScoreBig5;
+	Sprite numScoreBig6;
+	Sprite numScoreBig7;
+	Sprite numScoreBig8;
+	Sprite numScoreBig9;
+	Sprite numScoreLittle0;
+	Sprite numScoreLittle1;
+	Sprite numScoreLittle2;
+	Sprite numScoreLittle3;
+	Sprite numScoreLittle4;
+	Sprite numScoreLittle5;
+	Sprite numScoreLittle6;
+	Sprite numScoreLittle7;
+	Sprite numScoreLittle8;
+	Sprite numScoreLittle9;
 
+	const Sprite* player1Name;
+	fPoint player1NamePos;
+	const Sprite* player2Name;
+	fPoint player2NamePos;
+
+	Animation* player1Wins;
+	Animation* player2Wins;
+
+	Animation perfect;
+
+	Sprite timeOver;
+	Sprite drawGame;
+	Sprite doubleKO;
+	fPoint finishMatcInfoPos;
+
+	Sprite time;
+	fPoint timePos;
+	fPoint timeScorePos;
+	Sprite vital;
+	fPoint vitalPos;
+	fPoint vitalScorePos;
+	Sprite bonus;
+	fPoint bonusPos;
+	fPoint bonusScorePos;
+	unsigned int tempScore;
+	unsigned int bonusScore;
+
+	Sprite victory;
+	fPoint victoryP11Pos;
+	fPoint victoryP12Pos;
+	fPoint victoryP21Pos;
+	fPoint victoryP22Pos;
 
 	Animation round1;
 	Animation round2;
@@ -77,13 +143,29 @@ private:
 	Animation fRound;
 	Animation fight;
 	Animation* currentRoundFight;
+	int currentRoundFx;
 	fPoint roundFightPos;
-	int introStep;
+	
 	Timer timer;
 
+	const Animation* GetTimeDigit(int number) const;
+	const Sprite* GetScoreBigDigit(int number) const;
+	const Sprite* GetScoreLittleDigit(int number) const;
+	const Sprite* LoadSpriteName(int characterId) const;
+	Animation* LoadNameWins(int characterId);
 
-	Sprite* GetSpriteNum(int number);
-	Sprite* GetSpriteName(int characterId);
+	Result UpdateIntro();
+	Result UpdateFight();
+	Result UpdatePause();
+	Result UpdateFinish();
+
+	void DrawScore(unsigned int score, const fPoint& pos, bool bigDigit = false) const;
+	bool DrawScoreDigit(int number, const fPoint& pos, bool bigDigit, bool paintZero) const;
+	Result DrawCommon() const;
+	Result DrawIntro() const;
+	Result DrawFight() const;
+	Result DrawPause() const;
+	Result DrawFinish() const;
 
 public:
 	SceneMatch* scene;
@@ -94,12 +176,10 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	bool Start();
-	bool Stop();
-
-	Result UpdateState();
-	Result Draw();
-
 	void SetMatchGUIState(MatchGUIState state);
+	Result UpdateState();
+	Result Draw() const;
+
+	bool StateHasFinished() const { return stateFinished; }
 };
 

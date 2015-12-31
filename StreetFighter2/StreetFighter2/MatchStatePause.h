@@ -13,8 +13,8 @@ public:
 	void OnEnter();
 	void OnExit();
 
-	State* ProcessInput(CommandData* commandData);
-	State* UpdateState();
+	MatchState* ProcessInput(CommandData* commandData);
+	MatchState* UpdateState();
 };
 
 

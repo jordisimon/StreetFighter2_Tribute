@@ -1,15 +1,21 @@
 #pragma once
-#include "State.h"
 
+struct CommandData;
 class SceneMatch;
 
-class MatchState : public State
+class MatchState
 {
 protected:
 	SceneMatch* scene = nullptr;
 
 public:
-	MatchState(SceneMatch* s);
-	~MatchState();
+	MatchState(SceneMatch* s) : scene{ s } {};
+	~MatchState() {};
+
+	virtual void OnEnter() {};
+	virtual void OnExit() {};
+
+	virtual MatchState* ProcessInput(CommandData* commandData) { return nullptr; };
+	virtual MatchState* UpdateState() { return nullptr; };
 };
 

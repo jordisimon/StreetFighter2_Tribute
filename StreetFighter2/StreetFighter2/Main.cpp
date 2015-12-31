@@ -3,6 +3,10 @@
 #include "Game.h"
 #include "Entity.h"
 
+#include "C:\Program Files (x86)\Visual Leak Detector\include\vld.h" 
+
+#pragma comment(lib, "C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32\\vld.lib")
+
 /**
 WARNING!!!
 Para poder compilar este proyecto en VS 2015, ha sido necesario recompilar el proyecto SDL2main.lib con esta misma version de Visual Studio.

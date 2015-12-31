@@ -15,7 +15,7 @@ public:
 
 	void SetNewInterval(unsigned int i);
 	void Reset();
-	bool Reached();
+	bool Reached() const;
 	void Pause();
 	void Resume();
 };

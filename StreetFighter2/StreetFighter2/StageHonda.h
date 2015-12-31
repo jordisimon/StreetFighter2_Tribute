@@ -26,13 +26,20 @@ private:
 	Animation water;
 	fPoint waterPos;
 
+	Animation sun;
+	fPoint sunPos;
+
+	Animation ad;
+	fPoint adPos;
+
 public:
 	StageHonda();
 	~StageHonda();
 
 	bool Init();
+	bool Start();
 
 	Entity::Result UpdateState();
-	Entity::Result Draw();
+	Entity::Result Draw() const;
 };
 

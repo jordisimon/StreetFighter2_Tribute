@@ -126,7 +126,7 @@ bool Config::LoadAnimation(Animation & animation, const char * sectionName, cons
 
 		if (frameFound)
 		{
-			animation.frames.push_back({ { frameX, frameY, frameW, frameH },{ frameOffsetX, frameOffsetY } });
+			animation.frames.push_back({ { frameX, frameY, frameW, frameH }, { frameOffsetX, frameOffsetY } });
 		}
 
 		++frameNum;
@@ -146,7 +146,7 @@ bool Config::LoadAnimation(Animation & animation, const char * sectionName, cons
 	return true;
 }
 
-bool Config::LoadAnimationCollider(AnimationCollider& animation, const char* sectionName, const char * keyName)
+bool Config::LoadAnimationCollider(AnimationCollider& animation, const char* sectionName, const char * keyName) const
 {
 	LoadAnimation(animation, sectionName, keyName);
 
@@ -198,7 +198,7 @@ bool Config::LoadAnimationCollider(AnimationCollider& animation, const char* sec
 
 				if (colliderFrameFound)
 				{
-					animInfo->colliderFrameSprites.push_back({ { frameX, frameY, frameW, frameH },{ frameOffsetX, frameOffsetY } });
+					animInfo->colliderFrameSprites.push_back({ { frameX, frameY, frameW, frameH }, { frameOffsetX, frameOffsetY } });
 					animInfo->colliderFrameActive.push_back(active);
 
 					++colliderFrameNum;
@@ -206,9 +206,13 @@ bool Config::LoadAnimationCollider(AnimationCollider& animation, const char* sec
 			} while (colliderFrameFound);
 
 
-			if (animInfo->colliderFrameSprites.size() > 0)
+			if (animInfo->colliderFrameSprites.size() == animation.frames.size())
 			{
 				animation.colliderAnimationList.push_back(animInfo);
+			} 
+			else
+			{
+				RELEASE(animInfo);
 			}
 
 			++colliderNum;

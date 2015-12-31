@@ -8,7 +8,7 @@ class ServiceCommandManager : public Service
 {
 private:
 	std::map<int, CommandContext*> commandContexts;
-	CommandContext* currentCommandContext = nullptr;
+	const CommandContext* currentCommandContext = nullptr;
 
 	int debugCameraSpeed;
 
@@ -23,12 +23,12 @@ public:
 	void Unload(const CommandContext* commandContext);
 	void Unload(int id);
 	
-	void SetCurrentContext(CommandContext* context);
-	bool UpdateInput();
-	bool ProcessInput();
-	bool ProcessInput(CommandContext* commandContext);
+	void SetCurrentContext(const CommandContext* context);
+	bool UpdateInput() const;
+	bool ProcessInput() const;
+	bool ProcessInput(const CommandContext* commandContext) const;
 
 	//Special command
-	bool CommandExit();
+	bool CommandExit() const;
 };
 

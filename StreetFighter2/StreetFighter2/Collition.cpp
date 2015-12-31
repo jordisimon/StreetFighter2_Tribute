@@ -1,11 +1,6 @@
 #include "Collition.h"
 #include "Collider.h"
 
-
-Collition::Collition()
-{
-}
-
 Collition::Collition(const Collider * cA, const Collider * cB): colA { cA }, colB { cB }	
 {
 	

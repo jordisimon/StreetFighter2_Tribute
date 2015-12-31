@@ -63,6 +63,7 @@ private:
 	SDL_GameController* controller2 = nullptr;
 	SDL_Haptic* haptic1 = nullptr;
 	SDL_Haptic* haptic2 = nullptr;
+	float axisThreshold;
 	int screenSize;
 
 	void UpdateGameControllerState(SDL_GameController* controller, KeyState* controllerState);

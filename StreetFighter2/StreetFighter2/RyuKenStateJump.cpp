@@ -26,23 +26,18 @@ void RyuKenStateJump::OnExit()
 	character->currentAnimation->CleanUpColliders();
 }
 
-State * RyuKenStateJump::UpdateState()
+CharacterState * RyuKenStateJump::UpdateState()
 {
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
-	character->position.y -= jumpSpeed;
+	character->nextPosition.y -= jumpSpeed;
 	jumpSpeed += character->gravity;
 	
-
-	//TODO: remove 220 hardcoded
-	if (character->position.y > 220)
+	if (character->nextPosition.y > character->groundLevel)
 	{
-		character->position.y = 220;
+		character->nextPosition.y = (float)character->groundLevel;
 		return new RyuKenStateIdle(character);
 	}
-	/*character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
-	if (character->currentAnimation->HasFinished())
-		return new RyuKenStateIdle(character);*/
 	return nullptr;
 }

@@ -14,7 +14,6 @@ public:
 	
 	bool loop;
 	bool forward;
-	Sprite emptySprite;
 	std::vector<Sprite> frames;
 
 	Animation();

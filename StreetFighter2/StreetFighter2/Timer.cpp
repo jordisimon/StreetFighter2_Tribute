@@ -21,7 +21,7 @@ void Timer::Reset()
 	timeout = SDL_GetTicks() + interval;
 }
 
-bool Timer::Reached()
+bool Timer::Reached() const
 {
 	return (!paused) && SDL_TICKS_PASSED(SDL_GetTicks(), timeout);
 }

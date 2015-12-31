@@ -7,7 +7,6 @@
 #include "Entity.h"
 #include "CommandData.h"
 
-
 using namespace std;
 
 CommandContext::CommandContext(const char* name): contextName { name }
@@ -145,7 +144,7 @@ void CommandContext::RemoveCommandListener(Entity * listener)
 }
 
 
-bool CommandContext::FillCommandData(CommandData* commandData)
+bool CommandContext::FillCommandData(CommandData* commandData) const
 {
 	//Global keys
 	//Actions
@@ -238,7 +237,7 @@ bool CommandContext::FillCommandData(CommandData* commandData)
 	return true;
 }
 
-bool CommandContext::DispatchCommandData(CommandData* commandData)
+bool CommandContext::DispatchCommandData(CommandData* commandData) const
 {
 	for (vector<Entity*>::const_iterator it = commandListeners.cbegin(); it != commandListeners.cend(); ++it)
 	{
@@ -247,7 +246,7 @@ bool CommandContext::DispatchCommandData(CommandData* commandData)
 	return true;
 }
 
-bool CommandContext::ProcessInput()
+bool CommandContext::ProcessInput() const
 {
 	CommandData commandData;
 

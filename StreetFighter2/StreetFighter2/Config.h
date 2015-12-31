@@ -32,7 +32,7 @@ public:
 
 	bool LoadSprite(Sprite& sprite, const char* sectionName, const char* keyName) const;
 	bool LoadAnimation(Animation& animation, const char* sectionName, const char* keyName) const;
-	bool LoadAnimationCollider(AnimationCollider& animation, const char* sectionName, const char* keyName);
+	bool LoadAnimationCollider(AnimationCollider& animation, const char* sectionName, const char* keyName) const;
 };
 
 extern Config* config;

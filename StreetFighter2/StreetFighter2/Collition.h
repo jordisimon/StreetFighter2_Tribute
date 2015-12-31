@@ -9,7 +9,6 @@ private:
 	const Collider* colB = nullptr;
 
 public:
-	Collition();
 	Collition(const Collider* cA, const Collider* cB);
 	~Collition();
 

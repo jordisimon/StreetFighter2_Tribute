@@ -11,6 +11,7 @@ class ServiceRender;
 class ServiceTextures;
 class ServiceCollition;
 class ServiceTime;
+class ServiceFade;
 
 class ServicesManager
 {
@@ -29,6 +30,7 @@ public:
 	ServiceCollition* collitions = nullptr;
 	ServiceTextures* textures = nullptr;
 	ServiceTime* time = nullptr;
+	ServiceFade* fade = nullptr;
 
 	ServicesManager();
 	~ServicesManager();

@@ -3,6 +3,7 @@
 #include "Config.h"
 #include "SDL\include\SDL.h"
 
+#define SDL_AXIS_RANGE 32767
 
 ServiceInput::ServiceInput()
 {
@@ -17,6 +18,7 @@ bool ServiceInput::Init()
 	LOG("Init Input Service\n");
 
 	screenSize = config->LoadIntValue("Render", "screenRatio", "2");
+	axisThreshold = config->LoadFloatValue("Input", "axisThreshold", "0,5f");
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
@@ -169,6 +171,16 @@ void ServiceInput::UpdateGameControllerState(SDL_GameController* controller, Key
 	{
 		tempStates[i] = SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)i) != 0;
 	}
+
+	float axisValue = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY);
+	float axisNormalized = axisValue / SDL_AXIS_RANGE;
+	tempStates[SDL_CONTROLLER_BUTTON_DPAD_UP] |= axisNormalized < -axisThreshold;
+	tempStates[SDL_CONTROLLER_BUTTON_DPAD_DOWN] |= axisNormalized > axisThreshold;
+
+	axisValue = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX);
+	axisNormalized = axisValue / SDL_AXIS_RANGE;
+	tempStates[SDL_CONTROLLER_BUTTON_DPAD_LEFT] |= axisNormalized < -axisThreshold;
+	tempStates[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] |= axisNormalized > axisThreshold;
 
 	tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP_LEFT] = false;
 	tempStates[(int)GameControllerButton::CONTROLLER_BUTTON_DPAD_UP_RIGHT] = false;

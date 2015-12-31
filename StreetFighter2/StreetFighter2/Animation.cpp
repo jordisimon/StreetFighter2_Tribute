@@ -1,8 +1,9 @@
 #include "Animation.h"
+#include "Defines.h"
 #include "ServicesManager.h"
 #include "ServiceTime.h"
 
-Animation::Animation() : frames{}, speed{ 1.0f }, current_frame{ 0.0f }, loop{ true }, forward{true}, emptySprite({ 0,0,0,0 }, { 0,0 })
+Animation::Animation() : frames{}, speed{ 1.0f }, current_frame{ 0.0f }, loop{ true }, forward{true}
 {
 }
 

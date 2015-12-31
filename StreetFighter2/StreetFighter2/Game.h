@@ -5,11 +5,12 @@ class Game: public Entity
 {
 protected:
 	bool exit;
+
 public:
 	Game();
 	~Game();
 
-	virtual bool Init();
+	bool Init();
 	bool CleanUp();
 
 	virtual bool UpdateTime() const;

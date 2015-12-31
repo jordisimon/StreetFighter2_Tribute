@@ -28,6 +28,9 @@ SF2Game::~SF2Game()
 
 bool SF2Game::Init()
 {
+	//Set factory before calling inherited init to allow particles service to init factory
+	servicesManager->particles->SetParticleFactory(new ParticleFactory());
+
 	bool res = Game::Init();
 
 	//testing
@@ -39,7 +42,7 @@ bool SF2Game::Init()
 	currentScene = new SceneMatch(info);
 	//end testing
 
-	servicesManager->particles->SetParticleFactory(new ParticleFactory());
+	
 
 	//Debug
 	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
@@ -47,12 +50,6 @@ bool SF2Game::Init()
 	debugCommandContext = servicesManager->commands->Load("Debug_Command_Context");
 	debugCommandContext->AddCommandListener(this);
 
-	//testing
-	CommandContext* commandContext = new CommandContext("Match_Input_Mapping");
-	commandContext->Init();
-	commandContext->AddCommandListener(currentScene);
-	servicesManager->commands->SetCurrentContext(commandContext);
-	
 	res &= currentScene->Init();
 	res &= currentScene->Start();
 
@@ -109,19 +106,19 @@ bool SF2Game::ProcessInput(CommandData* commandData)
 				switch (command)
 				{
 				case CommandState::DBG_MOVE_CAM_UP:
-					servicesManager->render->MoveCamera(fPoint(0, debugCameraSpeed));
-					break;
-
-				case CommandState::DBG_MOVE_CAM_DOWN:
 					servicesManager->render->MoveCamera(fPoint(0, -debugCameraSpeed));
 					break;
 
+				case CommandState::DBG_MOVE_CAM_DOWN:
+					servicesManager->render->MoveCamera(fPoint(0, debugCameraSpeed));
+					break;
+
 				case CommandState::DBG_MOVE_CAM_LEFT:
-					servicesManager->render->MoveCamera(fPoint(debugCameraSpeed, 0));
+					servicesManager->render->MoveCamera(fPoint(-debugCameraSpeed, 0));
 					break;
 
 				case CommandState::DBG_MOVE_CAM_RIGHT:
-					servicesManager->render->MoveCamera(fPoint(-debugCameraSpeed, 0));
+					servicesManager->render->MoveCamera(fPoint(debugCameraSpeed, 0));
 					break;
 				}
 			}
@@ -139,7 +136,7 @@ Entity::Result SF2Game::UpdateState()
 	return currentScene->UpdateState();
 }
 
-Entity::Result SF2Game::Draw()
+Entity::Result SF2Game::Draw() const
 {
 	//TODO: cascade Draw()
 	//Testing

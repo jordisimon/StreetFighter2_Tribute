@@ -87,9 +87,11 @@ public:
 	AnimationCollider victory2;
 	AnimationCollider timeover;
 
-public:
-	AnimationCollider* currentAnimation = nullptr;
+	//Fx sounds
+	static int attackSfx;
 
+
+public:
 	RyuKen(CharacterType type);
 	~RyuKen();
 
@@ -98,6 +100,6 @@ public:
 	bool Start();
 	bool Stop();
 
-	Result Draw();
+	void PlaySfx(int sfx);
 };
 

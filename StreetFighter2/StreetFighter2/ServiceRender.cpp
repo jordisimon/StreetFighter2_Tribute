@@ -78,6 +78,8 @@ bool ServiceRender::Init()
 		return false;
 	}
 
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
 	return true;
 }
 
@@ -107,7 +109,7 @@ bool ServiceRender::CleanUp()
 }
 
 
-bool ServiceRender::Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed, Direction direction, float scale)
+bool ServiceRender::Blit(SDL_Texture* texture, const fPoint& position, const fRect& section, bool gui, float speed, Direction direction, float scale) const
 {
 	SDL_Rect source {(int)section.x, (int)section.y, (int)section.w, (int)section.h};
 	SDL_Rect dest;
@@ -144,12 +146,12 @@ bool ServiceRender::Blit(SDL_Texture* texture, const fPoint& position, const fRe
 	return true;
 }
 
-bool ServiceRender::BlitScene(SDL_Texture * texture, const fPoint & position, const fRect & section, float speed, Direction direction, float scale)
+bool ServiceRender::BlitScene(SDL_Texture * texture, const fPoint & position, const fRect & section, float speed, Direction direction, float scale) const
 {
 	return Blit(texture, position, section, false, speed, direction, scale);
 }
 
-bool ServiceRender::BlitGUI(SDL_Texture * texture, const fPoint & position, const fRect & section, Direction direction, float scale)
+bool ServiceRender::BlitGUI(SDL_Texture * texture, const fPoint & position, const fRect & section, Direction direction, float scale) const
 {
 	return Blit(texture, position, section, true, 1.0f, direction, scale);
 }
@@ -160,7 +162,7 @@ void ServiceRender::SetDrawColor(const Color& color) const
 	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
 }
 
-void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill)
+void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill) const
 {
 	SDL_Rect rectAux;
 
@@ -190,14 +192,19 @@ void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill)
 	}
 }
 
-void ServiceRender::DrawRectLine(const fRect & rect, bool gui)
+void ServiceRender::DrawRectLine(const fRect & rect, bool gui) const
 {
 	DrawRect(rect, gui, false);
 }
 
-void ServiceRender::DrawRectFill(const fRect & rect, bool gui)
+void ServiceRender::DrawRectFill(const fRect & rect, bool gui) const
 {
 	DrawRect(rect, gui, true);
+}
+
+void ServiceRender::FillScreen() const
+{
+	SDL_RenderFillRect(renderer, NULL);
 }
 
 

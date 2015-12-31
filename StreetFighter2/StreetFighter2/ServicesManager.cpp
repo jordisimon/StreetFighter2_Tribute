@@ -9,6 +9,7 @@
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
 #include "ServiceTime.h"
+#include "ServiceFade.h"
 #include "Config.h"
 
 using namespace std;
@@ -24,6 +25,7 @@ ServicesManager::ServicesManager()
 	services.push_back(audio = new ServiceAudio());
 	services.push_back(input = new ServiceInput());
 	services.push_back(time = new ServiceTime());
+	services.push_back(fade = new ServiceFade());
 }
 
 
@@ -37,11 +39,10 @@ ServicesManager::~ServicesManager()
 
 bool ServicesManager::Init()
 {
+	LOG("Init Services");
 	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
 
 	bool ret = true;
-
-	LOG("Init Services");
 
 	for (list<Service*>::iterator it = services.begin(); it != services.end() && ret; ++it)
 		ret = (*it)->Init();
@@ -59,9 +60,8 @@ bool ServicesManager::Init()
 
 bool ServicesManager::CleanUp()
 {
-	bool ret = true;
-
 	LOG("Stop Services");
+	bool ret = true;	
 	for (list<Service*>::iterator it = services.begin(); it != services.end(); ++it)
 		ret = ret && (*it)->Stop();
 

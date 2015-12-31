@@ -29,8 +29,8 @@ private:
 
 	std::vector<Entity*> commandListeners;
 
-	bool FillCommandData(CommandData* commandData);
-	bool DispatchCommandData(CommandData* commandData);
+	bool FillCommandData(CommandData* commandData) const;
+	bool DispatchCommandData(CommandData* commandData) const;
 
 public:
 	CommandContext(const char* name);
@@ -41,6 +41,6 @@ public:
 	void AddCommandListener(Entity* listener);
 	void RemoveCommandListener(Entity* listener);
 
-	bool ProcessInput();
+	bool ProcessInput() const;
 };
 

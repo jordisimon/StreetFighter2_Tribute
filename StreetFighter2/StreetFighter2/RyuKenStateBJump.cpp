@@ -27,28 +27,39 @@ void RyuKenStateBJump::OnExit()
 	character->currentAnimation->CleanUpColliders();
 }
 
-State * RyuKenStateBJump::UpdateState()
+CharacterState * RyuKenStateBJump::UpdateState()
 {
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
-	character->position.y -= jumpSpeed;
+	character->nextPosition.y -= jumpSpeed;
 	jumpSpeed += character->gravity;
 
 	switch (character->direction)
 	{
 	case Direction::LEFT:
-		character->position.x += (character->fJumpHSpeed) * (servicesManager->time->frameTimeSeconds);
+		character->nextPosition.x = character->position.x + (character->fJumpHSpeed * servicesManager->time->frameTimeSeconds);
 		break;
 	case Direction::RIGHT:
-		character->position.x -= (character->fJumpHSpeed) * (servicesManager->time->frameTimeSeconds);
+		character->nextPosition.x = character->position.x - (character->fJumpHSpeed * servicesManager->time->frameTimeSeconds);
 	}
 
-	//TODO: remove 220 hardcoded
-	if (character->position.y > 220)
+	if (character->nextPosition.y > character->groundLevel)
 	{
-		character->position.y = 220;
+		character->nextPosition.y = (float)character->groundLevel;
 		return new RyuKenStateIdle(character);
 	}
 
 	return nullptr;
+}
+
+void RyuKenStateBJump::IfMovingForwardRecalculatePositionWithPressingSpeed()
+{
+	switch (character->direction)
+	{
+	case Direction::LEFT:
+		character->nextPosition.x = character->position.x + (character->pSpeed * servicesManager->time->frameTimeSeconds);
+		break;
+	case Direction::RIGHT:
+		character->nextPosition.x = character->position.x - (character->pSpeed * servicesManager->time->frameTimeSeconds);
+	}
 }

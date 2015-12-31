@@ -10,8 +10,3 @@ CharacterState::~CharacterState()
 {
 }
 
-State * CharacterState::ProcessInput(CommandData * commandData)
-{
-	return nullptr;
-}
-

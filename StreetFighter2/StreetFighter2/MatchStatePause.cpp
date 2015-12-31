@@ -3,7 +3,6 @@
 #include "SceneMatchGUI.h"
 #include "ServicesManager.h"
 #include "ServiceCommandManager.h"
-#include "ServiceAudio.h"
 #include "ServiceTime.h"
 #include "CommandContext.h"
 #include "CommandData.h"
@@ -25,20 +24,17 @@ void MatchStatePause::OnEnter()
 	if (scene->timeLimit)
 		scene->timer.Pause();
 	servicesManager->commands->SetCurrentContext(scene->commandContextPause);
-	servicesManager->audio->PauseMusic();
-	servicesManager->audio->PlayFx(scene->pauseFx);
+	
 	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::PAUSE);
 }
 
 void MatchStatePause::OnExit()
 {
-	servicesManager->audio->PlayFx(scene->fightFx);
-	servicesManager->audio->ResumeMusic();
 	scene->paused = false;
 	servicesManager->time->Update(); //To avoid counting all paused time as frame time
 }
 
-State* MatchStatePause::ProcessInput(CommandData * commandData)
+MatchState* MatchStatePause::ProcessInput(CommandData * commandData)
 {
 	for (const auto& command : commandData->p1Actions)
 	{
@@ -65,7 +61,7 @@ State* MatchStatePause::ProcessInput(CommandData * commandData)
 	return nullptr;
 }
 
-State * MatchStatePause::UpdateState()
+MatchState * MatchStatePause::UpdateState()
 {
 	scene->GUI->UpdateState();
 	return nullptr;
