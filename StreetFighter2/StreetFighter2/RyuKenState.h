@@ -18,7 +18,12 @@ public:
 	RyuKenState(RyuKen* p);
 	~RyuKenState();
 
+	void OnEnter();
+	void OnExit();
+
 	CharacterState* ProcessInput(CommandData* commandData);
+	CharacterState* UpdateState();
+
 	CharacterState* DealHit(Collider* collider);
 	CharacterState* MatchFinished(int playerWin);
 };

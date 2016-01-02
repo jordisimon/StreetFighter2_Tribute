@@ -1,21 +1,20 @@
 #pragma once
 #include "RyuKenState.h"
 
-class RyuKenStateFWalk: public RyuKenState
+class RyuKenStateBlocking :	public RyuKenState
 {
 protected:
 	CharacterState* ProcessActions(std::vector<CommandAction> actions);
 	CharacterState* ProcessStates(std::vector<CommandState> states);
 
 public:
-	RyuKenStateFWalk(RyuKen* p);
-	~RyuKenStateFWalk();
+	RyuKenStateBlocking(RyuKen* p);
+	~RyuKenStateBlocking();
 
 	void OnEnter();
-	void OnExit();
 
 	CharacterState* UpdateState();
 
-	void IfMovingForwardRecalculatePositionWithPressingSpeed();
+	CharacterState* DealHit(Collider* collider);
 };
 

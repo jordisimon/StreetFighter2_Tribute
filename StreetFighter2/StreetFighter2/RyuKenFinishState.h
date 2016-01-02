@@ -3,6 +3,7 @@
 class RyuKenFinishState : public RyuKenState
 {
 private:
+	bool falling;
 	int playerWin;
 public:
 	RyuKenFinishState(RyuKen* p, int pWin);

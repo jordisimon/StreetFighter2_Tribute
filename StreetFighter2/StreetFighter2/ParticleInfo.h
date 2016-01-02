@@ -4,7 +4,7 @@
 
 enum class ParticleType
 {
-	LOW_HADOKEN,
+	LIGHT_HADOKEN,
 	MEDIUM_HADOKEN,
 	HARD_HADOKEN,
 	HIT_BLOCKED,

@@ -38,7 +38,7 @@ Particle * ParticleFactory::CreateParticle(const ParticleInfo& info)
 	switch (info.type)
 	{
 	//Low HaDoKen
-	case ParticleType::LOW_HADOKEN:
+	case ParticleType::LIGHT_HADOKEN:
 		particle = new ParticleHaDoKen(info.type, info.position, info.direction, particlesTexture, hadokenRun, hadokenEnd);
 		break;
 

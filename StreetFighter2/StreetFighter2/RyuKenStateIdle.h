@@ -4,10 +4,6 @@
 
 class RyuKenStateIdle :	public RyuKenState
 {
-private:
-	CharacterState* ProcessMovement(Direction dir);
-	CharacterState* ProcessJump(Direction dir);
-
 protected:
 
 	CharacterState* ProcessActions(std::vector<CommandAction> actions);
@@ -18,7 +14,6 @@ public:
 	~RyuKenStateIdle();
 
 	void OnEnter();
-	void OnExit();
 
 	CharacterState* UpdateState();
 };

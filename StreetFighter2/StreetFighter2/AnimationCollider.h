@@ -5,11 +5,15 @@
 
 class ICollitionListener;
 class AnimationColliderInfo;
+enum class ColliderType; //To be defined in Game specific implementation
 
 class AnimationCollider : public Animation
 {
 private:
 	int previousFrame;
+
+protected:
+	void OnReset();
 
 public:
 	ICollitionListener* listener;
@@ -24,5 +28,7 @@ public:
 
 	void ResetAnimation();
 	void UpdateCurrentFrame(const fPoint& position, Direction direction);
+
+	void DisableCurrentColliderFrame(ColliderType type);
 };
 

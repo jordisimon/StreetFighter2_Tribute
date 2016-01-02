@@ -156,6 +156,19 @@ Entity::Result SceneMatch::Draw() const
 	return Entity::Result::R_OK;
 }
 
+void SceneMatch::CalculatePlayersDistance()
+{
+	float playersDistance = player1->position.DistanceXTo(player2->position);
+	player1->rivalDistance = playersDistance;
+	player2->rivalDistance = playersDistance;
+}
+
+void SceneMatch::UpdatePlayersAttacking()
+{
+	player1->isRivalAttacking = player2->isAttacking;
+	player2->isRivalAttacking = player1->isAttacking;
+}
+
 void SceneMatch::CorrectPosition(fPoint & position, float margin)
 {
 	float minXPos = servicesManager->render->GetCamera().x;
@@ -278,7 +291,14 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 		if (forcedPlayer->hitBackwardMovement > 1.0f)
 		{
 			movement = forcedPlayer->hitBackwardSpeed * servicesManager->time->frameTimeSeconds;
-			forcedPlayer->hitBackwardMovement -= movement;
+
+			if(movement < forcedPlayer->hitBackwardMovement)
+				forcedPlayer->hitBackwardMovement -= movement;
+			else
+			{
+				movement = forcedPlayer->hitBackwardMovement;
+				forcedPlayer->hitBackwardMovement = 0.0f;
+			}
 		}
 		else
 		{

@@ -51,30 +51,20 @@ MatchState* MatchStateFight::ProcessInput(CommandData * commandData)
 
 MatchState * MatchStateFight::UpdateState()
 {
-	//TODO:
-	/*
-		delegate update state to entities
-
-		check boundaries of players and its direction
-		update time
-
-		check finish condition (time = 0 or playerX->life = 0)
-		if finish change state to finish
-	*/
-
 	if (scene->timeLimit && scene->timer.Reached() && scene->time > 0)
 	{
 		--scene->time;
 		scene->timer.Reset();
 	}
 	
+	scene->UpdatePlayersAttacking();
+	scene->CalculatePlayersDistance();
 	scene->stage->UpdateState();
-	scene->player1->UpdateState();
-	scene->player2->UpdateState();
 	servicesManager->particles->UpdateParticlesState();
 	servicesManager->collitions->UpdateCollidersState();
+	scene->player1->UpdateState();
+	scene->player2->UpdateState();	
 	scene->GUI->UpdateState();
-
 
 	scene->MovePlayers();
 	scene->ApplyForceToPlayers(scene->player1, scene->player2);

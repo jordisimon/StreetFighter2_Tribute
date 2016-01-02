@@ -12,6 +12,7 @@ public:
 	ColliderType type;
 	std::vector<Sprite> colliderFrameSprites;
 	std::vector<bool> colliderFrameActive;
+	std::vector<bool> colliderCurrentFrameActive;
 
 	AnimationColliderInfo();
 	~AnimationColliderInfo();

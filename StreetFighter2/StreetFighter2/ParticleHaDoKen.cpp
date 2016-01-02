@@ -8,7 +8,7 @@
 
 
 ParticleHaDoKen::ParticleHaDoKen(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim)
-	: Particle(typ, pos, dir, text), runAnimation {runAnim}, endAnimation {endAnim}
+	: ParticleAttack(typ, pos, dir, text), runAnimation {runAnim}, endAnimation {endAnim}
 {
 	runAnimation.ResetAnimation();
 	runAnimation.InitColliders(position, direction);
@@ -17,7 +17,7 @@ ParticleHaDoKen::ParticleHaDoKen(ParticleType typ, fPoint pos, Direction dir, SD
 
 	switch (type)
 	{
-	case ParticleType::LOW_HADOKEN:
+	case ParticleType::LIGHT_HADOKEN:
 		speed.x = 1.0f;
 		damage = 10;
 		break;

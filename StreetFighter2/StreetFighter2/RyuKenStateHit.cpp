@@ -2,7 +2,7 @@
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
 
-RyuKenStateHit::RyuKenStateHit(RyuKen * p, bool face, float duration) : RyuKenState{ p }, faceHit{face}, hitDuration{duration}
+RyuKenStateHit::RyuKenStateHit(RyuKen * p, bool crouch, bool face, float duration) : RyuKenState{ p }, crouching{ crouch }, faceHit { face }, hitDuration{ duration }
 {
 }
 
@@ -12,25 +12,29 @@ RyuKenStateHit::~RyuKenStateHit()
 
 void RyuKenStateHit::OnEnter()
 {
-	if(faceHit)
-		character->currentAnimation = &character->faceHit;
-	else
-		character->currentAnimation = &character->hit;
+	character->ClearActionsSequence();
 
+	if (crouching)
+	{
+		character->currentAnimation = &character->cHit;
+	}
+	else
+	{
+		if (faceHit)
+			character->currentAnimation = &character->faceHit;
+		else
+			character->currentAnimation = &character->hit;
+	}
 
 	character->currentAnimation->SetDuration(hitDuration);
-	character->currentAnimation->ResetAnimation();
-	character->currentAnimation->InitColliders(character->position, character->direction);
-}
-
-void RyuKenStateHit::OnExit()
-{
-	character->currentAnimation->CleanUpColliders();
+	RyuKenState::OnEnter();
 }
 
 CharacterState* RyuKenStateHit::UpdateState()
 {
-	if (character->currentAnimation->HasFinished())
+	RyuKenState::UpdateState();
+
+	if(character->hitBackwardMovement == 0.0f)
 		return new RyuKenStateIdle(character);
 
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);

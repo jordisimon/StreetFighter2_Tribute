@@ -2,25 +2,24 @@
 #include "RyuKenState.h"
 #include "Direction.h"
 
-class RyuKenStateCrouch : public RyuKenState
+class RyuKenStateWalk :	public RyuKenState
 {
-private: 
-	bool defending;
-	bool blocking;
+private:
+	bool forward;
 
 protected:
 	CharacterState* ProcessActions(std::vector<CommandAction> actions);
 	CharacterState* ProcessStates(std::vector<CommandState> states);
 
 public:
-	RyuKenStateCrouch(RyuKen* p, bool def);
-	~RyuKenStateCrouch();
+	RyuKenStateWalk(RyuKen* p, Direction direction);
+	RyuKenStateWalk(RyuKen* p, bool f);
+	~RyuKenStateWalk();
 
 	void OnEnter();
 
 	CharacterState* UpdateState();
 
-	CharacterState* DoSpecialAction(const CharacterSpecialAttack& type);
-	CharacterState* DealHit(Collider* collider);
+	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 };
 

@@ -10,6 +10,8 @@ protected:
 	int framesSize; //To avoid query vector size each frame 
 	float speed; //times per second executed (or 1/duration in seconds)
 
+	virtual void OnReset() {};
+
 public:
 	
 	bool loop;

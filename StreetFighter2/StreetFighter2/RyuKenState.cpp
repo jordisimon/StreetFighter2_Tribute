@@ -2,12 +2,16 @@
 #include "RyuKen.h"
 #include "CommandData.h"
 #include "RyuKenStateHit.h"
+#include "RyuKenStateAerialHit.h"
 #include "RyuKenFinishState.h"
 #include "Collider.h"
 #include "ColliderType.h"
 #include "ServicesManager.h"
 #include "ServiceParticles.h"
+#include "ParticleAttack.h"
+#include "AttackInfo.h"
 #include "ParticleInfo.h"
+
 
 
 RyuKenState::RyuKenState(RyuKen* p) : character{ p }
@@ -17,6 +21,17 @@ RyuKenState::RyuKenState(RyuKen* p) : character{ p }
 
 RyuKenState::~RyuKenState()
 {
+}
+
+void RyuKenState::OnEnter()
+{
+	character->currentAnimation->ResetAnimation();
+	character->currentAnimation->InitColliders(character->position, character->direction);
+}
+
+void RyuKenState::OnExit()
+{
+	character->currentAnimation->CleanUpColliders();
 }
 
 CharacterState * RyuKenState::ProcessInput(CommandData * commandData)
@@ -40,43 +55,103 @@ CharacterState * RyuKenState::ProcessInput(CommandData * commandData)
 	return result;
 }
 
+CharacterState * RyuKenState::UpdateState()
+{
+	character->UpdateYPosition();
+
+	return nullptr;
+}
+
 CharacterState * RyuKenState::DealHit(Collider * collider)
 {
-	//Needed info
-	//int damage;
-
 	bool faceHit = true;
-
-	 
+	float hitDuration = 0.0f;
+	AttackInfo attackInfo; 
 
 	if (collider->type == ColliderType::CHARACTER_ATTACK)
 	{
 		Character* enemy = (Character*)collider->listener;
-		character->life -= enemy->currentAttackDamage;
-		if (character->life < 0)
-			character->life = 0;
+		attackInfo = enemy->GetAttackInfo();
+
+		//Particle only if hit by rival directly
+		ParticleInfo particleInfo;
+		particleInfo.direction = character->direction;
+		particleInfo.position.x = collider->colliderRect.x;
+		particleInfo.position.y = collider->colliderRect.y;
+
+		switch (attackInfo.strength)
+		{
+		case AttackStrength::LIGHT:
+			if (character->playerNumber == 1)
+				particleInfo.type = ParticleType::P2_LHIT;
+			else
+				particleInfo.type = ParticleType::P1_LHIT;
+			break;
+
+		case AttackStrength::MEDIUM:
+			if (character->playerNumber == 1)
+				particleInfo.type = ParticleType::P2_MHIT;
+			else
+				particleInfo.type = ParticleType::P1_MHIT;
+			break;
+
+		case AttackStrength::HARD:
+			if (character->playerNumber == 1)
+				particleInfo.type = ParticleType::P2_HHIT;
+			else
+				particleInfo.type = ParticleType::P1_HHIT;
+			break;
+		default:
+			break;
+		}
+
+		servicesManager->particles->CreateParticle(particleInfo);
+
 		character->applyToOtherPlayer = true;
+		faceHit = (collider->colliderRect.y < character->position.y - character->height);
+
 	}
-	else if (collider->type == ColliderType::ATTACK_PARTICLE)
+	else if (collider->type == ColliderType::PARTICLE_ATTACK)
 	{
-		faceHit = true;
+		ParticleAttack* particle = (ParticleAttack*)collider->listener;
+		attackInfo = particle->GetAttackInfo();
+
 		character->applyToOtherPlayer = false;
+		faceHit = true;
 	}
 
-	ParticleInfo info;
-	info.type = ParticleType::P1_HHIT;
-	info.direction = character->direction;
-	info.position.x = collider->colliderRect.x;
-	info.position.y = collider->colliderRect.y;
+	character->life -= attackInfo.damage;
+	if (character->life < 0)
+		character->life = 0;
 
-	servicesManager->particles->CreateParticle(info);
+	if (character->position.y >= character->groundLevel)
+	{
+		character->hitBackwardMovement = attackInfo.backMovement;
+		character->hitBackwardSpeed = attackInfo.backSpeed;
 
-	//return nullptr;
-	character->hitBackwardMovement = 50.0f;
-	character->hitBackwardSpeed = 40.0f;
+		switch (attackInfo.strength)
+		{
+		case AttackStrength::LIGHT:
+			hitDuration = 0.3f;
+			break;
 
+		case AttackStrength::MEDIUM:
+			hitDuration = 0.6f;
+			break;
 
-	return new RyuKenStateHit(character, faceHit, 0.5f);
+		case AttackStrength::HARD:
+			hitDuration = 0.9f;
+			break;
+		default:
+			break;
+		}
+
+		return new RyuKenStateHit(character, false, faceHit, hitDuration);
+	}
+	else
+	{
+		return new RyuKenStateAerialHit(character);
+	}
 }
 
 CharacterState * RyuKenState::MatchFinished(int playerWin)

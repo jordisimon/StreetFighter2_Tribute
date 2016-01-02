@@ -42,6 +42,8 @@ private:
 	unsigned int vitalScore;
 	unsigned int timeScore;
 
+	void CalculatePlayersDistance();
+	void UpdatePlayersAttacking();
 	void CorrectPosition(fPoint& position, float margin);
 	void MovePlayers();
 	void ApplyForceToPlayers(Character* forcedPlayer, Character* otherPlayer);

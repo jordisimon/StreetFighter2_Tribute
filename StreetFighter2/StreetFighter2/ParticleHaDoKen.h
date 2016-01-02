@@ -1,9 +1,9 @@
 #pragma once
-#include "Particle.h"
+#include "ParticleAttack.h"
 
 class Collider;
 
-class ParticleHaDoKen :	public Particle
+class ParticleHaDoKen :	public ParticleAttack
 {
 private:
 	AnimationCollider runAnimation;

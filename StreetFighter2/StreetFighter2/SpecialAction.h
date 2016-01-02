@@ -1,0 +1,19 @@
+#pragma once
+
+enum class SpecialAction
+{
+	UP,
+	DOWN,
+	FORWARD,
+	BACKWARD,
+	UP_FORWARD,
+	UP_BACKWARD,
+	DOWN_FORWARD,
+	DOWN_BACKWARD,
+	L_PUNCH,
+	M_PUNCH,
+	H_PUNCH,
+	L_KICK,
+	M_KICK,
+	H_KICK
+};

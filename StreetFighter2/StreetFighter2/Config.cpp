@@ -200,6 +200,7 @@ bool Config::LoadAnimationCollider(AnimationCollider& animation, const char* sec
 				{
 					animInfo->colliderFrameSprites.push_back({ { frameX, frameY, frameW, frameH }, { frameOffsetX, frameOffsetY } });
 					animInfo->colliderFrameActive.push_back(active);
+					animInfo->colliderCurrentFrameActive.push_back(active);
 
 					++colliderFrameNum;
 				}

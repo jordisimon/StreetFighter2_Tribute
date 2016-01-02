@@ -38,7 +38,7 @@ bool SF2Game::Init()
 	info.player1Type = CharacterType::RYU;
 	info.player2Type = CharacterType::RYU;
 	info.stageType = StageType::HONDA;
-	info.timeLimit = true;
+	info.timeLimit = false;
 	currentScene = new SceneMatch(info);
 	//end testing
 

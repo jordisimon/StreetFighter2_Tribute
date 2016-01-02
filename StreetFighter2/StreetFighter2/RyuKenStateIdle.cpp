@@ -1,13 +1,11 @@
 #include "RyuKenStateIdle.h"
 #include "RyuKen.h"
 #include "CommandData.h"
-#include "RyuKenStateFWalk.h"
-#include "RyuKenStateBWalk.h"
+#include "RyuKenStateWalk.h"
 #include "RyuKenStateCrouch.h"
 #include "RyuKenStateAttack.h"
 #include "RyuKenStateJump.h"
-#include "RyuKenStateFJump.h"
-#include "RyuKenStateBJump.h"
+#include "RyuKenStateDiagonalJump.h"
 
 RyuKenStateIdle::RyuKenStateIdle(RyuKen* p) : RyuKenState{ p }
 {
@@ -21,55 +19,51 @@ RyuKenStateIdle::~RyuKenStateIdle()
 void RyuKenStateIdle::OnEnter()
 {
 	character->currentAnimation = &character->idle;
-	character->currentAnimation->ResetAnimation();
-	character->currentAnimation->InitColliders(character->position, character->direction);
-}
-
-void RyuKenStateIdle::OnExit()
-{
-	character->currentAnimation->CleanUpColliders();
-}
-
-
-CharacterState * RyuKenStateIdle::ProcessMovement(Direction dir)
-{
-	if (dir == character->direction)
-		return new RyuKenStateFWalk(character);
-	else
-		return new RyuKenStateBWalk(character);
-}
-
-CharacterState * RyuKenStateIdle::ProcessJump(Direction dir)
-{
-	if (dir == character->direction)
-		return new RyuKenStateFJump(character);
-	else
-		return new RyuKenStateBJump(character);
+	RyuKenState::OnEnter();
 }
 
 CharacterState * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
 {
+	bool closeRange = character->rivalDistance < (character->fMargin * 2) + 10;
 	for (const auto& command : actions)
 	{
 		switch (command)
 		{
 		case CommandAction::L_PUNCH:
-			return new RyuKenStateAttack(character, AttackType::L_PUNCH);
+			if(closeRange)
+				return new RyuKenStateAttack(character, AttackType::F_L_PUNCH);
+			else
+				return new RyuKenStateAttack(character, AttackType::L_PUNCH);
 			break;
 		case CommandAction::M_PUNCH:
-			return new RyuKenStateAttack(character, AttackType::M_PUNCH);
+			if (closeRange)
+				return new RyuKenStateAttack(character, AttackType::F_M_PUNCH);
+			else
+				return new RyuKenStateAttack(character, AttackType::M_PUNCH);
 			break;
 		case CommandAction::H_PUNCH:
-			return new RyuKenStateAttack(character, AttackType::H_PUNCH);
+			if (closeRange)
+				return new RyuKenStateAttack(character, AttackType::F_H_PUNCH);
+			else
+				return new RyuKenStateAttack(character, AttackType::H_PUNCH);
 			break;
 		case CommandAction::L_KICK:
-			return new RyuKenStateAttack(character, AttackType::L_KICK);
+			if (closeRange)
+				return new RyuKenStateAttack(character, AttackType::F_L_KICK);
+			else
+				return new RyuKenStateAttack(character, AttackType::L_KICK);
 			break;
 		case CommandAction::M_KICK:
-			return new RyuKenStateAttack(character, AttackType::M_KICK);
+			if (closeRange)
+				return new RyuKenStateAttack(character, AttackType::F_M_KICK);
+			else
+				return new RyuKenStateAttack(character, AttackType::M_KICK);
 			break;
 		case CommandAction::H_KICK:
-			return new RyuKenStateAttack(character, AttackType::H_KICK);
+			if (closeRange)
+				return new RyuKenStateAttack(character, AttackType::F_H_KICK);
+			else
+				return new RyuKenStateAttack(character, AttackType::H_KICK);
 			break;
 		}
 	}
@@ -86,11 +80,11 @@ CharacterState* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 			return new RyuKenStateJump(character);
 			break;
 		case CommandState::MOVE_LEFT:
-			return ProcessMovement(Direction::LEFT);
+			return new RyuKenStateWalk(character, Direction::LEFT);
 			break;
 
 		case CommandState::MOVE_RIGHT:
-			return ProcessMovement(Direction::RIGHT);
+			return new RyuKenStateWalk(character, Direction::RIGHT);
 			break;
 
 		case CommandState::MOVE_DOWN:
@@ -98,11 +92,11 @@ CharacterState* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 			break;
 
 		case CommandState::MOVE_UP_LEFT:
-			return ProcessJump(Direction::LEFT);
+			return new RyuKenStateDiagonalJump(character, Direction::LEFT);
 			break;
 
 		case CommandState::MOVE_UP_RIGHT:
-			return ProcessJump(Direction::RIGHT);
+			return new RyuKenStateDiagonalJump(character, Direction::RIGHT);
 			break;
 
 		case CommandState::MOVE_DOWN_LEFT:
@@ -121,6 +115,8 @@ CharacterState* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 
 CharacterState* RyuKenStateIdle::UpdateState()
 {
+	RyuKenState::UpdateState();
+
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }

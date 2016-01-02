@@ -6,6 +6,7 @@
 #include "ServiceRender.h"
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
+#include "ServiceTime.h"
 #include "ParticleFactory.h"
 #include "CharacterState.h"
 #include "CommandData.h"
@@ -53,7 +54,6 @@ bool Character::Start()
 {
 	life = 100;
 	shownLife = 100.0f;
-	currentAttackDamage = 0;
 	hitBackwardMovement = 0.0f;
 	hitBackwardSpeed = 0.0f;
 	applyToOtherPlayer = false;
@@ -77,6 +77,87 @@ void Character::SetNewState(CharacterState * state)
 	}
 }
 
+void Character::StoreActions(std::vector<CommandAction> actions)
+{
+	for (const auto& command : actions)
+	{
+		switch (command)
+		{
+		case CommandAction::MOVE_UP:
+			actionsSequence.emplace_front(SpecialAction::UP);
+			break;
+		case CommandAction::MOVE_DOWN:
+			actionsSequence.emplace_front(SpecialAction::DOWN);
+			break;
+		case CommandAction::MOVE_LEFT:
+			if(direction == Direction::LEFT)
+				actionsSequence.emplace_front(SpecialAction::FORWARD);
+			else
+				actionsSequence.emplace_front(SpecialAction::BACKWARD);
+			break;
+		case CommandAction::MOVE_RIGHT:
+			if (direction == Direction::RIGHT)
+				actionsSequence.emplace_front(SpecialAction::FORWARD);
+			else
+				actionsSequence.emplace_front(SpecialAction::BACKWARD);
+			break;
+		case CommandAction::MOVE_UP_LEFT:
+			if (direction == Direction::LEFT)
+				actionsSequence.emplace_front(SpecialAction::UP_FORWARD);
+			else
+				actionsSequence.emplace_front(SpecialAction::UP_BACKWARD);
+			break;
+		case CommandAction::MOVE_UP_RIGHT:
+			if (direction == Direction::RIGHT)
+				actionsSequence.emplace_front(SpecialAction::UP_FORWARD);
+			else
+				actionsSequence.emplace_front(SpecialAction::UP_BACKWARD);
+			break;
+		case CommandAction::MOVE_DOWN_LEFT:
+			if (direction == Direction::LEFT)
+				actionsSequence.emplace_front(SpecialAction::DOWN_FORWARD);
+			else
+				actionsSequence.emplace_front(SpecialAction::DOWN_BACKWARD);
+			break;
+		case CommandAction::MOVE_DOWN_RIGHT:
+			if (direction == Direction::RIGHT)
+				actionsSequence.emplace_front(SpecialAction::DOWN_FORWARD);
+			else
+				actionsSequence.emplace_front(SpecialAction::DOWN_BACKWARD);
+			break;
+		case CommandAction::L_PUNCH:
+			actionsSequence.emplace_front(SpecialAction::L_PUNCH);
+			break;
+		case CommandAction::M_PUNCH:
+			actionsSequence.emplace_front(SpecialAction::M_PUNCH);
+			break;
+		case CommandAction::H_PUNCH:
+			actionsSequence.emplace_front(SpecialAction::H_PUNCH);
+			break;
+		case CommandAction::L_KICK:
+			actionsSequence.emplace_front(SpecialAction::L_KICK);
+			break;
+		case CommandAction::M_KICK:
+			actionsSequence.emplace_front(SpecialAction::M_KICK);
+			break;
+		case CommandAction::H_KICK:
+			actionsSequence.emplace_front(SpecialAction::H_KICK);
+			break;
+		default:
+			break;
+		}
+	}
+
+	//Queue has a max of 10 elements
+	if (actionsSequence.size() > 10)
+	{
+		actionsSequence.resize(10);
+	}
+
+	actionsSequenceTimer.Resume();
+	actionsSequenceTimer.Reset();
+}
+
 bool Character::ProcessInput(CommandData* commandData)
 {
 	/*
@@ -89,16 +170,30 @@ bool Character::ProcessInput(CommandData* commandData)
 		pInfo.direction = direction;
 		servicesManager->particles->CreateParticle(pInfo);
 	}*/
+	if (playerNumber == 1)
+		StoreActions(commandData->p1Actions);
+	else
+		StoreActions(commandData->p2Actions);
 
-	SetNewState(currentState->ProcessInput(commandData));
+	CharacterState* state = CheckSpecialActions();
+	if (state != nullptr)
+		SetNewState(state);
+	else
+		SetNewState(currentState->ProcessInput(commandData));
 
 	return true;
 }
 
 Entity::Result Character::UpdateState()
 {
+	if (actionsSequenceTimer.Reached())
+	{
+		ClearActionsSequence();
+	}
+
 	SetNewState(nextState);
 	nextState = nullptr;
+
 	SetNewState(currentState->UpdateState());
 
 	return Entity::Result::R_OK;
@@ -106,15 +201,64 @@ Entity::Result Character::UpdateState()
 
 void Character::OnCollitionEnter(Collider * colA, Collider * colB)
 {
-	if (colB->type == ColliderType::CHARACTER_ATTACK || colB->type == ColliderType::ATTACK_PARTICLE)
+	//If character are hit deal with it
+	if ((colB->type == ColliderType::CHARACTER_ATTACK && colB->listener != this)
+		|| colB->type == ColliderType::PARTICLE_ATTACK)
 	{
 		nextState = currentState->DealHit(colB);
+	}
+
+	//If character hit rival disable this frame attack collider to avoid multiple damage
+	if (colA->type == ColliderType::CHARACTER_ATTACK 
+		&& (colB->type == ColliderType::CHARACTER_BODY && colB->listener != this))
+	{
+		currentAnimation->DisableCurrentColliderFrame(ColliderType::CHARACTER_ATTACK);
+	}
+}
+
+AttackInfo Character::GetAttackInfo()
+{
+	return currentState->GetAttackInfo();
+}
+
+void Character::ClearActionsSequence()
+{
+	actionsSequence.clear();
+	actionsSequenceTimer.Pause();
+}
+
+void Character::UpdateYPosition()
+{
+	nextPosition.y -= currentJumpSpeed;
+	currentJumpSpeed += gravity;
+
+	if (nextPosition.y > groundLevel)
+	{
+		nextPosition.y = (float)groundLevel;
+		currentJumpSpeed = 0.0f;
+	}
+}
+
+void Character::MoveXPosition(Direction dir, int speed)
+{
+	switch (dir)
+	{
+	case Direction::LEFT:
+		nextPosition.x = position.x - (speed * servicesManager->time->frameTimeSeconds);
+		break;
+	case Direction::RIGHT:
+		nextPosition.x = position.x + (speed * servicesManager->time->frameTimeSeconds);
 	}
 }
 
 void Character::IfMovingForwardRecalculatePositionWithPressingSpeed()
 {
 	currentState->IfMovingForwardRecalculatePositionWithPressingSpeed();
+}
+
+void Character::MatchFinished(int playerWin)
+{
+	SetNewState(currentState->MatchFinished(playerWin));
 }
 
 void Character::DrawShadow(int groundLevel) const

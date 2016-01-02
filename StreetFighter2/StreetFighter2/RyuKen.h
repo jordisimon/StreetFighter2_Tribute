@@ -2,29 +2,9 @@
 #include "Character.h"
 #include "CharacterType.h"
 #include "AnimationCollider.h"
-
-enum class AttackType
-{
-	L_PUNCH,
-	M_PUNCH,
-	H_PUNCH,
-	F_L_PUNCH,
-	F_M_PUNCH,
-	F_H_PUNCH,
-	L_KICK,
-	M_KICK,
-	H_KICK,
-	F_L_KICK,
-	F_M_KICK,
-	F_H_KICK,
-	C_L_PUNCH,
-	C_M_PUNCH,
-	C_H_PUNCH,
-	C_L_KICK,
-	C_M_KICK,
-	C_H_KICK
-};
-
+#include "SpecialAction.h"
+#include <vector>
+#include "RyuKenSpecialAttack.h"
 
 //Ryu and Ken are almost the same
 class RyuKen : public Character
@@ -69,7 +49,9 @@ public:
 	AnimationCollider fjlKick;
 	AnimationCollider fjmKick;
 	AnimationCollider fjhKick;
+	AnimationCollider shoryukenBegin;
 	AnimationCollider shoryuken;
+	AnimationCollider shoryukenEnd;
 	AnimationCollider kyakuBegin;
 	AnimationCollider kyaku;
 	AnimationCollider kyakuEnd;
@@ -79,18 +61,32 @@ public:
 	AnimationCollider hit;
 	AnimationCollider faceHit;
 	AnimationCollider cHit;
+	AnimationCollider aHit;
 	AnimationCollider knockdown;
 	AnimationCollider knockdownRecover;
 	AnimationCollider stunned;
-	AnimationCollider KO;
+	AnimationCollider KOBegin;
+	AnimationCollider KOEnd;
 	AnimationCollider victory1;
 	AnimationCollider victory2;
 	AnimationCollider timeover;
 
 	//Fx sounds
 	static int attackSfx;
+	static int shoryukenSfx;
 
+	//Special attacks
+	static const std::vector<SpecialAction> lightHadokenActions;
+	static const std::vector<SpecialAction> mediumHadokenActions;
+	static const std::vector<SpecialAction> hardHadokenActions;
+	static const std::vector<SpecialAction> lightShoryukenActions;
+	static const std::vector<SpecialAction> mediumShoryukenActions;
+	static const std::vector<SpecialAction> hardShoryukenActions;
+	static const std::vector<SpecialAction> lightKyakuActions;
+	static const std::vector<SpecialAction> mediumKyakuActions;
+	static const std::vector<SpecialAction> hardKyakuActions;
 
+	CharacterState* CheckSpecial(const std::vector<SpecialAction>& special, const RyuKenSpecialAttack& type);
 public:
 	RyuKen(CharacterType type);
 	~RyuKen();
@@ -100,6 +96,8 @@ public:
 	bool Start();
 	bool Stop();
 
-	void PlaySfx(int sfx);
+	void PlaySfx(int sfx) const;
+
+	CharacterState* CheckSpecialActions();
 };
 

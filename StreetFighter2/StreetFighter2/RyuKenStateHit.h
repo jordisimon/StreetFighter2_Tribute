@@ -4,16 +4,16 @@
 class RyuKenStateHit : public RyuKenState
 {
 private:
+	bool crouching;
 	bool faceHit;
 	float hitDuration;
 	float moveBackwards;
 
 public:
-	RyuKenStateHit(RyuKen* p, bool face, float duration);
+	RyuKenStateHit(RyuKen* p, bool crouch, bool face, float duration);
 	~RyuKenStateHit();
 
 	void OnEnter();
-	void OnExit();
 
 	CharacterState* UpdateState();
 };

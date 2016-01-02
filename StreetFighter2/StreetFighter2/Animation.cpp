@@ -34,6 +34,8 @@ void Animation::ResetAnimation()
 		current_frame = (float)framesSize - 1;
 
 	valid_frame = (int)current_frame;
+
+	OnReset();
 }
 
 void Animation::UpdateCurrentFrame()
@@ -44,13 +46,19 @@ void Animation::UpdateCurrentFrame()
 		{
 			current_frame += speed * servicesManager->time->frameTimeSeconds;
 			if (current_frame >= framesSize)
+			{
 				current_frame = 0.0f;
+				OnReset();
+			}
 		}
 		else
 		{
 			current_frame -= speed * servicesManager->time->frameTimeSeconds;
 			if (current_frame < 0.0f)
+			{
 				current_frame = (float)framesSize - 1;
+				OnReset();
+			}
 		}
 		valid_frame = (int)current_frame;
 	}

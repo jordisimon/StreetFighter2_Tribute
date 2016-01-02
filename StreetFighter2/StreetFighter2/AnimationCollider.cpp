@@ -7,7 +7,6 @@
 #include "Collider.h"
 
 
-
 AnimationCollider::AnimationCollider() : previousFrame {-1}
 {
 }
@@ -24,7 +23,7 @@ AnimationCollider::~AnimationCollider()
 void AnimationCollider::InitColliders(const fPoint& position, Direction direction)
 {
 	for (auto& colliderAnimation : colliderAnimationList)
-	{
+	{	
 		if (colliderAnimation->collider == nullptr)
 		{
 			colliderAnimation->collider = servicesManager->collitions->CreateCollider(
@@ -32,7 +31,7 @@ void AnimationCollider::InitColliders(const fPoint& position, Direction directio
 				colliderAnimation->colliderFrameSprites[valid_frame].GetScreenRect(position, direction), //rect (from current frame)
 				listener, //listener
 				Color((Color::Predefined)colliderAnimation->type), //color (based on type)
-				colliderAnimation->colliderFrameActive[valid_frame] //active (from current frame)
+				colliderAnimation->colliderCurrentFrameActive[valid_frame] //active (from current frame)
 				);
 		}
 	}
@@ -62,7 +61,32 @@ void AnimationCollider::UpdateCurrentFrame(const fPoint& position, Direction dir
 
 	for (auto& colliderAnimation : colliderAnimationList)
 	{
-		colliderAnimation->collider->SetRect(colliderAnimation->colliderFrameSprites[valid_frame].GetScreenRect(position, direction));
-		colliderAnimation->collider->active = colliderAnimation->colliderFrameActive[valid_frame];
+		if (colliderAnimation->collider != nullptr)
+		{
+			colliderAnimation->collider->SetRect(colliderAnimation->colliderFrameSprites[valid_frame].GetScreenRect(position, direction));
+			colliderAnimation->collider->active = colliderAnimation->colliderCurrentFrameActive[valid_frame];
+		}
+	}
+}
+
+void AnimationCollider::OnReset()
+{
+	for (auto& colliderAnimation : colliderAnimationList)
+	{
+		for (unsigned int i = 0; i < colliderAnimation->colliderFrameActive.size(); ++i)
+		{
+			colliderAnimation->colliderCurrentFrameActive[i] = colliderAnimation->colliderFrameActive[i];
+		}
+	}
+}
+
+void AnimationCollider::DisableCurrentColliderFrame(ColliderType type)
+{
+	for (auto& colliderAnimation : colliderAnimationList)
+	{
+		if (colliderAnimation->type == type)
+		{
+			colliderAnimation->colliderCurrentFrameActive[valid_frame] = false;
+		}
 	}
 }

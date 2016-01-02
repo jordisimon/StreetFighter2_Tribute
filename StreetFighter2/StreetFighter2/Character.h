@@ -4,6 +4,12 @@
 #include "Sprite.h"
 #include "Direction.h"
 #include "ICollitionListener.h"
+#include "AttackInfo.h"
+#include <vector>
+#include <deque>
+#include "CommandAction.h"
+#include "SpecialAction.h"
+#include "Timer.h"
 
 class AnimationCollider;
 class CharacterState;
@@ -15,6 +21,8 @@ class Character : public Entity, public ICollitionListener
 private:
 	CharacterState* nextState = nullptr; //Needed because processing a collition can change the state, but we have to do in the next UpdateState. It will mess the colliders list otherwise
 	void SetNewState(CharacterState* state);
+
+	void StoreActions(std::vector<CommandAction> actions);
 
 protected:
 	const char* configSection = nullptr;
@@ -34,10 +42,14 @@ public:
 	float gravity;
 	int groundLevel; //Needed to jump
 	AnimationCollider* currentAnimation = nullptr;
-	int currentAttackDamage;
+	bool isAttacking;
+	bool isRivalAttacking;
+	float rivalDistance;
 	float hitBackwardMovement;
 	float hitBackwardSpeed;
 	bool applyToOtherPlayer;
+	std::deque<SpecialAction> actionsSequence;
+	Timer actionsSequenceTimer{10000};
 
 	//Character specific
 	int characterId;
@@ -45,12 +57,12 @@ public:
 	int bSpeed; //Backward speed
 	int pSpeed; //Pressing speed
 	float jumpVSpeed;
+	float currentJumpSpeed;
 	int fJumpHSpeed;
 	int bJumpHSpeed;
 	float height;
 	float fMargin; //Front margin
 	float bMargin; //Back margin
-
 
 	Character() {};
 	~Character() {};
@@ -70,6 +82,13 @@ public:
 	void OnCollitionEnter(Collider* colA, Collider* colB);
 	void OnCollitionExit(Collider* colA, Collider* colB) {};
 
+	AttackInfo GetAttackInfo();
+
+	void ClearActionsSequence();
+	virtual CharacterState* CheckSpecialActions() { return nullptr; };
+	void UpdateYPosition();
+	void MoveXPosition(Direction dir, int speed);
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
+	void MatchFinished(int playerWin);
 };
 

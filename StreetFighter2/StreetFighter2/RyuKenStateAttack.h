@@ -15,5 +15,7 @@ public:
 	void OnExit();
 
 	CharacterState* UpdateState();
+
+	AttackInfo GetAttackInfo();
 };
 

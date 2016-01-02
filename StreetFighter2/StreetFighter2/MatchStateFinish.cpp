@@ -22,6 +22,8 @@ MatchStateFinish::~MatchStateFinish()
 void MatchStateFinish::OnEnter()
 {
 	fading = false;
+	finishGUI = false;
+	shouldStartAnimations = false;
 	//Calculate match outcome
 	scene->winnerPlayer = 0;
 
@@ -46,7 +48,7 @@ void MatchStateFinish::OnEnter()
 				scene->vitalScore = scene->player2->life * 200;
 		}
 
-		scene->stage->StartFinishAnimations();
+		shouldStartAnimations = true;
 	}
 
 	if (scene->timeLimit)
@@ -54,7 +56,8 @@ void MatchStateFinish::OnEnter()
 	else
 		scene->timeScore = 0;
 
-	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::FINISH);
+	scene->player1->MatchFinished(scene->winnerPlayer);
+	scene->player2->MatchFinished(scene->winnerPlayer);
 }
 
 
@@ -73,6 +76,16 @@ MatchState* MatchStateFinish::UpdateState()
 	scene->SetCamYPosition();
 	scene->SetCamXPosition();
 	scene->SetCamPosition();
+
+	if (scene->player1->position.y >= scene->stage->groundLevel && 
+		scene->player2->position.y >= scene->stage->groundLevel &&
+		!finishGUI)
+	{
+		if(shouldStartAnimations)
+			scene->stage->StartFinishAnimations();
+		scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::FINISH);
+		finishGUI = true;
+	}
 
 	if (scene->GUI->StateHasFinished())
 	{

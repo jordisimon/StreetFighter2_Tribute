@@ -3,14 +3,14 @@
 
 class RyuKenStateJump :	public RyuKenState
 {
-private:
-	float jumpSpeed;
+protected:
+	CharacterState* ProcessActions(std::vector<CommandAction> actions);
+
 public:
 	RyuKenStateJump(RyuKen* p);
 	~RyuKenStateJump();
 
 	void OnEnter();
-	void OnExit();
 
 	CharacterState* UpdateState();
 };
