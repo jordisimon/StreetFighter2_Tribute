@@ -1,6 +1,7 @@
 #include "RyuKenStateAerialHit.h"
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
+#include "RyuKenStateStunned.h"
 
 
 RyuKenStateAerialHit::RyuKenStateAerialHit(RyuKen* p) : RyuKenState{ p }
@@ -36,7 +37,10 @@ CharacterState * RyuKenStateAerialHit::UpdateState()
 
 	if (character->nextPosition.y >= character->groundLevel)
 	{
-		return new RyuKenStateIdle(character);
+		if (character->isStunned)
+			return new RyuKenStateStunned(character);
+		else
+			return new RyuKenStateIdle(character);
 	}
 
 	return nullptr;

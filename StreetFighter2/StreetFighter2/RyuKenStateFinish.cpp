@@ -1,20 +1,30 @@
-#include "RyuKenFinishState.h"
+#include "RyuKenStateFinish.h"
 #include "RyuKen.h"
+#include "Particle.h"
 #include <time.h>   
 
 
-
-RyuKenFinishState::RyuKenFinishState(RyuKen* p, int pWin) : RyuKenState{ p }, playerWin{ pWin }, falling{ false }
+RyuKenStateFinish::RyuKenStateFinish(RyuKen* p, int pWin) : RyuKenState{ p }, playerWin{ pWin }, falling{ false }
 {
 }
 
 
-RyuKenFinishState::~RyuKenFinishState()
+RyuKenStateFinish::~RyuKenStateFinish()
 {
 }
 
-void RyuKenFinishState::OnEnter()
+void RyuKenStateFinish::OnEnter()
 {
+	if (character->isStunned)
+	{
+		character->isStunned = false;
+		if (character->particleStunned != nullptr)
+		{
+			character->particleStunned->toDelete = true;
+			character->particleStunned = nullptr;
+		}
+	}
+
 	if (character->position.y < character->groundLevel)
 	{
 		falling = true;
@@ -26,7 +36,9 @@ void RyuKenFinishState::OnEnter()
 		character->hitBackwardSpeed = 120.0f;
 		character->currentJumpSpeed = 5.5f;
 		character->applyToOtherPlayer = false;
+		character->yUpdateControl = 1.0f; // to force not being in ground when updating first time
 		character->currentAnimation = &character->KOBegin;
+		character->PlaySfx(character->KOSfx);
 		falling = true;
 	}
 	else
@@ -58,7 +70,7 @@ void RyuKenFinishState::OnEnter()
 	RyuKenState::OnEnter();
 }
 
-CharacterState * RyuKenFinishState::UpdateState()
+CharacterState * RyuKenStateFinish::UpdateState()
 {
 	RyuKenState::UpdateState();
 
@@ -96,20 +108,11 @@ CharacterState * RyuKenFinishState::UpdateState()
 			else
 			{
 				character->currentAnimation = &character->KOEnd;
+				character->PlaySfx(character->floorHitSfx);
 			}
 
 			falling = false;
 		}
-		/*else
-		{
-			if (character->currentAnimation == &character->KOBegin)
-			{
-				if(character->direction == Direction::LEFT)
-					character->MoveXPosition(Direction::RIGHT, character->bSpeed);
-				else
-					character->MoveXPosition(Direction::LEFT, character->bSpeed);
-			}
-		}*/
 	}
 	else
 	{

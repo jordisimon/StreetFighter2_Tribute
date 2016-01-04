@@ -22,46 +22,57 @@ void RyuKenStateAerialAttack::OnEnter()
 	{
 	case AttackType::J_L_PUNCH:
 		character->currentAnimation = &character->jlPunch;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::J_M_PUNCH:
 		character->currentAnimation = &character->jmPunch;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::J_H_PUNCH:
 		character->currentAnimation = &character->jhPunch;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_J_L_PUNCH:
 		character->currentAnimation = &character->fjlPunch;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_J_M_PUNCH:
 		character->currentAnimation = &character->fjmPunch;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_J_H_PUNCH:
 		character->currentAnimation = &character->fjhPunch;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::J_L_KICK:
 		character->currentAnimation = &character->jlKick;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::J_M_KICK:
 		character->currentAnimation = &character->jmKick;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::J_H_KICK:
 		character->currentAnimation = &character->jhKick;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_J_L_KICK:
 		character->currentAnimation = &character->fjlKick;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_J_M_KICK:
 		character->currentAnimation = &character->fjmKick;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_J_H_KICK:
 		character->currentAnimation = &character->fjhKick;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	default:
 		break;
 	}
 
 	character->isAttacking = true;
-	character->PlaySfx(character->attackSfx);
 	RyuKenState::OnEnter();
 }
 
@@ -96,7 +107,7 @@ void RyuKenStateAerialAttack::IfMovingForwardRecalculatePositionWithPressingSpee
 		character->MoveXPosition(character->direction, character->pSpeed);
 }
 
-AttackInfo RyuKenStateAerialAttack::GetAttackInfo()
+const AttackInfo RyuKenStateAerialAttack::GetAttackInfo() const
 {
 	AttackInfo attackInfo;
 

@@ -11,6 +11,19 @@ AnimationCollider::AnimationCollider() : previousFrame {-1}
 {
 }
 
+AnimationCollider::AnimationCollider(const AnimationCollider & other) : Animation{ other }, previousFrame{ -1 }
+{
+	listener = other.listener;
+
+	//colliderAnimationList contains AnimationColliderInfo pointers, so we need to copy the objects
+	for (const auto& info : other.colliderAnimationList)
+	{
+		AnimationColliderInfo* newInfo = new AnimationColliderInfo( *info );
+
+		colliderAnimationList.push_back(newInfo);
+	}
+}
+
 
 AnimationCollider::~AnimationCollider()
 {
@@ -86,7 +99,7 @@ void AnimationCollider::DisableCurrentColliderFrame(ColliderType type)
 	{
 		if (colliderAnimation->type == type)
 		{
-			colliderAnimation->colliderCurrentFrameActive[valid_frame] = false;
+			colliderAnimation->DisableColliders();
 		}
 	}
 }

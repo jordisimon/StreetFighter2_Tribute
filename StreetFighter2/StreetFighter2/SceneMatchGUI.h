@@ -176,6 +176,8 @@ public:
 	bool Init();
 	bool CleanUp();
 
+	bool Start();
+
 	void SetMatchGUIState(MatchGUIState state);
 	Result UpdateState();
 	Result Draw() const;

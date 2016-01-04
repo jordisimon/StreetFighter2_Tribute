@@ -20,7 +20,7 @@ public:
 	bool CleanUp();
 
 	void SetParticleFactory(IParticleFactory* fact);
-	void CreateParticle(const ParticleInfo& info);
+	Particle* CreateParticle(const ParticleInfo& info);
 	bool UpdateParticlesState();
 	bool DrawParticles() const;
 	bool DeleteInactiveParticles();

@@ -10,31 +10,31 @@
 ParticleHaDoKen::ParticleHaDoKen(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim)
 	: ParticleAttack(typ, pos, dir, text), runAnimation {runAnim}, endAnimation {endAnim}
 {
+	runAnimation.listener = this;
 	runAnimation.ResetAnimation();
 	runAnimation.InitColliders(position, direction);
 	currentAnimation = &runAnimation;
-	speed.y = 0.0f;
 
 	switch (type)
 	{
 	case ParticleType::LIGHT_HADOKEN:
-		speed.x = 1.0f;
-		damage = 10;
+		strength = AttackStrength::LIGHT;
+		speed = 110;
 		break;
 	case ParticleType::MEDIUM_HADOKEN:
-		speed.x = 2.0f;
-		damage = 20;
+		strength = AttackStrength::MEDIUM;
+		speed = 130;
 		break;
 	case ParticleType::HARD_HADOKEN:
-		speed.x = 3.0f;
-		damage = 30;
+		strength = AttackStrength::HARD;
+		speed = 150;
 		break;
 	default:
 		break;
 	}
 
 	if (direction == Direction::LEFT)
-		speed.x *= -1;
+		speed *= -1;
 }
 
 
@@ -50,7 +50,7 @@ bool ParticleHaDoKen::UpdateState()
 	}
 	else
 	{
-		position.x += speed.x * servicesManager->time->frameTimeSeconds;
+		position.x += speed * servicesManager->time->frameTimeSeconds;
 		currentAnimation->UpdateCurrentFrame(position, direction);
 	}
 	return true;
@@ -73,4 +73,35 @@ void ParticleHaDoKen::OnCollitionExit(Collider * colA, Collider * colB)
 		colA->toDelete = true;
 		toDelete = true;
 	}
+}
+
+const AttackInfo ParticleHaDoKen::GetAttackInfo() const
+{
+	AttackInfo attackInfo;
+
+	attackInfo.special = true;
+	attackInfo.strength = strength;
+
+	switch (strength)
+	{
+	case AttackStrength::LIGHT:
+		attackInfo.damage = 19;
+		attackInfo.backMovement = 30;
+		attackInfo.backSpeed = 50;
+		break;
+	case AttackStrength::MEDIUM:
+		attackInfo.damage = 19;
+		attackInfo.backMovement = 30;
+		attackInfo.backSpeed = 50;
+		break;
+	case AttackStrength::HARD:
+		attackInfo.damage = 19;
+		attackInfo.backMovement = 30;
+		attackInfo.backSpeed = 50;
+		break;
+	default:
+		break;
+	}
+
+	return attackInfo;
 }

@@ -13,6 +13,7 @@
 
 class AnimationCollider;
 class CharacterState;
+class Particle;
 class Collider;
 struct SDL_Texture;
 
@@ -36,6 +37,8 @@ public:
 	fPoint position;
 	fPoint nextPosition;
 	Direction direction;
+	float updateOverallSpeed;
+	float yUpdateControl;
 	unsigned int roundVictories;
 	int life;
 	float shownLife;
@@ -48,8 +51,29 @@ public:
 	float hitBackwardMovement;
 	float hitBackwardSpeed;
 	bool applyToOtherPlayer;
+
+	//Special movements control
 	std::deque<SpecialAction> actionsSequence;
-	Timer actionsSequenceTimer{10000};
+	Timer actionsSequenceTimer{1000};
+
+	//Knockdown control
+	unsigned int knockdownDamage;
+	Timer knockdownTimer{4000};
+
+	//Stunned control
+	bool isStunned;
+	Particle* particleStunned;
+	Timer stunnedTimer{3000};
+
+	//Fx sounds
+	static int lAttackSfx;
+	static int mAttackSfx;
+	static int hAttackSfx;
+	static int lHitSfx;
+	static int mHitSfx;
+	static int hHitSfx;
+	static int hitBlockedSfx;
+	static int floorHitSfx;
 
 	//Character specific
 	int characterId;
@@ -82,10 +106,13 @@ public:
 	void OnCollitionEnter(Collider* colA, Collider* colB);
 	void OnCollitionExit(Collider* colA, Collider* colB) {};
 
-	AttackInfo GetAttackInfo();
+	void PlaySfx(int sfx) const;
+
+	const AttackInfo GetAttackInfo() const;
 
 	void ClearActionsSequence();
 	virtual CharacterState* CheckSpecialActions() { return nullptr; };
+	void UpdateStunnedParticlePosition();
 	void UpdateYPosition();
 	void MoveXPosition(Direction dir, int speed);
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();

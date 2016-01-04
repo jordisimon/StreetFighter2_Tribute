@@ -21,6 +21,7 @@ public:
 	std::vector<AnimationColliderInfo*> colliderAnimationList;
 
 	AnimationCollider();
+	AnimationCollider(const AnimationCollider& other);
 	~AnimationCollider();
 
 	void InitColliders(const fPoint& position, Direction direction = Direction::RIGHT);

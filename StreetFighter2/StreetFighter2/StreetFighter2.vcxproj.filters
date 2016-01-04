@@ -92,6 +92,15 @@
     <Filter Include="Sources\StreetFighter\Utils">
       <UniqueIdentifier>{256a84e5-ab43-4ef0-a39b-73fbdaf1a0f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\StreetFighter\Scenes\Intro">
+      <UniqueIdentifier>{cebdf5cb-533d-4f48-b1de-76a43b8e9890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Engine\Services\Scene">
+      <UniqueIdentifier>{7111dd05-ef2d-49e5-9cf0-c13dfd7b544d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Scenes\VS">
+      <UniqueIdentifier>{b1e68766-0f44-4660-821f-6c3d3298592a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleIni.h">
@@ -289,14 +298,8 @@
     <ClInclude Include="SF2Stats.h">
       <Filter>Sources\StreetFighter\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Sources\Engine\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="ServiceFade.h">
       <Filter>Sources\Engine\Services\Fade</Filter>
-    </ClInclude>
-    <ClInclude Include="RyuKenFinishState.h">
-      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
     </ClInclude>
     <ClInclude Include="RyuKenStateWalk.h">
       <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
@@ -331,6 +334,40 @@
     <ClInclude Include="RyuKenStateShoruyken.h">
       <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
     </ClInclude>
+    <ClInclude Include="RyuKenStateKyaku.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateHadoken.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleStunned.h">
+      <Filter>Sources\StreetFighter\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateKnockdown.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateFinish.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Sources\Engine\Services\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceSceneManager.h">
+      <Filter>Sources\Engine\Services\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateStunned.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLicensed.h">
+      <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneCapcom.h">
+      <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMainMenu.h">
+      <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene2PCharacterSelection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -474,14 +511,8 @@
     <ClCompile Include="SF2Stats.cpp">
       <Filter>Sources\StreetFighter\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Sources\Engine\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="ServiceFade.cpp">
       <Filter>Sources\Engine\Services\Fade</Filter>
-    </ClCompile>
-    <ClCompile Include="RyuKenFinishState.cpp">
-      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
     </ClCompile>
     <ClCompile Include="RyuKenStateCrouch.cpp">
       <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
@@ -507,5 +538,39 @@
     <ClCompile Include="RyuKenStateShoruyken.cpp">
       <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
     </ClCompile>
+    <ClCompile Include="RyuKenStateKyaku.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateHadoken.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleStunned.cpp">
+      <Filter>Sources\StreetFighter\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateKnockdown.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateFinish.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Sources\Engine\Services\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceSceneManager.cpp">
+      <Filter>Sources\Engine\Services\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateStunned.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLicensed.cpp">
+      <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneCapcom.cpp">
+      <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMainMenu.cpp">
+      <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene2PCharacterSelection.cpp" />
   </ItemGroup>
 </Project>

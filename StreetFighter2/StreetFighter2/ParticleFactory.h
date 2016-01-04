@@ -21,6 +21,8 @@ private:
 	AnimationCollider p2lHit;
 	AnimationCollider p2mHit;
 	AnimationCollider p2hHit;
+	AnimationCollider stars;
+	AnimationCollider ducks;
 
 public:
 	ParticleFactory() {};

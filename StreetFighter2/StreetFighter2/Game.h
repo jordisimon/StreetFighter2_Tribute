@@ -19,6 +19,9 @@ public:
 	Entity::Result PostDraw() const;
 
 	Entity::Result Update();
+
+	Entity::Result UpdateState();
+	Entity::Result Draw() const;
 };
 
 Game* CreateGame(); //To be defined in Game specific implementation

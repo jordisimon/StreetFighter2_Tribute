@@ -13,6 +13,7 @@
 #include "AttackInfo.h"
 #include "ParticleInfo.h"
 #include "RyuKenSpecialAttack.h"
+#include "RyuKenStateKnockdown.h"
 
 CharacterState * RyuKenStateCrouch::ProcessActions(std::vector<CommandAction> actions)
 {
@@ -233,7 +234,53 @@ CharacterState * RyuKenStateCrouch::DealHit(Collider * collider)
 			break;
 		}
 
-		return new RyuKenStateHit(character, true, false, hitDuration);
+		if (attackInfo.special)
+			character->PlaySfx(character->hHitSfx);
+		else
+		{
+			switch (attackInfo.strength)
+			{
+			case AttackStrength::LIGHT:
+				character->PlaySfx(character->lHitSfx);
+				break;
+			case AttackStrength::MEDIUM:
+				character->PlaySfx(character->mHitSfx);
+				break;
+			case AttackStrength::HARD:
+				character->PlaySfx(character->hHitSfx);
+				break;
+			default:
+				break;
+			}
+		}
+
+		character->knockdownDamage += attackInfo.damage;
+		character->knockdownTimer.Resume();
+		character->knockdownTimer.Reset();
+
+		if (!character->isStunned && character->knockdownDamage >= 50)
+		{
+			if (character->knockdownDamage > 65)
+				return new RyuKenStateKnockdown(character, true);
+			else
+				return new RyuKenStateKnockdown(character, false);
+		}
+		else
+		{
+			return new RyuKenStateHit(character, true, false, hitDuration);
+		}
+	}
+	else
+	{
+		//If special attack, even when blocking we get some damage (about 25%)
+		if (attackInfo.special)
+		{
+			character->life -= attackInfo.damage / 4;
+			if (character->life < 0)
+				character->life = 0;
+		}
+
+		character->PlaySfx(character->hitBlockedSfx);
 	}
 		
 	return nullptr;

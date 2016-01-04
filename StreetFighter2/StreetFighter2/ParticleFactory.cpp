@@ -5,6 +5,7 @@
 #include "Particle.h"
 #include "ParticleHaDoKen.h"
 #include "ParticleHit.h"
+#include "ParticleStunned.h"
 
 #define PARTICLES_SECTION "Particles"
 
@@ -21,7 +22,8 @@ bool ParticleFactory::Init()
 	config->LoadAnimationCollider(p2lHit, PARTICLES_SECTION, "p2lHit");
 	config->LoadAnimationCollider(p2mHit, PARTICLES_SECTION, "p2mHit");
 	config->LoadAnimationCollider(p2hHit, PARTICLES_SECTION, "p2hHit");
-
+	config->LoadAnimationCollider(stars, PARTICLES_SECTION, "stars");
+	config->LoadAnimationCollider(ducks, PARTICLES_SECTION, "ducks");
 	return true;
 }
 
@@ -85,6 +87,14 @@ Particle * ParticleFactory::CreateParticle(const ParticleInfo& info)
 	//P2 Hard Hit
 	case ParticleType::P2_HHIT:
 		particle = new ParticleHit(info.type, info.position, info.direction, particlesTexture, p2hHit);
+		break;
+
+	case ParticleType::STARS:
+		particle = new ParticleStunned(info.type, info.position, info.direction, particlesTexture, stars);
+		break;
+
+	case ParticleType::DUCKS:
+		particle = new ParticleStunned(info.type, info.position, info.direction, particlesTexture, ducks);
 		break;
 	}
 

@@ -4,25 +4,41 @@
 #include "RyuKenStateIdle.h"
 #include "ServicesManager.h"
 #include "ServiceAudio.h"
+#include "Particle.h"
 
 using namespace std;
 
-int RyuKen::attackSfx = -1;
-int RyuKen::shoryukenSfx = -1;
+int RyuKen::lShoryukenSfx = -1;
+int RyuKen::mShoryukenSfx = -1;
+int RyuKen::hShoryukenSfx = -1;
+int RyuKen::lHadokenSfx = -1;
+int RyuKen::mHadokenSfx = -1;
+int RyuKen::hHadokenSfx = -1;
+int RyuKen::lKyakuSfx = -1;
+int RyuKen::mKyakuSfx = -1;
+int RyuKen::hKyakuSfx = -1;
+int RyuKen::KOSfx = -1;
 
 const vector<SpecialAction> RyuKen::lightHadokenActions = { SpecialAction::L_PUNCH, SpecialAction::FORWARD, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN };
 const vector<SpecialAction> RyuKen::mediumHadokenActions = { SpecialAction::M_PUNCH, SpecialAction::FORWARD, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN };
 const vector<SpecialAction> RyuKen::hardHadokenActions = { SpecialAction::H_PUNCH, SpecialAction::FORWARD, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN };
-//const vector<SpecialAction> RyuKen::lightShoryukenActions = { SpecialAction::L_PUNCH, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN, SpecialAction::FORWARD };
-//const vector<SpecialAction> RyuKen::mediumShoryukenActions = { SpecialAction::M_PUNCH, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN, SpecialAction::FORWARD };
-//const vector<SpecialAction> RyuKen::hardShoryukenActions = { SpecialAction::H_PUNCH, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN, SpecialAction::FORWARD };
+const vector<SpecialAction> RyuKen::lightShoryukenActions = { SpecialAction::L_PUNCH, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN, SpecialAction::FORWARD };
+const vector<SpecialAction> RyuKen::mediumShoryukenActions = { SpecialAction::M_PUNCH, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN, SpecialAction::FORWARD };
+const vector<SpecialAction> RyuKen::hardShoryukenActions = { SpecialAction::H_PUNCH, SpecialAction::DOWN_FORWARD, SpecialAction::DOWN, SpecialAction::FORWARD };
 const vector<SpecialAction> RyuKen::lightKyakuActions = { SpecialAction::L_KICK, SpecialAction::BACKWARD, SpecialAction::DOWN_BACKWARD, SpecialAction::DOWN };
 const vector<SpecialAction> RyuKen::mediumKyakuActions = { SpecialAction::M_KICK, SpecialAction::BACKWARD, SpecialAction::DOWN_BACKWARD, SpecialAction::DOWN };
 const vector<SpecialAction> RyuKen::hardKyakuActions = { SpecialAction::H_KICK, SpecialAction::BACKWARD, SpecialAction::DOWN_BACKWARD, SpecialAction::DOWN };
 
-const vector<SpecialAction> RyuKen::lightShoryukenActions = { SpecialAction::L_PUNCH };
-const vector<SpecialAction> RyuKen::mediumShoryukenActions = { SpecialAction::M_PUNCH };
-const vector<SpecialAction> RyuKen::hardShoryukenActions = { SpecialAction::H_PUNCH };
+//Testing (specials done with single button)
+//const vector<SpecialAction> RyuKen::lightHadokenActions = { SpecialAction::L_PUNCH };
+//const vector<SpecialAction> RyuKen::mediumHadokenActions = { SpecialAction::M_PUNCH };
+//const vector<SpecialAction> RyuKen::hardHadokenActions = { SpecialAction::H_PUNCH };
+//const vector<SpecialAction> RyuKen::lightShoryukenActions = { SpecialAction::L_PUNCH };
+//const vector<SpecialAction> RyuKen::mediumShoryukenActions = { SpecialAction::M_PUNCH };
+//const vector<SpecialAction> RyuKen::hardShoryukenActions = { SpecialAction::H_PUNCH };
+//const vector<SpecialAction> RyuKen::lightKyakuActions = { SpecialAction::L_KICK, SpecialAction::BACKWARD };
+//const vector<SpecialAction> RyuKen::mediumKyakuActions = { SpecialAction::M_KICK, SpecialAction::BACKWARD };
+//const vector<SpecialAction> RyuKen::hardKyakuActions = { SpecialAction::H_KICK, SpecialAction::BACKWARD };
 
 RyuKen::RyuKen(CharacterType type)
 {
@@ -144,6 +160,10 @@ bool RyuKen::Init()
 		config->LoadAnimationCollider(kyakuEnd, configSection, "kyakuEnd");
 		kyakuEnd.listener = this;
 
+		config->LoadAnimationCollider(hadoken, configSection, "hadoken");
+		hadoken.listener = this;
+		config->LoadfPoint(hadokenOffset, configSection, "hadokenOffset");
+
 		//Close range
 		config->LoadAnimationCollider(flKick, configSection, "flKick");
 		flKick.listener = this;
@@ -176,6 +196,14 @@ bool RyuKen::Init()
 		config->LoadAnimationCollider(fjhKick, configSection, "fjhKick");
 		fjhKick.listener = this;
 
+		//Knockdown
+		config->LoadAnimationCollider(knockdown, configSection, "knockdown");
+		knockdown.listener = this;
+		config->LoadAnimationCollider(knockdownRecover, configSection, "knockdownRecover");
+		knockdownRecover.listener = this;
+		config->LoadAnimationCollider(stunned, configSection, "stunned");
+		stunned.listener = this;
+
 		//Finish
 		config->LoadAnimationCollider(KOBegin, configSection, "KOBegin");
 		KOBegin.listener = this;
@@ -188,8 +216,16 @@ bool RyuKen::Init()
 		config->LoadAnimationCollider(timeover, configSection, "timeover");
 		timeover.listener = this;
 
-		if (attackSfx == -1) attackSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Attack.ogg");
-		if (shoryukenSfx == -1) shoryukenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\Shoryuken.ogg");
+		if (lShoryukenSfx == -1) lShoryukenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\lShoryuken.ogg");
+		if (mShoryukenSfx == -1) mShoryukenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\mShoryuken.ogg");
+		if (hShoryukenSfx == -1) hShoryukenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\hShoryuken.ogg");
+		if (lHadokenSfx == -1) lHadokenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\lHadoken.ogg");
+		if (mHadokenSfx == -1) mHadokenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\mHadoken.ogg");
+		if (hHadokenSfx == -1) hHadokenSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\hHadoken.ogg");
+		if (lKyakuSfx == -1) lKyakuSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\lKyaku.ogg");
+		if (mKyakuSfx == -1) mKyakuSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\mKyaku.ogg");
+		if (hKyakuSfx == -1) hKyakuSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\hKyaku.ogg");
+		if (KOSfx == -1) KOSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\RyuKen\\KO.ogg");
 	}
 
 	return res;
@@ -211,6 +247,8 @@ bool RyuKen::Start()
 		RELEASE(currentState);
 		currentState = new RyuKenStateIdle(this);
 		currentState->OnEnter();
+
+		currentHadoken = nullptr;
 	}
 
 	return res;
@@ -220,17 +258,15 @@ bool RyuKen::Stop()
 {
 	bool res = Character::Stop();
 
+	if (currentHadoken != nullptr)
+		currentHadoken->toDelete = true;
+
 	if (currentState != nullptr)
 		currentState->OnExit();
 
 	RELEASE(currentState);
 
 	return res;
-}
-
-void RyuKen::PlaySfx(int sfx) const
-{
-	servicesManager->audio->PlayFx(sfx);
 }
 
 CharacterState * RyuKen::CheckSpecial(const std::vector<SpecialAction>& specialAction, const RyuKenSpecialAttack& type)
@@ -262,14 +298,23 @@ CharacterState * RyuKen::CheckSpecial(const std::vector<SpecialAction>& specialA
 
 CharacterState * RyuKen::CheckSpecialActions()
 {
-	CharacterState* result;
+	CharacterState* result = nullptr;
 
 	//Hadoken
-	result = CheckSpecial(lightHadokenActions, RyuKenSpecialAttack(RyuKenSpecialAttackType::L_HADOKEN));
-	if(result == nullptr)
-		result = CheckSpecial(mediumHadokenActions, RyuKenSpecialAttack(RyuKenSpecialAttackType::M_HADOKEN));
-	if (result == nullptr)
-		result = CheckSpecial(hardHadokenActions, RyuKenSpecialAttack(RyuKenSpecialAttackType::H_HADOKEN));
+	if (currentHadoken != nullptr)
+	{
+		//Hadoken sets itself to delete when updated so we have the next tick to detect it and set this variable to nullptr before particle is released in next particles update
+		if (currentHadoken->toDelete)
+			currentHadoken = nullptr;
+	}
+	if (currentHadoken == nullptr)
+	{
+		result = CheckSpecial(lightHadokenActions, RyuKenSpecialAttack(RyuKenSpecialAttackType::L_HADOKEN));
+		if (result == nullptr)
+			result = CheckSpecial(mediumHadokenActions, RyuKenSpecialAttack(RyuKenSpecialAttackType::M_HADOKEN));
+		if (result == nullptr)
+			result = CheckSpecial(hardHadokenActions, RyuKenSpecialAttack(RyuKenSpecialAttackType::H_HADOKEN));
+	}
 
 	//Shoryuken
 	if (result == nullptr)

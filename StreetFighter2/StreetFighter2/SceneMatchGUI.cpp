@@ -28,7 +28,7 @@ SceneMatchGUI::SceneMatchGUI() : timer{1000}
 {
 	configSection = "Match_GUI";
 
-	if (pauseFx == -1) pauseFx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Pause.ogg");
+	if (pauseFx == -1) pauseFx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\Pause.ogg");
 	if (roundFx == -1) roundFx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\Match\\Round.ogg");
 	if (oneFx == -1) oneFx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\Match\\One.ogg");
 	if (twoFx == -1) twoFx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\Match\\Two.ogg");
@@ -36,8 +36,8 @@ SceneMatchGUI::SceneMatchGUI() : timer{1000}
 	if (fourFx == -1) fourFx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\Match\\Four.ogg");
 	if (fightFx == -1) fightFx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\Match\\Fight.ogg");
 	if (perfectFx == -1) perfectFx = servicesManager->audio->LoadFx("Assets\\Sound\\Voices\\Match\\Perfect.ogg");
-	if (bonusShortFx == -1) bonusShortFx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\BonusShort.ogg");
-	if (bonusFx == -1) bonusFx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Bonus.ogg");
+	if (bonusShortFx == -1) bonusShortFx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\BonusShort.ogg");
+	if (bonusFx == -1) bonusFx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\Bonus.ogg");
 }
 
 SceneMatchGUI::~SceneMatchGUI()
@@ -193,6 +193,13 @@ bool SceneMatchGUI::CleanUp()
 
 	servicesManager->textures->Unload(texture);
 
+	return true;
+}
+
+bool SceneMatchGUI::Start()
+{
+	tempScore = 0;
+	bonusScore = 0;
 	return true;
 }
 

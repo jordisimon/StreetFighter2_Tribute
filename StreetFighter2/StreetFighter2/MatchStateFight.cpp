@@ -73,6 +73,7 @@ MatchState * MatchStateFight::UpdateState()
 	scene->SetCamYPosition();
 	scene->SetCamXPosition();
 	scene->SetCamPosition();
+	scene->SetCollidersPosition();
 
 	bool matchFinished = (scene->timeLimit && scene->time <= 0) 
 		|| (scene->player1->life <= 0) 

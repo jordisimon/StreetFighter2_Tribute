@@ -9,6 +9,6 @@ public:
 	ParticleAttack(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text);
 	~ParticleAttack();
 
-	virtual AttackInfo GetAttackInfo() { return AttackInfo(); }
+	virtual const AttackInfo GetAttackInfo() const { return AttackInfo(); }
 };
 

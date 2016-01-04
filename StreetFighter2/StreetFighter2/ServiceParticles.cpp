@@ -41,10 +41,17 @@ void ServiceParticles::SetParticleFactory(IParticleFactory * fact)
 	factory = fact;
 }
 
-void ServiceParticles::CreateParticle(const ParticleInfo& info)
+Particle* ServiceParticles::CreateParticle(const ParticleInfo& info)
 {
+	Particle* result = nullptr;
+
 	if (factory != nullptr)
-		particles.push_back(factory->CreateParticle(info));
+	{
+		result = factory->CreateParticle(info);
+		particles.push_back(result);
+	}
+
+	return result;
 }
 
 bool ServiceParticles::UpdateParticlesState()

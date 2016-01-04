@@ -14,10 +14,10 @@ protected:
 	ParticleType type;
 	SDL_Texture* texture = nullptr;
 	AnimationCollider* currentAnimation = nullptr;
-	fPoint position;
 	Direction direction;
 
 public:
+	fPoint position;
 	bool toDelete;
 
 	Particle(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text);

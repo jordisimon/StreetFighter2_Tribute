@@ -14,6 +14,7 @@ public:
 	~Timer() {};
 
 	void SetNewInterval(unsigned int i);
+	void AddElapsedTime(unsigned int i);
 	void Reset();
 	bool Reached() const;
 	void Pause();

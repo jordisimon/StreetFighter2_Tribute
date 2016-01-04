@@ -9,6 +9,7 @@ class Stage;
 class Character;
 class CommandContext;
 class SceneMatchGUI;
+class Collider;
 
 class SceneMatch: public Scene
 {
@@ -24,6 +25,9 @@ private:
 	SceneMatchGUI* GUI = nullptr;
 	CommandContext* commandContextFight = nullptr;
 	CommandContext* commandContextPause = nullptr;
+
+	Collider* boxLeftCollider = nullptr;
+	Collider* boxRightCollider = nullptr;
 	
 	Stage* stage = nullptr;
 	Character* player1 = nullptr;
@@ -37,6 +41,7 @@ private:
 	float scene25Percent;
 	float scene50Percent;
 	float scene75Percent;
+	float gravity;
 
 	unsigned int winnerPlayer;
 	unsigned int vitalScore;
@@ -52,6 +57,7 @@ private:
 	void SetCamXPosition();
 	void SetCamYPosition();
 	void SetCamPosition() const;
+	void SetCollidersPosition();
 
 	void SetNewState(MatchState* state);
 

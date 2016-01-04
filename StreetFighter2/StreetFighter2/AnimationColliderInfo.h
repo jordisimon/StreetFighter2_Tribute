@@ -16,5 +16,7 @@ public:
 
 	AnimationColliderInfo();
 	~AnimationColliderInfo();
+
+	void DisableColliders();
 };
 

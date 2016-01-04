@@ -44,9 +44,10 @@ enum class AttackStrength
 
 struct AttackInfo
 {
-	AttackInfo() : strength{ AttackStrength::NONE }, damage{ 0 }, backMovement{ 0.0f }, backSpeed{ 0.0f } {}
+	AttackInfo() : strength{ AttackStrength::NONE }, special{ false },damage { 0 }, backMovement{ 0.0f }, backSpeed{ 0.0f } {}
 
 	AttackStrength strength;
+	float special;
 	int damage;
 	float backMovement;
 	float backSpeed;

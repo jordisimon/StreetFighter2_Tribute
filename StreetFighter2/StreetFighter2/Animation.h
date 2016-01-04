@@ -15,6 +15,7 @@ protected:
 public:
 	
 	bool loop;
+	unsigned int loopsCompleted;
 	bool forward;
 	std::vector<Sprite> frames;
 

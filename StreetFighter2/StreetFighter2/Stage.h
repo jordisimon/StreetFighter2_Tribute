@@ -3,7 +3,6 @@
 #include "Point.h"
 
 struct SDL_Texture;
-class Collider;
 
 class Stage : public Entity
 {
@@ -13,7 +12,6 @@ protected:
 public:
 	SDL_Texture* texture = nullptr;
 	const char* musicName = nullptr;
-	Collider* boxCollider = nullptr;
 
 	fPoint camMin;
 	fPoint camMax;

@@ -3,6 +3,8 @@
 #include "RyuKenStateIdle.h"
 #include "RyuKenStateAttack.h"
 #include "RyuKenStateBlocking.h"
+#include "RyuKenStateKyaku.h"
+#include "RyuKenStateHadoken.h"
 
 RyuKenStateWalk::RyuKenStateWalk(RyuKen* p, Direction direction) : RyuKenState{p}
 {
@@ -137,6 +139,34 @@ CharacterState * RyuKenStateWalk::UpdateState()
 	}
 
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
+	return nullptr;
+}
+
+CharacterState * RyuKenStateWalk::DoSpecialAction(const CharacterSpecialAttack & type)
+{
+	const RyuKenSpecialAttack& specialType = (RyuKenSpecialAttack&)type;
+
+	switch (specialType.type)
+	{
+	case RyuKenSpecialAttackType::L_KYAKU:
+		return new RyuKenStateKyaku(character, AttackStrength::LIGHT);
+
+	case RyuKenSpecialAttackType::M_KYAKU:
+		return new RyuKenStateKyaku(character, AttackStrength::MEDIUM);
+
+	case RyuKenSpecialAttackType::H_KYAKU:
+		return new RyuKenStateKyaku(character, AttackStrength::HARD);
+
+	case RyuKenSpecialAttackType::L_HADOKEN:
+		return new RyuKenStateHadoken(character, AttackStrength::LIGHT);
+
+	case RyuKenSpecialAttackType::M_HADOKEN:
+		return new RyuKenStateHadoken(character, AttackStrength::MEDIUM);
+
+	case RyuKenSpecialAttackType::H_HADOKEN:
+		return new RyuKenStateHadoken(character, AttackStrength::HARD);
+	}
+
 	return nullptr;
 }
 

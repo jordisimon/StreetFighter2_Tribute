@@ -6,6 +6,8 @@
 #include <vector>
 #include "RyuKenSpecialAttack.h"
 
+class Particle;
+
 //Ryu and Ken are almost the same
 class RyuKen : public Character
 {
@@ -71,9 +73,20 @@ public:
 	AnimationCollider victory2;
 	AnimationCollider timeover;
 
+	fPoint hadokenOffset;
+	Particle* currentHadoken;
+
 	//Fx sounds
-	static int attackSfx;
-	static int shoryukenSfx;
+	static int lShoryukenSfx;
+	static int mShoryukenSfx;
+	static int hShoryukenSfx;
+	static int lHadokenSfx;
+	static int mHadokenSfx;
+	static int hHadokenSfx;
+	static int lKyakuSfx;
+	static int mKyakuSfx;
+	static int hKyakuSfx;
+	static int KOSfx;
 
 	//Special attacks
 	static const std::vector<SpecialAction> lightHadokenActions;
@@ -95,8 +108,6 @@ public:
 	bool CleanUp();
 	bool Start();
 	bool Stop();
-
-	void PlaySfx(int sfx) const;
 
 	CharacterState* CheckSpecialActions();
 };

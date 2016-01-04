@@ -6,6 +6,7 @@
 #include "ServiceRender.h"
 #include "ServiceTime.h"
 #include "ServiceFade.h"
+#include "ServiceSceneManager.h"
 
 using namespace std;
 
@@ -96,6 +97,16 @@ Entity::Result Game::Update()
 		ret = PostDraw();
 
 	return ret;
+}
+
+Entity::Result Game::UpdateState()
+{
+	return servicesManager->scene->UpdateState();
+}
+
+Entity::Result Game::Draw() const
+{
+	return servicesManager->scene->Draw();
 }
 
 Config* config = nullptr;

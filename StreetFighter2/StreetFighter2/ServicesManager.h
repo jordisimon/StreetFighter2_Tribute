@@ -12,6 +12,7 @@ class ServiceTextures;
 class ServiceCollition;
 class ServiceTime;
 class ServiceFade;
+class ServiceSceneManager;
 
 class ServicesManager
 {
@@ -31,6 +32,7 @@ public:
 	ServiceTextures* textures = nullptr;
 	ServiceTime* time = nullptr;
 	ServiceFade* fade = nullptr;
+	ServiceSceneManager* scene = nullptr;
 
 	ServicesManager();
 	~ServicesManager();

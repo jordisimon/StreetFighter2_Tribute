@@ -3,7 +3,8 @@
 #include "CommandData.h"
 #include "RyuKenStateHit.h"
 #include "RyuKenStateAerialHit.h"
-#include "RyuKenFinishState.h"
+#include "RyuKenStateFinish.h"
+#include "RyuKenStateKnockdown.h"
 #include "Collider.h"
 #include "ColliderType.h"
 #include "ServicesManager.h"
@@ -11,7 +12,6 @@
 #include "ParticleAttack.h"
 #include "AttackInfo.h"
 #include "ParticleInfo.h"
-
 
 
 RyuKenState::RyuKenState(RyuKen* p) : character{ p }
@@ -57,6 +57,7 @@ CharacterState * RyuKenState::ProcessInput(CommandData * commandData)
 
 CharacterState * RyuKenState::UpdateState()
 {
+	character->UpdateStunnedParticlePosition();
 	character->UpdateYPosition();
 
 	return nullptr;
@@ -124,37 +125,71 @@ CharacterState * RyuKenState::DealHit(Collider * collider)
 	if (character->life < 0)
 		character->life = 0;
 
-	if (character->position.y >= character->groundLevel)
+	if (attackInfo.special)
+		character->PlaySfx(character->hHitSfx);
+	else
 	{
-		character->hitBackwardMovement = attackInfo.backMovement;
-		character->hitBackwardSpeed = attackInfo.backSpeed;
-
 		switch (attackInfo.strength)
 		{
 		case AttackStrength::LIGHT:
-			hitDuration = 0.3f;
+			character->PlaySfx(character->lHitSfx);
 			break;
-
 		case AttackStrength::MEDIUM:
-			hitDuration = 0.6f;
+			character->PlaySfx(character->mHitSfx);
 			break;
-
 		case AttackStrength::HARD:
-			hitDuration = 0.9f;
+			character->PlaySfx(character->hHitSfx);
 			break;
 		default:
 			break;
 		}
+	}
 
-		return new RyuKenStateHit(character, false, faceHit, hitDuration);
+	character->knockdownDamage += attackInfo.damage;
+	character->knockdownTimer.Resume();
+	character->knockdownTimer.Reset();
+
+	if (!character->isStunned && character->knockdownDamage >= 50)
+	{
+		if (character->knockdownDamage > 65)
+			return new RyuKenStateKnockdown(character, true);
+		else
+			return new RyuKenStateKnockdown(character, false);
 	}
 	else
 	{
-		return new RyuKenStateAerialHit(character);
+		if (character->position.y >= character->groundLevel)
+		{
+			character->hitBackwardMovement = attackInfo.backMovement;
+			character->hitBackwardSpeed = attackInfo.backSpeed;
+
+			switch (attackInfo.strength)
+			{
+			case AttackStrength::LIGHT:
+				hitDuration = 0.3f;
+				break;
+
+			case AttackStrength::MEDIUM:
+				hitDuration = 0.6f;
+				break;
+
+			case AttackStrength::HARD:
+				hitDuration = 0.9f;
+				break;
+			default:
+				break;
+			}
+
+			return new RyuKenStateHit(character, false, faceHit, hitDuration);
+		}
+		else
+		{
+			return new RyuKenStateAerialHit(character);
+		}
 	}
 }
 
 CharacterState * RyuKenState::MatchFinished(int playerWin)
 {
-	return new RyuKenFinishState(character, playerWin);
+	return new RyuKenStateFinish(character, playerWin);
 }

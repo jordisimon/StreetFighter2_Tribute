@@ -20,3 +20,8 @@ bool Scene::Stop()
 	started = false;
 	return true; 
 }
+
+bool Scene::IsStarted()
+{
+	return started;
+}

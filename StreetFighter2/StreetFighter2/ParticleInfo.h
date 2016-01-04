@@ -13,7 +13,9 @@ enum class ParticleType
 	P1_HHIT,
 	P2_LHIT,
 	P2_MHIT,
-	P2_HHIT
+	P2_HHIT,
+	STARS,
+	DUCKS
 };
 
 struct ParticleInfo

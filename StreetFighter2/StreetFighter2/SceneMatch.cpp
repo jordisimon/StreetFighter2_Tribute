@@ -9,12 +9,14 @@
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
 #include "ServiceTime.h"
+#include "Collider.h"
+#include "ColliderType.h"
 #include "CharacterFactory.h"
 #include "StageFactory.h"
 #include "MatchStateIntro.h"
 #include "CommandContext.h"
 
-SceneMatch::SceneMatch(const SceneMatchInfo& sceneInfo) : timer{ 1000, true }, paused{ false }, roundNumber{ 0 }
+SceneMatch::SceneMatch(const SceneMatchInfo& sceneInfo) : timer { 1000, true }, paused{ false }, roundNumber{ 0 }
 {
 	GUI = new SceneMatchGUI();
 	commandContextFight = servicesManager->commands->Load("Match_Command_Context");
@@ -40,6 +42,14 @@ bool SceneMatch::Init()
 	bool ret;
 
 	GUI->scene = this;
+
+	const fRect& camera = servicesManager->render->GetCamera();
+
+	fRect colliderRect{ 0,0,2,camera.h };
+	colliderRect.x = camera.x - 10;
+	boxLeftCollider = servicesManager->collitions->CreateCollider(ColliderType::SCENE_BOX, colliderRect, nullptr, Color::Predefined::WHITE);
+	colliderRect.x = camera.x + camera.w + 8;
+	boxRightCollider = servicesManager->collitions->CreateCollider(ColliderType::SCENE_BOX, colliderRect, nullptr, Color::Predefined::WHITE);
 	
 	commandContextFight->AddCommandListener(this);
 	commandContextPause->AddCommandListener(this);
@@ -56,9 +66,13 @@ bool SceneMatch::Init()
 	player1->playerNumber = 1;
 	player2->playerNumber = 2;
 
-	scene25Percent = servicesManager->render->GetCamera().w / 4;
-	scene50Percent = servicesManager->render->GetCamera().w / 2;
-	scene75Percent = servicesManager->render->GetCamera().w / 4 * 3;
+	gravity = config->LoadFloatValue("Physics", "gravity", "-0.3f");
+	player1->gravity = gravity;
+	player2->gravity = gravity;
+
+	scene25Percent = camera.w / 4;
+	scene50Percent = camera.w / 2;
+	scene75Percent = camera.w / 4 * 3;
 
 	return ret;
 }
@@ -67,6 +81,9 @@ bool SceneMatch::CleanUp()
 {
 	commandContextFight->RemoveCommandListener(this);
 	commandContextPause->RemoveCommandListener(this);
+
+	boxLeftCollider->toDelete = true;
+	boxRightCollider->toDelete = true;
 
 	player2->CleanUp();
 	player1->CleanUp();
@@ -87,6 +104,9 @@ bool SceneMatch::Start()
 	time = 99;
 	camPosition = stage->camStart;
 	SetCamPosition();
+
+	SetCollidersPosition();
+
 	player1->position = stage->p1StartPoint;
 	player2->position = stage->p2StartPoint;
 	player1->nextPosition = player1->position;
@@ -96,6 +116,9 @@ bool SceneMatch::Start()
 
 	currentState = new MatchStateIntro(this);
 	currentState->OnEnter();
+
+	vitalScore = 0;
+	timeScore = 0;
 	
 	return true;
 }
@@ -290,7 +313,7 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 		float movement;
 		if (forcedPlayer->hitBackwardMovement > 1.0f)
 		{
-			movement = forcedPlayer->hitBackwardSpeed * servicesManager->time->frameTimeSeconds;
+			movement = (forcedPlayer->hitBackwardSpeed * servicesManager->time->frameTimeSeconds) * forcedPlayer->updateOverallSpeed;
 
 			if(movement < forcedPlayer->hitBackwardMovement)
 				forcedPlayer->hitBackwardMovement -= movement;
@@ -433,6 +456,16 @@ void SceneMatch::SetCamYPosition()
 void SceneMatch::SetCamPosition() const
 {
 	servicesManager->render->SetCameraPostion(camPosition);
+}
+
+void SceneMatch::SetCollidersPosition()
+{
+	fPoint boxPosition;
+	boxPosition.y = camPosition.y;
+	boxPosition.x = camPosition.x - 10;
+	boxLeftCollider->SetPosition(boxPosition);
+	boxPosition.x = camPosition.x + servicesManager->render->GetCamera().w + 8;
+	boxRightCollider->SetPosition(boxPosition);
 }
 
 

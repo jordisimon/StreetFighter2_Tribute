@@ -3,11 +3,12 @@
 #include "Config.h"
 #include "ServicesManager.h"
 #include "ServiceTextures.h"
+#include "ServiceAudio.h"
 #include "ServiceRender.h"
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
 #include "ServiceTime.h"
-#include "ParticleFactory.h"
+#include "Particle.h"
 #include "CharacterState.h"
 #include "CommandData.h"
 #include "CommandAction.h"
@@ -16,6 +17,15 @@
 #include "ColliderType.h"
 
 #include "ServiceCommandManager.h"
+
+int Character::lAttackSfx = -1;
+int Character::mAttackSfx = -1;
+int Character::hAttackSfx = -1;
+int Character::lHitSfx = -1;
+int Character::mHitSfx = -1;
+int Character::hHitSfx = -1;
+int Character::hitBlockedSfx = -1;
+int Character::floorHitSfx = -1;
 
 bool Character::Init()
 {
@@ -31,12 +41,20 @@ bool Character::Init()
 	jumpVSpeed = config->LoadFloatValue(configSection, "jumpVSpeed", "0");
 	fJumpHSpeed = config->LoadIntValue(configSection, "fJumpHSpeed", "0");
 	bJumpHSpeed = config->LoadIntValue(configSection, "bJumpHSpeed", "0");
-	gravity = config->LoadFloatValue("Physics", "gravity", "-2");
 	height = config->LoadFloatValue(configSection, "height", "0");
 	fMargin = config->LoadFloatValue(configSection, "fMargin", "0");
 	bMargin = config->LoadFloatValue(configSection, "bMargin", "0");
 
 	config->LoadSprite(shadow, configSection, "shadow");
+
+	if (lAttackSfx == -1) lAttackSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\lAttack.ogg");
+	if (mAttackSfx == -1) mAttackSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\mAttack.ogg");
+	if (hAttackSfx == -1) hAttackSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\hAttack.ogg");
+	if (lHitSfx == -1) lHitSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\lHit.ogg");
+	if (mHitSfx == -1) mHitSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\mHit.ogg");
+	if (hHitSfx == -1) hHitSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\hHit.ogg");
+	if (hitBlockedSfx == -1) hitBlockedSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\hitBlocked.ogg");
+	if (floorHitSfx == -1) floorHitSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\floorHit.ogg");
 
 	return true;
 }
@@ -57,12 +75,24 @@ bool Character::Start()
 	hitBackwardMovement = 0.0f;
 	hitBackwardSpeed = 0.0f;
 	applyToOtherPlayer = false;
+	knockdownDamage = 0;
+	knockdownTimer.Pause();
+	updateOverallSpeed = 1.0f;
+	yUpdateControl = 0.0f;
+	isStunned = false;
+
+	if (particleStunned != nullptr)
+	{
+		particleStunned->toDelete = true;
+		particleStunned = nullptr;
+	}
 
 	return true;
 }
 
 bool Character::Stop()
 {
+	ClearActionsSequence();
 	return true;
 }
 
@@ -160,16 +190,6 @@ void Character::StoreActions(std::vector<CommandAction> actions)
 
 bool Character::ProcessInput(CommandData* commandData)
 {
-	/*
-	if (servicesManager->commands->P1LPunch())
-	{
-		ParticleInfo pInfo;
-		pInfo.type = ParticleInfo::Type::LOW_HADOKEN;
-		pInfo.position.x = position.x;
-		pInfo.position.y = position.y;
-		pInfo.direction = direction;
-		servicesManager->particles->CreateParticle(pInfo);
-	}*/
 	if (playerNumber == 1)
 		StoreActions(commandData->p1Actions);
 	else
@@ -189,6 +209,12 @@ Entity::Result Character::UpdateState()
 	if (actionsSequenceTimer.Reached())
 	{
 		ClearActionsSequence();
+	}
+
+	if (knockdownTimer.Reached())
+	{
+		knockdownDamage = 0;
+		knockdownTimer.Pause();
 	}
 
 	SetNewState(nextState);
@@ -216,7 +242,12 @@ void Character::OnCollitionEnter(Collider * colA, Collider * colB)
 	}
 }
 
-AttackInfo Character::GetAttackInfo()
+void Character::PlaySfx(int sfx) const
+{
+	servicesManager->audio->PlayFx(sfx);
+}
+
+const AttackInfo Character::GetAttackInfo() const
 {
 	return currentState->GetAttackInfo();
 }
@@ -227,15 +258,30 @@ void Character::ClearActionsSequence()
 	actionsSequenceTimer.Pause();
 }
 
+void Character::UpdateStunnedParticlePosition()
+{
+	if (particleStunned != nullptr && !particleStunned->toDelete)
+	{
+		particleStunned->position.x = position.x;
+		particleStunned->position.y = position.y - height - 30;
+	}
+}
+
 void Character::UpdateYPosition()
 {
-	nextPosition.y -= currentJumpSpeed;
-	currentJumpSpeed += gravity;
+	yUpdateControl += updateOverallSpeed;
 
-	if (nextPosition.y > groundLevel)
+	while (yUpdateControl >= 1.0f)
 	{
-		nextPosition.y = (float)groundLevel;
-		currentJumpSpeed = 0.0f;
+		nextPosition.y -= currentJumpSpeed;
+		currentJumpSpeed += gravity;
+
+		if (nextPosition.y > groundLevel)
+		{
+			nextPosition.y = (float)groundLevel;
+			currentJumpSpeed = 0.0f;
+		}
+		yUpdateControl -= 1.0f;
 	}
 }
 
@@ -244,10 +290,10 @@ void Character::MoveXPosition(Direction dir, int speed)
 	switch (dir)
 	{
 	case Direction::LEFT:
-		nextPosition.x = position.x - (speed * servicesManager->time->frameTimeSeconds);
+		nextPosition.x = position.x - ((speed * servicesManager->time->frameTimeSeconds) * updateOverallSpeed);
 		break;
 	case Direction::RIGHT:
-		nextPosition.x = position.x + (speed * servicesManager->time->frameTimeSeconds);
+		nextPosition.x = position.x + ((speed * servicesManager->time->frameTimeSeconds) * updateOverallSpeed);
 	}
 }
 
@@ -273,9 +319,11 @@ Entity::Result Character::Draw() const
 {
 	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, direction), currentAnimation->GetFrame().rect, 1.0f, direction);
 
-	//TODO: Remove
-	servicesManager->render->SetDrawColor(Color(Color::Predefined::MAGENTA));
-	servicesManager->render->DrawRectFill({ position.x - 1, position.y - 1, 2, 2 });
+	if (servicesManager->debug)
+	{
+		servicesManager->render->SetDrawColor(Color(Color::Predefined::MAGENTA));
+		servicesManager->render->DrawRectFill({ position.x - 1, position.y - 1, 2, 2 });
+	}
 
 	return Entity::Result::R_OK;
 }

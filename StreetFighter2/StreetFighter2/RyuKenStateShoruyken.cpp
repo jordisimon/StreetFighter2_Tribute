@@ -15,7 +15,22 @@ void RyuKenStateShoruyken::OnEnter()
 {
 	step = 0;
 	character->currentAnimation = &character->shoryukenBegin;
-	character->PlaySfx(character->shoryukenSfx);
+	character->isAttacking = true;
+	switch (strength)
+	{
+	case AttackStrength::LIGHT:
+		character->PlaySfx(character->lShoryukenSfx);
+		break;
+	case AttackStrength::MEDIUM:
+		character->PlaySfx(character->mShoryukenSfx);
+		break;
+	case AttackStrength::HARD:
+		character->PlaySfx(character->hShoryukenSfx);
+		break;
+	default:
+		break;
+	}
+	
 	RyuKenState::OnEnter();
 }
 
@@ -23,6 +38,7 @@ void RyuKenStateShoruyken::OnExit()
 {
 	RyuKenState::OnExit();
 	character->ClearActionsSequence();
+	character->isAttacking = false;
 }
 
 CharacterState* RyuKenStateShoruyken::UpdateState()
@@ -77,10 +93,11 @@ CharacterState* RyuKenStateShoruyken::UpdateState()
 	return nullptr;
 }
 
-AttackInfo RyuKenStateShoruyken::GetAttackInfo()
+const AttackInfo RyuKenStateShoruyken::GetAttackInfo() const
 {
 	AttackInfo attackInfo;
 
+	attackInfo.special = true;
 	attackInfo.strength = strength;
 
 	switch (strength)

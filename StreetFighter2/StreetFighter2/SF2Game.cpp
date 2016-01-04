@@ -5,16 +5,17 @@
 #include "ServiceRender.h"
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
+#include "ServiceSceneManager.h"
 #include "ParticleFactory.h"
 #include "CommandContext.h"
 #include "CommandData.h"
 #include "CommandAction.h"
 #include "CommandState.h"
+#include "SceneLicensed.h"
 
 //Testing
 #include "SceneMatch.h"
 #include "SceneMatchInfo.h"
-#include "ServiceCommandManager.h"
 
 
 SF2Game::SF2Game()
@@ -34,15 +35,15 @@ bool SF2Game::Init()
 	bool res = Game::Init();
 
 	//testing
-	SceneMatchInfo info;
+	/*SceneMatchInfo info;
 	info.player1Type = CharacterType::RYU;
-	info.player2Type = CharacterType::RYU;
+	info.player2Type = CharacterType::KEN;
 	info.stageType = StageType::HONDA;
 	info.timeLimit = false;
-	currentScene = new SceneMatch(info);
+	servicesManager->scene->ChangeScene(new SceneMatch(info));*/
 	//end testing
 
-	
+	servicesManager->scene->ChangeScene(new SceneLicensed());
 
 	//Debug
 	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
@@ -50,21 +51,11 @@ bool SF2Game::Init()
 	debugCommandContext = servicesManager->commands->Load("Debug_Command_Context");
 	debugCommandContext->AddCommandListener(this);
 
-	res &= currentScene->Init();
-	res &= currentScene->Start();
-
 	return res;
 }
 
 bool SF2Game::CleanUp()
 {
-	currentScene->Stop();
-	currentScene->CleanUp();
-
-	//testing
-	RELEASE(currentScene);
-	//end testing
-
 	Game::CleanUp();
 
 	return true;
@@ -76,7 +67,7 @@ bool SF2Game::UpdateInput() const
 
 	if (result)
 	{
-		 result = servicesManager->commands->ProcessInput(debugCommandContext);
+		result = servicesManager->commands->ProcessInput(debugCommandContext);
 	}
 	return result;
 }
@@ -126,23 +117,6 @@ bool SF2Game::ProcessInput(CommandData* commandData)
 	}
 
 	return true;
-}
-
-
-Entity::Result SF2Game::UpdateState()
-{
-	//TODO: cascade Update State
-	//Testing
-	return currentScene->UpdateState();
-}
-
-Entity::Result SF2Game::Draw() const
-{
-	//TODO: cascade Draw()
-	//Testing
-	Entity::Result result = currentScene->Draw();
-
-	return result;
 }
 
 Game* CreateGame()

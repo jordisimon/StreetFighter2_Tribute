@@ -19,64 +19,81 @@ void RyuKenStateAttack::OnEnter()
 	{
 	case AttackType::L_PUNCH:
 		character->currentAnimation = &character->lPunch;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::M_PUNCH:
 		character->currentAnimation = &character->mPunch;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::H_PUNCH:
 		character->currentAnimation = &character->hPunch;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_L_PUNCH:
 		character->currentAnimation = &character->flPunch;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_M_PUNCH:
 		character->currentAnimation = &character->fmPunch;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_H_PUNCH:
 		character->currentAnimation = &character->fhPunch;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::L_KICK:
 		character->currentAnimation = &character->lKick;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::M_KICK:
 		character->currentAnimation = &character->mKick;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::H_KICK:
 		character->currentAnimation = &character->hKick;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_L_KICK:
 		character->currentAnimation = &character->flKick;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_M_KICK:
 		character->currentAnimation = &character->fmKick;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_H_KICK:
 		character->currentAnimation = &character->fhKick;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::C_L_PUNCH:
 		character->currentAnimation = &character->clPunch;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::C_M_PUNCH:
 		character->currentAnimation = &character->cmPunch;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::C_H_PUNCH:
 		character->currentAnimation = &character->chPunch;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::C_L_KICK:
 		character->currentAnimation = &character->clKick;
+		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::C_M_KICK:
 		character->currentAnimation = &character->cmKick;
+		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::C_H_KICK:
 		character->currentAnimation = &character->chKick;
+		character->PlaySfx(character->hAttackSfx);
 		break;
 	default:
 		break;
 	}
 	
 	character->isAttacking = true;
-	character->PlaySfx(character->attackSfx);
 	RyuKenState::OnEnter();
 }
 
@@ -124,7 +141,7 @@ CharacterState * RyuKenStateAttack::UpdateState()
 	return nullptr;
 }
 
-AttackInfo RyuKenStateAttack::GetAttackInfo()
+const AttackInfo RyuKenStateAttack::GetAttackInfo() const
 {
 	AttackInfo attackInfo;
 

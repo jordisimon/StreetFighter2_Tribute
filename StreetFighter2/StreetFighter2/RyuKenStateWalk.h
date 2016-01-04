@@ -20,6 +20,7 @@ public:
 
 	CharacterState* UpdateState();
 
+	CharacterState* DoSpecialAction(const CharacterSpecialAttack& type);
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 };
 

@@ -1,6 +1,7 @@
 #include "RyuKenStateHit.h"
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
+#include "RyuKenStateStunned.h"
 
 RyuKenStateHit::RyuKenStateHit(RyuKen * p, bool crouch, bool face, float duration) : RyuKenState{ p }, crouching{ crouch }, faceHit { face }, hitDuration{ duration }
 {
@@ -34,8 +35,13 @@ CharacterState* RyuKenStateHit::UpdateState()
 {
 	RyuKenState::UpdateState();
 
-	if(character->hitBackwardMovement == 0.0f)
-		return new RyuKenStateIdle(character);
+	if (character->hitBackwardMovement == 0.0f)
+	{
+		if(character->isStunned)
+			return new RyuKenStateStunned(character);
+		else
+			return new RyuKenStateIdle(character);
+	}
 
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;

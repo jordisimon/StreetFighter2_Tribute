@@ -19,7 +19,7 @@ public:
 
 	virtual void IfMovingForwardRecalculatePositionWithPressingSpeed() {};
 
-	virtual AttackInfo GetAttackInfo() { return AttackInfo(); }
+	virtual const AttackInfo GetAttackInfo() const { return AttackInfo(); }
 
 	virtual CharacterState* DoSpecialAction(const CharacterSpecialAttack& type) { return nullptr; }
 	virtual CharacterState* DealHit(Collider* collider) { return nullptr; };

@@ -16,6 +16,6 @@ public:
 
 	CharacterState* UpdateState();
 
-	AttackInfo GetAttackInfo();
+	const AttackInfo GetAttackInfo() const;
 };
 

@@ -16,6 +16,11 @@ void Timer::SetNewInterval(unsigned int i)
 	timeout = SDL_GetTicks() + interval;
 }
 
+void Timer::AddElapsedTime(unsigned int i)
+{
+	timeout -= i;
+}
+
 void Timer::Reset()
 {
 	timeout = SDL_GetTicks() + interval;

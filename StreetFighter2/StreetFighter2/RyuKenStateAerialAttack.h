@@ -25,6 +25,6 @@ public:
 
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 
-	AttackInfo GetAttackInfo();
+	const AttackInfo GetAttackInfo() const;
 };
 

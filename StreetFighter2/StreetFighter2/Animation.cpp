@@ -3,7 +3,7 @@
 #include "ServicesManager.h"
 #include "ServiceTime.h"
 
-Animation::Animation() : frames{}, speed{ 1.0f }, current_frame{ 0.0f }, loop{ true }, forward{true}
+Animation::Animation() : frames{}, speed{ 1.0f }, current_frame{ 0.0f }, loop{ true }, forward{ true }, loopsCompleted{ 0 }
 {
 }
 
@@ -28,6 +28,7 @@ void Animation::SetDuration(float dur)
 
 void Animation::ResetAnimation()
 { 
+	loopsCompleted = 0;
 	if (forward)
 		current_frame = 0.0f;
 	else
@@ -47,6 +48,7 @@ void Animation::UpdateCurrentFrame()
 			current_frame += speed * servicesManager->time->frameTimeSeconds;
 			if (current_frame >= framesSize)
 			{
+				++loopsCompleted;
 				current_frame = 0.0f;
 				OnReset();
 			}
@@ -56,6 +58,7 @@ void Animation::UpdateCurrentFrame()
 			current_frame -= speed * servicesManager->time->frameTimeSeconds;
 			if (current_frame < 0.0f)
 			{
+				++loopsCompleted;
 				current_frame = (float)framesSize - 1;
 				OnReset();
 			}

@@ -10,6 +10,7 @@
 #include "ParticleAttack.h"
 #include "AttackInfo.h"
 #include "ParticleInfo.h"
+#include "RyuKenStateKyaku.h"
 
 
 CharacterState * RyuKenStateBlocking::ProcessActions(std::vector<CommandAction> actions)
@@ -125,6 +126,25 @@ CharacterState * RyuKenStateBlocking::UpdateState()
 	return nullptr;
 }
 
+CharacterState * RyuKenStateBlocking::DoSpecialAction(const CharacterSpecialAttack & type)
+{
+	const RyuKenSpecialAttack& specialType = (RyuKenSpecialAttack&)type;
+
+	switch (specialType.type)
+	{
+	case RyuKenSpecialAttackType::L_KYAKU:
+		return new RyuKenStateKyaku(character, AttackStrength::LIGHT);
+
+	case RyuKenSpecialAttackType::M_KYAKU:
+		return new RyuKenStateKyaku(character, AttackStrength::MEDIUM);
+
+	case RyuKenSpecialAttackType::H_KYAKU:
+		return new RyuKenStateKyaku(character, AttackStrength::HARD);
+	}
+
+	return nullptr;
+}
+
 CharacterState * RyuKenStateBlocking::DealHit(Collider * collider)
 {
 	AttackInfo attackInfo;
@@ -140,7 +160,7 @@ CharacterState * RyuKenStateBlocking::DealHit(Collider * collider)
 		particleInfo.position.x = collider->colliderRect.x;
 		particleInfo.position.y = collider->colliderRect.y;
 		particleInfo.type = ParticleType::HIT_BLOCKED;
-		servicesManager->particles->CreateParticle(particleInfo);
+		servicesManager->particles->CreateParticle(particleInfo);	
 
 		character->applyToOtherPlayer = true;
 	}
@@ -150,8 +170,11 @@ CharacterState * RyuKenStateBlocking::DealHit(Collider * collider)
 		attackInfo = particle->GetAttackInfo();
 
 		character->applyToOtherPlayer = false;
+	}
 
-		//If attack particle, even when blocking we get some damage (about 25%)
+	//If special attack, even when blocking we get some damage (about 25%)
+	if (attackInfo.special)
+	{
 		character->life -= attackInfo.damage / 4;
 		if (character->life < 0)
 			character->life = 0;
@@ -159,6 +182,7 @@ CharacterState * RyuKenStateBlocking::DealHit(Collider * collider)
 
 	character->hitBackwardMovement = attackInfo.backMovement;
 	character->hitBackwardSpeed = attackInfo.backSpeed;
+	character->PlaySfx(character->hitBlockedSfx);
 
 	return nullptr;
 }

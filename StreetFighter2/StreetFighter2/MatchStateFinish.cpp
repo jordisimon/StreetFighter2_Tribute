@@ -56,6 +56,9 @@ void MatchStateFinish::OnEnter()
 	else
 		scene->timeScore = 0;
 
+	scene->player1->updateOverallSpeed /= 4;
+	scene->player2->updateOverallSpeed /= 4;
+
 	scene->player1->MatchFinished(scene->winnerPlayer);
 	scene->player2->MatchFinished(scene->winnerPlayer);
 }
@@ -76,6 +79,7 @@ MatchState* MatchStateFinish::UpdateState()
 	scene->SetCamYPosition();
 	scene->SetCamXPosition();
 	scene->SetCamPosition();
+	scene->SetCollidersPosition();
 
 	if (scene->player1->position.y >= scene->stage->groundLevel && 
 		scene->player2->position.y >= scene->stage->groundLevel &&
