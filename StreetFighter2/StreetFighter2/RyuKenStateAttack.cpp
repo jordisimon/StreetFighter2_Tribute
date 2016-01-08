@@ -145,6 +145,8 @@ const AttackInfo RyuKenStateAttack::GetAttackInfo() const
 {
 	AttackInfo attackInfo;
 
+	attackInfo.type = attackType;
+
 	switch (attackType)
 	{
 	case AttackType::L_PUNCH:

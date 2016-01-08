@@ -3,7 +3,6 @@
 #include "ServicesManager.h"
 #include "ServiceRender.h"
 #include "ServiceTextures.h"
-#include "ServiceSceneManager.h"
 #include "SceneCapcom.h"
 
 
@@ -15,6 +14,7 @@ SceneLicensed::SceneLicensed() : timer{3000}
 
 SceneLicensed::~SceneLicensed()
 {
+	configSection = nullptr;
 }
 
 bool SceneLicensed::Init()
@@ -32,7 +32,6 @@ bool SceneLicensed::Init()
 
 bool SceneLicensed::CleanUp()
 {
-	//servicesManager->textures->Unload(texture);
 	return true;
 }
 
@@ -41,7 +40,6 @@ bool SceneLicensed::Start()
 	Scene::Start();
 
 	timer.Reset();
-	changing = false;
 	return true;
 }
 
@@ -49,8 +47,7 @@ Entity::Result SceneLicensed::UpdateState()
 {
 	if (timer.Reached() && !changing)
 	{
-		servicesManager->scene->ChangeScene(new SceneCapcom());
-		changing = true;
+		HandleSceneChange(new SceneCapcom());
 	}
 	return Entity::Result::R_OK;
 }

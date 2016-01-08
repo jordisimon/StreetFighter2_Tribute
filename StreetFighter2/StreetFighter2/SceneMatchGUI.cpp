@@ -10,6 +10,8 @@
 #include "Stage.h"
 #include "Character.h"
 #include "SF2Stats.h"
+#include "PlayerStats.h"
+#include "CharacterStats.h"
 
 int SceneMatchGUI::pauseFx = -1;
 int SceneMatchGUI::roundFx = -1;
@@ -53,16 +55,16 @@ bool SceneMatchGUI::Init()
 	
 	config->LoadSprite(lifeBar, configSection, "lifeBar");
 	lifeBarPos.x = screenCenter.x;
-	lifeBarPos.y = 10;
+	lifeBarPos.y = 11;
 
 	config->LoadAnimation(redKO, configSection, "redKO");
 	redKOPos.x = screenCenter.x;
-	redKOPos.y = 10;
+	redKOPos.y = 11;
 
 	barP1Pos.x = (int)screenCenter.x - 8;
-	barP1Pos.y = 13;
+	barP1Pos.y = 14;
 	barP2Pos.x = (int)screenCenter.x + 8;
-	barP2Pos.y = 13;
+	barP2Pos.y = 14;
 
 	config->LoadSprite(p1Score, configSection, "p1Score");
 	p1ScorePos.x = screenCenter.x - 120;
@@ -90,41 +92,93 @@ bool SceneMatchGUI::Init()
 	recordScoreNumberPos.y = 2;
 
 	config->LoadAnimation(num0, configSection, "num0");
+	timeNumbers.push_back(&num0);
 	config->LoadAnimation(num1, configSection, "num1");
+	timeNumbers.push_back(&num1);
 	config->LoadAnimation(num2, configSection, "num2");
+	timeNumbers.push_back(&num2);
 	config->LoadAnimation(num3, configSection, "num3");
+	timeNumbers.push_back(&num3);
 	config->LoadAnimation(num4, configSection, "num4");
+	timeNumbers.push_back(&num4);
 	config->LoadAnimation(num5, configSection, "num5");
+	timeNumbers.push_back(&num5);
 	config->LoadAnimation(num6, configSection, "num6");
+	timeNumbers.push_back(&num6);
 	config->LoadAnimation(num7, configSection, "num7");
+	timeNumbers.push_back(&num7);
 	config->LoadAnimation(num8, configSection, "num8");
+	timeNumbers.push_back(&num8);
 	config->LoadAnimation(num9, configSection, "num9");
+	timeNumbers.push_back(&num9);
 	config->LoadSprite(numInf, configSection, "numInf");
-	digit1Pos.x = screenCenter.x - 8;
-	digit1Pos.y = 27;
-	digit2Pos.x = screenCenter.x;
-	digit2Pos.y = 27;
+	timeDigit1Pos.x = screenCenter.x - 8;
+	timeDigit1Pos.y = 27;
+	timeDigit2Pos.x = screenCenter.x;
+	timeDigit2Pos.y = 27;
 
 	config->LoadSprite(numScoreBig0, configSection, "numScoreBig0");
+	scoreBigNumbers.push_back(&numScoreBig0);
 	config->LoadSprite(numScoreBig1, configSection, "numScoreBig1");
+	scoreBigNumbers.push_back(&numScoreBig1);
 	config->LoadSprite(numScoreBig2, configSection, "numScoreBig2");
+	scoreBigNumbers.push_back(&numScoreBig2);
 	config->LoadSprite(numScoreBig3, configSection, "numScoreBig3");
+	scoreBigNumbers.push_back(&numScoreBig3);
 	config->LoadSprite(numScoreBig4, configSection, "numScoreBig4");
+	scoreBigNumbers.push_back(&numScoreBig4);
 	config->LoadSprite(numScoreBig5, configSection, "numScoreBig5");
+	scoreBigNumbers.push_back(&numScoreBig5);
 	config->LoadSprite(numScoreBig6, configSection, "numScoreBig6");
+	scoreBigNumbers.push_back(&numScoreBig6);
 	config->LoadSprite(numScoreBig7, configSection, "numScoreBig7");
+	scoreBigNumbers.push_back(&numScoreBig7);
 	config->LoadSprite(numScoreBig8, configSection, "numScoreBig8");
+	scoreBigNumbers.push_back(&numScoreBig8);
 	config->LoadSprite(numScoreBig9, configSection, "numScoreBig9");
+	scoreBigNumbers.push_back(&numScoreBig9);
+
 	config->LoadSprite(numScoreLittle0, configSection, "numScoreLittle0");
+	scoreLittleNumbers.push_back(&numScoreLittle0);
 	config->LoadSprite(numScoreLittle1, configSection, "numScoreLittle1");
+	scoreLittleNumbers.push_back(&numScoreLittle1);
 	config->LoadSprite(numScoreLittle2, configSection, "numScoreLittle2");
+	scoreLittleNumbers.push_back(&numScoreLittle2);
 	config->LoadSprite(numScoreLittle3, configSection, "numScoreLittle3");
+	scoreLittleNumbers.push_back(&numScoreLittle3);
 	config->LoadSprite(numScoreLittle4, configSection, "numScoreLittle4");
+	scoreLittleNumbers.push_back(&numScoreLittle4);
 	config->LoadSprite(numScoreLittle5, configSection, "numScoreLittle5");
+	scoreLittleNumbers.push_back(&numScoreLittle5);
 	config->LoadSprite(numScoreLittle6, configSection, "numScoreLittle6");
+	scoreLittleNumbers.push_back(&numScoreLittle6);
 	config->LoadSprite(numScoreLittle7, configSection, "numScoreLittle7");
+	scoreLittleNumbers.push_back(&numScoreLittle7);
 	config->LoadSprite(numScoreLittle8, configSection, "numScoreLittle8");
+	scoreLittleNumbers.push_back(&numScoreLittle8);
 	config->LoadSprite(numScoreLittle9, configSection, "numScoreLittle9");
+	scoreLittleNumbers.push_back(&numScoreLittle9);
+
+	config->LoadSprite(numBattle0, configSection, "numBattle0");
+	battleNumbers.push_back(&numBattle0);
+	config->LoadSprite(numBattle1, configSection, "numBattle1");
+	battleNumbers.push_back(&numBattle1);
+	config->LoadSprite(numBattle2, configSection, "numBattle2");
+	battleNumbers.push_back(&numBattle2);
+	config->LoadSprite(numBattle3, configSection, "numBattle3");
+	battleNumbers.push_back(&numBattle3);
+	config->LoadSprite(numBattle4, configSection, "numBattle4");
+	battleNumbers.push_back(&numBattle4);
+	config->LoadSprite(numBattle5, configSection, "numBattle5");
+	battleNumbers.push_back(&numBattle5);
+	config->LoadSprite(numBattle6, configSection, "numBattle6");
+	battleNumbers.push_back(&numBattle6);
+	config->LoadSprite(numBattle7, configSection, "numBattle7");
+	battleNumbers.push_back(&numBattle7);
+	config->LoadSprite(numBattle8, configSection, "numBattle8");
+	battleNumbers.push_back(&numBattle8);
+	config->LoadSprite(numBattle9, configSection, "numBattle9");
+	battleNumbers.push_back(&numBattle9);
 
 	player1Name = LoadSpriteName(scene->player1->characterId);
 	player1NamePos.x = screenCenter.x - 96;
@@ -180,6 +234,15 @@ bool SceneMatchGUI::Init()
 
 	roundFightPos.x = screenCenter.x - 28;
 	roundFightPos.y = 55;
+
+	config->LoadSprite(battle, configSection, "battle");
+	battlePos.x = screenCenter.x - 35;
+	battlePos.y = 87;
+
+	battleDigit1Pos.x = screenCenter.x + 19;
+	battleDigit1Pos.y = 87;
+	battleDigit2Pos.x = screenCenter.x + 27;
+	battleDigit2Pos.y = 87;
 
 	return true;
 }
@@ -406,21 +469,6 @@ Entity::Result SceneMatchGUI::UpdatePause()
 
 Entity::Result SceneMatchGUI::UpdateFinish()
 {
-	/*0: wait 500
-	1: if time over -> show time over
-		else step 3
-	2: wait 1500
-	3: if draw game -> show draw game
-		else show player winner
-	4: wait 1500
-		if perfect -> show perfect
-		else step 6
-	5: wait 1500
-	6: show score
-	7: update scores
-	8: wait 1500
-	9: state finished
-	*/
 	switch (stateStep)
 	{
 	case 0:
@@ -518,14 +566,15 @@ Entity::Result SceneMatchGUI::UpdateFinish()
 				
 				if (scene->winnerPlayer == 1)
 				{
-					SF2Stats::p1Score += 200;
-					if (SF2Stats::p1Score > SF2Stats::currentRecord)
-						SF2Stats::currentRecord = SF2Stats::p1Score;
+					SF2Stats::p1Stats.score += 200;
+					
+					if (SF2Stats::p1Stats.score > SF2Stats::currentRecord)
+						SF2Stats::currentRecord = SF2Stats::p1Stats.score;
 				} else if (scene->winnerPlayer == 2)
 				{
-					SF2Stats::p2Score += 200;
-					if (SF2Stats::p2Score > SF2Stats::currentRecord)
-						SF2Stats::currentRecord = SF2Stats::p2Score;
+					SF2Stats::p2Stats.score += 200;
+					if (SF2Stats::p2Stats.score > SF2Stats::currentRecord)
+						SF2Stats::currentRecord = SF2Stats::p2Stats.score;
 				}
 
 				tempScore -= 200;
@@ -536,15 +585,15 @@ Entity::Result SceneMatchGUI::UpdateFinish()
 
 				if (scene->winnerPlayer == 1)
 				{
-					SF2Stats::p1Score += tempScore;
-					if (SF2Stats::p1Score > SF2Stats::currentRecord)
-						SF2Stats::currentRecord = SF2Stats::p1Score;
+					SF2Stats::p1Stats.score += tempScore;
+					if (SF2Stats::p1Stats.score > SF2Stats::currentRecord)
+						SF2Stats::currentRecord = SF2Stats::p1Stats.score;
 				}
 				else if (scene->winnerPlayer == 2)
 				{
-					SF2Stats::p2Score += tempScore;
-					if (SF2Stats::p2Score > SF2Stats::currentRecord)
-						SF2Stats::currentRecord = SF2Stats::p2Score;
+					SF2Stats::p2Stats.score += tempScore;
+					if (SF2Stats::p2Stats.score > SF2Stats::currentRecord)
+						SF2Stats::currentRecord = SF2Stats::p2Stats.score;
 				}
 
 				tempScore = 0;
@@ -622,9 +671,9 @@ bool SceneMatchGUI::DrawScoreDigit(int number, const fPoint& pos, bool bigDigit,
 
 	const Sprite* digit;
 	if (bigDigit)
-		digit = GetScoreBigDigit(number);
+		digit = scoreBigNumbers[number];
 	else
-		digit = GetScoreLittleDigit(number);
+		digit = scoreLittleNumbers[number];
 	servicesManager->render->BlitGUI(texture, digit->GetRectPosition(pos), digit->rect);
 
 	return true;
@@ -704,16 +753,16 @@ Entity::Result SceneMatchGUI::DrawCommon() const
 	if (scene->timeLimit)
 	{
 		int firstDigit = (int)(scene->time / 10);
-		const Animation* firstNumSprite = GetTimeDigit(firstDigit);
-		servicesManager->render->BlitGUI(texture, firstNumSprite->GetFrame().GetRectPosition(digit1Pos), firstNumSprite->GetFrame().rect);
+		const Animation* firstNumSprite = timeNumbers[firstDigit];
+		servicesManager->render->BlitGUI(texture, firstNumSprite->GetFrame().GetRectPosition(timeDigit1Pos), firstNumSprite->GetFrame().rect);
 
 		int secondDigit = scene->time % 10;
-		const Animation* secondNumSprite = GetTimeDigit(secondDigit);
-		servicesManager->render->BlitGUI(texture, secondNumSprite->GetFrame().GetRectPosition(digit2Pos), secondNumSprite->GetFrame().rect);
+		const Animation* secondNumSprite = timeNumbers[secondDigit];
+		servicesManager->render->BlitGUI(texture, secondNumSprite->GetFrame().GetRectPosition(timeDigit2Pos), secondNumSprite->GetFrame().rect);
 	}
 	else
 	{
-		servicesManager->render->BlitGUI(texture, numInf.GetRectPosition(digit1Pos), numInf.rect);
+		servicesManager->render->BlitGUI(texture, numInf.GetRectPosition(timeDigit1Pos), numInf.rect);
 	}
 
 	//Character name
@@ -727,12 +776,24 @@ Entity::Result SceneMatchGUI::DrawIntro() const
 {
 	//Players score
 	servicesManager->render->BlitGUI(texture, p1Score.GetRectPosition(p1ScorePos), p1Score.rect);
-	DrawScore(SF2Stats::p1Score, p1ScoreNumberPos);
+	DrawScore(SF2Stats::p1Stats.score, p1ScoreNumberPos);
 	servicesManager->render->BlitGUI(texture, p2Score.GetRectPosition(p2ScorePos), p2Score.rect);
-	DrawScore(SF2Stats::p2Score, p2ScoreNumberPos);
+	DrawScore(SF2Stats::p2Stats.score, p2ScoreNumberPos);
 
-	if (stateStep >0)
+	if (stateStep > 0)
+	{
 		servicesManager->render->BlitGUI(texture, currentRoundFight->GetFrame().GetRectPosition(roundFightPos), currentRoundFight->GetFrame().rect);
+
+		servicesManager->render->BlitGUI(texture, battle.GetRectPosition(battlePos), battle.rect);
+
+		int firstDigit = (int)(scene->matchInfo.battleNumber / 10);
+		const Sprite* firstNumSprite = battleNumbers[firstDigit];
+		servicesManager->render->BlitGUI(texture, firstNumSprite->GetRectPosition(battleDigit1Pos), firstNumSprite->rect);
+
+		int secondDigit = scene->matchInfo.battleNumber % 10;
+		const Sprite* secondNumSprite = battleNumbers[secondDigit];
+		servicesManager->render->BlitGUI(texture, secondNumSprite->GetRectPosition(battleDigit2Pos), secondNumSprite->rect);
+	}
 
 	return Result::R_OK;
 }
@@ -741,9 +802,9 @@ Entity::Result SceneMatchGUI::DrawFight() const
 {
 	//Players score
 	servicesManager->render->BlitGUI(texture, p1Score.GetRectPosition(p1ScorePos), p1Score.rect);
-	DrawScore(SF2Stats::p1Score, p1ScoreNumberPos);
+	DrawScore(SF2Stats::p1Stats.score, p1ScoreNumberPos);
 	servicesManager->render->BlitGUI(texture, p2Score.GetRectPosition(p2ScorePos), p2Score.rect);
-	DrawScore(SF2Stats::p2Score, p2ScoreNumberPos);
+	DrawScore(SF2Stats::p2Stats.score, p2ScoreNumberPos);
 
 	return Result::R_OK;
 }
@@ -760,9 +821,9 @@ Entity::Result SceneMatchGUI::DrawFinish() const
 {
 	//Players score
 	servicesManager->render->BlitGUI(texture, p1Score.GetRectPosition(p1ScorePos), p1Score.rect);
-	DrawScore(SF2Stats::p1Score, p1ScoreNumberPos);
+	DrawScore(SF2Stats::p1Stats.score, p1ScoreNumberPos);
 	servicesManager->render->BlitGUI(texture, p2Score.GetRectPosition(p2ScorePos), p2Score.rect);
-	DrawScore(SF2Stats::p2Score, p2ScoreNumberPos);
+	DrawScore(SF2Stats::p2Stats.score, p2ScoreNumberPos);
 
 	if(showTimeOver)
 		servicesManager->render->BlitGUI(texture, timeOver.GetRectPosition(finishMatcInfoPos), timeOver.rect);
@@ -825,91 +886,6 @@ Entity::Result SceneMatchGUI::Draw() const
 	return res;
 }
 
-
-const Animation* SceneMatchGUI::GetTimeDigit(int number) const
-{
-	switch (number)
-	{
-	case 0:
-		return &num0;
-	case 1:
-		return &num1;
-	case 2:
-		return &num2;
-	case 3:
-		return &num3;
-	case 4:
-		return &num4;
-	case 5:
-		return &num5;
-	case 6:
-		return &num6;
-	case 7:
-		return &num7;
-	case 8:
-		return &num8;
-	case 9:
-		return &num9;
-	}
-
-	return nullptr;
-}
-
-const Sprite * SceneMatchGUI::GetScoreBigDigit(int number) const
-{
-	switch (number)
-	{
-	case 0:
-		return &numScoreBig0;
-	case 1:
-		return &numScoreBig1;
-	case 2:
-		return &numScoreBig2;
-	case 3:
-		return &numScoreBig3;
-	case 4:
-		return &numScoreBig4;
-	case 5:
-		return &numScoreBig5;
-	case 6:
-		return &numScoreBig6;
-	case 7:
-		return &numScoreBig7;
-	case 8:
-		return &numScoreBig8;
-	case 9:
-		return &numScoreBig9;
-	}
-	return nullptr;
-}
-
-const Sprite * SceneMatchGUI::GetScoreLittleDigit(int number) const
-{
-	switch (number)
-	{
-	case 0:
-		return &numScoreLittle0;
-	case 1:
-		return &numScoreLittle1;
-	case 2:
-		return &numScoreLittle2;
-	case 3:
-		return &numScoreLittle3;
-	case 4:
-		return &numScoreLittle4;
-	case 5:
-		return &numScoreLittle5;
-	case 6:
-		return &numScoreLittle6;
-	case 7:
-		return &numScoreLittle7;
-	case 8:
-		return &numScoreLittle8;
-	case 9:
-		return &numScoreLittle9;
-	}
-	return nullptr;
-}
 
 const Sprite* SceneMatchGUI::LoadSpriteName(int characterId) const
 {

@@ -1,13 +1,10 @@
 #include "RyuKenStateKnockdown.h"
 #include "RyuKen.h"
-#include "ServicesManager.h"
-#include "ServiceParticles.h"
-#include "Particle.h"
-#include "ParticleInfo.h"
+#include "RyuKenStateIdle.h"
 #include "RyuKenStateStunned.h"
 
 
-RyuKenStateKnockdown::RyuKenStateKnockdown(RyuKen* p, bool s) : RyuKenState{ p }, strong{ s }, step{ 0 }
+RyuKenStateKnockdown::RyuKenStateKnockdown(RyuKen* p) : RyuKenState{ p }, step{ 0 }
 {
 }
 
@@ -25,7 +22,17 @@ void RyuKenStateKnockdown::OnEnter()
 	character->currentJumpSpeed = 5.5f;
 	character->applyToOtherPlayer = false;
 
+	character->knockdownTimer.Pause();
+
 	RyuKenState::OnEnter();
+}
+
+void RyuKenStateKnockdown::OnExit()
+{
+	RyuKenState::OnExit();
+	
+	character->knockdownDamage = 0;
+	character->knockdownTimer.Resume();
 }
 
 
@@ -34,7 +41,6 @@ CharacterState * RyuKenStateKnockdown::UpdateState()
 	RyuKenState::UpdateState();
 
 	character->ClearActionsSequence();
-	character->knockdownDamage = 0;
 
 	switch (step)
 	{
@@ -52,32 +58,17 @@ CharacterState * RyuKenStateKnockdown::UpdateState()
 	case 1:
 		if (character->currentAnimation->HasFinished())
 		{
-
-			RyuKenState::OnExit();
-			character->currentAnimation = &character->stunned;
-			RyuKenState::OnEnter();
-
-			ParticleInfo info;
-			info.position.x = character->position.x;
-			info.position.y = character->position.y - character->height - 30;
-			info.direction = character->direction;
-
-			if (strong)
+			if (character->knockdownDamage < 50)
 			{
-				info.type = ParticleType::STARS;
-				character->stunnedTimer.SetNewInterval(3000);
+				return new RyuKenStateIdle(character);
 			}
 			else
 			{
-				info.type = ParticleType::DUCKS;
-				character->stunnedTimer.SetNewInterval(5000);
+				if (character->knockdownDamage <= 65)
+					return new RyuKenStateStunned(character, false);
+				else
+					return new RyuKenStateStunned(character, true);
 			}
-
-			character->isStunned = true;
-			if (character->particleStunned != nullptr)
-				character->particleStunned->toDelete;
-			character->particleStunned = servicesManager->particles->CreateParticle(info);
-			return new RyuKenStateStunned(character);
 		}
 		break;
 

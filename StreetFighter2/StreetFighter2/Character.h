@@ -51,6 +51,7 @@ public:
 	float hitBackwardMovement;
 	float hitBackwardSpeed;
 	bool applyToOtherPlayer;
+	unsigned int handicap;
 
 	//Special movements control
 	std::deque<SpecialAction> actionsSequence;
@@ -58,10 +59,9 @@ public:
 
 	//Knockdown control
 	unsigned int knockdownDamage;
-	Timer knockdownTimer{4000};
+	Timer knockdownTimer{2000};
 
 	//Stunned control
-	bool isStunned;
 	Particle* particleStunned;
 	Timer stunnedTimer{3000};
 
@@ -110,12 +110,15 @@ public:
 
 	const AttackInfo GetAttackInfo() const;
 
+	void PauseAllTimers();
+	void ResumeAllTimers();
+
 	void ClearActionsSequence();
 	virtual CharacterState* CheckSpecialActions() { return nullptr; };
-	void UpdateStunnedParticlePosition();
 	void UpdateYPosition();
 	void MoveXPosition(Direction dir, int speed);
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
+	void RoundFinished(int playerWin);
 	void MatchFinished(int playerWin);
 };
 

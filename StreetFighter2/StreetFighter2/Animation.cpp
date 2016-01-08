@@ -13,7 +13,7 @@ Animation::~Animation()
 
 void Animation::SetFramesSize()
 {
-	framesSize = frames.size();
+	framesSize = (int)frames.size();
 }
 
 void Animation::SetSpeed(float sp)

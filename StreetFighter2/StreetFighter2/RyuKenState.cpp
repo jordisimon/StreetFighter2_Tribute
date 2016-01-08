@@ -57,28 +57,39 @@ CharacterState * RyuKenState::ProcessInput(CommandData * commandData)
 
 CharacterState * RyuKenState::UpdateState()
 {
-	character->UpdateStunnedParticlePosition();
 	character->UpdateYPosition();
 
 	return nullptr;
 }
 
-CharacterState * RyuKenState::DealHit(Collider * collider)
+CharacterState * RyuKenState::DealHit(Collider * collider, const fRect& intersectionRect)
 {
-	bool faceHit = true;
-	float hitDuration = 0.0f;
-	AttackInfo attackInfo; 
-
 	if (collider->type == ColliderType::CHARACTER_ATTACK)
 	{
-		Character* enemy = (Character*)collider->listener;
-		attackInfo = enemy->GetAttackInfo();
+		AttackInfo attackInfo = ((Character*)collider->listener)->GetAttackInfo();
+		bool faceHit = (collider->colliderRect.y < character->position.y - character->height);
+		return ManageHitImpacted(attackInfo, intersectionRect, true, faceHit, false);
+	}
+	else if (collider->type == ColliderType::PARTICLE_ATTACK)
+	{
+		AttackInfo attackInfo = ((ParticleAttack*)collider->listener)->GetAttackInfo();
+		return ManageHitImpacted(attackInfo, intersectionRect, true, true, false);
+	}
 
+	return nullptr;
+}
+
+CharacterState * RyuKenState::ManageHitImpacted(const AttackInfo& attackInfo, const fRect& intersectionRect, bool enemyHit, bool faceHit, bool crouching)
+{
+	character->applyToOtherPlayer = false;
+
+	if (enemyHit)
+	{
 		//Particle only if hit by rival directly
 		ParticleInfo particleInfo;
 		particleInfo.direction = character->direction;
-		particleInfo.position.x = collider->colliderRect.x;
-		particleInfo.position.y = collider->colliderRect.y;
+		particleInfo.position.x = intersectionRect.x + (intersectionRect.w / 2);
+		particleInfo.position.y = intersectionRect.y + (intersectionRect.h / 2);
 
 		switch (attackInfo.strength)
 		{
@@ -109,23 +120,10 @@ CharacterState * RyuKenState::DealHit(Collider * collider)
 		servicesManager->particles->CreateParticle(particleInfo);
 
 		character->applyToOtherPlayer = true;
-		faceHit = (collider->colliderRect.y < character->position.y - character->height);
-
-	}
-	else if (collider->type == ColliderType::PARTICLE_ATTACK)
-	{
-		ParticleAttack* particle = (ParticleAttack*)collider->listener;
-		attackInfo = particle->GetAttackInfo();
-
-		character->applyToOtherPlayer = false;
-		faceHit = true;
 	}
 
-	character->life -= attackInfo.damage;
-	if (character->life < 0)
-		character->life = 0;
-
-	if (attackInfo.special)
+	//Play sound fx
+	if (attackInfo.type == AttackType::SPECIAL)
 		character->PlaySfx(character->hHitSfx);
 	else
 	{
@@ -145,42 +143,39 @@ CharacterState * RyuKenState::DealHit(Collider * collider)
 		}
 	}
 
+	//Apply damage
+	character->life -= attackInfo.damage;
+	if (character->life < 0)
+		character->life = 0;
+
+	//Add knockdown damage
 	character->knockdownDamage += attackInfo.damage;
 	character->knockdownTimer.Resume();
 	character->knockdownTimer.Reset();
 
-	if (!character->isStunned && character->knockdownDamage >= 50)
+	//Choose next state
+	//If knockdown threshold reached, player throwed
+	if (character->knockdownDamage >= 50)
 	{
-		if (character->knockdownDamage > 65)
-			return new RyuKenStateKnockdown(character, true);
-		else
-			return new RyuKenStateKnockdown(character, false);
+		return new RyuKenStateKnockdown(character);
 	}
 	else
 	{
+		//If character on the ground
 		if (character->position.y >= character->groundLevel)
 		{
-			character->hitBackwardMovement = attackInfo.backMovement;
-			character->hitBackwardSpeed = attackInfo.backSpeed;
-
-			switch (attackInfo.strength)
+			//Hard kicks crouching throws character
+			if (attackInfo.type == AttackType::C_H_KICK)
 			{
-			case AttackStrength::LIGHT:
-				hitDuration = 0.3f;
-				break;
-
-			case AttackStrength::MEDIUM:
-				hitDuration = 0.6f;
-				break;
-
-			case AttackStrength::HARD:
-				hitDuration = 0.9f;
-				break;
-			default:
-				break;
+				return new RyuKenStateKnockdown(character);
 			}
+			else
+			{
+				character->hitBackwardMovement = attackInfo.backMovement;
+				character->hitBackwardSpeed = attackInfo.backSpeed;
 
-			return new RyuKenStateHit(character, false, faceHit, hitDuration);
+				return new RyuKenStateHit(character, crouching, faceHit, attackInfo.strength);
+			}
 		}
 		else
 		{
@@ -189,7 +184,41 @@ CharacterState * RyuKenState::DealHit(Collider * collider)
 	}
 }
 
-CharacterState * RyuKenState::MatchFinished(int playerWin)
+CharacterState * RyuKenState::ManageHitBlocked(const AttackInfo & attackInfo, const fRect & intersectionRect, bool enemyHit)
+{
+	character->applyToOtherPlayer = false;
+
+	if (enemyHit)
+	{
+		//Particle only if hit by rival directly
+		ParticleInfo particleInfo;
+		particleInfo.direction = character->direction;
+		particleInfo.position.x = intersectionRect.x + (intersectionRect.w / 2);
+		particleInfo.position.y = intersectionRect.y + (intersectionRect.h / 2);
+		particleInfo.type = ParticleType::HIT_BLOCKED;
+		servicesManager->particles->CreateParticle(particleInfo);
+
+		character->applyToOtherPlayer = true;
+	}
+
+	//Play sound fx
+	character->PlaySfx(character->hitBlockedSfx);
+
+	//If special attack, even when blocking we get some damage (about 25%)
+	if (attackInfo.type == AttackType::SPECIAL)
+	{
+		character->life -= attackInfo.damage / 4;
+		if (character->life < 0)
+			character->life = 0;
+	}
+
+	character->hitBackwardMovement = attackInfo.backMovement;
+	character->hitBackwardSpeed = attackInfo.backSpeed;
+	return nullptr;
+}
+
+
+CharacterState * RyuKenState::RoundFinished(int playerWin)
 {
 	return new RyuKenStateFinish(character, playerWin);
 }

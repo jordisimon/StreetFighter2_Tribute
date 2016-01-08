@@ -1,6 +1,7 @@
 #include "StageFactory.h"
 #include "Stage.h"
 #include "StageHonda.h"
+#include "StageKen.h"
 
 
 StageFactory::StageFactory()
@@ -28,6 +29,7 @@ Stage * StageFactory::CreateStage(StageType type)
 	case StageType::GUILE:
 		break;
 	case StageType::KEN:
+		stage = new StageKen();
 		break;
 	case StageType::CHUNLI:
 		break;

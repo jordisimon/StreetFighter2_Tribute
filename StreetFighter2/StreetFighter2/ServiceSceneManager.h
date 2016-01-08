@@ -10,15 +10,21 @@ private:
 	Scene* currentScene = nullptr;
 	Scene* nextScene = nullptr;
 
+	bool doChangeScene;
+	float fadeTime;
+
+	void ChangeScene();
+
 public:
 	ServiceSceneManager();
 	~ServiceSceneManager();
 
+	bool Init();
 	bool CleanUp();
 
 	Entity::Result UpdateState();
 	Entity::Result Draw() const;
 
-	void ChangeScene(Scene* newScene, float fadeTime = 2.0f);
+	void SetNewScene(Scene* newScene, float fadeT = 2.0f);
 };
 

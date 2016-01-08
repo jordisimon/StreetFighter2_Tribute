@@ -1,6 +1,7 @@
 #pragma once
 #include "AttackInfo.h"
 #include "CharacterSpecialAttack.h"
+#include "Rect.h"
 
 struct CommandData;
 class Collider;
@@ -22,7 +23,7 @@ public:
 	virtual const AttackInfo GetAttackInfo() const { return AttackInfo(); }
 
 	virtual CharacterState* DoSpecialAction(const CharacterSpecialAttack& type) { return nullptr; }
-	virtual CharacterState* DealHit(Collider* collider) { return nullptr; };
-	virtual CharacterState* MatchFinished(int playerWin) { return nullptr; };
+	virtual CharacterState* DealHit(Collider* collider, const fRect& intersectionRect) { return nullptr; };
+	virtual CharacterState* RoundFinished(int playerWin) { return nullptr; };
 };
 

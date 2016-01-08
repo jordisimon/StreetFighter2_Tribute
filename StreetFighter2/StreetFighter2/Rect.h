@@ -86,6 +86,39 @@ public:
 			(y <= v.y + v.h) &&
 			(y + h >= v.y);
 	}
+
+	Rect GetIntersectionRect(const Rect& v) const
+	{
+		Rect result{0,0,0,0};
+
+		TYPE Amin, Amax, Bmin, Bmax;
+
+		/* Horizontal intersection */
+		Amin = x;
+		Amax = Amin + w;
+		Bmin = v.x;
+		Bmax = Bmin + v.w;
+		if (Bmin > Amin)
+			Amin = Bmin;
+		result.x = Amin;
+		if (Bmax < Amax)
+			Amax = Bmax;
+		result.w = Amax - Amin;
+
+		/* Vertical intersection */
+		Amin = y;
+		Amax = Amin + h;
+		Bmin = v.y;
+		Bmax = Bmin + v.h;
+		if (Bmin > Amin)
+			Amin = Bmin;
+		result.y = Amin;
+		if (Bmax < Amax)
+			Amax = Bmax;
+		result.h = Amax - Amin;
+
+		return result;
+	}
 };
 
 typedef Rect<int> iRect;

@@ -4,7 +4,6 @@
 class MatchStateFinish : public MatchState
 {
 private:
-	bool fading;
 	bool shouldStartAnimations;
 	bool finishGUI;
 public:

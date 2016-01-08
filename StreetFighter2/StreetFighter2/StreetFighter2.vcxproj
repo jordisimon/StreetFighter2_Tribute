@@ -133,6 +133,7 @@
     <ClInclude Include="CharacterFactory.h" />
     <ClInclude Include="CharacterSpecialAttack.h" />
     <ClInclude Include="CharacterState.h" />
+    <ClInclude Include="CharacterStats.h" />
     <ClInclude Include="CharacterType.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="ColliderType.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="ParticleHit.h" />
     <ClInclude Include="ParticleInfo.h" />
     <ClInclude Include="ParticleStunned.h" />
+    <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="MatchState.h" />
     <ClInclude Include="MatchStateFight.h" />
@@ -174,6 +176,8 @@
     <ClInclude Include="RyuKenStateWalk.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene2PCharacterSelection.h" />
+    <ClInclude Include="Scene2PHandicapAndStageSelection.h" />
+    <ClInclude Include="Scene2PMatchResult.h" />
     <ClInclude Include="SceneCapcom.h" />
     <ClInclude Include="SceneLicensed.h" />
     <ClInclude Include="SceneMainMenu.h" />
@@ -185,6 +189,7 @@
     <ClInclude Include="SF2Stats.h" />
     <ClInclude Include="SpecialAction.h" />
     <ClInclude Include="StageFactory.h" />
+    <ClInclude Include="StageKen.h" />
     <ClInclude Include="StageType.h" />
     <ClInclude Include="ICollitionListener.h" />
     <ClInclude Include="CommandAction.h" />
@@ -257,6 +262,8 @@
     <ClCompile Include="RyuKenStateStunned.cpp" />
     <ClCompile Include="RyuKenStateWalk.cpp" />
     <ClCompile Include="Scene2PCharacterSelection.cpp" />
+    <ClCompile Include="Scene2PHandicapAndStageSelection.cpp" />
+    <ClCompile Include="Scene2PMatchResult.cpp" />
     <ClCompile Include="SceneCapcom.cpp" />
     <ClCompile Include="SceneLicensed.cpp" />
     <ClCompile Include="SceneMainMenu.cpp" />
@@ -284,7 +291,11 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageFactory.cpp" />
     <ClCompile Include="StageHonda.cpp" />
+    <ClCompile Include="StageKen.cpp" />
     <ClCompile Include="Timer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="StreetFighter2.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

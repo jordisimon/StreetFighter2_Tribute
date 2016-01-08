@@ -101,6 +101,15 @@
     <Filter Include="Sources\StreetFighter\Scenes\VS">
       <UniqueIdentifier>{b1e68766-0f44-4660-821f-6c3d3298592a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\StreetFighter\Stages\Honda">
+      <UniqueIdentifier>{23536bee-7f05-4d5c-999e-195478823135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Stages\Ken">
+      <UniqueIdentifier>{290d20bf-718f-4366-ae4c-b33efeeadec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\StreetFighter\Stats">
+      <UniqueIdentifier>{8db66efe-7e11-4a61-b5ef-8f3087b0a92d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleIni.h">
@@ -113,9 +122,6 @@
       <Filter>Sources\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
-      <Filter>Sources\StreetFighter\Stages</Filter>
-    </ClInclude>
-    <ClInclude Include="StageHonda.h">
       <Filter>Sources\StreetFighter\Stages</Filter>
     </ClInclude>
     <ClInclude Include="ParticleFactory.h">
@@ -295,9 +301,6 @@
     <ClInclude Include="ParticleInfo.h">
       <Filter>Sources\StreetFighter\Particles</Filter>
     </ClInclude>
-    <ClInclude Include="SF2Stats.h">
-      <Filter>Sources\StreetFighter\Game</Filter>
-    </ClInclude>
     <ClInclude Include="ServiceFade.h">
       <Filter>Sources\Engine\Services\Fade</Filter>
     </ClInclude>
@@ -367,7 +370,30 @@
     <ClInclude Include="SceneMainMenu.h">
       <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
     </ClInclude>
-    <ClInclude Include="Scene2PCharacterSelection.h" />
+    <ClInclude Include="Scene2PCharacterSelection.h">
+      <Filter>Sources\StreetFighter\Scenes\VS</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene2PHandicapAndStageSelection.h">
+      <Filter>Sources\StreetFighter\Scenes\VS</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene2PMatchResult.h">
+      <Filter>Sources\StreetFighter\Scenes\VS</Filter>
+    </ClInclude>
+    <ClInclude Include="StageHonda.h">
+      <Filter>Sources\StreetFighter\Stages\Honda</Filter>
+    </ClInclude>
+    <ClInclude Include="StageKen.h">
+      <Filter>Sources\StreetFighter\Stages\Ken</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStats.h">
+      <Filter>Sources\StreetFighter\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStats.h">
+      <Filter>Sources\StreetFighter\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="SF2Stats.h">
+      <Filter>Sources\StreetFighter\Stats</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -377,9 +403,6 @@
       <Filter>Sources\Engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>Sources\StreetFighter\Stages</Filter>
-    </ClCompile>
-    <ClCompile Include="StageHonda.cpp">
       <Filter>Sources\StreetFighter\Stages</Filter>
     </ClCompile>
     <ClCompile Include="ParticleHaDoKen.cpp">
@@ -508,9 +531,6 @@
     <ClCompile Include="CharacterState.cpp">
       <Filter>Sources\StreetFighter\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="SF2Stats.cpp">
-      <Filter>Sources\StreetFighter\Game</Filter>
-    </ClCompile>
     <ClCompile Include="ServiceFade.cpp">
       <Filter>Sources\Engine\Services\Fade</Filter>
     </ClCompile>
@@ -571,6 +591,28 @@
     <ClCompile Include="SceneMainMenu.cpp">
       <Filter>Sources\StreetFighter\Scenes\Intro</Filter>
     </ClCompile>
-    <ClCompile Include="Scene2PCharacterSelection.cpp" />
+    <ClCompile Include="Scene2PCharacterSelection.cpp">
+      <Filter>Sources\StreetFighter\Scenes\VS</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene2PHandicapAndStageSelection.cpp">
+      <Filter>Sources\StreetFighter\Scenes\VS</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene2PMatchResult.cpp">
+      <Filter>Sources\StreetFighter\Scenes\VS</Filter>
+    </ClCompile>
+    <ClCompile Include="StageHonda.cpp">
+      <Filter>Sources\StreetFighter\Stages\Honda</Filter>
+    </ClCompile>
+    <ClCompile Include="StageKen.cpp">
+      <Filter>Sources\StreetFighter\Stages\Ken</Filter>
+    </ClCompile>
+    <ClCompile Include="SF2Stats.cpp">
+      <Filter>Sources\StreetFighter\Stats</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="StreetFighter2.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 #include "ServiceParticles.h"
 #include "ServiceCollition.h"
 #include "ServiceTime.h"
+#include "Scene2PMatchResult.h"
 #include "Collider.h"
 #include "ColliderType.h"
 #include "CharacterFactory.h"
@@ -18,14 +19,16 @@
 
 SceneMatch::SceneMatch(const SceneMatchInfo& sceneInfo) : timer { 1000, true }, paused{ false }, roundNumber{ 0 }
 {
+	matchInfo = sceneInfo;
 	GUI = new SceneMatchGUI();
 	commandContextFight = servicesManager->commands->Load("Match_Command_Context");
 	commandContextPause = servicesManager->commands->Load("Pause_Command_Context");
 	
-	stage = StageFactory::CreateStage(sceneInfo.stageType);
-	player1 = CharacterFactory::CreateCharacter(sceneInfo.player1Type);
-	player2 = CharacterFactory::CreateCharacter(sceneInfo.player2Type);
-	timeLimit = sceneInfo.timeLimit;
+	stage = StageFactory::CreateStage(matchInfo.stageType);
+	player1 = CharacterFactory::CreateCharacter(matchInfo.player1Type);
+	player1->handicap = matchInfo.player1Handicap;
+	player2 = CharacterFactory::CreateCharacter(matchInfo.player2Type);
+	player2->handicap = matchInfo.player2Handicap;
 }
 
 
@@ -44,6 +47,8 @@ bool SceneMatch::Init()
 	GUI->scene = this;
 
 	const fRect& camera = servicesManager->render->GetCamera();
+
+	timeLimit = config->LoadBoolValue("Options", "timeLimit", "1");
 
 	fRect colliderRect{ 0,0,2,camera.h };
 	colliderRect.x = camera.x - 10;
@@ -73,6 +78,8 @@ bool SceneMatch::Init()
 	scene25Percent = camera.w / 4;
 	scene50Percent = camera.w / 2;
 	scene75Percent = camera.w / 4 * 3;
+
+	++matchInfo.battleNumber;
 
 	return ret;
 }
@@ -147,6 +154,15 @@ void SceneMatch::SetNewState(MatchState * state)
 	}
 }
 
+void SceneMatch::SceneChange()
+{
+	if (matchInfo.twoPlayers && !changing)
+	{
+		//Scene manager load scene match result
+		HandleSceneChange(new Scene2PMatchResult(matchInfo));
+	}
+}
+
 bool SceneMatch::ProcessInput(CommandData* commandData)
 {
 	if(started)
@@ -173,10 +189,29 @@ Entity::Result SceneMatch::Draw() const
 		player2->Draw();
 		player1->Draw(); //Player1 painted over player 2
 		servicesManager->particles->DrawParticles();
+		stage->DrawForeground();
 		servicesManager->collitions->DrawColliders();
 		GUI->Draw();
 	}
 	return Entity::Result::R_OK;
+}
+
+void SceneMatch::PauseAllTimers()
+{
+	if (timeLimit)
+		timer.Pause();
+
+	player1->PauseAllTimers();
+	player2->PauseAllTimers();
+}
+
+void SceneMatch::ResumeAllTimers()
+{
+	if (timeLimit)
+		timer.Resume();
+
+	player1->ResumeAllTimers();
+	player2->ResumeAllTimers();
 }
 
 void SceneMatch::CalculatePlayersDistance()

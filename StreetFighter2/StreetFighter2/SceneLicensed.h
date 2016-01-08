@@ -16,7 +16,6 @@ private:
 	fPoint licensedPos;
 
 	Timer timer;
-	bool changing;
 
 public:
 	SceneLicensed();

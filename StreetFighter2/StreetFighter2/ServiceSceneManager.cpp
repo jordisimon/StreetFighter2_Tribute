@@ -4,7 +4,6 @@
 #include "ServicesManager.h"
 #include "ServiceFade.h"
 
-
 ServiceSceneManager::ServiceSceneManager()
 {
 }
@@ -12,6 +11,12 @@ ServiceSceneManager::ServiceSceneManager()
 
 ServiceSceneManager::~ServiceSceneManager()
 {
+}
+
+bool ServiceSceneManager::Init()
+{
+	doChangeScene = false;
+	return true;
 }
 
 bool ServiceSceneManager::CleanUp()
@@ -32,6 +37,9 @@ bool ServiceSceneManager::CleanUp()
 
 Entity::Result ServiceSceneManager::UpdateState()
 {
+	if (doChangeScene)
+		ChangeScene();
+
 	if (nextScene != nullptr && nextScene->IsStarted())
 	{
 		if (currentScene != nullptr)
@@ -58,22 +66,31 @@ Entity::Result ServiceSceneManager::Draw() const
 	return Entity::Result::R_OK;
 }
 
-void ServiceSceneManager::ChangeScene(Scene * newScene, float fadeTime)
+
+void ServiceSceneManager::ChangeScene()
 {
-	if (newScene != nullptr)
+	if (nextScene != nullptr)
 	{
-		newScene->Init();
+		nextScene->Init();
 	}
 
 	if (currentScene == nullptr)
 	{
-		currentScene = newScene;
+		currentScene = nextScene;
+		nextScene = nullptr;
 		currentScene->Start();
 	}
 	else
 	{
-		nextScene = newScene;
-
-		servicesManager->fade->StartFading(nextScene, currentScene, 2.0f);
+		servicesManager->fade->StartFading(nextScene, currentScene, fadeTime);
 	}
+
+	doChangeScene = false;
+}
+
+void ServiceSceneManager::SetNewScene(Scene * newScene, float fadeT)
+{
+	nextScene = newScene;
+	fadeTime = fadeT;
+	doChangeScene = true;
 }

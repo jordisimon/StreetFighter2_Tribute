@@ -145,44 +145,28 @@ CharacterState * RyuKenStateBlocking::DoSpecialAction(const CharacterSpecialAtta
 	return nullptr;
 }
 
-CharacterState * RyuKenStateBlocking::DealHit(Collider * collider)
+CharacterState * RyuKenStateBlocking::DealHit(Collider * collider, const fRect& intersectionRect)
 {
-	AttackInfo attackInfo;
-
 	if (collider->type == ColliderType::CHARACTER_ATTACK)
 	{
-		Character* enemy = (Character*)collider->listener;
-		attackInfo = enemy->GetAttackInfo();
+		AttackInfo attackInfo = ((Character*)collider->listener)->GetAttackInfo();
+		//Stand blocking can not block crouch kicks
+		switch(attackInfo.type)
+		{
+		case AttackType::C_L_KICK:
+		case AttackType::C_M_KICK:
+		case AttackType::C_H_KICK:
+			return ManageHitImpacted(attackInfo, intersectionRect, true, false, false);
+			break;
+		}
 
-		//Particle only if hit by rival directly
-		ParticleInfo particleInfo;
-		particleInfo.direction = character->direction;
-		particleInfo.position.x = collider->colliderRect.x;
-		particleInfo.position.y = collider->colliderRect.y;
-		particleInfo.type = ParticleType::HIT_BLOCKED;
-		servicesManager->particles->CreateParticle(particleInfo);	
-
-		character->applyToOtherPlayer = true;
+		return ManageHitBlocked(attackInfo, intersectionRect, true);
 	}
-	else if (collider->type == ColliderType::PARTICLE_ATTACK)
+	else if(collider->type == ColliderType::PARTICLE_ATTACK)
 	{
-		ParticleAttack* particle = (ParticleAttack*)collider->listener;
-		attackInfo = particle->GetAttackInfo();
-
-		character->applyToOtherPlayer = false;
+		AttackInfo attackInfo = ((ParticleAttack*)collider->listener)->GetAttackInfo();
+		return ManageHitBlocked(attackInfo, intersectionRect, false);
 	}
-
-	//If special attack, even when blocking we get some damage (about 25%)
-	if (attackInfo.special)
-	{
-		character->life -= attackInfo.damage / 4;
-		if (character->life < 0)
-			character->life = 0;
-	}
-
-	character->hitBackwardMovement = attackInfo.backMovement;
-	character->hitBackwardSpeed = attackInfo.backSpeed;
-	character->PlaySfx(character->hitBlockedSfx);
 
 	return nullptr;
 }

@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Animation.h"
 #include "Timer.h"
+#include <vector>
 
 struct SDL_Texture;
 class SceneMatch;
@@ -79,9 +80,10 @@ private:
 	Animation num7;
 	Animation num8;
 	Animation num9;
+	std::vector<Animation*> timeNumbers;
 	Sprite numInf;
-	fPoint digit1Pos;
-	fPoint digit2Pos;
+	fPoint timeDigit1Pos;
+	fPoint timeDigit2Pos;
 
 	Sprite numScoreBig0;
 	Sprite numScoreBig1;
@@ -93,6 +95,8 @@ private:
 	Sprite numScoreBig7;
 	Sprite numScoreBig8;
 	Sprite numScoreBig9;
+	std::vector<Sprite*> scoreBigNumbers;
+
 	Sprite numScoreLittle0;
 	Sprite numScoreLittle1;
 	Sprite numScoreLittle2;
@@ -103,6 +107,19 @@ private:
 	Sprite numScoreLittle7;
 	Sprite numScoreLittle8;
 	Sprite numScoreLittle9;
+	std::vector<Sprite*> scoreLittleNumbers;
+
+	Sprite numBattle0;
+	Sprite numBattle1;
+	Sprite numBattle2;
+	Sprite numBattle3;
+	Sprite numBattle4;
+	Sprite numBattle5;
+	Sprite numBattle6;
+	Sprite numBattle7;
+	Sprite numBattle8;
+	Sprite numBattle9;
+	std::vector<Sprite*> battleNumbers;
 
 	const Sprite* player1Name;
 	fPoint player1NamePos;
@@ -145,12 +162,14 @@ private:
 	Animation* currentRoundFight;
 	int currentRoundFx;
 	fPoint roundFightPos;
+
+	Sprite battle;
+	fPoint battlePos;
+	fPoint battleDigit1Pos;
+	fPoint battleDigit2Pos;
 	
 	Timer timer;
 
-	const Animation* GetTimeDigit(int number) const;
-	const Sprite* GetScoreBigDigit(int number) const;
-	const Sprite* GetScoreLittleDigit(int number) const;
 	const Sprite* LoadSpriteName(int characterId) const;
 	Animation* LoadNameWins(int characterId);
 

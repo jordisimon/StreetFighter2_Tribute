@@ -5,7 +5,7 @@
 
 StageHonda::StageHonda()
 {
-	configSection = "Scene_Honda";
+	configSection = "Stage_Honda";
 }
 
 

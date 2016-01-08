@@ -15,16 +15,6 @@ RyuKenStateFinish::~RyuKenStateFinish()
 
 void RyuKenStateFinish::OnEnter()
 {
-	if (character->isStunned)
-	{
-		character->isStunned = false;
-		if (character->particleStunned != nullptr)
-		{
-			character->particleStunned->toDelete = true;
-			character->particleStunned = nullptr;
-		}
-	}
-
 	if (character->position.y < character->groundLevel)
 	{
 		falling = true;

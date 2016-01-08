@@ -9,7 +9,6 @@
 #include "ServiceFade.h"
 
 
-
 MatchStateFinish::MatchStateFinish(SceneMatch* s) : MatchState{ s }
 {
 }
@@ -21,7 +20,6 @@ MatchStateFinish::~MatchStateFinish()
 
 void MatchStateFinish::OnEnter()
 {
-	fading = false;
 	finishGUI = false;
 	shouldStartAnimations = false;
 	//Calculate match outcome
@@ -59,8 +57,16 @@ void MatchStateFinish::OnEnter()
 	scene->player1->updateOverallSpeed /= 4;
 	scene->player2->updateOverallSpeed /= 4;
 
-	scene->player1->MatchFinished(scene->winnerPlayer);
-	scene->player2->MatchFinished(scene->winnerPlayer);
+	scene->player1->RoundFinished(scene->winnerPlayer);
+	scene->player2->RoundFinished(scene->winnerPlayer);
+
+	if (scene->roundNumber == 4 ||
+		scene->player1->roundVictories == 2 ||
+		scene->player2->roundVictories == 2)
+	{
+		scene->player1->MatchFinished(scene->winnerPlayer);
+		scene->player2->MatchFinished(scene->winnerPlayer);
+	}
 }
 
 
@@ -91,7 +97,7 @@ MatchState* MatchStateFinish::UpdateState()
 		finishGUI = true;
 	}
 
-	if (scene->GUI->StateHasFinished())
+	if (!scene->changing && scene->GUI->StateHasFinished())
 	{
 		//If this was the last round or any player has won 2 rounds
 		//Exit match
@@ -99,16 +105,13 @@ MatchState* MatchStateFinish::UpdateState()
 			scene->player1->roundVictories == 2 ||
 			scene->player2->roundVictories == 2)
 		{
-			//Scene manager load scene XXX
+			scene->SceneChange();
 		}
 		else
 		{
 			//fade to black scene, scene
-			if (!fading)
-			{
-				servicesManager->fade->StartFading(scene, scene, 2.0f);
-				fading = true;
-			}
+			servicesManager->fade->StartFading(scene, scene, 2.0f);
+			scene->changing = true;
 		}	
 	}
 

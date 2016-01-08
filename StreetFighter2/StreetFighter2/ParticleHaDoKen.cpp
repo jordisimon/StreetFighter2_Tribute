@@ -7,7 +7,7 @@
 #include "ParticleInfo.h"
 
 
-ParticleHaDoKen::ParticleHaDoKen(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim)
+ParticleHaDoKen::ParticleHaDoKen(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim)
 	: ParticleAttack(typ, pos, dir, text), runAnimation {runAnim}, endAnimation {endAnim}
 {
 	runAnimation.listener = this;
@@ -79,7 +79,7 @@ const AttackInfo ParticleHaDoKen::GetAttackInfo() const
 {
 	AttackInfo attackInfo;
 
-	attackInfo.special = true;
+	attackInfo.type = AttackType::SPECIAL;
 	attackInfo.strength = strength;
 
 	switch (strength)

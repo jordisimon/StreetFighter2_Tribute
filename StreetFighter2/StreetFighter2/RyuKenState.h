@@ -14,6 +14,9 @@ protected:
 	virtual CharacterState* ProcessActions(std::vector<CommandAction> actions) { return nullptr; };
 	virtual CharacterState* ProcessStates(std::vector<CommandState> states) { return nullptr; };
 
+	CharacterState* ManageHitImpacted(const AttackInfo& attackInfo, const fRect& intersectionRect, bool enemyHit, bool faceHit, bool crouching);
+	CharacterState* ManageHitBlocked(const AttackInfo& attackInfo, const fRect& intersectionRect, bool enemyHit);
+
 public:
 	RyuKenState(RyuKen* p);
 	~RyuKenState();
@@ -24,7 +27,7 @@ public:
 	CharacterState* ProcessInput(CommandData* commandData);
 	CharacterState* UpdateState();
 
-	CharacterState* DealHit(Collider* collider);
-	CharacterState* MatchFinished(int playerWin);
+	CharacterState* DealHit(Collider* collider, const fRect& intersectionRect);
+	CharacterState* RoundFinished(int playerWin);
 };
 

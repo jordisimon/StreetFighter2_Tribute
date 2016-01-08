@@ -1,9 +1,12 @@
 #include "RyuKenStateStunned.h"
 #include "RyuKen.h"
+#include "ServicesManager.h"
+#include "ServiceParticles.h"
 #include "Particle.h"
+#include "ParticleInfo.h"
 #include "RyuKenStateIdle.h"
 
-RyuKenStateStunned::RyuKenStateStunned(RyuKen* p) : RyuKenState{ p }, canReduceTime{ true }
+RyuKenStateStunned::RyuKenStateStunned(RyuKen* p, bool st) : RyuKenState{ p }, strong{ st }, canReduceTime { true }
 {
 }
 
@@ -14,14 +17,40 @@ RyuKenStateStunned::~RyuKenStateStunned()
 
 void RyuKenStateStunned::OnEnter()
 {
-	character->currentAnimation = &character->stunned;
+	ParticleInfo info;
+	info.position.x = character->position.x;
+	info.position.y = character->position.y - character->height - 30;
+	info.direction = character->direction;
 
+	if (strong)
+	{
+		info.type = ParticleType::STARS;
+		character->stunnedTimer.SetNewInterval(3000);
+	}
+	else
+	{
+		info.type = ParticleType::DUCKS;
+		character->stunnedTimer.SetNewInterval(5000);
+	}
+
+	if (character->particleStunned != nullptr)
+	{
+		character->particleStunned->toDelete;
+		character->particleStunned = nullptr;
+	}
+
+	character->particleStunned = servicesManager->particles->CreateParticle(info);
+
+	character->currentAnimation = &character->stunned;
 	RyuKenState::OnEnter();
 }
 
 void RyuKenStateStunned::OnExit()
 {
 	RyuKenState::OnExit();
+
+	character->particleStunned->toDelete = true;
+	character->particleStunned = nullptr;
 }
 
 CharacterState * RyuKenStateStunned::ProcessActions(std::vector<CommandAction> actions)
@@ -70,8 +99,6 @@ CharacterState * RyuKenStateStunned::UpdateState()
 
 	if (character->stunnedTimer.Reached())
 	{
-		character->isStunned = false;
-		character->particleStunned->toDelete = true;
 		return new RyuKenStateIdle(character);
 	}
 

@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Animation.h"
 #include "Timer.h"
+#include "CommandAction.h"
 
 struct SDL_Texture;
 class CommandContext;
@@ -30,6 +31,8 @@ private:
 
 	CommandContext* commandContextMenu = nullptr;
 
+	int selectedOption;
+
 	bool firstStart;
 	MainMenuState currentState;
 	MainMenuState nextState;
@@ -52,9 +55,14 @@ private:
 	fPoint optionsPos;
 
 	Sprite cursor;
-	fPoint cursorPos;
+	fPoint cursorOriginalPos;
+	fPoint cursorCurrentPos;
 
 	Timer timer;
+
+	void HandleOptionSelected();
+	bool HandleCommandAction(CommandAction action);
+	void SetCursorPos();
 
 public:
 	SceneMainMenu(bool showMenu = false);

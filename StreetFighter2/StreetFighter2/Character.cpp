@@ -15,8 +15,7 @@
 #include "CommandState.h"
 #include "Collider.h"
 #include "ColliderType.h"
-
-#include "ServiceCommandManager.h"
+#include "SF2Stats.h"
 
 int Character::lAttackSfx = -1;
 int Character::mAttackSfx = -1;
@@ -79,7 +78,6 @@ bool Character::Start()
 	knockdownTimer.Pause();
 	updateOverallSpeed = 1.0f;
 	yUpdateControl = 0.0f;
-	isStunned = false;
 
 	if (particleStunned != nullptr)
 	{
@@ -231,7 +229,8 @@ void Character::OnCollitionEnter(Collider * colA, Collider * colB)
 	if ((colB->type == ColliderType::CHARACTER_ATTACK && colB->listener != this)
 		|| colB->type == ColliderType::PARTICLE_ATTACK)
 	{
-		nextState = currentState->DealHit(colB);
+		fRect intersectionRect = colA->colliderRect.GetIntersectionRect(colB->colliderRect);
+		nextState = currentState->DealHit(colB, intersectionRect);
 	}
 
 	//If character hit rival disable this frame attack collider to avoid multiple damage
@@ -249,22 +248,59 @@ void Character::PlaySfx(int sfx) const
 
 const AttackInfo Character::GetAttackInfo() const
 {
-	return currentState->GetAttackInfo();
+	AttackInfo info = currentState->GetAttackInfo();
+
+	if (handicap != 3)
+	{
+		switch (handicap)
+		{
+		case 0:
+			info.damage = (int)(info.damage * 0.85f);
+			break;
+		case 1:
+			info.damage = (int)(info.damage * 0.8f);
+			break;
+		case 2:
+			info.damage = (int)(info.damage * 0.95f);
+			break;
+		case 4:
+			info.damage = (int)(info.damage * 1.05f);
+			break;
+		case 5:
+			info.damage = (int)(info.damage * 1.1f);
+			break;
+		case 6:
+			info.damage = (int)(info.damage * 1.15f);
+			break;
+		case 7:
+			info.damage = (int)(info.damage * 1.2f);
+			break;
+		default:
+			break;
+		}
+	}
+
+	return info;
+}
+
+void Character::PauseAllTimers()
+{
+	actionsSequenceTimer.Pause();
+	knockdownTimer.Pause();
+	stunnedTimer.Pause();
+}
+
+void Character::ResumeAllTimers()
+{
+	actionsSequenceTimer.Resume();
+	knockdownTimer.Resume();
+	stunnedTimer.Resume();
 }
 
 void Character::ClearActionsSequence()
 {
 	actionsSequence.clear();
 	actionsSequenceTimer.Pause();
-}
-
-void Character::UpdateStunnedParticlePosition()
-{
-	if (particleStunned != nullptr && !particleStunned->toDelete)
-	{
-		particleStunned->position.x = position.x;
-		particleStunned->position.y = position.y - height - 30;
-	}
 }
 
 void Character::UpdateYPosition()
@@ -302,9 +338,66 @@ void Character::IfMovingForwardRecalculatePositionWithPressingSpeed()
 	currentState->IfMovingForwardRecalculatePositionWithPressingSpeed();
 }
 
+void Character::RoundFinished(int playerWin)
+{
+	SetNewState(currentState->RoundFinished(playerWin));
+}
+
 void Character::MatchFinished(int playerWin)
 {
-	SetNewState(currentState->MatchFinished(playerWin));
+	PlayerStats* pStats;
+	if (playerNumber == 1)
+		pStats = &SF2Stats::p1Stats;
+	else
+		pStats = &SF2Stats::p2Stats;
+
+	CharacterStats* cStats;
+	switch (characterId)
+	{
+	case 0:
+		cStats = &pStats->Ryu;
+		break;
+	case 1:
+		cStats = &pStats->Honda;
+		break;
+	case 2:
+		cStats = &pStats->Blanka;
+		break;
+	case 3:
+		cStats = &pStats->Guile;
+		break;
+	case 4:
+		cStats = &pStats->Ken;
+		break;
+	case 5:
+		cStats = &pStats->Chunli;
+		break;
+	case 6:
+		cStats = &pStats->Zanguief;
+		break;
+	case 7:
+		cStats = &pStats->Dalshim;
+		break;
+	default:
+		cStats = &pStats->Ryu; //To avoid uninitalized warning
+		break;
+	}
+
+	if (playerWin == playerNumber)
+	{
+		++pStats->wins;
+		++cStats->wins;
+	} 
+	else if (playerWin == 0)
+	{
+		++pStats->draws;
+		++cStats->draws;
+	}
+	else
+	{
+		++pStats->loses;
+		++cStats->loses;
+	}
 }
 
 void Character::DrawShadow(int groundLevel) const

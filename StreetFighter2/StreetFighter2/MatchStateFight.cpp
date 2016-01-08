@@ -15,8 +15,7 @@
 
 void MatchStateFight::OnEnter()
 {
-	if (scene->timeLimit)
-		scene->timer.Resume();
+	scene->ResumeAllTimers();
 	servicesManager->commands->SetCurrentContext(scene->commandContextFight);
 	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::FIGHT);
 }

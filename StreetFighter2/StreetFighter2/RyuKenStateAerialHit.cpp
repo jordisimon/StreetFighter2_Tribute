@@ -37,10 +37,7 @@ CharacterState * RyuKenStateAerialHit::UpdateState()
 
 	if (character->nextPosition.y >= character->groundLevel)
 	{
-		if (character->isStunned)
-			return new RyuKenStateStunned(character);
-		else
-			return new RyuKenStateIdle(character);
+		return new RyuKenStateIdle(character);
 	}
 
 	return nullptr;

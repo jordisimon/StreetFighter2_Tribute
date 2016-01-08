@@ -101,7 +101,7 @@ const AttackInfo RyuKenStateKyaku::GetAttackInfo() const
 {
 	AttackInfo attackInfo;
 
-	attackInfo.special = true;
+	attackInfo.type = AttackType::SPECIAL;
 	attackInfo.strength = strength;
 
 	switch (strength)

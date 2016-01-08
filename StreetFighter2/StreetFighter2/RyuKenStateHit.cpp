@@ -3,7 +3,8 @@
 #include "RyuKenStateIdle.h"
 #include "RyuKenStateStunned.h"
 
-RyuKenStateHit::RyuKenStateHit(RyuKen * p, bool crouch, bool face, float duration) : RyuKenState{ p }, crouching{ crouch }, faceHit { face }, hitDuration{ duration }
+RyuKenStateHit::RyuKenStateHit(RyuKen * p, bool crouch, bool face, AttackStrength str) 
+	: RyuKenState{ p }, crouching{ crouch }, faceHit{ face }, strength{ str }
 {
 }
 
@@ -27,7 +28,21 @@ void RyuKenStateHit::OnEnter()
 			character->currentAnimation = &character->hit;
 	}
 
-	character->currentAnimation->SetDuration(hitDuration);
+	switch (strength)
+	{
+	case AttackStrength::LIGHT:
+		character->currentAnimation->SetDuration(0.3f);
+		break;
+
+	case AttackStrength::MEDIUM:
+		character->currentAnimation->SetDuration(0.6f);
+		break;
+
+	case AttackStrength::HARD:
+		character->currentAnimation->SetDuration(0.9f);
+		break;
+	}
+
 	RyuKenState::OnEnter();
 }
 
@@ -37,10 +52,7 @@ CharacterState* RyuKenStateHit::UpdateState()
 
 	if (character->hitBackwardMovement == 0.0f)
 	{
-		if(character->isStunned)
-			return new RyuKenStateStunned(character);
-		else
-			return new RyuKenStateIdle(character);
+		return new RyuKenStateIdle(character);
 	}
 
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);

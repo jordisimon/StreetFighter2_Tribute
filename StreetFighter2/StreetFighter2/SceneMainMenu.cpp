@@ -10,13 +10,18 @@
 #include "ServiceCommandManager.h"
 #include "CommandContext.h"
 #include "CommandData.h"
-#include "CommandAction.h"
+#include "Scene2PCharacterSelection.h"
+#include "SceneMatchInfo.h"
+#include "CharacterType.h"
+#include "StageType.h"
+
+#define MAX_OPTIONS 3
 
 int SceneMainMenu::optionMoveSfx = -1;
 int SceneMainMenu::optionSelectSfx = -1;
 
 
-SceneMainMenu::SceneMainMenu(bool showMenu) : timer{3000}
+SceneMainMenu::SceneMainMenu(bool showMenu) : timer{1500}
 {
 	configSection = "Scene_Intro";
 	configSectionAnim = "Scene_Intro_Logo";
@@ -61,7 +66,7 @@ bool SceneMainMenu::Init()
 	tww2CurrentPos.y = screenCenter.y + 28;
 	twwFinalPos.x = screenCenter.x;
 	twwFinalPos.y = screenCenter.y + 28;
-	twwIntroSpeed = 80.0f;
+	twwIntroSpeed = 120.0f;
 
 	config->LoadSprite(capcomInfo, configSection, "capcomInfo");
 	capcomInfoPos.x = screenCenter.x;
@@ -72,10 +77,11 @@ bool SceneMainMenu::Init()
 	optionsPos.y = screenCenter.y + 50;
 
 	config->LoadSprite(cursor, configSection, "cursor");
-	cursorPos.x = screenCenter.x - (options.rect.w / 2) - 21;
-	cursorPos.y = screenCenter.y + 55;
+	cursorOriginalPos.x = screenCenter.x - (options.rect.w / 2) - 21;
+	cursorOriginalPos.y = screenCenter.y + 55;
 
 	firstStart = true;
+	selectedOption = 0;
 
 	return true;
 }
@@ -91,6 +97,8 @@ bool SceneMainMenu::Start()
 {
 	Scene::Start();
 
+	cursorCurrentPos = cursorOriginalPos;
+
 	currentState = nextState;
 	if (firstStart)
 	{
@@ -98,70 +106,122 @@ bool SceneMainMenu::Start()
 		firstStart = false;
 	}
 	SFLogoAnim.ResetAnimation();
-	timer.SetNewInterval(3000);
+	timer.SetNewInterval(1500);
 
 	return true;
 }
 
-bool SceneMainMenu::ProcessInput(CommandData * commandData)
+void SceneMainMenu::HandleOptionSelected()
+{
+	switch (selectedOption)
+	{
+	//Single player (not done)
+	case 0:
+		break;
+
+	//VS Match
+	case 1:
+		if (!changing)
+		{
+			servicesManager->audio->PlayFx(optionSelectSfx);
+			servicesManager->audio->StopMusic(2.0f);
+			SceneMatchInfo info;
+			info.twoPlayers = true;
+			info.battleNumber = 0;
+			info.player1Handicap = 3;
+			info.player2Handicap = 3;
+			info.player1Type = CharacterType::RYU;
+			info.player2Type = CharacterType::KEN;
+			info.stageType = StageType::RYU;
+			HandleSceneChange(new Scene2PCharacterSelection(info));
+		}
+		break;
+
+	//Options menu (not done)
+	case 3:
+		break;
+	}
+}
+
+void SceneMainMenu::SetCursorPos()
+{
+	cursorCurrentPos = cursorOriginalPos;
+
+	switch (selectedOption)
+	{
+	case 1:
+		cursorCurrentPos.y += 16;
+		break;
+
+	case 2:
+		cursorCurrentPos.y += 32;
+		break;
+	}
+}
+
+bool SceneMainMenu::HandleCommandAction(CommandAction action)
 {
 	switch (currentState)
 	{
+	case MainMenuState::INTRO_WAIT:
 	case MainMenuState::LOGO_SPIN:
 	case MainMenuState::TWW_IN:
 	case MainMenuState::SCENE_COMPLETED:
-		for (const auto& command : commandData->p1Actions)
+		if(action == CommandAction::PAUSE)
 		{
-			switch (command)
-			{
-			case CommandAction::PAUSE:
-				nextState = MainMenuState::SHOW_MENU;
-				servicesManager->fade->StartFading(this, this, 2.0f);
-				return true;
-				break;
-			}
-		}
-
-		for (const auto& command : commandData->p2Actions)
-		{
-			switch (command)
-			{
-			case CommandAction::PAUSE:
-				nextState = MainMenuState::SHOW_MENU;
-				servicesManager->fade->StartFading(this, this, 2.0f);
-				return true;
-				break;
-			}
+			nextState = MainMenuState::SHOW_MENU;
+			servicesManager->fade->StartFading(this, this, 1.5f);
+			changing = true;
+			return true;
 		}
 		break;
 
 	case MainMenuState::SHOW_MENU:
-		for (const auto& command : commandData->p1Actions)
-		{
-			switch (command)
+			switch (action)
 			{
 			case CommandAction::PAUSE:
-				nextState = MainMenuState::SHOW_MENU;
-				servicesManager->fade->StartFading(this, this, 2.0f);
+				HandleOptionSelected();
 				return true;
 				break;
+
+			case CommandAction::MOVE_UP:
+				servicesManager->audio->PlayFx(optionMoveSfx);
+				--selectedOption;
+				if (selectedOption < 0)
+					selectedOption = MAX_OPTIONS - 1;
+				SetCursorPos();
+				break;
+
+			case CommandAction::MOVE_DOWN:
+				servicesManager->audio->PlayFx(optionMoveSfx);
+				++selectedOption;
+				if (selectedOption >= MAX_OPTIONS)
+					selectedOption = 0;
+				SetCursorPos();
+				break;
 			}
+
+		break;
+	}
+
+	return false;
+}
+
+bool SceneMainMenu::ProcessInput(CommandData * commandData)
+{
+	if (!changing)
+	{
+		for (const auto& command : commandData->p1Actions)
+		{
+			if (HandleCommandAction(command))
+				return true;
 		}
 
 		for (const auto& command : commandData->p2Actions)
 		{
-			switch (command)
-			{
-			case CommandAction::PAUSE:
-				nextState = MainMenuState::SHOW_MENU;
-				servicesManager->fade->StartFading(this, this, 2.0f);
+			if (HandleCommandAction(command))
 				return true;
-				break;
-			}
 		}
-		break;
-	default:
-		break;
 	}
 
 	return true;
@@ -223,7 +283,7 @@ Entity::Result SceneMainMenu::Draw() const
 		servicesManager->render->BlitGUI(texture, tww1.GetRectPosition(twwFinalPos), tww1.rect);
 		servicesManager->render->BlitGUI(texture, tww2.GetRectPosition(twwFinalPos), tww2.rect);
 		servicesManager->render->BlitGUI(texture, options.GetRectPosition(optionsPos), options.rect);
-		servicesManager->render->BlitGUI(texture, cursor.GetRectPosition(cursorPos), cursor.rect);
+		servicesManager->render->BlitGUI(texture, cursor.GetRectPosition(cursorCurrentPos), cursor.rect);
 		break;
 	}
 

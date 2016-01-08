@@ -13,7 +13,7 @@ private:
 	int speed;
 
 public:
-	ParticleHaDoKen(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim);
+	ParticleHaDoKen(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim, const AnimationCollider& endAnim);
 	~ParticleHaDoKen();
 
 	bool UpdateState();

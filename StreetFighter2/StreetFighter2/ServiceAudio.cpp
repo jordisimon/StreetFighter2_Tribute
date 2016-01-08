@@ -165,7 +165,7 @@ int ServiceAudio::LoadFx(const char* path)
 	}
 
 	fx.push_back(chunk);
-	return fx.size() - 1;
+	return (int)fx.size() - 1;
 }
 
 bool ServiceAudio::PlayFx(unsigned int id, int repeat) const

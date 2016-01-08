@@ -31,7 +31,8 @@ enum class AttackType
 	J_H_KICK,
 	F_J_L_KICK,
 	F_J_M_KICK,
-	F_J_H_KICK
+	F_J_H_KICK,
+	SPECIAL
 };
 
 enum class AttackStrength
@@ -44,10 +45,10 @@ enum class AttackStrength
 
 struct AttackInfo
 {
-	AttackInfo() : strength{ AttackStrength::NONE }, special{ false },damage { 0 }, backMovement{ 0.0f }, backSpeed{ 0.0f } {}
+	AttackInfo() : strength{ AttackStrength::NONE }, damage { 0 }, backMovement{ 0.0f }, backSpeed{ 0.0f } {}
 
 	AttackStrength strength;
-	float special;
+	AttackType type;
 	int damage;
 	float backMovement;
 	float backSpeed;

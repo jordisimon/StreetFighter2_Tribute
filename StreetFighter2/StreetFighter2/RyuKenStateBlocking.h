@@ -16,6 +16,6 @@ public:
 	CharacterState* UpdateState();
 
 	CharacterState* DoSpecialAction(const CharacterSpecialAttack& type);
-	CharacterState* DealHit(Collider* collider);
+	CharacterState* DealHit(Collider* collider, const fRect& intersectionRect);
 };
 

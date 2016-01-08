@@ -16,6 +16,9 @@
 //Testing
 #include "SceneMatch.h"
 #include "SceneMatchInfo.h"
+#include "Scene2PCharacterSelection.h"
+#include "Scene2PHandicapAndStageSelection.h"
+#include "Scene2PMatchResult.h"
 
 
 SF2Game::SF2Game()
@@ -35,15 +38,21 @@ bool SF2Game::Init()
 	bool res = Game::Init();
 
 	//testing
-	/*SceneMatchInfo info;
+	SceneMatchInfo info;
+	info.twoPlayers = true;
+	info.battleNumber = 0;
+	info.player1Handicap = 3;
+	info.player2Handicap = 3;
 	info.player1Type = CharacterType::RYU;
 	info.player2Type = CharacterType::KEN;
 	info.stageType = StageType::HONDA;
-	info.timeLimit = false;
-	servicesManager->scene->ChangeScene(new SceneMatch(info));*/
+	servicesManager->scene->SetNewScene(new Scene2PCharacterSelection(info));
+	//servicesManager->scene->SetNewScene(new Scene2PHandicapAndStageSelection(info));
+	//servicesManager->scene->SetNewScene(new SceneMatch(info));
+	//servicesManager->scene->SetNewScene(new Scene2PMatchResult(info));
 	//end testing
 
-	servicesManager->scene->ChangeScene(new SceneLicensed());
+	//servicesManager->scene->SetNewScene(new SceneLicensed());
 
 	//Debug
 	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");

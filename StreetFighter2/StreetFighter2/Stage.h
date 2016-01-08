@@ -30,6 +30,7 @@ public:
 
 	bool Start();
 
+	virtual Entity::Result DrawForeground() const { return Result::R_OK; };
 	void StartFinishAnimations() { showFinishAnimations = true; };
 };
 

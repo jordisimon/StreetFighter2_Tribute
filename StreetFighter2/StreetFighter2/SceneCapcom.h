@@ -19,7 +19,6 @@ private:
 	fPoint capcomPos;
 
 	Timer timer;
-	bool changing;
 
 	int capcomSfx;
 

@@ -2,7 +2,7 @@
 
 
 
-ParticleStunned::ParticleStunned(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim)
+ParticleStunned::ParticleStunned(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim)
 	: Particle(typ, pos, dir, text), animation{ runAnim }
 {
 	animation.ResetAnimation();

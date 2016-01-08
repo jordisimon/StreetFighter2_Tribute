@@ -1,16 +1,17 @@
 #pragma once
 #include "RyuKenState.h"
+#include "AttackInfo.h"
 
 class RyuKenStateHit : public RyuKenState
 {
 private:
 	bool crouching;
 	bool faceHit;
-	float hitDuration;
+	AttackStrength strength;
 	float moveBackwards;
 
 public:
-	RyuKenStateHit(RyuKen* p, bool crouch, bool face, float duration);
+	RyuKenStateHit(RyuKen* p, bool crouch, bool face, AttackStrength str);
 	~RyuKenStateHit();
 
 	void OnEnter();

@@ -2,7 +2,7 @@
 
 
 
-ParticleHit::ParticleHit(ParticleType typ, fPoint pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim)
+ParticleHit::ParticleHit(ParticleType typ, const fPoint& pos, Direction dir, SDL_Texture* text, const AnimationCollider& runAnim)
 	: Particle(typ, pos, dir, text), animation{ runAnim }
 {
 	animation.ResetAnimation();

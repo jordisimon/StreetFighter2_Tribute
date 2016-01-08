@@ -8,14 +8,14 @@ class Particle;
 class RyuKenStateKnockdown : public RyuKenState
 {
 private:
-	bool strong;
 	unsigned int step;
 
 public:
-	RyuKenStateKnockdown(RyuKen* p, bool s);
+	RyuKenStateKnockdown(RyuKen* p);
 	~RyuKenStateKnockdown();
 
 	void OnEnter();
+	void OnExit();
 
 	CharacterState* UpdateState();
 };

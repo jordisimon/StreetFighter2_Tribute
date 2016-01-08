@@ -4,12 +4,7 @@
 #include "ServiceRender.h"
 #include "ServiceTextures.h"
 #include "ServiceAudio.h"
-#include "ServiceSceneManager.h"
 #include "SceneMainMenu.h"
-
-//Testing
-#include "SceneMatch.h"
-#include "SceneMatchInfo.h"
 
 
 SceneCapcom::SceneCapcom() : timer{ 2000 }
@@ -20,6 +15,7 @@ SceneCapcom::SceneCapcom() : timer{ 2000 }
 
 SceneCapcom::~SceneCapcom()
 {
+	configSection = nullptr;
 }
 
 
@@ -40,7 +36,6 @@ bool SceneCapcom::Init()
 
 bool SceneCapcom::CleanUp()
 {
-	//servicesManager->textures->Unload(texture);
 	return true;
 }
 
@@ -51,7 +46,6 @@ bool SceneCapcom::Start()
 	capcom.ResetAnimation();
 	step = 0;
 	timer.SetNewInterval(2000);
-	changing = false;
 	servicesManager->audio->PlayFx(capcomSfx);
 	return true;
 }
@@ -72,19 +66,7 @@ Entity::Result SceneCapcom::UpdateState()
 		capcom.UpdateCurrentFrame();
 		if (timer.Reached() && !changing)
 		{
-			changing = true;
-
-			//testing
-			/*SceneMatchInfo info;
-			info.player1Type = CharacterType::RYU;
-			info.player2Type = CharacterType::KEN;
-			info.stageType = StageType::HONDA;
-			info.timeLimit = false;
-			Scene* currentScene = new SceneMatch(info);
-			servicesManager->scene->ChangeScene(currentScene);*/
-			//end testing
-
-			servicesManager->scene->ChangeScene(new SceneMainMenu());
+			HandleSceneChange(new SceneMainMenu());
 		}
 		break;
 

@@ -15,7 +15,7 @@ protected:
 	SDL_Texture* texture = nullptr;
 	AnimationCollider* currentAnimation = nullptr;
 	Direction direction;
-
+	
 public:
 	fPoint position;
 	bool toDelete;

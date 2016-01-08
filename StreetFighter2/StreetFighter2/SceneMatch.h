@@ -20,6 +20,7 @@ class SceneMatch: public Scene
 	friend class SceneMatchGUI;
 
 private:
+	SceneMatchInfo matchInfo;
 	MatchState* currentState = nullptr;
 
 	SceneMatchGUI* GUI = nullptr;
@@ -47,6 +48,9 @@ private:
 	unsigned int vitalScore;
 	unsigned int timeScore;
 
+	void PauseAllTimers();
+	void ResumeAllTimers();
+
 	void CalculatePlayersDistance();
 	void UpdatePlayersAttacking();
 	void CorrectPosition(fPoint& position, float margin);
@@ -60,6 +64,8 @@ private:
 	void SetCollidersPosition();
 
 	void SetNewState(MatchState* state);
+
+	void SceneChange();
 
 public:
 	SceneMatch(const SceneMatchInfo& sceneInfo);

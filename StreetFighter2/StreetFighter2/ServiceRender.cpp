@@ -1,6 +1,7 @@
 #include "ServiceRender.h"
 #include "Defines.h"
 #include "Config.h"
+#include <math.h>
 #include "SDL\include\SDL.h"
 #include "SDL\include\SDL_rect.h"
 #include "SDL\include\SDL_pixels.h"
@@ -123,8 +124,8 @@ bool ServiceRender::Blit(SDL_Texture* texture, const fPoint& position, const fRe
 	//Scene
 	else
 	{
-		dest.x = (int)((cameraRender.x * speed) + position.x * screenHRatio);
-		dest.y = (int)((cameraRender.y) + position.y * screenVRatio); //No vertical parallax
+		dest.x = (int)floor((cameraRender.x * speed) + position.x * screenHRatio);
+		dest.y = (int)floor((cameraRender.y) + position.y * screenVRatio); //No vertical parallax
 	}
 
 	dest.w = (int)(section.w * screenHRatio * scale);
@@ -159,7 +160,8 @@ bool ServiceRender::BlitGUI(SDL_Texture * texture, const fPoint & position, cons
 
 void ServiceRender::SetDrawColor(const Color& color) const
 {
-	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+	if(SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha) != 0)
+		LOG("Can not set draw color! SDL_Error: %s\n", SDL_GetError());
 }
 
 void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill) const
@@ -175,8 +177,8 @@ void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill) const
 	//Scene
 	else
 	{
-		rectAux.x = (int)(cameraRender.x + rect.x * screenHRatio);
-		rectAux.y = (int)(cameraRender.y + rect.y * screenVRatio); //No vertical parallax
+		rectAux.x = (int)floor(cameraRender.x + rect.x * screenHRatio);
+		rectAux.y = (int)floor(cameraRender.y + rect.y * screenVRatio); //No vertical parallax
 	}
 
 	rectAux.w = (int)rect.w * screenHRatio;
@@ -184,11 +186,13 @@ void ServiceRender::DrawRect(const fRect & rect, bool gui, bool fill) const
 
 	if (fill)
 	{
-		SDL_RenderFillRect(renderer, &rectAux);
+		if (SDL_RenderFillRect(renderer, &rectAux) != 0)
+			LOG("Can not draw fill rect! SDL_Error: %s\n", SDL_GetError());
 	}
 	else
 	{
-		SDL_RenderDrawRect(renderer, &rectAux);
+		if (SDL_RenderDrawRect(renderer, &rectAux) != 0)
+			LOG("Can not draw rect! SDL_Error: %s\n", SDL_GetError());
 	}
 }
 

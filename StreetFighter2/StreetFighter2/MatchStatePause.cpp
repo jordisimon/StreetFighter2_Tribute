@@ -21,8 +21,7 @@ MatchStatePause::~MatchStatePause()
 void MatchStatePause::OnEnter()
 {
 	scene->paused = true;
-	if (scene->timeLimit)
-		scene->timer.Pause();
+	scene->PauseAllTimers();
 	servicesManager->commands->SetCurrentContext(scene->commandContextPause);
 	
 	scene->GUI->SetMatchGUIState(SceneMatchGUI::MatchGUIState::PAUSE);
