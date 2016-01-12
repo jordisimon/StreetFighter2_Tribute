@@ -85,7 +85,7 @@ CharacterState * RyuKenStateHadoken::UpdateState()
 				break;
 			}
 
-			character->currentHadoken = servicesManager->particles->CreateParticle(pInfo);
+			character->currentAttackParticle = servicesManager->particles->CreateParticle(pInfo);
 
 			timer.Reset();
 			++step;

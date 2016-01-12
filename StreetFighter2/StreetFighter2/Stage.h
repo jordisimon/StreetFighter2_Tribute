@@ -8,9 +8,9 @@ class Stage : public Entity
 {
 protected:
 	const char* configSection;
+	SDL_Texture* texture = nullptr;
 
 public:
-	SDL_Texture* texture = nullptr;
 	const char* musicName = nullptr;
 
 	fPoint camMin;

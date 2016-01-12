@@ -1,13 +1,14 @@
 #include "RyuKenStateAerialAttack.h"
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
+#include "RyuKenStateFinish.h"
 
-RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen * p, AttackType type) : RyuKenState{ p }, attackType{ type }, forward{true}, hSpeed{0}, diagonal{ false }
+RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen * p, AttackType type) : RyuKenState{ p }, attackType{ type }, forward{ true }, hSpeed{ 0 }, diagonal{ false }, playerWin{ -1 }
 {
 	direction = character->direction;
 }
 
-RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen* p, AttackType type, Direction dir, bool f, int hSp) : RyuKenState{ p }, attackType{ type }, direction { dir }, forward{ f }, hSpeed{ hSp }, diagonal{ true }
+RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen* p, AttackType type, Direction dir, bool f, int hSp) : RyuKenState{ p }, attackType{ type }, direction { dir }, forward{ f }, hSpeed{ hSp }, diagonal{ true }, playerWin{ -1 }
 {
 }
 
@@ -94,11 +95,29 @@ CharacterState * RyuKenStateAerialAttack::UpdateState()
 	//Aerial attacks finish when landing
 	if (character->nextPosition.y >= character->groundLevel)
 	{
-		return new RyuKenStateIdle(character);
+		character->PlaySfx(character->floorHit2Sfx);
+		if (playerWin < 0)
+			return new RyuKenStateIdle(character);
+		else
+			return new RyuKenStateFinish(character, playerWin);
 	}
 
 	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
+}
+
+CharacterState * RyuKenStateAerialAttack::RoundFinished(int playerWin)
+{
+	if (character->life > 0)
+	{
+		//Store winner (change state when back to ground)
+		this->playerWin = playerWin;
+		return nullptr;
+	}
+	else
+	{
+		return new RyuKenStateFinish(character, playerWin);
+	}
 }
 
 void RyuKenStateAerialAttack::IfMovingForwardRecalculatePositionWithPressingSpeed()

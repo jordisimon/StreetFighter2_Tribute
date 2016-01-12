@@ -29,12 +29,6 @@
     <Filter Include="Sources\StreetFighter\Characters">
       <UniqueIdentifier>{f0d1ef4f-ab34-4874-b3b9-18a50b231a10}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\StreetFighter\FSM">
-      <UniqueIdentifier>{43b65930-1dba-4dca-841c-4d50003cc906}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\StreetFighter\FSM\GameStates">
-      <UniqueIdentifier>{1d75e250-cc90-41b6-b308-7c458e4d50fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\StreetFighter\Particles">
       <UniqueIdentifier>{a8b70bab-304f-45ec-a670-005ba79e5143}</UniqueIdentifier>
     </Filter>
@@ -110,6 +104,9 @@
     <Filter Include="Sources\StreetFighter\Stats">
       <UniqueIdentifier>{8db66efe-7e11-4a61-b5ef-8f3087b0a92d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\StreetFighter\Stages\Guile">
+      <UniqueIdentifier>{dfaac4d3-d740-45ab-afd7-1c91d9357375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleIni.h">
@@ -129,12 +126,6 @@
     </ClInclude>
     <ClInclude Include="ParticleHaDoKen.h">
       <Filter>Sources\StreetFighter\Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Sources\StreetFighter\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Sources\StreetFighter\FSM\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="Direction.h">
       <Filter>Sources\Engine\Utils</Filter>
@@ -394,6 +385,18 @@
     <ClInclude Include="SF2Stats.h">
       <Filter>Sources\StreetFighter\Stats</Filter>
     </ClInclude>
+    <ClInclude Include="StageGuile.h">
+      <Filter>Sources\StreetFighter\Stages\Guile</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateBackRoll.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateGrabbed.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuKenStateShoulderToss.h">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -407,9 +410,6 @@
     </ClCompile>
     <ClCompile Include="ParticleHaDoKen.cpp">
       <Filter>Sources\StreetFighter\Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Sources\StreetFighter\FSM\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="ServiceAudio.cpp">
       <Filter>Sources\Engine\Services\Audio</Filter>
@@ -608,6 +608,18 @@
     </ClCompile>
     <ClCompile Include="SF2Stats.cpp">
       <Filter>Sources\StreetFighter\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="StageGuile.cpp">
+      <Filter>Sources\StreetFighter\Stages\Guile</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateBackRoll.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateGrabbed.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuKenStateShoulderToss.cpp">
+      <Filter>Sources\StreetFighter\Characters\RyuKen\RyuKenStates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ private:
 	unsigned int pauseTime;
 
 public:
+	Timer();
 	Timer(unsigned int i, bool startPaused = false);
 	~Timer() {};
 

@@ -15,7 +15,7 @@
 
 CharacterState * RyuKenStateBlocking::ProcessActions(std::vector<CommandAction> actions)
 {
-	bool closeRange = character->rivalDistance < (character->fMargin * 2) + 10;
+	bool closeRange = character->RivalDistanceLowerThan((character->fMargin * 2) + 10);
 	for (const auto& command : actions)
 	{
 		switch (command)
@@ -118,7 +118,8 @@ CharacterState * RyuKenStateBlocking::UpdateState()
 {
 	RyuKenState::UpdateState();
 
-	if (!character->isRivalAttacking)
+	if ((!character->rival->isAttacking || !character->RivalDistanceLowerThan(150))
+		&& (!character->RivalParticleDistanceLowerThan(150)))
 	{
 		//Keep walking back
 		return new RyuKenStateWalk(character, false);

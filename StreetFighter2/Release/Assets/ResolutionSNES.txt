@@ -1,0 +1,8 @@
+Resolución: 256x224 a 512x448. La mayoría de los juegos usan 256x224, 320x224 o 400x300 píxeles; había trucos para obtener 512x448 pero era usado raramente
+
+https://es.wikipedia.org/wiki/Super_Nintendo_Entertainment_System#Hardware
+
+Resolutions	Progressive: 256×224, 512×224, 256×239, 512×239
+Interlaced: 512×448, 512×478
+
+https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System

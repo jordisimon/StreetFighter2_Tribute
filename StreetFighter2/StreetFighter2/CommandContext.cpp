@@ -180,7 +180,7 @@ bool CommandContext::FillCommandData(CommandData* commandData) const
 				commandData->p1States.push_back(command.second);
 		}
 	}
-	else
+	if (!servicesManager->input->ExistController(1) || !servicesManager->input->GetControllerOverridesKeyboard())
 	{
 		//Actions
 		for (auto const& command : key1ActionMap)
@@ -216,7 +216,7 @@ bool CommandContext::FillCommandData(CommandData* commandData) const
 				commandData->p2States.push_back(command.second);
 		}
 	}
-	else
+	if (!servicesManager->input->ExistController(2) || !servicesManager->input->GetControllerOverridesKeyboard())
 	{
 		//Actions
 		for (auto const& command : key2ActionMap)

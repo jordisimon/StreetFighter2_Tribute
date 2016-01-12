@@ -13,7 +13,7 @@
 #define MAX_STAGES 12
 
 Scene2PHandicapAndStageSelection::Scene2PHandicapAndStageSelection(const SceneMatchInfo& info)
-	: validStages({false, true, false, false, true, false, false, false, false, false, false, false}),
+	: validStages({false, true, false, true, true, false, false, false, false, false, false, false}),
 	fadeColor{Color::Predefined::BLACK}
 {
 	configSection = "Scene_2P_Selection";

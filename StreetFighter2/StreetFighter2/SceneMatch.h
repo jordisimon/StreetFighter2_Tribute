@@ -51,8 +51,6 @@ private:
 	void PauseAllTimers();
 	void ResumeAllTimers();
 
-	void CalculatePlayersDistance();
-	void UpdatePlayersAttacking();
 	void CorrectPosition(fPoint& position, float margin);
 	void MovePlayers();
 	void ApplyForceToPlayers(Character* forcedPlayer, Character* otherPlayer);

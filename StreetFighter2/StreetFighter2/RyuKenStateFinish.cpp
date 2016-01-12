@@ -25,7 +25,7 @@ void RyuKenStateFinish::OnEnter()
 		character->hitBackwardMovement = 100.0f;
 		character->hitBackwardSpeed = 120.0f;
 		character->currentJumpSpeed = 5.5f;
-		character->applyToOtherPlayer = false;
+		character->applyBackwardMovementToOtherPlayerRatio = 0.25f;
 		character->yUpdateControl = 1.0f; // to force not being in ground when updating first time
 		character->currentAnimation = &character->KOBegin;
 		character->PlaySfx(character->KOSfx);

@@ -8,6 +8,7 @@ private:
 	Direction direction; //It can change while jumping, but we need to finish the jump in the same direction
 	bool forward;
 	int hSpeed;
+	int playerWin;
 
 protected:
 	CharacterState* ProcessActions(std::vector<CommandAction> actions);
@@ -19,6 +20,7 @@ public:
 	void OnEnter();
 
 	CharacterState* UpdateState();
+	CharacterState* RoundFinished(int playerWin);
 
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 };

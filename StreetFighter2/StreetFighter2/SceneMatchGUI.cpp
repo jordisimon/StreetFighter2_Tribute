@@ -307,7 +307,7 @@ void SceneMatchGUI::SetMatchGUIState(MatchGUIState state)
 		}
 		currentRoundFight->forward = true;
 		currentRoundFight->ResetAnimation();
-		timer.SetNewInterval(2000);
+		timer.SetNewInterval(1000);
 		
 		break;
 	case SceneMatchGUI::MatchGUIState::FIGHT:

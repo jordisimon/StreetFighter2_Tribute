@@ -12,6 +12,7 @@ private:
 	Direction direction; //It can change while jumping, but we need to finish the jump in the same direction
 	bool forward;
 	int hSpeed;
+	int playerWin;
 
 public:
 	RyuKenStateAerialAttack(RyuKen* p, AttackType type);
@@ -22,6 +23,7 @@ public:
 	void OnExit();
 
 	CharacterState* UpdateState();
+	CharacterState* RoundFinished(int playerWin);
 
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 

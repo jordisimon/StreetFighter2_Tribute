@@ -17,6 +17,7 @@ public:
 
 	virtual CharacterState* ProcessInput(CommandData* commandData) { return nullptr; };
 	virtual CharacterState* UpdateState() { return nullptr; };
+	virtual void Draw() const {};
 
 	virtual void IfMovingForwardRecalculatePositionWithPressingSpeed() {};
 

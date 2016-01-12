@@ -10,7 +10,7 @@ class AnimationColliderInfo
 public:
 	Collider* collider = nullptr;
 	ColliderType type;
-	std::vector<Sprite> colliderFrameSprites;
+	std::vector<Sprite> colliderFrameSprites; //Sprite, not Sprite* intended
 	std::vector<bool> colliderFrameActive;
 	std::vector<bool> colliderCurrentFrameActive;
 

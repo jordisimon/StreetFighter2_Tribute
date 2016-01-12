@@ -25,6 +25,7 @@ int Character::mHitSfx = -1;
 int Character::hHitSfx = -1;
 int Character::hitBlockedSfx = -1;
 int Character::floorHitSfx = -1;
+int Character::floorHit2Sfx = -1;
 
 bool Character::Init()
 {
@@ -54,6 +55,140 @@ bool Character::Init()
 	if (hHitSfx == -1) hHitSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\hHit.ogg");
 	if (hitBlockedSfx == -1) hitBlockedSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\hitBlocked.ogg");
 	if (floorHitSfx == -1) floorHitSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\floorHit.ogg");
+	if (floorHit2Sfx == -1) floorHit2Sfx = servicesManager->audio->LoadFx("Assets\\Sound\\Sfx\\Match\\floorHit2.ogg");
+
+	//Moving
+	config->LoadAnimationCollider(idle, configSection, "idle");
+	idle.listener = this;
+	config->LoadAnimationCollider(fWalk, configSection, "fWalk");
+	fWalk.listener = this;
+	config->LoadAnimationCollider(bWalk, configSection, "bWalk");
+	bWalk.listener = this;
+	config->LoadAnimationCollider(jump, configSection, "jump");
+	jump.listener = this;
+	config->LoadAnimationCollider(fJump, configSection, "fJump");
+	fJump.listener = this;
+	config->LoadAnimationCollider(bJump, configSection, "bJump");
+	bJump.listener = this;
+	config->LoadAnimationCollider(crouch, configSection, "crouch");
+	crouch.listener = this;
+	config->LoadAnimationCollider(blocking, configSection, "blocking");
+	blocking.listener = this;
+	config->LoadAnimationCollider(cBlocking, configSection, "cBlocking");
+	cBlocking.listener = this;
+
+	//Hit
+	config->LoadAnimationCollider(hit, configSection, "hit");
+	hit.listener = this;
+	config->LoadAnimationCollider(faceHit, configSection, "faceHit");
+	faceHit.listener = this;
+	config->LoadAnimationCollider(cHit, configSection, "cHit");
+	cHit.listener = this;
+	config->LoadAnimationCollider(aHit, configSection, "aHit");
+	aHit.listener = this;
+
+	//Attack (punch)
+	//Standing
+	config->LoadAnimationCollider(lPunch, configSection, "lPunch");
+	lPunch.listener = this;
+	config->LoadAnimationCollider(mPunch, configSection, "mPunch");
+	mPunch.listener = this;
+	config->LoadAnimationCollider(hPunch, configSection, "hPunch");
+	hPunch.listener = this;
+
+	//Close range
+	config->LoadAnimationCollider(flPunch, configSection, "flPunch");
+	flPunch.listener = this;
+	config->LoadAnimationCollider(fmPunch, configSection, "fmPunch");
+	fmPunch.listener = this;
+	config->LoadAnimationCollider(fhPunch, configSection, "fhPunch");
+	fhPunch.listener = this;
+
+	//Crouching
+	config->LoadAnimationCollider(clPunch, configSection, "clPunch");
+	clPunch.listener = this;
+	config->LoadAnimationCollider(cmPunch, configSection, "cmPunch");
+	cmPunch.listener = this;
+	config->LoadAnimationCollider(chPunch, configSection, "chPunch");
+	chPunch.listener = this;
+
+	//Straight jump
+	config->LoadAnimationCollider(jlPunch, configSection, "jlPunch");
+	jlPunch.listener = this;
+	config->LoadAnimationCollider(jmPunch, configSection, "jmPunch");
+	jmPunch.listener = this;
+	config->LoadAnimationCollider(jhPunch, configSection, "jhPunch");
+	jhPunch.listener = this;
+
+	//Diagonal jump
+	//Not bug SNES anims are the same as straigh jump
+	config->LoadAnimationCollider(fjlPunch, configSection, "jlPunch");
+	fjlPunch.listener = this;
+	config->LoadAnimationCollider(fjmPunch, configSection, "jmPunch");
+	fjmPunch.listener = this;
+	config->LoadAnimationCollider(fjhPunch, configSection, "jhPunch");
+	fjhPunch.listener = this;
+
+	//Attack (kick)
+	//Standing
+	config->LoadAnimationCollider(lKick, configSection, "lKick");
+	lKick.listener = this;
+	config->LoadAnimationCollider(mKick, configSection, "mKick");
+	mKick.listener = this;
+	config->LoadAnimationCollider(hKick, configSection, "hKick");
+	hKick.listener = this;
+
+	//Close range
+	config->LoadAnimationCollider(flKick, configSection, "flKick");
+	flKick.listener = this;
+	config->LoadAnimationCollider(fmKick, configSection, "fmKick");
+	fmKick.listener = this;
+	config->LoadAnimationCollider(fhKick, configSection, "fhKick");
+	fhKick.listener = this;
+
+	//Crouching
+	config->LoadAnimationCollider(clKick, configSection, "clKick");
+	clKick.listener = this;
+	config->LoadAnimationCollider(cmKick, configSection, "cmKick");
+	cmKick.listener = this;
+	config->LoadAnimationCollider(chKick, configSection, "chKick");
+	chKick.listener = this;
+
+	//Straight jump
+	config->LoadAnimationCollider(jlKick, configSection, "jlKick");
+	jlKick.listener = this;
+	config->LoadAnimationCollider(jmKick, configSection, "jmKick");
+	jmKick.listener = this;
+	config->LoadAnimationCollider(jhKick, configSection, "jhKick");
+	jhKick.listener = this;
+
+	//Diagonal jump
+	config->LoadAnimationCollider(fjlKick, configSection, "fjlKick");
+	fjlKick.listener = this;
+	config->LoadAnimationCollider(fjmKick, configSection, "fjmKick");
+	fjmKick.listener = this;
+	config->LoadAnimationCollider(fjhKick, configSection, "fjhKick");
+	fjhKick.listener = this;
+
+	//Knockdown
+	config->LoadAnimationCollider(knockdown, configSection, "knockdown");
+	knockdown.listener = this;
+	config->LoadAnimationCollider(knockdownRecover, configSection, "knockdownRecover");
+	knockdownRecover.listener = this;
+	config->LoadAnimationCollider(stunned, configSection, "stunned");
+	stunned.listener = this;
+
+	//Finish
+	config->LoadAnimationCollider(KOBegin, configSection, "KOBegin");
+	KOBegin.listener = this;
+	config->LoadAnimationCollider(KOEnd, configSection, "KOEnd");
+	KOEnd.listener = this;
+	config->LoadAnimationCollider(victory1, configSection, "victory1");
+	victory1.listener = this;
+	config->LoadAnimationCollider(victory2, configSection, "victory2");
+	victory2.listener = this;
+	config->LoadAnimationCollider(timeover, configSection, "timeover");
+	timeover.listener = this;
 
 	return true;
 }
@@ -73,11 +208,19 @@ bool Character::Start()
 	shownLife = 100.0f;
 	hitBackwardMovement = 0.0f;
 	hitBackwardSpeed = 0.0f;
-	applyToOtherPlayer = false;
+	applyBackwardMovementToOtherPlayerRatio = 0.0f;
 	knockdownDamage = 0;
 	knockdownTimer.Pause();
 	updateOverallSpeed = 1.0f;
 	yUpdateControl = 0.0f;
+	isAttacking = false;
+	isGrabbed = false;
+
+	if (currentAttackParticle != nullptr)
+	{
+		currentAttackParticle->toDelete = true;
+		currentAttackParticle = nullptr;
+	}
 
 	if (particleStunned != nullptr)
 	{
@@ -91,6 +234,13 @@ bool Character::Start()
 bool Character::Stop()
 {
 	ClearActionsSequence();
+
+	if (currentAttackParticle != nullptr)
+	{
+		currentAttackParticle->toDelete = true;
+		currentAttackParticle = nullptr;
+	}
+
 	return true;
 }
 
@@ -234,10 +384,12 @@ void Character::OnCollitionEnter(Collider * colA, Collider * colB)
 	}
 
 	//If character hit rival disable this frame attack collider to avoid multiple damage
+	//and stop the attack animation for a brief period
 	if (colA->type == ColliderType::CHARACTER_ATTACK 
 		&& (colB->type == ColliderType::CHARACTER_BODY && colB->listener != this))
 	{
 		currentAnimation->DisableCurrentColliderFrame(ColliderType::CHARACTER_ATTACK);
+		currentAnimation->ChangeSpeedTemporal(0.0f, 150);
 	}
 }
 
@@ -295,6 +447,13 @@ void Character::ResumeAllTimers()
 	actionsSequenceTimer.Resume();
 	knockdownTimer.Resume();
 	stunnedTimer.Resume();
+}
+
+void Character::SubstractDamage(int damage)
+{
+	life -= damage;
+	if (life < 0)
+		life = 0;
 }
 
 void Character::ClearActionsSequence()
@@ -400,6 +559,19 @@ void Character::MatchFinished(int playerWin)
 	}
 }
 
+bool Character::RivalDistanceLowerThan(float minimumDistance)
+{
+	return position.DistanceXTo(rival->position) < minimumDistance;
+}
+
+bool Character::RivalParticleDistanceLowerThan(float minimumDistance)
+{
+	if ((rival->currentAttackParticle != nullptr) && (rival->currentAttackParticle->toDelete == false))
+		return position.DistanceXTo(rival->currentAttackParticle->position) < minimumDistance;
+	else
+		return false;
+}
+
 void Character::DrawShadow(int groundLevel) const
 {
 	fPoint pos;
@@ -410,13 +582,18 @@ void Character::DrawShadow(int groundLevel) const
 
 Entity::Result Character::Draw() const
 {
-	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, direction), currentAnimation->GetFrame().rect, 1.0f, direction);
+	currentState->Draw();
+
+	return Entity::Result::R_OK;
+}
+
+void Character::DrawDefault(Direction drawDirection) const
+{
+	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, drawDirection), currentAnimation->GetFrame().rect, 1.0f, drawDirection);
 
 	if (servicesManager->debug)
 	{
 		servicesManager->render->SetDrawColor(Color(Color::Predefined::MAGENTA));
 		servicesManager->render->DrawRectFill({ position.x - 1, position.y - 1, 2, 2 });
 	}
-
-	return Entity::Result::R_OK;
 }

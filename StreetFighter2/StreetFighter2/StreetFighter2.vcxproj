@@ -27,26 +27,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -142,7 +142,6 @@
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameState.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="ParticleAttack.h" />
     <ClInclude Include="ParticleHit.h" />
@@ -158,6 +157,7 @@
     <ClInclude Include="RyuKen.h" />
     <ClInclude Include="RyuKenSpecialAttack.h" />
     <ClInclude Include="RyuKenStateAerialAttack.h" />
+    <ClInclude Include="RyuKenStateBackRoll.h" />
     <ClInclude Include="RyuKenStateFinish.h" />
     <ClInclude Include="RyuKenState.h" />
     <ClInclude Include="RyuKenStateAerialHit.h" />
@@ -165,6 +165,7 @@
     <ClInclude Include="RyuKenStateBlocking.h" />
     <ClInclude Include="RyuKenStateCrouch.h" />
     <ClInclude Include="RyuKenStateDiagonalJump.h" />
+    <ClInclude Include="RyuKenStateGrabbed.h" />
     <ClInclude Include="RyuKenStateHadoken.h" />
     <ClInclude Include="RyuKenStateHit.h" />
     <ClInclude Include="RyuKenStateIdle.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="RyuKenStateKnockdown.h" />
     <ClInclude Include="RyuKenStateKyaku.h" />
     <ClInclude Include="RyuKenStateShoruyken.h" />
+    <ClInclude Include="RyuKenStateShoulderToss.h" />
     <ClInclude Include="RyuKenStateStunned.h" />
     <ClInclude Include="RyuKenStateWalk.h" />
     <ClInclude Include="Scene.h" />
@@ -189,6 +191,7 @@
     <ClInclude Include="SF2Stats.h" />
     <ClInclude Include="SpecialAction.h" />
     <ClInclude Include="StageFactory.h" />
+    <ClInclude Include="StageGuile.h" />
     <ClInclude Include="StageKen.h" />
     <ClInclude Include="StageType.h" />
     <ClInclude Include="ICollitionListener.h" />
@@ -218,7 +221,6 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageHonda.h" />
-    <ClInclude Include="State.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -231,7 +233,6 @@
     <ClCompile Include="Collition.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="CommandContext.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -245,6 +246,7 @@
     <ClCompile Include="ParticleStunned.cpp" />
     <ClCompile Include="RyuKen.cpp" />
     <ClCompile Include="RyuKenStateAerialAttack.cpp" />
+    <ClCompile Include="RyuKenStateBackRoll.cpp" />
     <ClCompile Include="RyuKenStateFinish.cpp" />
     <ClCompile Include="RyuKenState.cpp" />
     <ClCompile Include="RyuKenStateAerialHit.cpp" />
@@ -252,6 +254,7 @@
     <ClCompile Include="RyuKenStateBlocking.cpp" />
     <ClCompile Include="RyuKenStateCrouch.cpp" />
     <ClCompile Include="RyuKenStateDiagonalJump.cpp" />
+    <ClCompile Include="RyuKenStateGrabbed.cpp" />
     <ClCompile Include="RyuKenStateHadoken.cpp" />
     <ClCompile Include="RyuKenStateHit.cpp" />
     <ClCompile Include="RyuKenStateIdle.cpp" />
@@ -259,6 +262,7 @@
     <ClCompile Include="RyuKenStateKnockdown.cpp" />
     <ClCompile Include="RyuKenStateKyaku.cpp" />
     <ClCompile Include="RyuKenStateShoruyken.cpp" />
+    <ClCompile Include="RyuKenStateShoulderToss.cpp" />
     <ClCompile Include="RyuKenStateStunned.cpp" />
     <ClCompile Include="RyuKenStateWalk.cpp" />
     <ClCompile Include="Scene2PCharacterSelection.cpp" />
@@ -290,6 +294,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageFactory.cpp" />
+    <ClCompile Include="StageGuile.cpp" />
     <ClCompile Include="StageHonda.cpp" />
     <ClCompile Include="StageKen.cpp" />
     <ClCompile Include="Timer.cpp" />

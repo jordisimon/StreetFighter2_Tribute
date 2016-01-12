@@ -2,9 +2,9 @@
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
 #include "RyuKenStateAerialAttack.h"
+#include "RyuKenStateFinish.h"
 
-
-RyuKenStateDiagonalJump::RyuKenStateDiagonalJump(RyuKen* p, Direction dir) : RyuKenState{ p }
+RyuKenStateDiagonalJump::RyuKenStateDiagonalJump(RyuKen* p, Direction dir) : RyuKenState{ p }, playerWin{ -1 }
 {
 	character->currentJumpSpeed = (float)character->jumpVSpeed;
 
@@ -74,10 +74,28 @@ CharacterState * RyuKenStateDiagonalJump::UpdateState()
 
 	if (character->nextPosition.y >= character->groundLevel)
 	{
-		return new RyuKenStateIdle(character);
+		character->PlaySfx(character->floorHit2Sfx);
+		if (playerWin < 0)
+			return new RyuKenStateIdle(character);
+		else
+			return new RyuKenStateFinish(character, playerWin);
 	}
 
 	return nullptr;
+}
+
+CharacterState * RyuKenStateDiagonalJump::RoundFinished(int playerWin)
+{
+	if (character->life > 0)
+	{
+		//Store winner (change state when back to ground)
+		this->playerWin = playerWin;
+		return nullptr;
+	}
+	else
+	{
+		return new RyuKenStateFinish(character, playerWin);
+	}
 }
 
 void RyuKenStateDiagonalJump::IfMovingForwardRecalculatePositionWithPressingSpeed()

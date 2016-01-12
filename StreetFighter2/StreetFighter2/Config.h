@@ -1,4 +1,5 @@
 #pragma once
+
 #include "SimpleIni.h"
 #include "Point.h"
 #include "Rect.h"

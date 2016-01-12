@@ -2,9 +2,10 @@
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
 #include "RyuKenStateStunned.h"
+#include "RyuKenStateFinish.h"
 
 
-RyuKenStateAerialHit::RyuKenStateAerialHit(RyuKen* p) : RyuKenState{ p }
+RyuKenStateAerialHit::RyuKenStateAerialHit(RyuKen* p) : RyuKenState{ p }, playerWin{ -1 }
 {
 	character->currentJumpSpeed = (float)character->jumpVSpeed;
 
@@ -37,8 +38,26 @@ CharacterState * RyuKenStateAerialHit::UpdateState()
 
 	if (character->nextPosition.y >= character->groundLevel)
 	{
-		return new RyuKenStateIdle(character);
+		character->PlaySfx(character->floorHit2Sfx);
+		if (playerWin < 0)
+			return new RyuKenStateIdle(character);
+		else
+			return new RyuKenStateFinish(character, playerWin);
 	}
 
 	return nullptr;
+}
+
+CharacterState * RyuKenStateAerialHit::RoundFinished(int playerWin)
+{
+	if (character->life > 0)
+	{
+		//Store winner (change state when back to ground)
+		this->playerWin = playerWin;
+		return nullptr;
+	}
+	else
+	{
+		return new RyuKenStateFinish(character, playerWin);
+	}
 }

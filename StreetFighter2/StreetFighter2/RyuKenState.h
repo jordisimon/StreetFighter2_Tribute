@@ -26,6 +26,7 @@ public:
 
 	CharacterState* ProcessInput(CommandData* commandData);
 	CharacterState* UpdateState();
+	void Draw() const;
 
 	CharacterState* DealHit(Collider* collider, const fRect& intersectionRect);
 	CharacterState* RoundFinished(int playerWin);

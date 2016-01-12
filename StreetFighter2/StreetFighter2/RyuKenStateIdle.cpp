@@ -24,7 +24,7 @@ void RyuKenStateIdle::OnEnter()
 
 CharacterState * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
 {
-	bool closeRange = character->rivalDistance < (character->fMargin * 2) + 10;
+	bool closeRange = character->RivalDistanceLowerThan((character->fMargin * 2) + 10);
 	for (const auto& command : actions)
 	{
 		switch (command)

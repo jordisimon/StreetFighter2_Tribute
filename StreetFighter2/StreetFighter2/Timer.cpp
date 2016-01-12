@@ -2,6 +2,10 @@
 #include "SDL\include\SDL_timer.h"
 
 
+Timer::Timer(): Timer(1000, true)
+{
+}
+
 Timer::Timer(unsigned int i, bool startPaused) : interval{ i }, paused{ startPaused }
 {
 	unsigned int now = SDL_GetTicks();

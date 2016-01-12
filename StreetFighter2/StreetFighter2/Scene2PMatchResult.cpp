@@ -9,8 +9,6 @@
 #include "Scene2PCharacterSelection.h"
 #include "SF2Stats.h"
 
-int Scene2PMatchResult::matchResultSfx = -1;
-
 Scene2PMatchResult::Scene2PMatchResult(const SceneMatchInfo& info): fadeColor{ Color::Predefined::BLACK }
 {
 	configSection = "Scene_2P_Selection";
@@ -20,8 +18,6 @@ Scene2PMatchResult::Scene2PMatchResult(const SceneMatchInfo& info): fadeColor{ C
 
 	commandContextMenu = servicesManager->commands->Load("Menu_Command_Context");
 	servicesManager->commands->SetCurrentContext(commandContextMenu);
-
-	if (matchResultSfx == -1) matchResultSfx = servicesManager->audio->LoadFx("Assets\\Sound\\Music\\MatchResult.ogg");
 }
 
 
@@ -132,7 +128,7 @@ bool Scene2PMatchResult::Start()
 {
 	Scene::Start();
 
-	servicesManager->audio->PlayFx(matchResultSfx);
+	servicesManager->audio->PlayMusic("Assets\\Sound\\Music\\MatchResult.ogg", 0.0f, 1);
 	return true;
 }
 
@@ -145,6 +141,7 @@ bool Scene2PMatchResult::ProcessInput(CommandData * commandData)
 			switch (command)
 			{
 			case CommandAction::PAUSE:
+				servicesManager->audio->StopMusic(1.0f);
 				HandleSceneChange(new Scene2PCharacterSelection(matchInfo));
 				return true;
 				break;
@@ -156,6 +153,7 @@ bool Scene2PMatchResult::ProcessInput(CommandData * commandData)
 			switch (command)
 			{
 			case CommandAction::PAUSE:
+				servicesManager->audio->StopMusic(1.0f);
 				HandleSceneChange(new Scene2PCharacterSelection(matchInfo));
 				return true;
 				break;

@@ -2,6 +2,8 @@
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
 #include "RyuKenStateAttack.h"
+#include "RyuKenStateShoulderToss.h"
+#include "RyuKenStateBackRoll.h"
 #include "RyuKenStateBlocking.h"
 #include "RyuKenStateKyaku.h"
 #include "RyuKenStateHadoken.h"
@@ -32,7 +34,7 @@ void RyuKenStateWalk::OnEnter()
 
 CharacterState * RyuKenStateWalk::ProcessActions(std::vector<CommandAction> actions)
 {
-	bool closeRange = character->rivalDistance < (character->fMargin * 2) + 10;
+	bool closeRange = character->RivalDistanceLowerThan((character->fMargin * 2) + 10);
 	for (const auto& command : actions)
 	{
 		switch (command)
@@ -45,13 +47,19 @@ CharacterState * RyuKenStateWalk::ProcessActions(std::vector<CommandAction> acti
 			break;
 		case CommandAction::M_PUNCH:
 			if (closeRange)
-				return new RyuKenStateAttack(character, AttackType::F_M_PUNCH);
+				if (forward && character->rival->position.y >= character->groundLevel)
+					return new RyuKenStateShoulderToss(character, character->direction);
+				else
+					return new RyuKenStateAttack(character, AttackType::F_M_PUNCH);
 			else
 				return new RyuKenStateAttack(character, AttackType::M_PUNCH);
 			break;
 		case CommandAction::H_PUNCH:
 			if (closeRange)
-				return new RyuKenStateAttack(character, AttackType::F_H_PUNCH);
+				if (forward && character->rival->position.y >= character->groundLevel)
+					return new RyuKenStateShoulderToss(character, character->direction);
+				else
+					return new RyuKenStateAttack(character, AttackType::F_H_PUNCH);
 			else
 				return new RyuKenStateAttack(character, AttackType::H_PUNCH);
 			break;
@@ -63,13 +71,19 @@ CharacterState * RyuKenStateWalk::ProcessActions(std::vector<CommandAction> acti
 			break;
 		case CommandAction::M_KICK:
 			if (closeRange)
-				return new RyuKenStateAttack(character, AttackType::F_M_KICK);
+				if (forward && character->rival->position.y >= character->groundLevel)
+					return new RyuKenStateBackRoll(character, character->direction);
+				else
+					return new RyuKenStateAttack(character, AttackType::F_M_KICK);
 			else
 				return new RyuKenStateAttack(character, AttackType::M_KICK);
 			break;
 		case CommandAction::H_KICK:
 			if (closeRange)
-				return new RyuKenStateAttack(character, AttackType::F_H_KICK);
+				if (forward && character->rival->position.y >= character->groundLevel)
+					return new RyuKenStateBackRoll(character, character->direction);
+				else
+					return new RyuKenStateAttack(character, AttackType::F_H_KICK);
 			else
 				return new RyuKenStateAttack(character, AttackType::H_KICK);
 			break;
@@ -120,7 +134,8 @@ CharacterState * RyuKenStateWalk::UpdateState()
 {
 	RyuKenState::UpdateState();
 
-	if (!forward && character->isRivalAttacking && character->rivalDistance < 150)
+	if (!forward && ((character->rival->isAttacking && character->RivalDistanceLowerThan(150))
+		|| (character->RivalParticleDistanceLowerThan(150))))
 		return new RyuKenStateBlocking(character);
 
 	switch (character->direction)

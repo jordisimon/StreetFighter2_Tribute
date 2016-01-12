@@ -56,8 +56,6 @@ MatchState * MatchStateFight::UpdateState()
 		scene->timer.Reset();
 	}
 	
-	scene->UpdatePlayersAttacking();
-	scene->CalculatePlayersDistance();
 	scene->stage->UpdateState();
 	servicesManager->particles->UpdateParticlesState();
 	servicesManager->collitions->UpdateCollidersState();

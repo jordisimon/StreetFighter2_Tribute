@@ -65,6 +65,7 @@ private:
 	SDL_Haptic* haptic2 = nullptr;
 	float axisThreshold;
 	int screenSize;
+	bool controllerOverridesKeyboard;
 
 	void UpdateGameControllerState(SDL_GameController* controller, KeyState* controllerState);
 
@@ -76,6 +77,8 @@ public:
 	bool CleanUp();
 
 	bool UpdateInput();
+
+	bool GetControllerOverridesKeyboard() const { return controllerOverridesKeyboard; }
 
 	KeyState GetKey(int id) const
 	{

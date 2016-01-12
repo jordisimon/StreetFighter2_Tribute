@@ -3,9 +3,8 @@
 #include "Game.h"
 #include "Entity.h"
 
-#include "C:\Program Files (x86)\Visual Leak Detector\include\vld.h" 
-
-#pragma comment(lib, "C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32\\vld.lib")
+//#include "C:\Program Files (x86)\Visual Leak Detector\include\vld.h" 
+//#pragma comment(lib, "C:\\Program Files (x86)\\Visual Leak Detector\\lib\\Win32\\vld.lib")
 
 /**
 WARNING!!!

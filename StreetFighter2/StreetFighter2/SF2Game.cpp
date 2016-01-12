@@ -37,28 +37,31 @@ bool SF2Game::Init()
 
 	bool res = Game::Init();
 
-	//testing
-	SceneMatchInfo info;
-	info.twoPlayers = true;
-	info.battleNumber = 0;
-	info.player1Handicap = 3;
-	info.player2Handicap = 3;
-	info.player1Type = CharacterType::RYU;
-	info.player2Type = CharacterType::KEN;
-	info.stageType = StageType::HONDA;
-	servicesManager->scene->SetNewScene(new Scene2PCharacterSelection(info));
-	//servicesManager->scene->SetNewScene(new Scene2PHandicapAndStageSelection(info));
-	//servicesManager->scene->SetNewScene(new SceneMatch(info));
-	//servicesManager->scene->SetNewScene(new Scene2PMatchResult(info));
-	//end testing
+	if (res)
+	{
+		//testing
+		SceneMatchInfo info;
+		info.twoPlayers = true;
+		info.battleNumber = 0;
+		info.player1Handicap = 3;
+		info.player2Handicap = 3;
+		info.player1Type = CharacterType::RYU;
+		info.player2Type = CharacterType::KEN;
+		info.stageType = StageType::GUILE;
+		//servicesManager->scene->SetNewScene(new Scene2PCharacterSelection(info));
+		//servicesManager->scene->SetNewScene(new Scene2PHandicapAndStageSelection(info));
+		//servicesManager->scene->SetNewScene(new SceneMatch(info));
+		//servicesManager->scene->SetNewScene(new Scene2PMatchResult(info));
+		//end testing
 
-	//servicesManager->scene->SetNewScene(new SceneLicensed());
+		servicesManager->scene->SetNewScene(new SceneLicensed());
 
-	//Debug
-	debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
-	debugCameraSpeed = config->LoadFloatValue(DEBUG_SECTION, "debugCameraSpeed", "3");
-	debugCommandContext = servicesManager->commands->Load("Debug_Command_Context");
-	debugCommandContext->AddCommandListener(this);
+		//Debug
+		debug = config->LoadBoolValue(DEBUG_SECTION, "enable", "0");
+		debugCameraSpeed = config->LoadFloatValue(DEBUG_SECTION, "debugCameraSpeed", "3");
+		debugCommandContext = servicesManager->commands->Load("Debug_Command_Context");
+		debugCommandContext->AddCommandListener(this);
+	}
 
 	return res;
 }

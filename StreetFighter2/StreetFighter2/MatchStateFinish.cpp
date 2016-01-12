@@ -54,6 +54,7 @@ void MatchStateFinish::OnEnter()
 	else
 		scene->timeScore = 0;
 
+	//Slow down
 	scene->player1->updateOverallSpeed /= 4;
 	scene->player2->updateOverallSpeed /= 4;
 

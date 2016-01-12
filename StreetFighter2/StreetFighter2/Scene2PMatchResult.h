@@ -20,8 +20,6 @@ private:
 	const char* configSection;
 	SDL_Texture* texture = nullptr;
 
-	static int matchResultSfx;
-
 	CommandContext* commandContextMenu = nullptr;
 
 	Sprite playerStats;

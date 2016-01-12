@@ -1,14 +1,20 @@
 #pragma once
 #include <vector>
 #include "Sprite.h"
+#include "Timer.h"
 
 class Animation
 {
 protected:
-	float current_frame;
-	int valid_frame;
+	float currentFrame;
+	int validFrame;
 	int framesSize; //To avoid query vector size each frame 
 	float speed; //times per second executed (or 1/duration in seconds)
+
+	//Used to change speed for a short period
+	bool speedAltered;
+	float originalSpeed;
+	Timer timer;
 
 	virtual void OnReset() {};
 
@@ -29,7 +35,7 @@ public:
 	virtual void UpdateCurrentFrame();
 	bool HasFinished() const;
 	const Sprite& GetFrame() const;
-	virtual void NextFrame();
-	virtual void PriorFrame();
+	int GetCurrentFrameIndex() const;
+	void ChangeSpeedTemporal(float ratio, int time);
 };
 

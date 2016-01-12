@@ -19,6 +19,7 @@ bool ServiceInput::Init()
 
 	screenSize = config->LoadIntValue("Render", "screenRatio", "2");
 	axisThreshold = config->LoadFloatValue("Input", "axisThreshold", "0,5f");
+	controllerOverridesKeyboard = config->LoadBoolValue("Input", "controllerOverridesKeyboard", "1");
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{

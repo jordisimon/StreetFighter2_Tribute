@@ -3,6 +3,7 @@
 #include "Point.h"
 #include "Sprite.h"
 #include "Direction.h"
+#include "CharacterType.h"
 #include "ICollitionListener.h"
 #include "AttackInfo.h"
 #include <vector>
@@ -10,8 +11,8 @@
 #include "CommandAction.h"
 #include "SpecialAction.h"
 #include "Timer.h"
+#include "AnimationCollider.h"
 
-class AnimationCollider;
 class CharacterState;
 class Particle;
 class Collider;
@@ -21,7 +22,6 @@ class Character : public Entity, public ICollitionListener
 {
 private:
 	CharacterState* nextState = nullptr; //Needed because processing a collition can change the state, but we have to do in the next UpdateState. It will mess the colliders list otherwise
-	void SetNewState(CharacterState* state);
 
 	void StoreActions(std::vector<CommandAction> actions);
 
@@ -31,8 +31,11 @@ protected:
 	CharacterState* currentState = nullptr;
 	Sprite shadow;
 
+	void SetNewState(CharacterState* state);
+
 public:
 	//Common
+	CharacterType type;
 	int playerNumber;
 	fPoint position;
 	fPoint nextPosition;
@@ -46,23 +49,27 @@ public:
 	int groundLevel; //Needed to jump
 	AnimationCollider* currentAnimation = nullptr;
 	bool isAttacking;
-	bool isRivalAttacking;
-	float rivalDistance;
+	bool isGrabbed;
+
 	float hitBackwardMovement;
 	float hitBackwardSpeed;
-	bool applyToOtherPlayer;
+	float applyBackwardMovementToOtherPlayerRatio;
 	unsigned int handicap;
+
+	Character* rival;
 
 	//Special movements control
 	std::deque<SpecialAction> actionsSequence;
 	Timer actionsSequenceTimer{1000};
+
+	Particle* currentAttackParticle = nullptr; //Character can have only one attack particle at a time (like Hadoken or Sonic boom)
 
 	//Knockdown control
 	unsigned int knockdownDamage;
 	Timer knockdownTimer{2000};
 
 	//Stunned control
-	Particle* particleStunned;
+	Particle* particleStunned = nullptr;
 	Timer stunnedTimer{3000};
 
 	//Fx sounds
@@ -74,6 +81,7 @@ public:
 	static int hHitSfx;
 	static int hitBlockedSfx;
 	static int floorHitSfx;
+	static int floorHit2Sfx;
 
 	//Character specific
 	int characterId;
@@ -88,7 +96,63 @@ public:
 	float fMargin; //Front margin
 	float bMargin; //Back margin
 
-	Character() {};
+	//Common animations (all characters will have)
+	AnimationCollider idle;
+	AnimationCollider fWalk;
+	AnimationCollider bWalk;
+	AnimationCollider jump;
+	AnimationCollider fJump;
+	AnimationCollider bJump;
+	AnimationCollider crouch;
+	AnimationCollider blocking;
+	AnimationCollider cBlocking;
+	AnimationCollider lPunch;
+	AnimationCollider mPunch;
+	AnimationCollider hPunch;
+	AnimationCollider flPunch;
+	AnimationCollider fmPunch;
+	AnimationCollider fhPunch;
+	AnimationCollider lKick;
+	AnimationCollider mKick;
+	AnimationCollider hKick;
+	AnimationCollider flKick;
+	AnimationCollider fmKick;
+	AnimationCollider fhKick;
+	AnimationCollider clPunch;
+	AnimationCollider cmPunch;
+	AnimationCollider chPunch;
+	AnimationCollider clKick;
+	AnimationCollider cmKick;
+	AnimationCollider chKick;
+	AnimationCollider jlPunch;
+	AnimationCollider jmPunch;
+	AnimationCollider jhPunch;
+	AnimationCollider jlKick;
+	AnimationCollider jmKick;
+	AnimationCollider jhKick;
+	AnimationCollider fjlPunch;
+	AnimationCollider fjmPunch;
+	AnimationCollider fjhPunch;
+	AnimationCollider fjlKick;
+	AnimationCollider fjmKick;
+	AnimationCollider fjhKick;
+	AnimationCollider grabbed;
+	AnimationCollider rolled;
+	AnimationCollider rollReleased;
+	AnimationCollider hit;
+	AnimationCollider faceHit;
+	AnimationCollider cHit;
+	AnimationCollider aHit;
+	AnimationCollider knockdown;
+	AnimationCollider knockdownRecover;
+	AnimationCollider stunned;
+	AnimationCollider KOBegin;
+	AnimationCollider KOEnd;
+	AnimationCollider victory1;
+	AnimationCollider victory2;
+	AnimationCollider timeover;
+
+	Character(CharacterType t) : type{ t } {};
 	~Character() {};
 
 	bool Init();
@@ -102,6 +166,7 @@ public:
 
 	void DrawShadow(int groundLevel) const;
 	Entity::Result Draw() const;
+	void DrawDefault(Direction drawDirection) const;
 
 	void OnCollitionEnter(Collider* colA, Collider* colB);
 	void OnCollitionExit(Collider* colA, Collider* colB) {};
@@ -113,6 +178,8 @@ public:
 	void PauseAllTimers();
 	void ResumeAllTimers();
 
+	void SubstractDamage(int damage);
+
 	void ClearActionsSequence();
 	virtual CharacterState* CheckSpecialActions() { return nullptr; };
 	void UpdateYPosition();
@@ -120,5 +187,11 @@ public:
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();
 	void RoundFinished(int playerWin);
 	void MatchFinished(int playerWin);
+
+	virtual void Grabbed() {};
+	virtual void Thrown() {};
+
+	bool RivalDistanceLowerThan(float minimumDistance);
+	bool RivalParticleDistanceLowerThan(float minimumDistance);
 };
 

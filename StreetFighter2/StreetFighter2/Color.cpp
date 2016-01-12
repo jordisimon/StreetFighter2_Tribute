@@ -4,7 +4,7 @@ Color::Color() : red{ 0 }, green{ 0 }, blue{ 0 }, alpha{ 255 }
 {
 }
 
-Color::Color(Predefined col) : red{ 0 }, green{ 0 }, blue{ 0 }, alpha{ 255 }
+Color::Color(Predefined col) : Color{}
 {
 	switch (col)
 	{

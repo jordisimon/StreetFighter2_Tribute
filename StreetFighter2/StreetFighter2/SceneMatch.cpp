@@ -16,6 +16,7 @@
 #include "StageFactory.h"
 #include "MatchStateIntro.h"
 #include "CommandContext.h"
+#include "Particle.h"
 
 SceneMatch::SceneMatch(const SceneMatchInfo& sceneInfo) : timer { 1000, true }, paused{ false }, roundNumber{ 0 }
 {
@@ -62,6 +63,9 @@ bool SceneMatch::Init()
 	ret = stage->Init();
 	ret = ret && player1->Init();
 	ret = ret && player2->Init();
+	player1->rival = player2;
+	player2->rival = player1;
+
 	//Init GUI AFTER players (because it needs player id)
 	GUI->Init();
 
@@ -111,6 +115,7 @@ bool SceneMatch::Start()
 	time = 99;
 	camPosition = stage->camStart;
 	SetCamPosition();
+	//servicesManager->render->SetCameraPostion(camPosition);
 
 	SetCollidersPosition();
 
@@ -186,8 +191,18 @@ Entity::Result SceneMatch::Draw() const
 		stage->Draw();
 		player2->DrawShadow(stage->groundLevel);
 		player1->DrawShadow(stage->groundLevel);
-		player2->Draw();
-		player1->Draw(); //Player1 painted over player 2
+
+		//If player1 beign grabbed, then painted background, else always foreground
+		if (player1->isGrabbed)
+		{
+			player1->Draw();
+			player2->Draw();
+		}
+		else
+		{
+			player2->Draw();
+			player1->Draw(); 
+		}
 		servicesManager->particles->DrawParticles();
 		stage->DrawForeground();
 		servicesManager->collitions->DrawColliders();
@@ -212,19 +227,6 @@ void SceneMatch::ResumeAllTimers()
 
 	player1->ResumeAllTimers();
 	player2->ResumeAllTimers();
-}
-
-void SceneMatch::CalculatePlayersDistance()
-{
-	float playersDistance = player1->position.DistanceXTo(player2->position);
-	player1->rivalDistance = playersDistance;
-	player2->rivalDistance = playersDistance;
-}
-
-void SceneMatch::UpdatePlayersAttacking()
-{
-	player1->isRivalAttacking = player2->isAttacking;
-	player2->isRivalAttacking = player1->isAttacking;
 }
 
 void SceneMatch::CorrectPosition(fPoint & position, float margin)
@@ -254,6 +256,10 @@ void SceneMatch::MovePlayers()
 
 
 	bool nextTouching = player1->nextPosition.DistanceXTo(player2->nextPosition) < (player1->fMargin + player2->fMargin);
+
+	//Special case if any player is being grabbed
+	if (player1->isGrabbed || player2->isGrabbed)
+		nextTouching = false;
 
 	//If next position not touching don't need to do anything else
 	if (nextTouching)
@@ -377,8 +383,9 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 
 			if (movement > distanceToLimit)
 			{
-				if (forcedPlayer->applyToOtherPlayer)
-					otherPlayer->nextPosition.x = otherPlayer->position.x -(movement - distanceToLimit);
+				//Only apply to other player if he is close enough
+				if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f && otherPlayer->position.x > sceneMinXPos - scene25Percent)
+					otherPlayer->nextPosition.x = otherPlayer->position.x - ((movement - distanceToLimit) * forcedPlayer->applyBackwardMovementToOtherPlayerRatio);
 				movement = distanceToLimit;
 			}
 
@@ -390,8 +397,9 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 
 			if (movement > distanceToLimit)
 			{
-				if (forcedPlayer->applyToOtherPlayer)
-					otherPlayer->nextPosition.x = otherPlayer->position.x + (movement - distanceToLimit);
+				//Only apply to other player if he is close enough
+				if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f && otherPlayer->position.x < sceneMaxXPos + scene25Percent)
+					otherPlayer->nextPosition.x = otherPlayer->position.x + ((movement - distanceToLimit) * forcedPlayer->applyBackwardMovementToOtherPlayerRatio);
 				movement = distanceToLimit;
 			}
 
@@ -400,7 +408,7 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 		}
 
 		forcedPlayer->position = forcedPlayer->nextPosition;
-		if (forcedPlayer->applyToOtherPlayer)
+		if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f)
 			otherPlayer->position = otherPlayer->nextPosition;
 
 	}

@@ -3,6 +3,9 @@
 
 class RyuKenStateJump :	public RyuKenState
 {
+private:
+	int playerWin;
+
 protected:
 	CharacterState* ProcessActions(std::vector<CommandAction> actions);
 
@@ -13,5 +16,6 @@ public:
 	void OnEnter();
 
 	CharacterState* UpdateState();
+	CharacterState* RoundFinished(int playerWin);
 };
 

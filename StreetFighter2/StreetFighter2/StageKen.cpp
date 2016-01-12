@@ -58,23 +58,6 @@ bool StageKen::Init()
 		config->LoadSprite(item2, configSection, "item2");
 		config->LoadfPoint(item2Pos1, configSection, "item2Pos1");
 		config->LoadfPoint(item2Pos2, configSection, "item2Pos2");
-
-		/*//lamp
-		config->LoadSprite(lamp, configSection, "lamp");
-		config->LoadfPoint(lamp1Pos, configSection, "lamp1Pos");
-		config->LoadfPoint(lamp2Pos, configSection, "lamp2Pos");
-
-		// water animation
-		config->LoadAnimation(water, configSection, "water");
-		config->LoadfPoint(waterPos, configSection, "waterPos");
-
-		// sun animation
-		config->LoadAnimation(sun, configSection, "sun");
-		config->LoadfPoint(sunPos, configSection, "sunPos");
-
-		// ad animation
-		config->LoadAnimation(ad, configSection, "ad");
-		config->LoadfPoint(adPos, configSection, "adPos");*/
 	}
 
 	return res;
@@ -135,9 +118,10 @@ Entity::Result StageKen::UpdateState()
 
 Entity::Result StageKen::Draw() const
 {
-	// Draw everything --------------------------------------
-	servicesManager->render->BlitScene(texture, backgroundPos, background.rect, 0.75f); //background
-	servicesManager->render->BlitScene(texture, flagPos, flag.GetFrame().rect, 0.75f); // pool animation
+	//Background
+	servicesManager->render->BlitScene(texture, backgroundPos, background.rect, 0.75f);
+	//Pool animation
+	servicesManager->render->BlitScene(texture, flagPos, flag.GetFrame().rect, 0.75f); 
 
 	//Ship
 	fPoint itemFinalPos = shipPos;

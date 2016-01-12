@@ -4,7 +4,7 @@
 #include "RyuKenStateStunned.h"
 
 
-RyuKenStateKnockdown::RyuKenStateKnockdown(RyuKen* p) : RyuKenState{ p }, step{ 0 }
+RyuKenStateKnockdown::RyuKenStateKnockdown(RyuKen* p, Direction animDir) : RyuKenState{ p }, animDirection{ animDir }, step { 0 }
 {
 }
 
@@ -20,8 +20,7 @@ void RyuKenStateKnockdown::OnEnter()
 	character->hitBackwardMovement = 100.0f;
 	character->hitBackwardSpeed = 120.0f;
 	character->currentJumpSpeed = 5.5f;
-	character->applyToOtherPlayer = false;
-
+	character->applyBackwardMovementToOtherPlayerRatio = 0.25f;
 	character->knockdownTimer.Pause();
 
 	RyuKenState::OnEnter();
@@ -76,7 +75,12 @@ CharacterState * RyuKenStateKnockdown::UpdateState()
 		break;
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
+	character->currentAnimation->UpdateCurrentFrame(character->position, animDirection);
 
 	return nullptr;
+}
+
+void RyuKenStateKnockdown::Draw() const
+{
+	character->DrawDefault(animDirection);
 }

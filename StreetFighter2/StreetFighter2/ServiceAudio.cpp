@@ -69,7 +69,7 @@ bool ServiceAudio::PlayMusic(const char * path)
 	return PlayMusic(path, fadeTime);
 }
 
-bool ServiceAudio::PlayMusic(const char * path, float pFade_time)
+bool ServiceAudio::PlayMusic(const char * path, float pFade_time, int loops)
 {
 	bool ret = true;
 
@@ -99,7 +99,7 @@ bool ServiceAudio::PlayMusic(const char * path, float pFade_time)
 	{
 		if (pFade_time > 0.0f)
 		{
-			if (Mix_FadeInMusic(music, -1, (int)(pFade_time * 1000.0f)) < 0)
+			if (Mix_FadeInMusic(music, loops, (int)(pFade_time * 1000.0f)) < 0)
 			{
 				LOG("Cannot fade in music %s. Mix_GetError(): %s", path, Mix_GetError());
 				ret = false;
@@ -107,7 +107,7 @@ bool ServiceAudio::PlayMusic(const char * path, float pFade_time)
 		}
 		else
 		{
-			if (Mix_PlayMusic(music, -1) < 0)
+			if (Mix_PlayMusic(music, loops) < 0)
 			{
 				LOG("Cannot play in music %s. Mix_GetError(): %s", path, Mix_GetError());
 				ret = false;

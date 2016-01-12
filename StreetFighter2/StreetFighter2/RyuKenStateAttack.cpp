@@ -134,6 +134,9 @@ CharacterState * RyuKenStateAttack::UpdateState()
 		case AttackType::C_H_KICK:
 			return new RyuKenStateCrouch(character, false);
 			break;
+		default:
+			return new RyuKenStateIdle(character);
+			break;
 		}
 	}
 

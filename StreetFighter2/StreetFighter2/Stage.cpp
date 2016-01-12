@@ -1,4 +1,5 @@
 #include "Stage.h"
+#include "Config.h"
 #include "ServicesManager.h"
 #include "ServiceTextures.h"
 

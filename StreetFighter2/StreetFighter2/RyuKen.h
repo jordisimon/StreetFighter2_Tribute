@@ -6,51 +6,11 @@
 #include <vector>
 #include "RyuKenSpecialAttack.h"
 
-class Particle;
-
 //Ryu and Ken are almost the same
 class RyuKen : public Character
 {
 public:
-	AnimationCollider idle;
-	AnimationCollider fWalk;
-	AnimationCollider bWalk;
-	AnimationCollider jump;
-	AnimationCollider fJump;
-	AnimationCollider bJump;
-	AnimationCollider crouch;
-	AnimationCollider blocking;
-	AnimationCollider cBlocking;
-	AnimationCollider lPunch;
-	AnimationCollider mPunch;
-	AnimationCollider hPunch;
-	AnimationCollider flPunch;
-	AnimationCollider fmPunch;
-	AnimationCollider fhPunch;
-	AnimationCollider lKick;
-	AnimationCollider mKick;
-	AnimationCollider hKick;
-	AnimationCollider flKick;
-	AnimationCollider fmKick;
-	AnimationCollider fhKick;
-	AnimationCollider clPunch;
-	AnimationCollider cmPunch;
-	AnimationCollider chPunch;
-	AnimationCollider clKick;
-	AnimationCollider cmKick;
-	AnimationCollider chKick;
-	AnimationCollider jlPunch;
-	AnimationCollider jmPunch;
-	AnimationCollider jhPunch;
-	AnimationCollider jlKick;
-	AnimationCollider jmKick;
-	AnimationCollider jhKick;
-	AnimationCollider fjlPunch;
-	AnimationCollider fjmPunch;
-	AnimationCollider fjhPunch;
-	AnimationCollider fjlKick;
-	AnimationCollider fjmKick;
-	AnimationCollider fjhKick;
+	//Specific animations
 	AnimationCollider shoryukenBegin;
 	AnimationCollider shoryuken;
 	AnimationCollider shoryukenEnd;
@@ -60,21 +20,9 @@ public:
 	AnimationCollider hadoken;
 	AnimationCollider shoulderToss;
 	AnimationCollider backRoll;
-	AnimationCollider hit;
-	AnimationCollider faceHit;
-	AnimationCollider cHit;
-	AnimationCollider aHit;
-	AnimationCollider knockdown;
-	AnimationCollider knockdownRecover;
-	AnimationCollider stunned;
-	AnimationCollider KOBegin;
-	AnimationCollider KOEnd;
-	AnimationCollider victory1;
-	AnimationCollider victory2;
-	AnimationCollider timeover;
+	AnimationCollider backRollRecover;
 
 	fPoint hadokenOffset;
-	Particle* currentHadoken;
 
 	//Fx sounds
 	static int lShoryukenSfx;
@@ -86,6 +34,7 @@ public:
 	static int lKyakuSfx;
 	static int mKyakuSfx;
 	static int hKyakuSfx;
+	static int grabSfx;
 	static int KOSfx;
 
 	//Special attacks
@@ -101,7 +50,7 @@ public:
 
 	CharacterState* CheckSpecial(const std::vector<SpecialAction>& special, const RyuKenSpecialAttack& type);
 public:
-	RyuKen(CharacterType type);
+	RyuKen(CharacterType t);
 	~RyuKen();
 
 	bool Init();
@@ -110,5 +59,7 @@ public:
 	bool Stop();
 
 	CharacterState* CheckSpecialActions();
+	void Grabbed();
+	void Thrown();
 };
 

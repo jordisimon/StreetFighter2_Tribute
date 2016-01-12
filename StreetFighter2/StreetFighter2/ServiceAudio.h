@@ -22,7 +22,7 @@ public:
 	bool CleanUp();
 
 	bool PlayMusic(const char* path);
-	bool PlayMusic(const char* path, float pFade_time);
+	bool PlayMusic(const char* path, float pFade_time, int loops = -1);
 	bool PauseMusic() const;
 	bool ResumeMusic() const;
 	bool StopMusic() const;

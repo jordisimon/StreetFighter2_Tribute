@@ -102,7 +102,8 @@ CharacterState * RyuKenStateCrouch::UpdateState()
 {
 	RyuKenState::UpdateState();
 
-	if (defending && character->isRivalAttacking && character->rivalDistance < 150)
+	if (defending && ((character->rival->isAttacking && character->RivalDistanceLowerThan(150))
+		|| character->RivalParticleDistanceLowerThan(150)))
 	{
 		if (!blocking)
 		{

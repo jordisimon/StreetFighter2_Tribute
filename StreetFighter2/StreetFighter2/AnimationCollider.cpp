@@ -41,10 +41,10 @@ void AnimationCollider::InitColliders(const fPoint& position, Direction directio
 		{
 			colliderAnimation->collider = servicesManager->collitions->CreateCollider(
 				colliderAnimation->type, //type
-				colliderAnimation->colliderFrameSprites[valid_frame].GetScreenRect(position, direction), //rect (from current frame)
+				colliderAnimation->colliderFrameSprites[validFrame].GetScreenRect(position, direction), //rect (from current frame)
 				listener, //listener
 				Color((Color::Predefined)colliderAnimation->type), //color (based on type)
-				colliderAnimation->colliderCurrentFrameActive[valid_frame] //active (from current frame)
+				colliderAnimation->colliderCurrentFrameActive[validFrame] //active (from current frame)
 				);
 		}
 	}
@@ -76,8 +76,8 @@ void AnimationCollider::UpdateCurrentFrame(const fPoint& position, Direction dir
 	{
 		if (colliderAnimation->collider != nullptr)
 		{
-			colliderAnimation->collider->SetRect(colliderAnimation->colliderFrameSprites[valid_frame].GetScreenRect(position, direction));
-			colliderAnimation->collider->active = colliderAnimation->colliderCurrentFrameActive[valid_frame];
+			colliderAnimation->collider->SetRect(colliderAnimation->colliderFrameSprites[validFrame].GetScreenRect(position, direction));
+			colliderAnimation->collider->active = colliderAnimation->colliderCurrentFrameActive[validFrame];
 		}
 	}
 }
