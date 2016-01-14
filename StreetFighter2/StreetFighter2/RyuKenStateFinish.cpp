@@ -4,7 +4,7 @@
 #include <time.h>   
 
 
-RyuKenStateFinish::RyuKenStateFinish(RyuKen* p, int pWin) : RyuKenState{ p }, playerWin{ pWin }, falling{ false }
+RyuKenStateFinish::RyuKenStateFinish(RyuKen* p, int pWin) : RyuKenState{ p, false }, playerWin{ pWin }, falling{ false }
 {
 }
 
@@ -25,9 +25,9 @@ void RyuKenStateFinish::OnEnter()
 		character->hitBackwardMovement = 100.0f;
 		character->hitBackwardSpeed = 120.0f;
 		character->currentJumpSpeed = 5.5f;
-		character->applyBackwardMovementToOtherPlayerRatio = 0.25f;
+		character->applyBackwardMovementToOtherPlayerRatio = 0.0f;
 		character->yUpdateControl = 1.0f; // to force not being in ground when updating first time
-		character->currentAnimation = &character->KOBegin;
+		character->SetCurrentAnimation(character->KOBegin);
 		character->PlaySfx(character->KOSfx);
 		falling = true;
 	}
@@ -41,23 +41,21 @@ void RyuKenStateFinish::OnEnter()
 			switch (random)
 			{
 			case 0:
-				character->currentAnimation = &character->victory1;
+				character->SetCurrentAnimation(character->victory1);
 				break;
 			case 1:
-				character->currentAnimation = &character->victory2;
+				character->SetCurrentAnimation(character->victory2);
 				break;
 			default:
-				character->currentAnimation = &character->victory1;
+				character->SetCurrentAnimation(character->victory1);
 				break;
 			}
 		}
 		else
 		{
-			character->currentAnimation = &character->timeover;
+			character->SetCurrentAnimation(character->timeover);
 		}
 	}
-
-	RyuKenState::OnEnter();
 }
 
 CharacterState * RyuKenStateFinish::UpdateState()
@@ -66,8 +64,6 @@ CharacterState * RyuKenStateFinish::UpdateState()
 
 	if (falling)
 	{
-		character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
-
 		if (character->nextPosition.y >= character->groundLevel)
 		{
 			if (character->life > 0)
@@ -80,33 +76,29 @@ CharacterState * RyuKenStateFinish::UpdateState()
 					switch (random)
 					{
 					case 0:
-						character->currentAnimation = &character->victory1;
+						character->SetCurrentAnimation(character->victory1);
 						break;
 					case 1:
-						character->currentAnimation = &character->victory2;
+						character->SetCurrentAnimation(character->victory2);
 						break;
 					default:
-						character->currentAnimation = &character->victory1;
+						character->SetCurrentAnimation(character->victory1);
 						break;
 					}
 				}
 				else
 				{
-					character->currentAnimation = &character->timeover;
+					character->SetCurrentAnimation(character->timeover);
 				}
 			}
 			else
 			{
-				character->currentAnimation = &character->KOEnd;
+				character->SetCurrentAnimation(character->KOEnd);
 				character->PlaySfx(character->floorHitSfx);
 			}
 
 			falling = false;
 		}
-	}
-	else
-	{
-		character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	}
 
 	return nullptr;

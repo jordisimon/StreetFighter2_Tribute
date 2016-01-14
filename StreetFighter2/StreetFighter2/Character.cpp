@@ -34,6 +34,7 @@ bool Character::Init()
 
 	roundVictories = 0;
 	direction = Direction::RIGHT;
+	animDirection = direction;
 	characterId = config->LoadIntValue(configSection, "characterId", "-1");
 	fSpeed = config->LoadIntValue(configSection, "fSpeed", "0");
 	bSpeed = config->LoadIntValue(configSection, "bSpeed", "0");
@@ -389,8 +390,37 @@ void Character::OnCollitionEnter(Collider * colA, Collider * colB)
 		&& (colB->type == ColliderType::CHARACTER_BODY && colB->listener != this))
 	{
 		currentAnimation->DisableCurrentColliderFrame(ColliderType::CHARACTER_ATTACK);
-		currentAnimation->ChangeSpeedTemporal(0.0f, 150);
+		currentAnimation->ChangeSpeedTemporal(0.15f, 300);
 	}
+}
+
+void Character::SetDirection(Direction dir)
+{
+	currentState->SetDirection(dir);
+}
+
+void Character::UpdateCurrentAnimation()
+{
+	currentAnimation->UpdateCurrentFrame(position, animDirection);
+}
+
+void Character::SetCurrentAnimation(AnimationCollider & anim)
+{
+	SetCurrentAnimation(anim, direction);
+}
+
+void Character::SetCurrentAnimation(AnimationCollider & anim, Direction dir)
+{
+	animDirection = dir;
+
+	currentAnimation = &anim;	
+	currentAnimation->ResetAnimation();
+	currentAnimation->InitColliders(position, animDirection);
+}
+
+void Character::CleanupCurrentAnimationColliders() const
+{
+	currentAnimation->CleanUpColliders();
 }
 
 void Character::PlaySfx(int sfx) const
@@ -460,6 +490,11 @@ void Character::ClearActionsSequence()
 {
 	actionsSequence.clear();
 	actionsSequenceTimer.Pause();
+}
+
+void Character::UpdateColliders()
+{
+	currentAnimation->UpdateColliders(position, animDirection);
 }
 
 void Character::UpdateYPosition()
@@ -577,23 +612,19 @@ void Character::DrawShadow(int groundLevel) const
 	fPoint pos;
 	pos.y = (float)groundLevel;
 	pos.x = position.x;
-	servicesManager->render->BlitScene(texture, shadow.GetRectPosition(pos, direction), shadow.rect, 1.0f, direction);
+	servicesManager->render->BlitScene(texture, shadow.GetRectPosition(pos, animDirection), shadow.rect, 1.0f, animDirection);
 }
 
 Entity::Result Character::Draw() const
 {
-	currentState->Draw();
-
-	return Entity::Result::R_OK;
-}
-
-void Character::DrawDefault(Direction drawDirection) const
-{
-	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, drawDirection), currentAnimation->GetFrame().rect, 1.0f, drawDirection);
+	//currentState->Draw();
+	servicesManager->render->BlitScene(texture, currentAnimation->GetFrame().GetRectPosition(position, animDirection), currentAnimation->GetFrame().rect, 1.0f, animDirection);
 
 	if (servicesManager->debug)
 	{
 		servicesManager->render->SetDrawColor(Color(Color::Predefined::MAGENTA));
 		servicesManager->render->DrawRectFill({ position.x - 1, position.y - 1, 2, 2 });
 	}
+
+	return Entity::Result::R_OK;
 }

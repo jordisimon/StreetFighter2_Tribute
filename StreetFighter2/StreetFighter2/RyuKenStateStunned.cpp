@@ -6,7 +6,7 @@
 #include "ParticleInfo.h"
 #include "RyuKenStateIdle.h"
 
-RyuKenStateStunned::RyuKenStateStunned(RyuKen* p, bool st) : RyuKenState{ p }, strong{ st }, canReduceTime { true }
+RyuKenStateStunned::RyuKenStateStunned(RyuKen* p, bool st) : RyuKenState{ p, false }, strong{ st }, canReduceTime { true }
 {
 }
 
@@ -41,8 +41,7 @@ void RyuKenStateStunned::OnEnter()
 
 	character->particleStunned = servicesManager->particles->CreateParticle(info);
 
-	character->currentAnimation = &character->stunned;
-	RyuKenState::OnEnter();
+	character->SetCurrentAnimation(character->stunned);
 }
 
 void RyuKenStateStunned::OnExit()
@@ -95,7 +94,6 @@ CharacterState * RyuKenStateStunned::UpdateState()
 	canReduceTime = true;
 	character->ClearActionsSequence();
 	character->knockdownDamage = 0;
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
 	if (character->stunnedTimer.Reached())
 	{

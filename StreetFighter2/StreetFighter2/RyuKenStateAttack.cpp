@@ -4,7 +4,7 @@
 #include "RyuKenStateCrouch.h"
 
 
-RyuKenStateAttack::RyuKenStateAttack(RyuKen* p, AttackType type) : RyuKenState{ p }, attackType { type }
+RyuKenStateAttack::RyuKenStateAttack(RyuKen* p, AttackType type) : RyuKenState{ p, false }, attackType { type }
 {
 }
 
@@ -18,75 +18,75 @@ void RyuKenStateAttack::OnEnter()
 	switch (attackType)
 	{
 	case AttackType::L_PUNCH:
-		character->currentAnimation = &character->lPunch;
+		character->SetCurrentAnimation(character->lPunch);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::M_PUNCH:
-		character->currentAnimation = &character->mPunch;
+		character->SetCurrentAnimation(character->mPunch);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::H_PUNCH:
-		character->currentAnimation = &character->hPunch;
+		character->SetCurrentAnimation(character->hPunch);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_L_PUNCH:
-		character->currentAnimation = &character->flPunch;
+		character->SetCurrentAnimation(character->flPunch);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_M_PUNCH:
-		character->currentAnimation = &character->fmPunch;
+		character->SetCurrentAnimation(character->fmPunch);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_H_PUNCH:
-		character->currentAnimation = &character->fhPunch;
+		character->SetCurrentAnimation(character->fhPunch);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::L_KICK:
-		character->currentAnimation = &character->lKick;
+		character->SetCurrentAnimation(character->lKick);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::M_KICK:
-		character->currentAnimation = &character->mKick;
+		character->SetCurrentAnimation(character->mKick);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::H_KICK:
-		character->currentAnimation = &character->hKick;
+		character->SetCurrentAnimation(character->hKick);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_L_KICK:
-		character->currentAnimation = &character->flKick;
+		character->SetCurrentAnimation(character->flKick);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_M_KICK:
-		character->currentAnimation = &character->fmKick;
+		character->SetCurrentAnimation(character->fmKick);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_H_KICK:
-		character->currentAnimation = &character->fhKick;
+		character->SetCurrentAnimation(character->fhKick);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::C_L_PUNCH:
-		character->currentAnimation = &character->clPunch;
+		character->SetCurrentAnimation(character->clPunch);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::C_M_PUNCH:
-		character->currentAnimation = &character->cmPunch;
+		character->SetCurrentAnimation(character->cmPunch);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::C_H_PUNCH:
-		character->currentAnimation = &character->chPunch;
+		character->SetCurrentAnimation(character->chPunch);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::C_L_KICK:
-		character->currentAnimation = &character->clKick;
+		character->SetCurrentAnimation(character->clKick);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::C_M_KICK:
-		character->currentAnimation = &character->cmKick;
+		character->SetCurrentAnimation(character->cmKick);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::C_H_KICK:
-		character->currentAnimation = &character->chKick;
+		character->SetCurrentAnimation(character->chKick);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	default:
@@ -94,7 +94,6 @@ void RyuKenStateAttack::OnEnter()
 	}
 	
 	character->isAttacking = true;
-	RyuKenState::OnEnter();
 }
 
 void RyuKenStateAttack::OnExit()
@@ -140,7 +139,6 @@ CharacterState * RyuKenStateAttack::UpdateState()
 		}
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
 

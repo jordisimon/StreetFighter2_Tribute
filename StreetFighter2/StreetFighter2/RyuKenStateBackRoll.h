@@ -1,6 +1,7 @@
 #pragma once
 #include "RyuKenState.h"
 #include "Direction.h"
+#include "Timer.h"
 
 class RyuKenStateBackRoll :	public RyuKenState
 {
@@ -8,13 +9,14 @@ private:
 	enum class BackRollState
 	{
 		GRABBING,
-		ROLLING,
-		RELEASE
+		WAITING,
+		RECOVERING
 	};
 
-	Direction direction;
 	BackRollState state;
+	Direction direction;
 	unsigned int step;
+	Timer timer;
 
 public:
 	RyuKenStateBackRoll(RyuKen* p, Direction dir);
@@ -23,6 +25,5 @@ public:
 	void OnEnter();
 
 	CharacterState* UpdateState();
-	void Draw() const;
 };
 

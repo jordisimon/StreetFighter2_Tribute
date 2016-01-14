@@ -3,7 +3,7 @@
 #include "ServicesManager.h"
 #include "ServiceTime.h"
 
-Animation::Animation() : frames{}, speed{ 1.0f }, currentFrame{ 0.0f }, loop{ true }, forward{ true }, loopsCompleted{ 0 }, speedAltered{ false }, originalSpeed{ 1.0f }, timer{100}
+Animation::Animation() : frames{}, currentSpeed{ 1.0f }, currentFrame{ 0.0f }, validFrame{ 0 }, loop{ true }, forward{ true }, loopsCompleted{ 0 }, speedAltered{ false }, originalSpeed{ 1.0f }, timer{ 100 }
 {
 }
 
@@ -18,12 +18,22 @@ void Animation::SetFramesSize()
 
 void Animation::SetSpeed(float sp)
 {
-	speed = sp * frames.size();
+	originalSpeed = sp * frames.size();
+	ResetOriginalSpeed();
 }
 
 void Animation::SetDuration(float dur)
 {
-	speed = (1 / dur) * frames.size();
+	originalSpeed = (1 / dur) * frames.size();
+	ResetOriginalSpeed();
+}
+
+void Animation::ResetOriginalSpeed()
+{
+	currentSpeed = originalSpeed;
+	timer.Reset();
+	timer.Pause();
+	speedAltered = false;
 }
 
 void Animation::ResetAnimation()
@@ -36,7 +46,9 @@ void Animation::ResetAnimation()
 
 	validFrame = (int)currentFrame;
 
-	OnReset();
+	ResetOriginalSpeed();
+
+	OnRestart();
 }
 
 void Animation::UpdateCurrentFrame()
@@ -44,30 +56,29 @@ void Animation::UpdateCurrentFrame()
 	//Return to original speed
 	if (speedAltered && timer.Reached())
 	{
-		speedAltered = false;
-		speed = originalSpeed;
+		ResetOriginalSpeed();
 	}
 
 	if (loop)
 	{
 		if (forward)
 		{
-			currentFrame += speed * servicesManager->time->frameTimeSeconds;
+			currentFrame += currentSpeed * servicesManager->time->frameTimeSeconds;
 			if (currentFrame >= framesSize)
 			{
 				++loopsCompleted;
 				currentFrame = 0.0f;
-				OnReset();
+				OnRestart();
 			}
 		}
 		else
 		{
-			currentFrame -= speed * servicesManager->time->frameTimeSeconds;
+			currentFrame -= currentSpeed * servicesManager->time->frameTimeSeconds;
 			if (currentFrame < 0.0f)
 			{
 				++loopsCompleted;
 				currentFrame = (float)framesSize - 1;
-				OnReset();
+				OnRestart();
 			}
 		}
 		validFrame = (int)currentFrame;
@@ -77,7 +88,7 @@ void Animation::UpdateCurrentFrame()
 		if (forward)
 		{
 			if (currentFrame <= framesSize)
-				currentFrame += speed * servicesManager->time->frameTimeSeconds;
+				currentFrame += currentSpeed * servicesManager->time->frameTimeSeconds;
 
 			if (currentFrame < framesSize)
 				validFrame = (int)currentFrame;
@@ -87,7 +98,7 @@ void Animation::UpdateCurrentFrame()
 		else
 		{
 			if (currentFrame >= 0.0f)
-				currentFrame -= speed * servicesManager->time->frameTimeSeconds;
+				currentFrame -= currentSpeed * servicesManager->time->frameTimeSeconds;
 
 			if (currentFrame >= 0)
 				validFrame = (int)currentFrame;
@@ -117,8 +128,8 @@ int Animation::GetCurrentFrameIndex() const
 
 void Animation::ChangeSpeedTemporal(float ratio, int time)
 {
-	originalSpeed = speed;
-	speed *= ratio;
+	currentSpeed *= ratio;
+	timer.Resume();
 	timer.SetNewInterval(time);
 	speedAltered = true;
 }

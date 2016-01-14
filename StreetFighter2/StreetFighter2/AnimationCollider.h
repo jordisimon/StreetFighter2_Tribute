@@ -13,7 +13,7 @@ private:
 	int previousFrame;
 
 protected:
-	void OnReset();
+	void OnRestart();
 
 public:
 	ICollitionListener* listener;
@@ -29,6 +29,7 @@ public:
 
 	void ResetAnimation();
 	void UpdateCurrentFrame(const fPoint& position, Direction direction);
+	void UpdateColliders(const fPoint& position, Direction direction);
 
 	void DisableCurrentColliderFrame(ColliderType type);
 };

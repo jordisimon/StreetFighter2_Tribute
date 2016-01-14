@@ -15,6 +15,21 @@
 #include "RyuKenSpecialAttack.h"
 #include "RyuKenStateKnockdown.h"
 
+
+RyuKenStateCrouch::RyuKenStateCrouch(RyuKen* p, bool def) : RyuKenState{ p }, defending { def }, blocking { false }
+{
+}
+
+
+RyuKenStateCrouch::~RyuKenStateCrouch()
+{
+}
+
+void RyuKenStateCrouch::OnEnter()
+{
+	character->SetCurrentAnimation(character->crouch);
+}
+
 CharacterState * RyuKenStateCrouch::ProcessActions(std::vector<CommandAction> actions)
 {
 	for (const auto& command : actions)
@@ -63,7 +78,7 @@ CharacterState * RyuKenStateCrouch::ProcessStates(std::vector<CommandState> stat
 
 		case CommandState::MOVE_DOWN_RIGHT:
 			keepCrouching = true;
-			defending = character->direction == Direction::LEFT;			
+			defending = character->direction == Direction::LEFT;
 			break;
 
 		case CommandState::MOVE_LEFT:
@@ -83,21 +98,6 @@ CharacterState * RyuKenStateCrouch::ProcessStates(std::vector<CommandState> stat
 	return nullptr;
 }
 
-RyuKenStateCrouch::RyuKenStateCrouch(RyuKen* p, bool def) : RyuKenState{ p }, defending { def }, blocking { false }
-{
-}
-
-
-RyuKenStateCrouch::~RyuKenStateCrouch()
-{
-}
-
-void RyuKenStateCrouch::OnEnter()
-{
-	character->currentAnimation = &character->crouch;
-	RyuKenState::OnEnter();
-}
-
 CharacterState * RyuKenStateCrouch::UpdateState()
 {
 	RyuKenState::UpdateState();
@@ -108,8 +108,7 @@ CharacterState * RyuKenStateCrouch::UpdateState()
 		if (!blocking)
 		{
 			character->currentAnimation->CleanUpColliders();
-			character->currentAnimation = &character->cBlocking;
-			character->currentAnimation->InitColliders(character->position, character->direction);
+			character->SetCurrentAnimation(character->cBlocking);
 			blocking = true;
 		}
 	}
@@ -118,13 +117,11 @@ CharacterState * RyuKenStateCrouch::UpdateState()
 		if (blocking)
 		{
 			character->currentAnimation->CleanUpColliders();
-			character->currentAnimation = &character->crouch;
-			character->currentAnimation->InitColliders(character->position, character->direction);
+			character->SetCurrentAnimation(character->crouch);
 			blocking = false;
 		}
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
 

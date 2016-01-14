@@ -25,11 +25,9 @@ RyuKenStateWalk::~RyuKenStateWalk()
 void RyuKenStateWalk::OnEnter()
 {
 	if (forward)
-		character->currentAnimation = &character->fWalk;
+		character->SetCurrentAnimation(character->fWalk);
 	else
-		character->currentAnimation = &character->bWalk;
-
-	RyuKenState::OnEnter();
+		character->SetCurrentAnimation(character->bWalk);
 }
 
 CharacterState * RyuKenStateWalk::ProcessActions(std::vector<CommandAction> actions)
@@ -153,7 +151,6 @@ CharacterState * RyuKenStateWalk::UpdateState()
 			character->MoveXPosition(Direction::LEFT, character->bSpeed);
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
 

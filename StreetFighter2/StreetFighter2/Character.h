@@ -25,6 +25,8 @@ private:
 
 	void StoreActions(std::vector<CommandAction> actions);
 
+	//AnimationCollider* currentAnimation = nullptr;
+
 protected:
 	const char* configSection = nullptr;
 	SDL_Texture* texture = nullptr;
@@ -40,6 +42,8 @@ public:
 	fPoint position;
 	fPoint nextPosition;
 	Direction direction;
+	Direction animDirection; //When jumping over rival or getting hold/thrown player direction could be different form anim direction
+	AnimationCollider* currentAnimation = nullptr;
 	float updateOverallSpeed;
 	float yUpdateControl;
 	unsigned int roundVictories;
@@ -47,7 +51,6 @@ public:
 	float shownLife;
 	float gravity;
 	int groundLevel; //Needed to jump
-	AnimationCollider* currentAnimation = nullptr;
 	bool isAttacking;
 	bool isGrabbed;
 
@@ -166,10 +169,16 @@ public:
 
 	void DrawShadow(int groundLevel) const;
 	Entity::Result Draw() const;
-	void DrawDefault(Direction drawDirection) const;
 
 	void OnCollitionEnter(Collider* colA, Collider* colB);
 	void OnCollitionExit(Collider* colA, Collider* colB) {};
+
+	void SetDirection(Direction dir);
+
+	void UpdateCurrentAnimation();
+	void SetCurrentAnimation(AnimationCollider& anim);
+	void SetCurrentAnimation(AnimationCollider& anim, Direction dir);
+	void CleanupCurrentAnimationColliders() const;
 
 	void PlaySfx(int sfx) const;
 
@@ -182,6 +191,7 @@ public:
 
 	void ClearActionsSequence();
 	virtual CharacterState* CheckSpecialActions() { return nullptr; };
+	void UpdateColliders();
 	void UpdateYPosition();
 	void MoveXPosition(Direction dir, int speed);
 	void IfMovingForwardRecalculatePositionWithPressingSpeed();

@@ -14,19 +14,13 @@
 #include "ParticleInfo.h"
 
 
-RyuKenState::RyuKenState(RyuKen* p) : character{ p }
+RyuKenState::RyuKenState(RyuKen* p, bool changeAnimDir) : character{ p }, changeAnimDirection{ changeAnimDir }
 {
 }
 
 
 RyuKenState::~RyuKenState()
 {
-}
-
-void RyuKenState::OnEnter()
-{
-	character->currentAnimation->ResetAnimation();
-	character->currentAnimation->InitColliders(character->position, character->direction);
 }
 
 void RyuKenState::OnExit()
@@ -58,13 +52,16 @@ CharacterState * RyuKenState::ProcessInput(CommandData * commandData)
 CharacterState * RyuKenState::UpdateState()
 {
 	character->UpdateYPosition();
+	character->UpdateCurrentAnimation();
 
 	return nullptr;
 }
 
-void RyuKenState::Draw() const
+void RyuKenState::SetDirection(Direction dir)
 {
-	character->DrawDefault(character->direction);
+	character->direction = dir;
+	if(changeAnimDirection)
+		character->animDirection = dir;
 }
 
 CharacterState * RyuKenState::DealHit(Collider * collider, const fRect& intersectionRect)

@@ -13,7 +13,7 @@ Collider::~Collider()
 
 void Collider::SetRect(const fRect& rect)
 {
-	changed = (colliderRect.x != rect.x)
+	changed |= (colliderRect.x != rect.x)
 		|| (colliderRect.y != rect.y)
 		|| (colliderRect.w != rect.w)
 		|| (colliderRect.h != rect.h);
@@ -23,7 +23,7 @@ void Collider::SetRect(const fRect& rect)
 
 void Collider::SetPosition(const fPoint & pos)
 {
-	changed = (colliderRect.x != pos.x)
+	changed |= (colliderRect.x != pos.x)
 		|| (colliderRect.y != pos.y);
 
 	colliderRect.x = pos.x;

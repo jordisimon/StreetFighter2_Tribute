@@ -9,14 +9,15 @@ protected:
 	float currentFrame;
 	int validFrame;
 	int framesSize; //To avoid query vector size each frame 
-	float speed; //times per second executed (or 1/duration in seconds)
+	float currentSpeed; //times per second executed (or 1/duration in seconds)
 
 	//Used to change speed for a short period
 	bool speedAltered;
 	float originalSpeed;
 	Timer timer;
 
-	virtual void OnReset() {};
+	void ResetOriginalSpeed();
+	virtual void OnRestart() {};
 
 public:
 	

@@ -54,6 +54,7 @@ private:
 	void CorrectPosition(fPoint& position, float margin);
 	void MovePlayers();
 	void ApplyForceToPlayers(Character* forcedPlayer, Character* otherPlayer);
+	void UpdatePlayersCollidersPosition();
 	void CheckPlayerDirection();
 
 	void SetCamXPosition();

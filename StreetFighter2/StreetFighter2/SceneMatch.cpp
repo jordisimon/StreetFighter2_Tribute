@@ -123,8 +123,8 @@ bool SceneMatch::Start()
 	player2->position = stage->p2StartPoint;
 	player1->nextPosition = player1->position;
 	player2->nextPosition = player2->position;
-	player1->direction = Direction::RIGHT;
-	player2->direction = Direction::LEFT;
+	player1->SetDirection(Direction::RIGHT);
+	player2->SetDirection(Direction::LEFT);
 
 	currentState = new MatchStateIntro(this);
 	currentState->OnEnter();
@@ -343,8 +343,8 @@ void SceneMatch::MovePlayers()
 	player2->position = player2->nextPosition;
 
 	//Final check (just to be sure)
-	CorrectPosition(player1->nextPosition, player1->bMargin);
-	CorrectPosition(player2->nextPosition, player2->bMargin);
+	CorrectPosition(player1->position, player1->bMargin);
+	CorrectPosition(player2->position, player2->bMargin);
 }
 
 void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPlayer)
@@ -384,7 +384,7 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 			if (movement > distanceToLimit)
 			{
 				//Only apply to other player if he is close enough
-				if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f && otherPlayer->position.x > sceneMinXPos - scene25Percent)
+				if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f && otherPlayer->position.x > sceneMaxXPos - (scene25Percent * 1.5f))
 					otherPlayer->nextPosition.x = otherPlayer->position.x - ((movement - distanceToLimit) * forcedPlayer->applyBackwardMovementToOtherPlayerRatio);
 				movement = distanceToLimit;
 			}
@@ -398,7 +398,7 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 			if (movement > distanceToLimit)
 			{
 				//Only apply to other player if he is close enough
-				if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f && otherPlayer->position.x < sceneMaxXPos + scene25Percent)
+				if (forcedPlayer->applyBackwardMovementToOtherPlayerRatio > 0.0f && otherPlayer->position.x < sceneMinXPos + (scene25Percent * 1.5f))
 					otherPlayer->nextPosition.x = otherPlayer->position.x + ((movement - distanceToLimit) * forcedPlayer->applyBackwardMovementToOtherPlayerRatio);
 				movement = distanceToLimit;
 			}
@@ -414,17 +414,23 @@ void SceneMatch::ApplyForceToPlayers(Character* forcedPlayer, Character* otherPl
 	}
 }
 
+void SceneMatch::UpdatePlayersCollidersPosition()
+{
+	player1->UpdateColliders();
+	player2->UpdateColliders();
+}
+
 void SceneMatch::CheckPlayerDirection()
 {
 	if (player1->position.x < player2->position.x)
 	{
-		player1->direction = Direction::RIGHT;
-		player2->direction = Direction::LEFT;
+		player1->SetDirection(Direction::RIGHT);
+		player2->SetDirection(Direction::LEFT);
 	}
 	else
 	{
-		player1->direction = Direction::LEFT;
-		player2->direction = Direction::RIGHT;
+		player1->SetDirection(Direction::LEFT);
+		player2->SetDirection(Direction::RIGHT);
 	}
 }
 

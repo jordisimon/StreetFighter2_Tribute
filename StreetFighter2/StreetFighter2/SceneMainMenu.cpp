@@ -76,7 +76,7 @@ bool SceneMainMenu::Init()
 	optionsPos.x = screenCenter.x;
 	optionsPos.y = screenCenter.y + 50;
 
-	config->LoadSprite(cursor, configSection, "cursor");
+	config->LoadAnimation(cursor, configSection, "cursor");
 	cursorOriginalPos.x = screenCenter.x - (options.rect.w / 2) - 21;
 	cursorOriginalPos.y = screenCenter.y + 55;
 
@@ -243,15 +243,24 @@ Entity::Result SceneMainMenu::UpdateState()
 		break;
 
 	case MainMenuState::TWW_IN:
-		float movement = twwIntroSpeed * servicesManager->time->frameTimeSeconds;
-		tww1CurrentPos.x += movement;
-		tww2CurrentPos.x -= movement;
+		{		
+			float movement = twwIntroSpeed * servicesManager->time->frameTimeSeconds;
+			tww1CurrentPos.x += movement;
+			tww2CurrentPos.x -= movement;
 
-		if (tww1CurrentPos.x >= servicesManager->render->GetScreenCenter().x)
-		{
-			currentState = MainMenuState::SCENE_COMPLETED;
+			if (tww1CurrentPos.x >= servicesManager->render->GetScreenCenter().x)
+			{
+				currentState = MainMenuState::SCENE_COMPLETED;
+			}
 		}
+		break;
+
+	case MainMenuState::SHOW_MENU:
+		if (changing)
+			cursor.UpdateCurrentFrame();
+		break;
 	}
+
 	return Entity::Result::R_OK;
 }
 
@@ -283,7 +292,7 @@ Entity::Result SceneMainMenu::Draw() const
 		servicesManager->render->BlitGUI(texture, tww1.GetRectPosition(twwFinalPos), tww1.rect);
 		servicesManager->render->BlitGUI(texture, tww2.GetRectPosition(twwFinalPos), tww2.rect);
 		servicesManager->render->BlitGUI(texture, options.GetRectPosition(optionsPos), options.rect);
-		servicesManager->render->BlitGUI(texture, cursor.GetRectPosition(cursorCurrentPos), cursor.rect);
+		servicesManager->render->BlitGUI(texture, cursor.GetFrame().GetRectPosition(cursorCurrentPos), cursor.GetFrame().rect);
 		break;
 	}
 

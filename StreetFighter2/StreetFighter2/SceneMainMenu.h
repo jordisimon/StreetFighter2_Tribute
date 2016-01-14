@@ -54,7 +54,7 @@ private:
 	Sprite options;
 	fPoint optionsPos;
 
-	Sprite cursor;
+	Animation cursor;
 	fPoint cursorOriginalPos;
 	fPoint cursorCurrentPos;
 

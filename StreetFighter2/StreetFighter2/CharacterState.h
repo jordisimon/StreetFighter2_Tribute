@@ -2,6 +2,7 @@
 #include "AttackInfo.h"
 #include "CharacterSpecialAttack.h"
 #include "Rect.h"
+#include "Direction.h"
 
 struct CommandData;
 class Collider;
@@ -23,6 +24,7 @@ public:
 
 	virtual const AttackInfo GetAttackInfo() const { return AttackInfo(); }
 
+	virtual void SetDirection(Direction dir) {};
 	virtual CharacterState* DoSpecialAction(const CharacterSpecialAttack& type) { return nullptr; }
 	virtual CharacterState* DealHit(Collider* collider, const fRect& intersectionRect) { return nullptr; };
 	virtual CharacterState* RoundFinished(int playerWin) { return nullptr; };

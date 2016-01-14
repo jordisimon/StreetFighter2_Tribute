@@ -14,7 +14,5 @@ public:
 	~RyuKenStateIdle();
 
 	void OnEnter();
-
-	CharacterState* UpdateState();
 };
 

@@ -2,7 +2,7 @@
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
 
-RyuKenStateKyaku::RyuKenStateKyaku(RyuKen* p, AttackStrength s) : RyuKenState{ p }, strength{ s }
+RyuKenStateKyaku::RyuKenStateKyaku(RyuKen* p, AttackStrength s) : RyuKenState{ p, false }, strength{ s }
 {
 	direction = character->direction;
 }
@@ -14,7 +14,7 @@ RyuKenStateKyaku::~RyuKenStateKyaku()
 void RyuKenStateKyaku::OnEnter()
 {
 	step = 0;
-	character->currentAnimation = &character->kyakuBegin;
+	character->SetCurrentAnimation(character->kyakuBegin);
 	character->isAttacking = true;
 	switch (strength)
 	{
@@ -45,8 +45,6 @@ void RyuKenStateKyaku::OnEnter()
 	default:
 		break;
 	}
-
-	RyuKenState::OnEnter();
 }
 
 void RyuKenStateKyaku::OnExit()
@@ -69,8 +67,7 @@ CharacterState * RyuKenStateKyaku::UpdateState()
 		{
 			++step;
 			RyuKenState::OnExit();
-			character->currentAnimation = &character->kyaku;
-			RyuKenState::OnEnter();
+			character->SetCurrentAnimation(character->kyaku);
 		}
 		break;
 
@@ -79,8 +76,7 @@ CharacterState * RyuKenStateKyaku::UpdateState()
 		{
 			++step;
 			RyuKenState::OnExit();
-			character->currentAnimation = &character->kyakuEnd;
-			RyuKenState::OnEnter();
+			character->SetCurrentAnimation(character->kyakuEnd);
 		}
 		break;
 	case 2:
@@ -91,8 +87,6 @@ CharacterState * RyuKenStateKyaku::UpdateState()
 	default:
 		break;
 	}
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
 	return nullptr;
 }

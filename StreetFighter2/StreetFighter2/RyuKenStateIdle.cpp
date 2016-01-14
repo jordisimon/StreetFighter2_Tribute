@@ -18,8 +18,7 @@ RyuKenStateIdle::~RyuKenStateIdle()
 
 void RyuKenStateIdle::OnEnter()
 {
-	character->currentAnimation = &character->idle;
-	RyuKenState::OnEnter();
+	character->SetCurrentAnimation(character->idle);
 }
 
 CharacterState * RyuKenStateIdle::ProcessActions(std::vector<CommandAction> actions)
@@ -109,15 +108,6 @@ CharacterState* RyuKenStateIdle::ProcessStates(std::vector<CommandState> states)
 		}
 	}
 
-	return nullptr;
-}
-
-
-CharacterState* RyuKenStateIdle::UpdateState()
-{
-	RyuKenState::UpdateState();
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
 

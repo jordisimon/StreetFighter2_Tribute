@@ -19,6 +19,5 @@ public:
 	void OnExit();
 
 	CharacterState* UpdateState();
-	void Draw() const;
 };
 

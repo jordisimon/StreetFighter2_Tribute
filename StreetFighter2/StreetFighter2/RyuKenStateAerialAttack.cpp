@@ -3,12 +3,12 @@
 #include "RyuKenStateIdle.h"
 #include "RyuKenStateFinish.h"
 
-RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen * p, AttackType type) : RyuKenState{ p }, attackType{ type }, forward{ true }, hSpeed{ 0 }, diagonal{ false }, playerWin{ -1 }
+RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen * p, AttackType type) : RyuKenState{ p, false }, attackType{ type }, forward{ true }, hSpeed{ 0 }, diagonal{ false }, playerWin{ -1 }
 {
 	direction = character->direction;
 }
 
-RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen* p, AttackType type, Direction dir, bool f, int hSp) : RyuKenState{ p }, attackType{ type }, direction { dir }, forward{ f }, hSpeed{ hSp }, diagonal{ true }, playerWin{ -1 }
+RyuKenStateAerialAttack::RyuKenStateAerialAttack(RyuKen* p, AttackType type, Direction dir, bool f, int hSp) : RyuKenState{ p, false }, attackType{ type }, direction { dir }, forward{ f }, hSpeed{ hSp }, diagonal{ true }, playerWin{ -1 }
 {
 }
 
@@ -22,51 +22,51 @@ void RyuKenStateAerialAttack::OnEnter()
 	switch (attackType)
 	{
 	case AttackType::J_L_PUNCH:
-		character->currentAnimation = &character->jlPunch;
+		character->SetCurrentAnimation(character->jlPunch, character->animDirection);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::J_M_PUNCH:
-		character->currentAnimation = &character->jmPunch;
+		character->SetCurrentAnimation(character->jmPunch, character->animDirection);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::J_H_PUNCH:
-		character->currentAnimation = &character->jhPunch;
+		character->SetCurrentAnimation(character->jhPunch, character->animDirection);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_J_L_PUNCH:
-		character->currentAnimation = &character->fjlPunch;
+		character->SetCurrentAnimation(character->fjlPunch, character->animDirection);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_J_M_PUNCH:
-		character->currentAnimation = &character->fjmPunch;
+		character->SetCurrentAnimation(character->fjmPunch, character->animDirection);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_J_H_PUNCH:
-		character->currentAnimation = &character->fjhPunch;
+		character->SetCurrentAnimation(character->fjhPunch, character->animDirection);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::J_L_KICK:
-		character->currentAnimation = &character->jlKick;
+		character->SetCurrentAnimation(character->jlKick, character->animDirection);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::J_M_KICK:
-		character->currentAnimation = &character->jmKick;
+		character->SetCurrentAnimation(character->jmKick, character->animDirection);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::J_H_KICK:
-		character->currentAnimation = &character->jhKick;
+		character->SetCurrentAnimation(character->jhKick, character->animDirection);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	case AttackType::F_J_L_KICK:
-		character->currentAnimation = &character->fjlKick;
+		character->SetCurrentAnimation(character->fjlKick, character->animDirection);
 		character->PlaySfx(character->lAttackSfx);
 		break;
 	case AttackType::F_J_M_KICK:
-		character->currentAnimation = &character->fjmKick;
+		character->SetCurrentAnimation(character->fjmKick, character->animDirection);
 		character->PlaySfx(character->mAttackSfx);
 		break;
 	case AttackType::F_J_H_KICK:
-		character->currentAnimation = &character->fjhKick;
+		character->SetCurrentAnimation(character->fjhKick, character->animDirection);
 		character->PlaySfx(character->hAttackSfx);
 		break;
 	default:
@@ -74,7 +74,6 @@ void RyuKenStateAerialAttack::OnEnter()
 	}
 
 	character->isAttacking = true;
-	RyuKenState::OnEnter();
 }
 
 void RyuKenStateAerialAttack::OnExit()
@@ -102,7 +101,6 @@ CharacterState * RyuKenStateAerialAttack::UpdateState()
 			return new RyuKenStateFinish(character, playerWin);
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
 

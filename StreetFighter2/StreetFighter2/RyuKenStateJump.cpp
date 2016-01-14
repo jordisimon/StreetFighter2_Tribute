@@ -4,7 +4,7 @@
 #include "RyuKenStateAerialAttack.h"
 #include "RyuKenStateFinish.h"
 
-RyuKenStateJump::RyuKenStateJump(RyuKen* p) : RyuKenState{ p }, playerWin{ -1 }
+RyuKenStateJump::RyuKenStateJump(RyuKen* p) : RyuKenState{ p, false }, playerWin{ -1 }
 {
 	character->currentJumpSpeed = (float)character->jumpVSpeed;
 }
@@ -16,8 +16,7 @@ RyuKenStateJump::~RyuKenStateJump()
 
 void RyuKenStateJump::OnEnter()
 {
-	character->currentAnimation = &character->jump;
-	RyuKenState::OnEnter();
+	character->SetCurrentAnimation(character->jump);
 }
 
 CharacterState * RyuKenStateJump::ProcessActions(std::vector<CommandAction> actions)
@@ -52,8 +51,6 @@ CharacterState * RyuKenStateJump::ProcessActions(std::vector<CommandAction> acti
 CharacterState * RyuKenStateJump::UpdateState()
 {
 	RyuKenState::UpdateState();
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	
 	if (character->nextPosition.y >= character->groundLevel)
 	{

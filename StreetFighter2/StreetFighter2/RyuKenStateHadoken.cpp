@@ -6,7 +6,7 @@
 #include "ParticleInfo.h"
 
 
-RyuKenStateHadoken::RyuKenStateHadoken(RyuKen* p, AttackStrength s) : RyuKenState{ p }, strength{ s }, timer {1000}
+RyuKenStateHadoken::RyuKenStateHadoken(RyuKen* p, AttackStrength s) : RyuKenState{ p, false }, strength{ s }, timer {1000}
 {
 }
 
@@ -18,7 +18,7 @@ RyuKenStateHadoken::~RyuKenStateHadoken()
 void RyuKenStateHadoken::OnEnter()
 {
 	step = 0;
-	character->currentAnimation = &character->hadoken;
+	character->SetCurrentAnimation(character->hadoken);
 	character->isAttacking = true;
 	switch (strength)
 	{
@@ -35,7 +35,6 @@ void RyuKenStateHadoken::OnEnter()
 		break;
 	}
 
-	RyuKenState::OnEnter();
 }
 
 void RyuKenStateHadoken::OnExit()
@@ -100,8 +99,6 @@ CharacterState * RyuKenStateHadoken::UpdateState()
 	default:
 		break;
 	}
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
 	return nullptr;
 }

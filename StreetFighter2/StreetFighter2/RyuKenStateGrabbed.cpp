@@ -3,7 +3,7 @@
 
 
 
-RyuKenStateGrabbed::RyuKenStateGrabbed(RyuKen* p, Direction dir) : RyuKenState{ p }, direction{ dir }
+RyuKenStateGrabbed::RyuKenStateGrabbed(RyuKen* p, Direction dir) : RyuKenState{ p, false }
 {
 }
 
@@ -30,9 +30,4 @@ CharacterState * RyuKenStateGrabbed::ProcessInput(CommandData * commandData)
 CharacterState * RyuKenStateGrabbed::UpdateState()
 {
 	return nullptr;
-}
-
-void RyuKenStateGrabbed::Draw() const
-{
-	character->DrawDefault(direction);
 }

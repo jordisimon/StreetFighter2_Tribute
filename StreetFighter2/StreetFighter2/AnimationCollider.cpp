@@ -72,6 +72,11 @@ void AnimationCollider::UpdateCurrentFrame(const fPoint& position, Direction dir
 {
 	Animation::UpdateCurrentFrame();
 
+	UpdateColliders(position, direction);
+}
+
+void AnimationCollider::UpdateColliders(const fPoint& position, Direction direction)
+{
 	for (auto& colliderAnimation : colliderAnimationList)
 	{
 		if (colliderAnimation->collider != nullptr)
@@ -82,7 +87,7 @@ void AnimationCollider::UpdateCurrentFrame(const fPoint& position, Direction dir
 	}
 }
 
-void AnimationCollider::OnReset()
+void AnimationCollider::OnRestart()
 {
 	for (auto& colliderAnimation : colliderAnimationList)
 	{

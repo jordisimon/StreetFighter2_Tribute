@@ -4,7 +4,7 @@
 #include "RyuKenStateStunned.h"
 
 
-RyuKenStateKnockdown::RyuKenStateKnockdown(RyuKen* p, Direction animDir) : RyuKenState{ p }, animDirection{ animDir }, step { 0 }
+RyuKenStateKnockdown::RyuKenStateKnockdown(RyuKen* p, Direction animDir) : RyuKenState{ p, false }, animDirection{ animDir }, step { 0 }
 {
 }
 
@@ -15,15 +15,13 @@ RyuKenStateKnockdown::~RyuKenStateKnockdown()
 
 void RyuKenStateKnockdown::OnEnter()
 {
-	character->currentAnimation = &character->knockdown;
+	character->SetCurrentAnimation(character->knockdown, animDirection);
 
 	character->hitBackwardMovement = 100.0f;
 	character->hitBackwardSpeed = 120.0f;
 	character->currentJumpSpeed = 5.5f;
-	character->applyBackwardMovementToOtherPlayerRatio = 0.25f;
+	character->applyBackwardMovementToOtherPlayerRatio = 0.75f;
 	character->knockdownTimer.Pause();
-
-	RyuKenState::OnEnter();
 }
 
 void RyuKenStateKnockdown::OnExit()
@@ -47,8 +45,7 @@ CharacterState * RyuKenStateKnockdown::UpdateState()
 		if (character->nextPosition.y >= character->groundLevel)
 		{
 			RyuKenState::OnExit();
-			character->currentAnimation = &character->knockdownRecover;
-			RyuKenState::OnEnter();
+			character->SetCurrentAnimation(character->knockdownRecover);
 			character->PlaySfx(character->floorHitSfx);
 			++step;
 		}
@@ -75,12 +72,5 @@ CharacterState * RyuKenStateKnockdown::UpdateState()
 		break;
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, animDirection);
-
 	return nullptr;
-}
-
-void RyuKenStateKnockdown::Draw() const
-{
-	character->DrawDefault(animDirection);
 }

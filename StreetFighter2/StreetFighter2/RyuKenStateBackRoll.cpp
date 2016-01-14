@@ -3,7 +3,7 @@
 #include "RyuKenStateIdle.h"
 
 
-RyuKenStateBackRoll::RyuKenStateBackRoll(RyuKen* p, Direction dir) : RyuKenState{ p }, direction{ dir }, step{ 0 }, state{BackRollState::GRABBING}
+RyuKenStateBackRoll::RyuKenStateBackRoll(RyuKen* p, Direction dir) : RyuKenState{ p, false }, direction{ dir }, step{ 0 }, state{ BackRollState::GRABBING }
 {
 }
 
@@ -14,20 +14,20 @@ RyuKenStateBackRoll::~RyuKenStateBackRoll()
 
 void RyuKenStateBackRoll::OnEnter()
 {
-	character->rival->Grabbed();
-	character->rival->currentAnimation = &character->rival->grabbed;
-	character->rival->currentAnimation->ResetAnimation();
 	character->rival->position = character->position;
-
-	character->currentAnimation = &character->backRoll;
-
+	character->rival->Grabbed();
+	character->rival->SetCurrentAnimation(character->rival->grabbed);
+	
+	character->SetCurrentAnimation(character->backRoll);
 	character->PlaySfx(character->grabSfx);
-
-	RyuKenState::OnEnter();
 }
 
 CharacterState * RyuKenStateBackRoll::UpdateState()
 {
+	RyuKenState::UpdateState();
+
+	character->rival->UpdateCurrentAnimation();
+
 	switch (state)
 	{
 	case RyuKenStateBackRoll::BackRollState::GRABBING:
@@ -77,17 +77,22 @@ CharacterState * RyuKenStateBackRoll::UpdateState()
 			character->rival->SubstractDamage(27);
 			character->rival->Thrown();
 
-			character->currentAnimation = &character->backRollRecover;
-			character->currentAnimation->ResetAnimation();
-			state = BackRollState::RELEASE;
+			state = BackRollState::WAITING;
+			timer.Resume();
+			timer.SetNewInterval(750);		
 		}
 
-		character->rival->currentAnimation->UpdateCurrentFrame(character->rival->position, character->rival->direction);	
+		break;
 
+	case RyuKenStateBackRoll::BackRollState::WAITING:
+		if (timer.Reached())
+		{
+			state = BackRollState::RECOVERING;
+			character->SetCurrentAnimation(character->backRollRecover);
+		}		
 		break;
-	case RyuKenStateBackRoll::BackRollState::ROLLING:
-		break;
-	case RyuKenStateBackRoll::BackRollState::RELEASE:
+
+	case RyuKenStateBackRoll::BackRollState::RECOVERING:
 		if (character->currentAnimation->HasFinished())
 		{
 			return new RyuKenStateIdle(character);
@@ -97,12 +102,5 @@ CharacterState * RyuKenStateBackRoll::UpdateState()
 		break;
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
-
 	return nullptr;
-}
-
-void RyuKenStateBackRoll::Draw() const
-{
-	character->DrawDefault(direction);
 }

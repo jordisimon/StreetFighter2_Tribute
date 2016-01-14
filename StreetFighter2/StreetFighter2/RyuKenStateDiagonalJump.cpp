@@ -4,7 +4,7 @@
 #include "RyuKenStateAerialAttack.h"
 #include "RyuKenStateFinish.h"
 
-RyuKenStateDiagonalJump::RyuKenStateDiagonalJump(RyuKen* p, Direction dir) : RyuKenState{ p }, playerWin{ -1 }
+RyuKenStateDiagonalJump::RyuKenStateDiagonalJump(RyuKen* p, Direction dir) : RyuKenState{ p, false }, playerWin{ -1 }
 {
 	character->currentJumpSpeed = (float)character->jumpVSpeed;
 
@@ -28,11 +28,9 @@ RyuKenStateDiagonalJump::~RyuKenStateDiagonalJump()
 void RyuKenStateDiagonalJump::OnEnter()
 {
 	if (forward)
-		character->currentAnimation = &character->fJump;
+		character->SetCurrentAnimation(character->fJump);
 	else
-		character->currentAnimation = &character->bJump;
-
-	RyuKenState::OnEnter();
+		character->SetCurrentAnimation(character->bJump);
 }
 
 CharacterState * RyuKenStateDiagonalJump::ProcessActions(std::vector<CommandAction> actions)
@@ -67,8 +65,6 @@ CharacterState * RyuKenStateDiagonalJump::ProcessActions(std::vector<CommandActi
 CharacterState * RyuKenStateDiagonalJump::UpdateState()
 {
 	RyuKenState::UpdateState();
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
 	character->MoveXPosition(direction, hSpeed);
 

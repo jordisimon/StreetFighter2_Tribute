@@ -67,6 +67,7 @@ MatchState * MatchStateFight::UpdateState()
 	scene->ApplyForceToPlayers(scene->player1, scene->player2);
 	scene->ApplyForceToPlayers(scene->player2, scene->player1);
 	scene->CheckPlayerDirection();
+	scene->UpdatePlayersCollidersPosition();
 	scene->SetCamYPosition();
 	scene->SetCamXPosition();
 	scene->SetCamPosition();

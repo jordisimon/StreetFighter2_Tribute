@@ -4,7 +4,7 @@
 #include "RyuKenStateStunned.h"
 
 RyuKenStateHit::RyuKenStateHit(RyuKen * p, bool crouch, bool face, AttackStrength str) 
-	: RyuKenState{ p }, crouching{ crouch }, faceHit{ face }, strength{ str }
+	: RyuKenState{ p, false }, crouching{ crouch }, faceHit{ face }, strength{ str }
 {
 }
 
@@ -18,14 +18,14 @@ void RyuKenStateHit::OnEnter()
 
 	if (crouching)
 	{
-		character->currentAnimation = &character->cHit;
+		character->SetCurrentAnimation(character->cHit);
 	}
 	else
 	{
 		if (faceHit)
-			character->currentAnimation = &character->faceHit;
+			character->SetCurrentAnimation(character->faceHit);
 		else
-			character->currentAnimation = &character->hit;
+			character->SetCurrentAnimation(character->hit);
 	}
 
 	switch (strength)
@@ -42,8 +42,6 @@ void RyuKenStateHit::OnEnter()
 		character->currentAnimation->SetDuration(0.9f);
 		break;
 	}
-
-	RyuKenState::OnEnter();
 }
 
 CharacterState* RyuKenStateHit::UpdateState()
@@ -55,7 +53,6 @@ CharacterState* RyuKenStateHit::UpdateState()
 		return new RyuKenStateIdle(character);
 	}
 
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 	return nullptr;
 }
 

@@ -13,6 +13,21 @@
 #include "RyuKenStateKyaku.h"
 
 
+RyuKenStateBlocking::RyuKenStateBlocking(RyuKen* p) : RyuKenState{p}
+{
+}
+
+
+RyuKenStateBlocking::~RyuKenStateBlocking()
+{
+}
+
+void RyuKenStateBlocking::OnEnter()
+{
+	character->SetCurrentAnimation(character->blocking);
+}
+
+
 CharacterState * RyuKenStateBlocking::ProcessActions(std::vector<CommandAction> actions)
 {
 	bool closeRange = character->RivalDistanceLowerThan((character->fMargin * 2) + 10);
@@ -72,7 +87,7 @@ CharacterState * RyuKenStateBlocking::ProcessStates(std::vector<CommandState> st
 		switch (command)
 		{
 		case CommandState::MOVE_LEFT:
-			if(character->direction == Direction::RIGHT)
+			if (character->direction == Direction::RIGHT)
 				keepBlocking = true;
 			else
 				walkingForward = true;
@@ -99,21 +114,6 @@ CharacterState * RyuKenStateBlocking::ProcessStates(std::vector<CommandState> st
 	return nullptr;
 }
 
-RyuKenStateBlocking::RyuKenStateBlocking(RyuKen* p) : RyuKenState{p}
-{
-}
-
-
-RyuKenStateBlocking::~RyuKenStateBlocking()
-{
-}
-
-void RyuKenStateBlocking::OnEnter()
-{
-	character->currentAnimation = &character->blocking;
-	RyuKenState::OnEnter();
-}
-
 CharacterState * RyuKenStateBlocking::UpdateState()
 {
 	RyuKenState::UpdateState();
@@ -124,6 +124,7 @@ CharacterState * RyuKenStateBlocking::UpdateState()
 		//Keep walking back
 		return new RyuKenStateWalk(character, false);
 	}
+
 	return nullptr;
 }
 

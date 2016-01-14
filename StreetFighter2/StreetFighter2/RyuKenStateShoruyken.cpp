@@ -2,7 +2,7 @@
 #include "RyuKen.h"
 #include "RyuKenStateIdle.h"
 
-RyuKenStateShoruyken::RyuKenStateShoruyken(RyuKen* p, AttackStrength s) : RyuKenState{ p }, strength{ s }
+RyuKenStateShoruyken::RyuKenStateShoruyken(RyuKen* p, AttackStrength s) : RyuKenState{ p, false }, strength{ s }
 {
 }
 
@@ -14,7 +14,7 @@ RyuKenStateShoruyken::~RyuKenStateShoruyken()
 void RyuKenStateShoruyken::OnEnter()
 {
 	step = 0;
-	character->currentAnimation = &character->shoryukenBegin;
+	character->SetCurrentAnimation(character->shoryukenBegin);
 	character->isAttacking = true;
 	switch (strength)
 	{
@@ -30,8 +30,6 @@ void RyuKenStateShoruyken::OnEnter()
 	default:
 		break;
 	}
-	
-	RyuKenState::OnEnter();
 }
 
 void RyuKenStateShoruyken::OnExit()
@@ -52,8 +50,7 @@ CharacterState* RyuKenStateShoruyken::UpdateState()
 		{
 			++step;
 			RyuKenState::OnExit();
-			character->currentAnimation = &character->shoryuken;
-			RyuKenState::OnEnter();
+			character->SetCurrentAnimation(character->shoryuken);
 			switch (strength)
 			{
 			case AttackStrength::LIGHT:
@@ -76,8 +73,7 @@ CharacterState* RyuKenStateShoruyken::UpdateState()
 		{
 			++step;
 			RyuKenState::OnExit();
-			character->currentAnimation = &character->shoryukenEnd;
-			RyuKenState::OnEnter();
+			character->SetCurrentAnimation(character->shoryukenEnd);
 		}
 	case 2:
 		if (character->nextPosition.y >= character->groundLevel)
@@ -87,8 +83,6 @@ CharacterState* RyuKenStateShoruyken::UpdateState()
 	default:
 		break;
 	}
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
 	return nullptr;
 }

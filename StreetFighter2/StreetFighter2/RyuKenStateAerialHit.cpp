@@ -5,7 +5,7 @@
 #include "RyuKenStateFinish.h"
 
 
-RyuKenStateAerialHit::RyuKenStateAerialHit(RyuKen* p) : RyuKenState{ p }, playerWin{ -1 }
+RyuKenStateAerialHit::RyuKenStateAerialHit(RyuKen* p) : RyuKenState{ p, false }, playerWin{ -1 }
 {
 	character->currentJumpSpeed = (float)character->jumpVSpeed;
 
@@ -23,16 +23,12 @@ RyuKenStateAerialHit::~RyuKenStateAerialHit()
 void RyuKenStateAerialHit::OnEnter()
 {
 	character->ClearActionsSequence();
-	character->currentAnimation = &character->aHit;
-
-	RyuKenState::OnEnter();
+	character->SetCurrentAnimation(character->aHit);
 }
 
 CharacterState * RyuKenStateAerialHit::UpdateState()
 {
 	RyuKenState::UpdateState();
-
-	character->currentAnimation->UpdateCurrentFrame(character->position, character->direction);
 
 	character->MoveXPosition(direction, character->bJumpHSpeed);
 
